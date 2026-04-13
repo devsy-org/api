@@ -42,38 +42,38 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/skevetter/admin-apis/pkg/licenseapi.ResourceCount":                                       schema_loft_sh_admin_apis_pkg_licenseapi_ResourceCount(ref),
 		"github.com/skevetter/admin-apis/pkg/licenseapi.TierResource":                                        schema_loft_sh_admin_apis_pkg_licenseapi_TierResource(ref),
 		"github.com/skevetter/admin-apis/pkg/licenseapi.Trial":                                               schema_loft_sh_admin_apis_pkg_licenseapi_Trial(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash":                                     schema_apis_loft_cluster_v1_Bash(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart":                                    schema_apis_loft_cluster_v1_Chart(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfo":                                schema_apis_loft_cluster_v1_ChartInfo(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoList":                            schema_apis_loft_cluster_v1_ChartInfoList(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoSpec":                            schema_apis_loft_cluster_v1_ChartInfoSpec(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoStatus":                          schema_apis_loft_cluster_v1_ChartInfoStatus(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef":                           schema_apis_loft_cluster_v1_ChartSecretRef(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.EpochInfo":                                schema_apis_loft_cluster_v1_EpochInfo(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Feature":                                  schema_apis_loft_cluster_v1_Feature(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureList":                              schema_apis_loft_cluster_v1_FeatureList(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureSpec":                              schema_apis_loft_cluster_v1_FeatureSpec(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureStatus":                            schema_apis_loft_cluster_v1_FeatureStatus(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmRelease":                              schema_apis_loft_cluster_v1_HelmRelease(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseApp":                           schema_apis_loft_cluster_v1_HelmReleaseApp(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig":                        schema_apis_loft_cluster_v1_HelmReleaseConfig(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseList":                          schema_apis_loft_cluster_v1_HelmReleaseList(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseSpec":                          schema_apis_loft_cluster_v1_HelmReleaseSpec(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseStatus":                        schema_apis_loft_cluster_v1_HelmReleaseStatus(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Info":                                     schema_apis_loft_cluster_v1_Info(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.LastActivityInfo":                         schema_apis_loft_cluster_v1_LastActivityInfo(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Maintainer":                               schema_apis_loft_cluster_v1_Maintainer(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata":                                 schema_apis_loft_cluster_v1_Metadata(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ProjectSecretRef":                         schema_apis_loft_cluster_v1_ProjectSecretRef(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig":                          schema_apis_loft_cluster_v1_SleepModeConfig(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec":                      schema_apis_loft_cluster_v1_SleepModeConfigSpec(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus":                    schema_apis_loft_cluster_v1_SleepModeConfigStatus(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuota":                             schema_apis_loft_storage_v1_ClusterQuota(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaList":                         schema_apis_loft_storage_v1_ClusterQuotaList(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaSpec":                         schema_apis_loft_storage_v1_ClusterQuotaSpec(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatus":                       schema_apis_loft_storage_v1_ClusterQuotaStatus(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace":            schema_apis_loft_storage_v1_ClusterQuotaStatusByNamespace(ref),
-		"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition":                                schema_apis_loft_storage_v1_Condition(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash":                                     schema_apis_loft_cluster_v1_Bash(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart":                                    schema_apis_loft_cluster_v1_Chart(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo":                                schema_apis_loft_cluster_v1_ChartInfo(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoList":                            schema_apis_loft_cluster_v1_ChartInfoList(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoSpec":                            schema_apis_loft_cluster_v1_ChartInfoSpec(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoStatus":                          schema_apis_loft_cluster_v1_ChartInfoStatus(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef":                           schema_apis_loft_cluster_v1_ChartSecretRef(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.EpochInfo":                                schema_apis_loft_cluster_v1_EpochInfo(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Feature":                                  schema_apis_loft_cluster_v1_Feature(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureList":                              schema_apis_loft_cluster_v1_FeatureList(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureSpec":                              schema_apis_loft_cluster_v1_FeatureSpec(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureStatus":                            schema_apis_loft_cluster_v1_FeatureStatus(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease":                              schema_apis_loft_cluster_v1_HelmRelease(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseApp":                           schema_apis_loft_cluster_v1_HelmReleaseApp(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig":                        schema_apis_loft_cluster_v1_HelmReleaseConfig(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseList":                          schema_apis_loft_cluster_v1_HelmReleaseList(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseSpec":                          schema_apis_loft_cluster_v1_HelmReleaseSpec(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseStatus":                        schema_apis_loft_cluster_v1_HelmReleaseStatus(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Info":                                     schema_apis_loft_cluster_v1_Info(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.LastActivityInfo":                         schema_apis_loft_cluster_v1_LastActivityInfo(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Maintainer":                               schema_apis_loft_cluster_v1_Maintainer(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata":                                 schema_apis_loft_cluster_v1_Metadata(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ProjectSecretRef":                         schema_apis_loft_cluster_v1_ProjectSecretRef(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig":                          schema_apis_loft_cluster_v1_SleepModeConfig(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec":                      schema_apis_loft_cluster_v1_SleepModeConfigSpec(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus":                    schema_apis_loft_cluster_v1_SleepModeConfigStatus(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota":                             schema_apis_loft_storage_v1_ClusterQuota(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaList":                         schema_apis_loft_storage_v1_ClusterQuotaList(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaSpec":                         schema_apis_loft_storage_v1_ClusterQuotaSpec(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatus":                       schema_apis_loft_storage_v1_ClusterQuotaStatus(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace":            schema_apis_loft_storage_v1_ClusterQuotaStatusByNamespace(ref),
+		"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition":                                schema_apis_loft_storage_v1_Condition(ref),
 		"github.com/skevetter/api/pkg/apis/audit/v1.Event":                                                schema_pkg_apis_audit_v1_Event(ref),
 		"github.com/skevetter/api/pkg/apis/audit/v1.EventList":                                            schema_pkg_apis_audit_v1_EventList(ref),
 		"github.com/skevetter/api/pkg/apis/audit/v1.ObjectReference":                                      schema_pkg_apis_audit_v1_ObjectReference(ref),
@@ -2812,7 +2812,7 @@ func schema_apis_loft_cluster_v1_Chart(ref common.ReferenceCallback) common.Open
 					"usernameRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The username that is required for this repository",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"password": {
@@ -2825,7 +2825,7 @@ func schema_apis_loft_cluster_v1_Chart(ref common.ReferenceCallback) common.Open
 					"passwordRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The password that is required for this repository",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"insecureSkipTlsVerify": {
@@ -2839,7 +2839,7 @@ func schema_apis_loft_cluster_v1_Chart(ref common.ReferenceCallback) common.Open
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"},
 	}
 }
 
@@ -2872,20 +2872,20 @@ func schema_apis_loft_cluster_v1_ChartInfo(ref common.ReferenceCallback) common.
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoSpec"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoStatus"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoSpec", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfoStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoSpec", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfoStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
@@ -2922,7 +2922,7 @@ func schema_apis_loft_cluster_v1_ChartInfoList(ref common.ReferenceCallback) com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfo"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo"),
 									},
 								},
 							},
@@ -2933,7 +2933,7 @@ func schema_apis_loft_cluster_v1_ChartInfoList(ref common.ReferenceCallback) com
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfo", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
@@ -2947,14 +2947,14 @@ func schema_apis_loft_cluster_v1_ChartInfoSpec(ref common.ReferenceCallback) com
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -2967,7 +2967,7 @@ func schema_apis_loft_cluster_v1_ChartInfoStatus(ref common.ReferenceCallback) c
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 					"readme": {
@@ -2988,7 +2988,7 @@ func schema_apis_loft_cluster_v1_ChartInfoStatus(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
 	}
 }
 
@@ -3001,14 +3001,14 @@ func schema_apis_loft_cluster_v1_ChartSecretRef(ref common.ReferenceCallback) co
 					"projectSecretRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ProjectSecretRef holds the reference to a project secret",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ProjectSecretRef"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ProjectSecretRef"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ProjectSecretRef"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ProjectSecretRef"},
 	}
 }
 
@@ -3069,20 +3069,20 @@ func schema_apis_loft_cluster_v1_Feature(ref common.ReferenceCallback) common.Op
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureSpec"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureStatus"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureSpec", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.FeatureStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureSpec", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.FeatureStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
@@ -3119,7 +3119,7 @@ func schema_apis_loft_cluster_v1_FeatureList(ref common.ReferenceCallback) commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Feature"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Feature"),
 									},
 								},
 							},
@@ -3130,7 +3130,7 @@ func schema_apis_loft_cluster_v1_FeatureList(ref common.ReferenceCallback) commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Feature", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Feature", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
@@ -3244,20 +3244,20 @@ func schema_apis_loft_cluster_v1_HelmRelease(ref common.ReferenceCallback) commo
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseSpec"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseStatus"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseSpec", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseSpec", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
@@ -3297,7 +3297,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseConfig(ref common.ReferenceCallback)
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 					"manifests": {
@@ -3310,7 +3310,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseConfig(ref common.ReferenceCallback)
 					"bash": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Bash holds the bash script to execute in a container in the target",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash"),
 						},
 					},
 					"values": {
@@ -3347,7 +3347,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseConfig(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -3384,7 +3384,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseList(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmRelease"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease"),
 									},
 								},
 							},
@@ -3395,7 +3395,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseList(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmRelease", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
@@ -3409,7 +3409,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseSpec(ref common.ReferenceCallback) c
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 					"manifests": {
@@ -3422,7 +3422,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseSpec(ref common.ReferenceCallback) c
 					"bash": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Bash holds the bash script to execute in a container in the target",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash"),
 						},
 					},
 					"values": {
@@ -3459,7 +3459,7 @@ func schema_apis_loft_cluster_v1_HelmReleaseSpec(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -3479,20 +3479,20 @@ func schema_apis_loft_cluster_v1_HelmReleaseStatus(ref common.ReferenceCallback)
 					"info": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Info provides information about a release",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Info"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Info"),
 						},
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Info", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Info", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
 	}
 }
 
@@ -3732,7 +3732,7 @@ func schema_apis_loft_cluster_v1_Metadata(ref common.ReferenceCallback) common.O
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Maintainer"),
+										Ref: ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Maintainer"),
 									},
 								},
 							},
@@ -3829,7 +3829,7 @@ func schema_apis_loft_cluster_v1_Metadata(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Maintainer"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Maintainer"},
 	}
 }
 
@@ -3896,20 +3896,20 @@ func schema_apis_loft_cluster_v1_SleepModeConfig(ref common.ReferenceCallback) c
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigSpec", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfigStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
@@ -4060,7 +4060,7 @@ func schema_apis_loft_cluster_v1_SleepModeConfigStatus(ref common.ReferenceCallb
 					"lastActivityInfo": {
 						SchemaProps: spec.SchemaProps{
 							Description: "LastActivityInfo holds information about the last activity within this space",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.LastActivityInfo"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.LastActivityInfo"),
 						},
 					},
 					"sleepingSince": {
@@ -4073,13 +4073,13 @@ func schema_apis_loft_cluster_v1_SleepModeConfigStatus(ref common.ReferenceCallb
 					"currentEpoch": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Optional info that indicates how long the space was sleeping in the current epoch",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.EpochInfo"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.EpochInfo"),
 						},
 					},
 					"lastEpoch": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Optional info that indicates how long the space was sleeping in the current epoch",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.EpochInfo"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.EpochInfo"),
 						},
 					},
 					"sleptLastThirtyDays": {
@@ -4121,7 +4121,7 @@ func schema_apis_loft_cluster_v1_SleepModeConfigStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.EpochInfo", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.LastActivityInfo"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.EpochInfo", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.LastActivityInfo"},
 	}
 }
 
@@ -4155,20 +4155,20 @@ func schema_apis_loft_storage_v1_ClusterQuota(ref common.ReferenceCallback) comm
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaSpec"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatus"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaSpec", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaSpec", "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
@@ -4206,7 +4206,7 @@ func schema_apis_loft_storage_v1_ClusterQuotaList(ref common.ReferenceCallback) 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuota"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota"),
 									},
 								},
 							},
@@ -4217,7 +4217,7 @@ func schema_apis_loft_storage_v1_ClusterQuotaList(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuota", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
@@ -4286,7 +4286,7 @@ func schema_apis_loft_storage_v1_ClusterQuotaStatus(ref common.ReferenceCallback
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace"),
 									},
 								},
 							},
@@ -4296,7 +4296,7 @@ func schema_apis_loft_storage_v1_ClusterQuotaStatus(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace", "k8s.io/api/core/v1.ResourceQuotaStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuotaStatusByNamespace", "k8s.io/api/core/v1.ResourceQuotaStatus"},
 	}
 }
 
@@ -5323,7 +5323,7 @@ func schema_pkg_apis_management_v1_AppSpec(ref common.ReferenceCallback) common.
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -5405,7 +5405,7 @@ func schema_pkg_apis_management_v1_AppSpec(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.Access", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.AppVersion", "github.com/skevetter/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.Access", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.AppVersion", "github.com/skevetter/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
@@ -8521,7 +8521,7 @@ func schema_pkg_apis_management_v1_ClusterStatus(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -8538,7 +8538,7 @@ func schema_pkg_apis_management_v1_ClusterStatus(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -10113,7 +10113,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -10141,14 +10141,14 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the workspace. This will only be shown in the front end.",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/skevetter/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/skevetter/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
@@ -12081,26 +12081,26 @@ func schema_pkg_apis_management_v1_KioskSpec(ref common.ReferenceCallback) commo
 						SchemaProps: spec.SchemaProps{
 							Description: "cluster.devsy.sh",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmRelease"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease"),
 						},
 					},
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"chartInfo": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfo"),
+							Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo"),
 						},
 					},
 					"storageClusterQuota": {
 						SchemaProps: spec.SchemaProps{
 							Description: "storage.devsy.sh",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuota"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota"),
 						},
 					},
 					"UISettings": {
@@ -12169,7 +12169,7 @@ func schema_pkg_apis_management_v1_KioskSpec(ref common.ReferenceCallback) commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartInfo", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmRelease", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.ClusterQuota", "github.com/skevetter/api/pkg/apis/management/v1.License", "github.com/skevetter/api/pkg/apis/management/v1.NodeClaimData", "github.com/skevetter/api/pkg/apis/management/v1.NodeEnvironmentData", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderCalculateCostResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderExecResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult", "github.com/skevetter/api/pkg/apis/ui/v1.UISettings"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota", "github.com/skevetter/api/pkg/apis/management/v1.License", "github.com/skevetter/api/pkg/apis/management/v1.NodeClaimData", "github.com/skevetter/api/pkg/apis/management/v1.NodeEnvironmentData", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderCalculateCostResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderExecResult", "github.com/skevetter/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult", "github.com/skevetter/api/pkg/apis/ui/v1.UISettings"},
 	}
 }
 
@@ -13133,7 +13133,7 @@ func schema_pkg_apis_management_v1_NodeClaimStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13143,7 +13143,7 @@ func schema_pkg_apis_management_v1_NodeClaimStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -13365,7 +13365,7 @@ func schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13375,7 +13375,7 @@ func schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -13856,7 +13856,7 @@ func schema_pkg_apis_management_v1_NodeProviderStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13887,7 +13887,7 @@ func schema_pkg_apis_management_v1_NodeProviderStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -14147,7 +14147,7 @@ func schema_pkg_apis_management_v1_NodeTypeStatus(ref common.ReferenceCallback) 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -14157,7 +14157,7 @@ func schema_pkg_apis_management_v1_NodeTypeStatus(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.NodeTypeCapacity", "k8s.io/api/core/v1.NodeSelectorRequirement"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.NodeTypeCapacity", "k8s.io/api/core/v1.NodeSelectorRequirement"},
 	}
 }
 
@@ -14981,14 +14981,14 @@ func schema_pkg_apis_management_v1_ProjectChartInfoSpec(ref common.ReferenceCall
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -15001,7 +15001,7 @@ func schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref common.ReferenceCa
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 					"readme": {
@@ -15022,7 +15022,7 @@ func schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
 	}
 }
 
@@ -16136,7 +16136,7 @@ func schema_pkg_apis_management_v1_ProjectSecretStatus(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -16146,7 +16146,7 @@ func schema_pkg_apis_management_v1_ProjectSecretStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -16327,7 +16327,7 @@ func schema_pkg_apis_management_v1_ProjectStatus(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -16337,7 +16337,7 @@ func schema_pkg_apis_management_v1_ProjectStatus(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.QuotaStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.QuotaStatus"},
 	}
 }
 
@@ -17657,7 +17657,7 @@ func schema_pkg_apis_management_v1_SharedSecretStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -17667,7 +17667,7 @@ func schema_pkg_apis_management_v1_SharedSecretStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -17933,7 +17933,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -17961,7 +17961,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the space. This will only be shown in the front end.",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"canUse": {
@@ -17982,7 +17982,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
 	}
 }
 
@@ -18850,7 +18850,7 @@ func schema_pkg_apis_management_v1_TaskStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -18891,7 +18891,7 @@ func schema_pkg_apis_management_v1_TaskStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.EntityInfo", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeamEntity", "k8s.io/api/core/v1.ContainerStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.EntityInfo", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeamEntity", "k8s.io/api/core/v1.ContainerStatus"},
 	}
 }
 
@@ -21904,7 +21904,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -21938,7 +21938,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the space. This will only be shown in the front end.",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"canUse": {
@@ -21966,7 +21966,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
 	}
 }
 
@@ -23628,7 +23628,7 @@ func schema_pkg_apis_storage_v1_AppConfig(ref common.ReferenceCallback) common.O
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -23669,7 +23669,7 @@ func schema_pkg_apis_storage_v1_AppConfig(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer"},
 	}
 }
 
@@ -23962,7 +23962,7 @@ func schema_pkg_apis_storage_v1_AppSpec(ref common.ReferenceCallback) common.Ope
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -24044,7 +24044,7 @@ func schema_pkg_apis_storage_v1_AppSpec(ref common.ReferenceCallback) common.Ope
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.Access", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.AppVersion", "github.com/skevetter/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.Access", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.AppVersion", "github.com/skevetter/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer", "github.com/skevetter/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
@@ -24125,7 +24125,7 @@ func schema_pkg_apis_storage_v1_AppVersion(ref common.ReferenceCallback) common.
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -24173,7 +24173,7 @@ func schema_pkg_apis_storage_v1_AppVersion(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/skevetter/api/pkg/apis/storage/v1.AppParameter", "github.com/skevetter/api/pkg/apis/storage/v1.StreamContainer"},
 	}
 }
 
@@ -25346,7 +25346,7 @@ func schema_pkg_apis_storage_v1_ClusterStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -25356,7 +25356,7 @@ func schema_pkg_apis_storage_v1_ClusterStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -26779,7 +26779,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -26808,7 +26808,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/skevetter/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/skevetter/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/skevetter/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
@@ -28333,7 +28333,7 @@ func schema_pkg_apis_storage_v1_HelmChart(ref common.ReferenceCallback) common.O
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 					"versions": {
@@ -28362,7 +28362,7 @@ func schema_pkg_apis_storage_v1_HelmChart(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata", "github.com/skevetter/api/pkg/apis/storage/v1.HelmChartRepository"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata", "github.com/skevetter/api/pkg/apis/storage/v1.HelmChartRepository"},
 	}
 }
 
@@ -28536,7 +28536,7 @@ func schema_pkg_apis_storage_v1_HelmTaskRelease(ref common.ReferenceCallback) co
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the release",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"labels": {
@@ -28559,7 +28559,7 @@ func schema_pkg_apis_storage_v1_HelmTaskRelease(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"},
 	}
 }
 
@@ -29817,7 +29817,7 @@ func schema_pkg_apis_storage_v1_NodeClaimStatus(ref common.ReferenceCallback) co
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -29827,7 +29827,7 @@ func schema_pkg_apis_storage_v1_NodeClaimStatus(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30008,7 +30008,7 @@ func schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30018,7 +30018,7 @@ func schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30259,7 +30259,7 @@ func schema_pkg_apis_storage_v1_NodeProviderStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30290,7 +30290,7 @@ func schema_pkg_apis_storage_v1_NodeProviderStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30625,7 +30625,7 @@ func schema_pkg_apis_storage_v1_NodeTypeStatus(ref common.ReferenceCallback) com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30635,7 +30635,7 @@ func schema_pkg_apis_storage_v1_NodeTypeStatus(ref common.ReferenceCallback) com
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.NodeTypeCapacity", "k8s.io/api/core/v1.NodeSelectorRequirement"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.NodeTypeCapacity", "k8s.io/api/core/v1.NodeSelectorRequirement"},
 	}
 }
 
@@ -31042,7 +31042,7 @@ func schema_pkg_apis_storage_v1_ProjectStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -31052,7 +31052,7 @@ func schema_pkg_apis_storage_v1_ProjectStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.QuotaStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.QuotaStatus"},
 	}
 }
 
@@ -31750,7 +31750,7 @@ func schema_pkg_apis_storage_v1_SharedSecretStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -31760,7 +31760,7 @@ func schema_pkg_apis_storage_v1_SharedSecretStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -31983,7 +31983,7 @@ func schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref common.ReferenceCallback
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -32012,7 +32012,7 @@ func schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
 	}
 }
 
@@ -32749,7 +32749,7 @@ func schema_pkg_apis_storage_v1_TaskStatus(ref common.ReferenceCallback) common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -32780,7 +32780,7 @@ func schema_pkg_apis_storage_v1_TaskStatus(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "k8s.io/api/core/v1.ContainerStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "k8s.io/api/core/v1.ContainerStatus"},
 	}
 }
 
@@ -33039,7 +33039,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 					"usernameRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The username that is required for this repository",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"password": {
@@ -33052,7 +33052,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 					"passwordRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The password that is required for this repository",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"insecureSkipTlsVerify": {
@@ -33101,7 +33101,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.ChartSecretRef"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"},
 	}
 }
 
@@ -34356,7 +34356,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -34391,7 +34391,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
 	}
 }
 
@@ -34535,7 +34535,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterStatus(ref common.ReferenceCallbac
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition"),
+										Ref:     ref("github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -34578,7 +34578,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterStatus(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/skevetter/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/skevetter/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus"},
 	}
 }
 
@@ -35729,7 +35729,7 @@ func schema_pkg_apis_virtualcluster_v1_HelmReleaseSpec(ref common.ReferenceCallb
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 					"manifests": {
@@ -35742,7 +35742,7 @@ func schema_pkg_apis_virtualcluster_v1_HelmReleaseSpec(ref common.ReferenceCallb
 					"bash": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Bash holds the bash script to execute in a container in the target",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash"),
 						},
 					},
 					"values": {
@@ -35779,7 +35779,7 @@ func schema_pkg_apis_virtualcluster_v1_HelmReleaseSpec(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Bash", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Chart"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Bash", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -35799,20 +35799,20 @@ func schema_pkg_apis_virtualcluster_v1_HelmReleaseStatus(ref common.ReferenceCal
 					"info": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Info provides information about a release",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Info"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Info"),
 						},
 					},
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
-							Ref:         ref("github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"),
+							Ref:         ref("github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Info", "github.com/loft-sh/agentapi/v4/pkg/apis/devsy/cluster/v1.Metadata"},
+			"github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Info", "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
 	}
 }
 

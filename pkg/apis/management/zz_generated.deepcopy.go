@@ -7,8 +7,8 @@ package management
 
 import (
 	licenseapi "github.com/skevetter/admin-apis/pkg/licenseapi"
-	clusterv1 "github.com/loft-sh/agentapi/v4/pkg/apis/loft/cluster/v1"
-	loftstoragev1 "github.com/loft-sh/agentapi/v4/pkg/apis/loft/storage/v1"
+	clusterv1 "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1"
+	loftstoragev1 "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1"
 	v1 "github.com/skevetter/api/pkg/apis/audit/v1"
 	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
 	uiv1 "github.com/skevetter/api/pkg/apis/ui/v1"
