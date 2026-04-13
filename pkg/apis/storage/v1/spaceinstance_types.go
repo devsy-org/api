@@ -5,14 +5,12 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-var (
-	SpaceConditions = []agentstoragev1.ConditionType{
-		InstanceScheduled,
-		InstanceTemplateResolved,
-		InstanceSpaceSynced,
-		InstanceSpaceReady,
-	}
-)
+var SpaceConditions = []agentstoragev1.ConditionType{
+	InstanceScheduled,
+	InstanceTemplateResolved,
+	InstanceSpaceSynced,
+	InstanceSpaceReady,
+}
 
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -118,7 +116,7 @@ type TemplateRef struct {
 
 	// Version holds the template version to use. Version is expected to
 	// be in semantic versioning format. Alternatively, you can also exchange
-	// major, minor or patch with an 'x' to tell Loft to automatically select
+	// major, minor or patch with an 'x' to tell Devsy to automatically select
 	// the latest major, minor or patch version.
 	// +optional
 	Version string `json:"version,omitempty"`

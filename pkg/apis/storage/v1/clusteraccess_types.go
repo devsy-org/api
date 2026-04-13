@@ -107,15 +107,14 @@ type ClusterRoleRef struct {
 }
 
 // ClusterAccessStatus holds the status of a user access
-type ClusterAccessStatus struct {
-}
+type ClusterAccessStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // ClusterAccessList contains a list of ClusterAccess objects
 type ClusterAccessList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `                json:",inline"`
+	metav1.ListMeta `                json:"metadata,omitempty"`
 	Items           []ClusterAccess `json:"items"`
 }
 

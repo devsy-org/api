@@ -190,7 +190,7 @@ type VirtualClusterCommonSpec struct {
 	HelmRelease VirtualClusterHelmRelease `json:"helmRelease,omitempty"`
 
 	// AccessPoint defines settings to expose the virtual cluster directly via an ingress rather than
-	// through the (default) Loft proxy
+	// through the (default) Devsy proxy
 	// +optional
 	AccessPoint VirtualClusterAccessPoint `json:"accessPoint,omitempty"`
 
@@ -214,7 +214,7 @@ type VirtualClusterAccessPoint struct {
 
 type VirtualClusterAccessPointIngressSpec struct {
 	// Enabled defines if the virtual cluster access point (via ingress) is enabled or not; requires
-	// the connected cluster to have the `loft.sh/ingress-suffix` annotation set to define the domain
+	// the connected cluster to have the `devsy.sh/ingress-suffix` annotation set to define the domain
 	// name suffix used for the ingress.
 	Enabled bool `json:"enabled,omitempty"`
 }
@@ -234,7 +234,7 @@ type TemplateHelmChart struct {
 	// +optional
 	Values string `json:"values,omitempty"`
 
-	// Wait determines if Loft should wait during deploy for the app to become ready
+	// Wait determines if Devsy should wait during deploy for the app to become ready
 	// +optional
 	Wait bool `json:"wait,omitempty"`
 
@@ -446,8 +446,8 @@ const (
 
 // VirtualClusterInstanceList contains a list of VirtualClusterInstance objects
 type VirtualClusterInstanceList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `                         json:",inline"`
+	metav1.ListMeta `                         json:"metadata,omitempty"`
 	Items           []VirtualClusterInstance `json:"items"`
 }
 

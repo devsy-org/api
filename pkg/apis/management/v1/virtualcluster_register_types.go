@@ -30,7 +30,7 @@ type RegisterVirtualClusterSpec struct {
 	Project string `json:"project,omitempty"`
 
 	// Name is the virtual cluster instance name. If the name is already taken, the platform will construct a
-	// name for the vcluster based on the service uid and this name.
+	// name for the devsy based on the service uid and this name.
 	// +optional
 	Name string `json:"name,omitempty"`
 

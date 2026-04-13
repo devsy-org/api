@@ -15,11 +15,9 @@ const (
 	NodeProviderConditionTypeInitialized = "Initialized"
 )
 
-var (
-	NodeProviderConditions = []agentstoragev1.ConditionType{
-		NodeProviderConditionTypeInitialized,
-	}
-)
+var NodeProviderConditions = []agentstoragev1.ConditionType{
+	NodeProviderConditionTypeInitialized,
+}
 
 // NodeProviderPhase defines the phase of the NodeProvider
 type NodeProviderPhase string
@@ -32,18 +30,18 @@ const (
 	// NodeProviderPhaseFailed means the provisioning process has failed.
 	NodeProviderPhaseFailed NodeProviderPhase = "Failed"
 	// NodeProvider specific label
-	NodeProvidedManagedTypeIndicatorLabel     = "autoscaling.loft.sh/managed-by"
-	NodeProviderManagedTypeMetadataAnnotation = "autoscaling.loft.sh/managed-metadata"
+	NodeProvidedManagedTypeIndicatorLabel     = "autoscaling.devsy.sh/managed-by"
+	NodeProviderManagedTypeMetadataAnnotation = "autoscaling.devsy.sh/managed-metadata"
 
 	// NodeTypeMaxCapacityAnnotation is the annotation used to store the maximum capacity of a NodeType
-	NodeTypeMaxCapacityAnnotation = "autoscaling.loft.sh/max-capacity"
+	NodeTypeMaxCapacityAnnotation = "autoscaling.devsy.sh/max-capacity"
 
 	// BCM specific annotations
-	NodeTypeNodesAnnotation      = "bcm.loft.sh/nodes"
-	NodeTypeNodeGroupsAnnotation = "bcm.loft.sh/node-groups"
+	NodeTypeNodesAnnotation      = "bcm.devsy.sh/nodes"
+	NodeTypeNodeGroupsAnnotation = "bcm.devsy.sh/node-groups"
 
 	// KubeVirt specific annotations
-	NodeTypeVMTemplateAnnotation = "kubevirt.loft.sh/vm-template"
+	NodeTypeVMTemplateAnnotation = "kubevirt.devsy.sh/vm-template"
 )
 
 // +genclient

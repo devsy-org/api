@@ -68,7 +68,7 @@ type AccessKeySpec struct {
 	Scope *AccessKeyScope `json:"scope,omitempty"`
 
 	// The type of an access key, which basically describes if the access
-	// key is user managed or managed by loft itself.
+	// key is user managed or managed by devsy itself.
 	// +optional
 	Type AccessKeyType `json:"type,omitempty"`
 
@@ -131,7 +131,7 @@ type AccessKeyScope struct {
 	Rules []AccessKeyScopeRule `json:"rules,omitempty"`
 
 	// AllowLoftCLI allows certain read-only management requests to
-	// make sure loft cli works correctly with this specific access key.
+	// make sure devsy cli works correctly with this specific access key.
 	//
 	// Deprecated: Use the `roles` field instead
 	//  ```yaml
@@ -156,7 +156,7 @@ func (a AccessKeyScope) ContainsRole(val AccessKeyScopeRoleName) bool {
 		// (ThomasK33): Add implicit network peer permissions
 		if val == AccessKeyScopeRoleNetworkPeer {
 			switch entry.Role {
-			case AccessKeyScopeRoleVCluster, AccessKeyScopeRoleAgent, AccessKeyScopeRoleRunner:
+			case AccessKeyScopeRoleDevsy, AccessKeyScopeRoleAgent, AccessKeyScopeRoleRunner:
 				return true
 			// (ThomasK33): Adding this so that the exhaustive linter is happy
 			case AccessKeyScopeRoleNetworkPeer:
@@ -206,9 +206,9 @@ type AccessKeyScopeRoleName string
 
 const (
 	AccessKeyScopeRoleAgent       AccessKeyScopeRoleName = "agent"
-	AccessKeyScopeRoleVCluster    AccessKeyScopeRoleName = "vcluster"
+	AccessKeyScopeRoleDevsy       AccessKeyScopeRoleName = "devsy"
 	AccessKeyScopeRoleNetworkPeer AccessKeyScopeRoleName = "network-peer"
-	AccessKeyScopeRoleLoftCLI     AccessKeyScopeRoleName = "loft-cli"
+	AccessKeyScopeRoleLoftCLI     AccessKeyScopeRoleName = "devsy-cli"
 	AccessKeyScopeRoleRunner      AccessKeyScopeRoleName = "runner"
 	AccessKeyScopeRoleWorkspace   AccessKeyScopeRoleName = "workspace"
 )
@@ -306,7 +306,7 @@ type RequestTarget string
 
 // Valid request targets
 const (
-	// RequestTargetManagement specifies a loft management api request
+	// RequestTargetManagement specifies a devsy management api request
 	RequestTargetManagement RequestTarget = "Management"
 	// RequestTargetCluster specifies a connected kubernetes cluster request
 	RequestTargetCluster RequestTarget = "Cluster"
@@ -448,8 +448,8 @@ type AccessKeyStatus struct {
 
 // AccessKeyList contains a list of AccessKey
 type AccessKeyList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `            json:",inline"`
+	metav1.ListMeta `            json:"metadata,omitempty"`
 	Items           []AccessKey `json:"items"`
 }
 

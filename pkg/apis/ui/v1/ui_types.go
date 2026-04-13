@@ -5,14 +5,14 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 type ProductName string
 
 const (
-	ProductNameLoft        ProductName = "Loft"
-	ProductNameVClusterPro ProductName = "vCluster Platform"
-	ProductNameDevPodPro   ProductName = "DevPod.Pro"
+	ProductNameDevsy     ProductName = "Devsy"
+	ProductNameDevsyPro  ProductName = "vCluster Platform"
+	ProductNameDevPodPro ProductName = "DevPod.Pro"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// UISettings holds the loft ui configuration settings
+// UISettings holds the devsy ui configuration settings
 // +k8s:openapi-gen=true
 type UISettings struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -30,7 +30,7 @@ type UISettingsSpec struct {
 	// +optional
 	ProductName string `json:"productName,omitempty"`
 
-	// Offline is true if loft is running in an airgapped environment
+	// Offline is true if devsy is running in an airgapped environment
 	// +optional
 	Offline bool `json:"offline,omitempty"`
 
@@ -38,34 +38,34 @@ type UISettingsSpec struct {
 	// has been installed via Helm
 	HasHelmRelease bool `json:"hasHelmRelease,omitempty"`
 
-	// DefaultVClusterVersion is the default version of vClusters
-	DefaultVClusterVersion string `json:"defaultVClusterVersion,omitempty"`
+	// DefaultDevsyVersion is the default version of vClusters
+	DefaultDevsyVersion string `json:"defaultDevsyVersion,omitempty"`
 
-	// AvailableVClusterVersions lists all virtual cluster versions available to the platform instance
+	// AvailableDevsyVersions lists all virtual cluster versions available to the platform instance
 	// +optional
-	AvailableVClusterVersions []VClusterVersion `json:"availableVClusterVersions,omitempty"`
+	AvailableDevsyVersions []DevsyVersion `json:"availableDevsyVersions,omitempty"`
 
 	// LoftHosted indicates whether the vCluster Platform instance
-	// is hosted and operated by Loft Labs Inc.
+	// is hosted and operated by Devsy Labs Inc.
 	LoftHosted bool `json:"loftHosted,omitempty"`
 }
 
 type UISettingsConfig struct {
-	// LoftVersion holds the current loft version
+	// LoftVersion holds the current devsy version
 	// +optional
 	LoftVersion string `json:"loftVersion,omitempty"`
-	// LogoURL is url pointing to the logo to use in the Loft UI. This path must be accessible for clients accessing
-	// the Loft UI!
+	// LogoURL is url pointing to the logo to use in the Devsy UI. This path must be accessible for clients accessing
+	// the Devsy UI!
 	// +optional
 	LogoURL string `json:"logoURL,omitempty"`
-	// SmallLogoURL is url pointing to the small logo to use in the Loft UI. This path must be accessible for clients accessing
-	// the Loft UI!
+	// SmallLogoURL is url pointing to the small logo to use in the Devsy UI. This path must be accessible for clients accessing
+	// the Devsy UI!
 	// +optional
 	SmallLogoURL string `json:"smallLogoURL,omitempty"`
 	// LogoBackgroundColor is the color value (ex: "#12345") to use as the background color for the logo
 	// +optional
 	LogoBackgroundColor string `json:"logoBackgroundColor,omitempty"`
-	// LegalTemplate is a text (html) string containing the legal template to prompt to users when authenticating to Loft
+	// LegalTemplate is a text (html) string containing the legal template to prompt to users when authenticating to Devsy
 	// +optional
 	LegalTemplate string `json:"legalTemplate,omitempty"`
 	// PrimaryColor is the color value (ex: "#12345") to use as the primary color
@@ -97,7 +97,7 @@ type ExternalURLs struct {
 	Block bool `json:"block,omitempty"`
 
 	// Allow specifies which external URLs can be called. In addition to the predefined modules,
-	// - "vcluster" (license page, feature descriptions, ...)
+	// - "devsy" (license page, feature descriptions, ...)
 	// - "gtm" (google tag manager)
 	// - "featurebase" (changelog)
 	// any URL can be added to this list. This will allow the UI to make any request to this URL.
@@ -142,7 +142,7 @@ type CspPolicy struct {
 	Font    string
 }
 
-type VClusterVersion struct {
+type DevsyVersion struct {
 	// TagName is the full tag name
 	Tag string `json:"tagName,omitempty"`
 

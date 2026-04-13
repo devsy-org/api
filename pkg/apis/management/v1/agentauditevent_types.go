@@ -28,5 +28,4 @@ type AgentAuditEventSpec struct {
 }
 
 // AgentAuditEventStatus holds the status
-type AgentAuditEventStatus struct {
-}
+type AgentAuditEventStatus struct{}

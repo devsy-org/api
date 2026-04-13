@@ -1,3 +1,3 @@
 // +k8s:openapi-gen=true
-// +groupName=storage.loft.sh
+// +groupName=storage.devsy.sh
 package storage

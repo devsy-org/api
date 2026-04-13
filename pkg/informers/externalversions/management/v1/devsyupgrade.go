@@ -16,11 +16,11 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// LoftUpgradeInformer provides access to a shared informer and lister for
-// LoftUpgrades.
-type LoftUpgradeInformer interface {
+// DevsyUpgradeInformer provides access to a shared informer and lister for
+// DevsyUpgrades.
+type DevsyUpgradeInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() managementv1.LoftUpgradeLister
+	Lister() managementv1.DevsyUpgradeLister
 }
 
 type loftUpgradeInformer struct {
@@ -28,58 +28,58 @@ type loftUpgradeInformer struct {
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
 
-// NewLoftUpgradeInformer constructs a new informer for LoftUpgrade type.
+// NewDevsyUpgradeInformer constructs a new informer for DevsyUpgrade type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewLoftUpgradeInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredLoftUpgradeInformer(client, resyncPeriod, indexers, nil)
+func NewDevsyUpgradeInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredDevsyUpgradeInformer(client, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredLoftUpgradeInformer constructs a new informer for LoftUpgrade type.
+// NewFilteredDevsyUpgradeInformer constructs a new informer for DevsyUpgrade type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredLoftUpgradeInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredDevsyUpgradeInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ManagementV1().LoftUpgrades().List(context.Background(), options)
+				return client.ManagementV1().DevsyUpgrades().List(context.Background(), options)
 			},
 			WatchFunc: func(options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ManagementV1().LoftUpgrades().Watch(context.Background(), options)
+				return client.ManagementV1().DevsyUpgrades().Watch(context.Background(), options)
 			},
 			ListWithContextFunc: func(ctx context.Context, options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ManagementV1().LoftUpgrades().List(ctx, options)
+				return client.ManagementV1().DevsyUpgrades().List(ctx, options)
 			},
 			WatchFuncWithContext: func(ctx context.Context, options metav1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ManagementV1().LoftUpgrades().Watch(ctx, options)
+				return client.ManagementV1().DevsyUpgrades().Watch(ctx, options)
 			},
 		},
-		&apismanagementv1.LoftUpgrade{},
+		&apismanagementv1.DevsyUpgrade{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
 func (f *loftUpgradeInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredLoftUpgradeInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+	return NewFilteredDevsyUpgradeInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
 func (f *loftUpgradeInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&apismanagementv1.LoftUpgrade{}, f.defaultInformer)
+	return f.factory.InformerFor(&apismanagementv1.DevsyUpgrade{}, f.defaultInformer)
 }
 
-func (f *loftUpgradeInformer) Lister() managementv1.LoftUpgradeLister {
-	return managementv1.NewLoftUpgradeLister(f.Informer().GetIndexer())
+func (f *loftUpgradeInformer) Lister() managementv1.DevsyUpgradeLister {
+	return managementv1.NewDevsyUpgradeLister(f.Informer().GetIndexer())
 }

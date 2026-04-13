@@ -92,8 +92,8 @@ func (c *FakeManagementV1) LicenseTokens() v1.LicenseTokenInterface {
 	return newFakeLicenseTokens(c)
 }
 
-func (c *FakeManagementV1) LoftUpgrades() v1.LoftUpgradeInterface {
-	return newFakeLoftUpgrades(c)
+func (c *FakeManagementV1) DevsyUpgrades() v1.DevsyUpgradeInterface {
+	return newFakeDevsyUpgrades(c)
 }
 
 func (c *FakeManagementV1) NodeClaims(namespace string) v1.NodeClaimInterface {
@@ -172,8 +172,8 @@ func (c *FakeManagementV1) Teams() v1.TeamInterface {
 	return newFakeTeams(c)
 }
 
-func (c *FakeManagementV1) TranslateVClusterResourceNames() v1.TranslateVClusterResourceNameInterface {
-	return newFakeTranslateVClusterResourceNames(c)
+func (c *FakeManagementV1) TranslateDevsyResourceNames() v1.TranslateDevsyResourceNameInterface {
+	return newFakeTranslateDevsyResourceNames(c)
 }
 
 func (c *FakeManagementV1) UsageDownloads() v1.UsageDownloadInterface {

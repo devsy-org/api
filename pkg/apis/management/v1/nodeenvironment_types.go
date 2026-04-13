@@ -8,7 +8,7 @@ import (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
-// +kubebuilder:printcolumn:name="VCluster",type="string",JSONPath=".spec.vClusterRef"
+// +kubebuilder:printcolumn:name="Devsy",type="string",JSONPath=".spec.vClusterRef"
 // +kubebuilder:printcolumn:name="NodeProvider",type="string",JSONPath=".spec.nodeProviderRef"
 // +kubebuilder:subresource:status
 

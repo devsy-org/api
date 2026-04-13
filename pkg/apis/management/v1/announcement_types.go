@@ -20,8 +20,7 @@ type Announcement struct {
 	Status AnnouncementStatus `json:"status,omitempty"`
 }
 
-type AnnouncementSpec struct {
-}
+type AnnouncementSpec struct{}
 
 type AnnouncementStatus struct {
 	// Announcement is the html announcement that should be displayed in the frontend

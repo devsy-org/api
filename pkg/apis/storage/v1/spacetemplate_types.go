@@ -129,8 +129,7 @@ type SpaceInstanceTemplateDefinition struct {
 }
 
 // SpaceTemplateStatus holds the status
-type SpaceTemplateStatus struct {
-}
+type SpaceTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 

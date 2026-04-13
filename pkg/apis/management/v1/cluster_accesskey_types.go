@@ -16,15 +16,15 @@ type ClusterAccessKey struct {
 	// +optional
 	AccessKey string `json:"accessKey,omitempty"`
 
-	// LoftHost is the loft host used by the agent
+	// LoftHost is the devsy host used by the agent
 	// +optional
 	LoftHost string `json:"loftHost,omitempty"`
 
-	// Insecure signals if the loft host is insecure
+	// Insecure signals if the devsy host is insecure
 	// +optional
 	Insecure bool `json:"insecure,omitempty"`
 
-	// CaCert is an optional ca cert to use for the loft host connection
+	// CaCert is an optional ca cert to use for the devsy host connection
 	// +optional
 	CaCert string `json:"caCert,omitempty"`
 }

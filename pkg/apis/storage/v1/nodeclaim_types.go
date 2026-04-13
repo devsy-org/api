@@ -17,13 +17,11 @@ const (
 	NodeClaimConditionTypeNotDrifted = "NotDrifted"
 )
 
-var (
-	NodeClaimConditions = []agentstoragev1.ConditionType{
-		NodeClaimConditionTypeScheduled,
-		NodeClaimConditionTypeProvisioned,
-		NodeClaimConditionTypeJoined,
-	}
-)
+var NodeClaimConditions = []agentstoragev1.ConditionType{
+	NodeClaimConditionTypeScheduled,
+	NodeClaimConditionTypeProvisioned,
+	NodeClaimConditionTypeJoined,
+}
 
 // NodeClaimPhase defines the phase of the NodeClaim
 type NodeClaimPhase string
@@ -40,7 +38,7 @@ const (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
-// +kubebuilder:printcolumn:name="VCluster",type="string",JSONPath=".spec.vClusterRef"
+// +kubebuilder:printcolumn:name="Devsy",type="string",JSONPath=".spec.vClusterRef"
 // +kubebuilder:printcolumn:name="NodeType",type="string",JSONPath=".spec.typeRef"
 // +kubebuilder:subresource:status
 
@@ -91,8 +89,8 @@ type NodeClaimSpec struct {
 	// TypeRef is the full name of the NodeType that this NodeClaim is based on.
 	TypeRef string `json:"typeRef,omitempty"`
 
-	// VClusterRef references source vCluster. This is required.
-	VClusterRef string `json:"vClusterRef"`
+	// DevsyRef references source vCluster. This is required.
+	DevsyRef string `json:"vClusterRef"`
 
 	// ControlPlane indicates if the node claim is for a control plane node.
 	// +optional

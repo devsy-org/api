@@ -63,11 +63,11 @@ type SelfStatus struct {
 	// +optional
 	ChatAuthToken string `json:"chatAuthToken,omitempty"`
 
-	// InstanceID is the loft instance id
+	// InstanceID is the devsy instance id
 	// +optional
 	InstanceID string `json:"instanceID,omitempty"`
 
-	// LoftHost is the host of the loft instance
+	// LoftHost is the host of the devsy instance
 	// +optional
 	LoftHost string `json:"loftHost,omitempty"`
 

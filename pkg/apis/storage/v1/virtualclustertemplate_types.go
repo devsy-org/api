@@ -164,8 +164,7 @@ type TemplateMetadata struct {
 }
 
 // VirtualClusterTemplateStatus holds the status
-type VirtualClusterTemplateStatus struct {
-}
+type VirtualClusterTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 

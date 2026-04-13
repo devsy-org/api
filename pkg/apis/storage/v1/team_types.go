@@ -51,7 +51,7 @@ type TeamSpec struct {
 	// +optional
 	Username string `json:"username,omitempty"`
 
-	// The loft users that belong to a team
+	// The devsy users that belong to a team
 	// +optional
 	Users []string `json:"users,omitempty"`
 
@@ -73,8 +73,7 @@ type TeamSpec struct {
 	Access []Access `json:"access,omitempty"`
 }
 
-type TeamStatus struct {
-}
+type TeamStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 

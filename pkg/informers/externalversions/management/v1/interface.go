@@ -48,8 +48,8 @@ type Interface interface {
 	Licenses() LicenseInformer
 	// LicenseTokens returns a LicenseTokenInformer.
 	LicenseTokens() LicenseTokenInformer
-	// LoftUpgrades returns a LoftUpgradeInformer.
-	LoftUpgrades() LoftUpgradeInformer
+	// DevsyUpgrades returns a DevsyUpgradeInformer.
+	DevsyUpgrades() DevsyUpgradeInformer
 	// NodeClaims returns a NodeClaimInformer.
 	NodeClaims() NodeClaimInformer
 	// NodeEnvironments returns a NodeEnvironmentInformer.
@@ -88,8 +88,8 @@ type Interface interface {
 	Tasks() TaskInformer
 	// Teams returns a TeamInformer.
 	Teams() TeamInformer
-	// TranslateVClusterResourceNames returns a TranslateVClusterResourceNameInformer.
-	TranslateVClusterResourceNames() TranslateVClusterResourceNameInformer
+	// TranslateDevsyResourceNames returns a TranslateDevsyResourceNameInformer.
+	TranslateDevsyResourceNames() TranslateDevsyResourceNameInformer
 	// UsageDownloads returns a UsageDownloadInformer.
 	UsageDownloads() UsageDownloadInformer
 	// Users returns a UserInformer.
@@ -213,8 +213,8 @@ func (v *version) LicenseTokens() LicenseTokenInformer {
 	return &licenseTokenInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// LoftUpgrades returns a LoftUpgradeInformer.
-func (v *version) LoftUpgrades() LoftUpgradeInformer {
+// DevsyUpgrades returns a DevsyUpgradeInformer.
+func (v *version) DevsyUpgrades() DevsyUpgradeInformer {
 	return &loftUpgradeInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
@@ -313,9 +313,9 @@ func (v *version) Teams() TeamInformer {
 	return &teamInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
-// TranslateVClusterResourceNames returns a TranslateVClusterResourceNameInformer.
-func (v *version) TranslateVClusterResourceNames() TranslateVClusterResourceNameInformer {
-	return &translateVClusterResourceNameInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// TranslateDevsyResourceNames returns a TranslateDevsyResourceNameInformer.
+func (v *version) TranslateDevsyResourceNames() TranslateDevsyResourceNameInformer {
+	return &translateDevsyResourceNameInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
 
 // UsageDownloads returns a UsageDownloadInformer.

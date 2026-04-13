@@ -1650,43 +1650,43 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*LoftUpgrade)(nil), (*management.LoftUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_LoftUpgrade_To_management_LoftUpgrade(a.(*LoftUpgrade), b.(*management.LoftUpgrade), scope)
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgrade)(nil), (*management.DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(a.(*DevsyUpgrade), b.(*management.DevsyUpgrade), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.LoftUpgrade)(nil), (*LoftUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_LoftUpgrade_To_v1_LoftUpgrade(a.(*management.LoftUpgrade), b.(*LoftUpgrade), scope)
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgrade)(nil), (*DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(a.(*management.DevsyUpgrade), b.(*DevsyUpgrade), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*LoftUpgradeList)(nil), (*management.LoftUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_LoftUpgradeList_To_management_LoftUpgradeList(a.(*LoftUpgradeList), b.(*management.LoftUpgradeList), scope)
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeList)(nil), (*management.DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(a.(*DevsyUpgradeList), b.(*management.DevsyUpgradeList), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.LoftUpgradeList)(nil), (*LoftUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_LoftUpgradeList_To_v1_LoftUpgradeList(a.(*management.LoftUpgradeList), b.(*LoftUpgradeList), scope)
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeList)(nil), (*DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(a.(*management.DevsyUpgradeList), b.(*DevsyUpgradeList), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*LoftUpgradeSpec)(nil), (*management.LoftUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec(a.(*LoftUpgradeSpec), b.(*management.LoftUpgradeSpec), scope)
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeSpec)(nil), (*management.DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(a.(*DevsyUpgradeSpec), b.(*management.DevsyUpgradeSpec), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.LoftUpgradeSpec)(nil), (*LoftUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec(a.(*management.LoftUpgradeSpec), b.(*LoftUpgradeSpec), scope)
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeSpec)(nil), (*DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(a.(*management.DevsyUpgradeSpec), b.(*DevsyUpgradeSpec), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*LoftUpgradeStatus)(nil), (*management.LoftUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus(a.(*LoftUpgradeStatus), b.(*management.LoftUpgradeStatus), scope)
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeStatus)(nil), (*management.DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(a.(*DevsyUpgradeStatus), b.(*management.DevsyUpgradeStatus), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.LoftUpgradeStatus)(nil), (*LoftUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus(a.(*management.LoftUpgradeStatus), b.(*LoftUpgradeStatus), scope)
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeStatus)(nil), (*DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(a.(*management.DevsyUpgradeStatus), b.(*DevsyUpgradeStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -3070,43 +3070,43 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*TranslateVClusterResourceName)(nil), (*management.TranslateVClusterResourceName)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_TranslateVClusterResourceName_To_management_TranslateVClusterResourceName(a.(*TranslateVClusterResourceName), b.(*management.TranslateVClusterResourceName), scope)
+	if err := s.AddGeneratedConversionFunc((*TranslateDevsyResourceName)(nil), (*management.TranslateDevsyResourceName)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_TranslateDevsyResourceName_To_management_TranslateDevsyResourceName(a.(*TranslateDevsyResourceName), b.(*management.TranslateDevsyResourceName), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.TranslateVClusterResourceName)(nil), (*TranslateVClusterResourceName)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_TranslateVClusterResourceName_To_v1_TranslateVClusterResourceName(a.(*management.TranslateVClusterResourceName), b.(*TranslateVClusterResourceName), scope)
+	if err := s.AddGeneratedConversionFunc((*management.TranslateDevsyResourceName)(nil), (*TranslateDevsyResourceName)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_TranslateDevsyResourceName_To_v1_TranslateDevsyResourceName(a.(*management.TranslateDevsyResourceName), b.(*TranslateDevsyResourceName), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*TranslateVClusterResourceNameList)(nil), (*management.TranslateVClusterResourceNameList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_TranslateVClusterResourceNameList_To_management_TranslateVClusterResourceNameList(a.(*TranslateVClusterResourceNameList), b.(*management.TranslateVClusterResourceNameList), scope)
+	if err := s.AddGeneratedConversionFunc((*TranslateDevsyResourceNameList)(nil), (*management.TranslateDevsyResourceNameList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_TranslateDevsyResourceNameList_To_management_TranslateDevsyResourceNameList(a.(*TranslateDevsyResourceNameList), b.(*management.TranslateDevsyResourceNameList), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.TranslateVClusterResourceNameList)(nil), (*TranslateVClusterResourceNameList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_TranslateVClusterResourceNameList_To_v1_TranslateVClusterResourceNameList(a.(*management.TranslateVClusterResourceNameList), b.(*TranslateVClusterResourceNameList), scope)
+	if err := s.AddGeneratedConversionFunc((*management.TranslateDevsyResourceNameList)(nil), (*TranslateDevsyResourceNameList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_TranslateDevsyResourceNameList_To_v1_TranslateDevsyResourceNameList(a.(*management.TranslateDevsyResourceNameList), b.(*TranslateDevsyResourceNameList), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*TranslateVClusterResourceNameSpec)(nil), (*management.TranslateVClusterResourceNameSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec(a.(*TranslateVClusterResourceNameSpec), b.(*management.TranslateVClusterResourceNameSpec), scope)
+	if err := s.AddGeneratedConversionFunc((*TranslateDevsyResourceNameSpec)(nil), (*management.TranslateDevsyResourceNameSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec(a.(*TranslateDevsyResourceNameSpec), b.(*management.TranslateDevsyResourceNameSpec), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.TranslateVClusterResourceNameSpec)(nil), (*TranslateVClusterResourceNameSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec(a.(*management.TranslateVClusterResourceNameSpec), b.(*TranslateVClusterResourceNameSpec), scope)
+	if err := s.AddGeneratedConversionFunc((*management.TranslateDevsyResourceNameSpec)(nil), (*TranslateDevsyResourceNameSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec(a.(*management.TranslateDevsyResourceNameSpec), b.(*TranslateDevsyResourceNameSpec), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*TranslateVClusterResourceNameStatus)(nil), (*management.TranslateVClusterResourceNameStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus(a.(*TranslateVClusterResourceNameStatus), b.(*management.TranslateVClusterResourceNameStatus), scope)
+	if err := s.AddGeneratedConversionFunc((*TranslateDevsyResourceNameStatus)(nil), (*management.TranslateDevsyResourceNameStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus(a.(*TranslateDevsyResourceNameStatus), b.(*management.TranslateDevsyResourceNameStatus), scope)
 	}); err != nil {
 		return err
 	}
-	if err := s.AddGeneratedConversionFunc((*management.TranslateVClusterResourceNameStatus)(nil), (*TranslateVClusterResourceNameStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus(a.(*management.TranslateVClusterResourceNameStatus), b.(*TranslateVClusterResourceNameStatus), scope)
+	if err := s.AddGeneratedConversionFunc((*management.TranslateDevsyResourceNameStatus)(nil), (*TranslateDevsyResourceNameStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus(a.(*management.TranslateDevsyResourceNameStatus), b.(*TranslateDevsyResourceNameStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -7940,100 +7940,100 @@ func Convert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(in *manageme
 	return autoConvert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(in, out, s)
 }
 
-func autoConvert_v1_LoftUpgrade_To_management_LoftUpgrade(in *LoftUpgrade, out *management.LoftUpgrade, s conversion.Scope) error {
+func autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
+	if err := Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := Convert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus(&in.Status, &out.Status, s); err != nil {
+	if err := Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
 }
 
-// Convert_v1_LoftUpgrade_To_management_LoftUpgrade is an autogenerated conversion function.
-func Convert_v1_LoftUpgrade_To_management_LoftUpgrade(in *LoftUpgrade, out *management.LoftUpgrade, s conversion.Scope) error {
-	return autoConvert_v1_LoftUpgrade_To_management_LoftUpgrade(in, out, s)
+// Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade is an autogenerated conversion function.
+func Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in, out, s)
 }
 
-func autoConvert_management_LoftUpgrade_To_v1_LoftUpgrade(in *management.LoftUpgrade, out *LoftUpgrade, s conversion.Scope) error {
+func autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
+	if err := Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := Convert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus(&in.Status, &out.Status, s); err != nil {
+	if err := Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
 }
 
-// Convert_management_LoftUpgrade_To_v1_LoftUpgrade is an autogenerated conversion function.
-func Convert_management_LoftUpgrade_To_v1_LoftUpgrade(in *management.LoftUpgrade, out *LoftUpgrade, s conversion.Scope) error {
-	return autoConvert_management_LoftUpgrade_To_v1_LoftUpgrade(in, out, s)
+// Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade is an autogenerated conversion function.
+func Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in, out, s)
 }
 
-func autoConvert_v1_LoftUpgradeList_To_management_LoftUpgradeList(in *LoftUpgradeList, out *management.LoftUpgradeList, s conversion.Scope) error {
+func autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
 	out.ListMeta = in.ListMeta
-	out.Items = *(*[]management.LoftUpgrade)(unsafe.Pointer(&in.Items))
+	out.Items = *(*[]management.DevsyUpgrade)(unsafe.Pointer(&in.Items))
 	return nil
 }
 
-// Convert_v1_LoftUpgradeList_To_management_LoftUpgradeList is an autogenerated conversion function.
-func Convert_v1_LoftUpgradeList_To_management_LoftUpgradeList(in *LoftUpgradeList, out *management.LoftUpgradeList, s conversion.Scope) error {
-	return autoConvert_v1_LoftUpgradeList_To_management_LoftUpgradeList(in, out, s)
+// Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in, out, s)
 }
 
-func autoConvert_management_LoftUpgradeList_To_v1_LoftUpgradeList(in *management.LoftUpgradeList, out *LoftUpgradeList, s conversion.Scope) error {
+func autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
 	out.ListMeta = in.ListMeta
-	out.Items = *(*[]LoftUpgrade)(unsafe.Pointer(&in.Items))
+	out.Items = *(*[]DevsyUpgrade)(unsafe.Pointer(&in.Items))
 	return nil
 }
 
-// Convert_management_LoftUpgradeList_To_v1_LoftUpgradeList is an autogenerated conversion function.
-func Convert_management_LoftUpgradeList_To_v1_LoftUpgradeList(in *management.LoftUpgradeList, out *LoftUpgradeList, s conversion.Scope) error {
-	return autoConvert_management_LoftUpgradeList_To_v1_LoftUpgradeList(in, out, s)
+// Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in, out, s)
 }
 
-func autoConvert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec(in *LoftUpgradeSpec, out *management.LoftUpgradeSpec, s conversion.Scope) error {
+func autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
 	out.Namespace = in.Namespace
 	out.Release = in.Release
 	out.Version = in.Version
 	return nil
 }
 
-// Convert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec is an autogenerated conversion function.
-func Convert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec(in *LoftUpgradeSpec, out *management.LoftUpgradeSpec, s conversion.Scope) error {
-	return autoConvert_v1_LoftUpgradeSpec_To_management_LoftUpgradeSpec(in, out, s)
+// Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in, out, s)
 }
 
-func autoConvert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec(in *management.LoftUpgradeSpec, out *LoftUpgradeSpec, s conversion.Scope) error {
+func autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
 	out.Namespace = in.Namespace
 	out.Release = in.Release
 	out.Version = in.Version
 	return nil
 }
 
-// Convert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec is an autogenerated conversion function.
-func Convert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec(in *management.LoftUpgradeSpec, out *LoftUpgradeSpec, s conversion.Scope) error {
-	return autoConvert_management_LoftUpgradeSpec_To_v1_LoftUpgradeSpec(in, out, s)
+// Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in, out, s)
 }
 
-func autoConvert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus(in *LoftUpgradeStatus, out *management.LoftUpgradeStatus, s conversion.Scope) error {
+func autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
 	return nil
 }
 
-// Convert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus is an autogenerated conversion function.
-func Convert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus(in *LoftUpgradeStatus, out *management.LoftUpgradeStatus, s conversion.Scope) error {
-	return autoConvert_v1_LoftUpgradeStatus_To_management_LoftUpgradeStatus(in, out, s)
+// Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in, out, s)
 }
 
-func autoConvert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus(in *management.LoftUpgradeStatus, out *LoftUpgradeStatus, s conversion.Scope) error {
+func autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
 	return nil
 }
 
-// Convert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus is an autogenerated conversion function.
-func Convert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus(in *management.LoftUpgradeStatus, out *LoftUpgradeStatus, s conversion.Scope) error {
-	return autoConvert_management_LoftUpgradeStatus_To_v1_LoftUpgradeStatus(in, out, s)
+// Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in, out, s)
 }
 
 func autoConvert_v1_MaintenanceWindow_To_management_MaintenanceWindow(in *MaintenanceWindow, out *management.MaintenanceWindow, s conversion.Scope) error {
@@ -11435,102 +11435,102 @@ func Convert_management_TeamStatus_To_v1_TeamStatus(in *management.TeamStatus, o
 	return autoConvert_management_TeamStatus_To_v1_TeamStatus(in, out, s)
 }
 
-func autoConvert_v1_TranslateVClusterResourceName_To_management_TranslateVClusterResourceName(in *TranslateVClusterResourceName, out *management.TranslateVClusterResourceName, s conversion.Scope) error {
+func autoConvert_v1_TranslateDevsyResourceName_To_management_TranslateDevsyResourceName(in *TranslateDevsyResourceName, out *management.TranslateDevsyResourceName, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec(&in.Spec, &out.Spec, s); err != nil {
+	if err := Convert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := Convert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus(&in.Status, &out.Status, s); err != nil {
+	if err := Convert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
 }
 
-// Convert_v1_TranslateVClusterResourceName_To_management_TranslateVClusterResourceName is an autogenerated conversion function.
-func Convert_v1_TranslateVClusterResourceName_To_management_TranslateVClusterResourceName(in *TranslateVClusterResourceName, out *management.TranslateVClusterResourceName, s conversion.Scope) error {
-	return autoConvert_v1_TranslateVClusterResourceName_To_management_TranslateVClusterResourceName(in, out, s)
+// Convert_v1_TranslateDevsyResourceName_To_management_TranslateDevsyResourceName is an autogenerated conversion function.
+func Convert_v1_TranslateDevsyResourceName_To_management_TranslateDevsyResourceName(in *TranslateDevsyResourceName, out *management.TranslateDevsyResourceName, s conversion.Scope) error {
+	return autoConvert_v1_TranslateDevsyResourceName_To_management_TranslateDevsyResourceName(in, out, s)
 }
 
-func autoConvert_management_TranslateVClusterResourceName_To_v1_TranslateVClusterResourceName(in *management.TranslateVClusterResourceName, out *TranslateVClusterResourceName, s conversion.Scope) error {
+func autoConvert_management_TranslateDevsyResourceName_To_v1_TranslateDevsyResourceName(in *management.TranslateDevsyResourceName, out *TranslateDevsyResourceName, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec(&in.Spec, &out.Spec, s); err != nil {
+	if err := Convert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec(&in.Spec, &out.Spec, s); err != nil {
 		return err
 	}
-	if err := Convert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus(&in.Status, &out.Status, s); err != nil {
+	if err := Convert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus(&in.Status, &out.Status, s); err != nil {
 		return err
 	}
 	return nil
 }
 
-// Convert_management_TranslateVClusterResourceName_To_v1_TranslateVClusterResourceName is an autogenerated conversion function.
-func Convert_management_TranslateVClusterResourceName_To_v1_TranslateVClusterResourceName(in *management.TranslateVClusterResourceName, out *TranslateVClusterResourceName, s conversion.Scope) error {
-	return autoConvert_management_TranslateVClusterResourceName_To_v1_TranslateVClusterResourceName(in, out, s)
+// Convert_management_TranslateDevsyResourceName_To_v1_TranslateDevsyResourceName is an autogenerated conversion function.
+func Convert_management_TranslateDevsyResourceName_To_v1_TranslateDevsyResourceName(in *management.TranslateDevsyResourceName, out *TranslateDevsyResourceName, s conversion.Scope) error {
+	return autoConvert_management_TranslateDevsyResourceName_To_v1_TranslateDevsyResourceName(in, out, s)
 }
 
-func autoConvert_v1_TranslateVClusterResourceNameList_To_management_TranslateVClusterResourceNameList(in *TranslateVClusterResourceNameList, out *management.TranslateVClusterResourceNameList, s conversion.Scope) error {
+func autoConvert_v1_TranslateDevsyResourceNameList_To_management_TranslateDevsyResourceNameList(in *TranslateDevsyResourceNameList, out *management.TranslateDevsyResourceNameList, s conversion.Scope) error {
 	out.ListMeta = in.ListMeta
-	out.Items = *(*[]management.TranslateVClusterResourceName)(unsafe.Pointer(&in.Items))
+	out.Items = *(*[]management.TranslateDevsyResourceName)(unsafe.Pointer(&in.Items))
 	return nil
 }
 
-// Convert_v1_TranslateVClusterResourceNameList_To_management_TranslateVClusterResourceNameList is an autogenerated conversion function.
-func Convert_v1_TranslateVClusterResourceNameList_To_management_TranslateVClusterResourceNameList(in *TranslateVClusterResourceNameList, out *management.TranslateVClusterResourceNameList, s conversion.Scope) error {
-	return autoConvert_v1_TranslateVClusterResourceNameList_To_management_TranslateVClusterResourceNameList(in, out, s)
+// Convert_v1_TranslateDevsyResourceNameList_To_management_TranslateDevsyResourceNameList is an autogenerated conversion function.
+func Convert_v1_TranslateDevsyResourceNameList_To_management_TranslateDevsyResourceNameList(in *TranslateDevsyResourceNameList, out *management.TranslateDevsyResourceNameList, s conversion.Scope) error {
+	return autoConvert_v1_TranslateDevsyResourceNameList_To_management_TranslateDevsyResourceNameList(in, out, s)
 }
 
-func autoConvert_management_TranslateVClusterResourceNameList_To_v1_TranslateVClusterResourceNameList(in *management.TranslateVClusterResourceNameList, out *TranslateVClusterResourceNameList, s conversion.Scope) error {
+func autoConvert_management_TranslateDevsyResourceNameList_To_v1_TranslateDevsyResourceNameList(in *management.TranslateDevsyResourceNameList, out *TranslateDevsyResourceNameList, s conversion.Scope) error {
 	out.ListMeta = in.ListMeta
-	out.Items = *(*[]TranslateVClusterResourceName)(unsafe.Pointer(&in.Items))
+	out.Items = *(*[]TranslateDevsyResourceName)(unsafe.Pointer(&in.Items))
 	return nil
 }
 
-// Convert_management_TranslateVClusterResourceNameList_To_v1_TranslateVClusterResourceNameList is an autogenerated conversion function.
-func Convert_management_TranslateVClusterResourceNameList_To_v1_TranslateVClusterResourceNameList(in *management.TranslateVClusterResourceNameList, out *TranslateVClusterResourceNameList, s conversion.Scope) error {
-	return autoConvert_management_TranslateVClusterResourceNameList_To_v1_TranslateVClusterResourceNameList(in, out, s)
+// Convert_management_TranslateDevsyResourceNameList_To_v1_TranslateDevsyResourceNameList is an autogenerated conversion function.
+func Convert_management_TranslateDevsyResourceNameList_To_v1_TranslateDevsyResourceNameList(in *management.TranslateDevsyResourceNameList, out *TranslateDevsyResourceNameList, s conversion.Scope) error {
+	return autoConvert_management_TranslateDevsyResourceNameList_To_v1_TranslateDevsyResourceNameList(in, out, s)
 }
 
-func autoConvert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec(in *TranslateVClusterResourceNameSpec, out *management.TranslateVClusterResourceNameSpec, s conversion.Scope) error {
+func autoConvert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec(in *TranslateDevsyResourceNameSpec, out *management.TranslateDevsyResourceNameSpec, s conversion.Scope) error {
 	out.Name = in.Name
 	out.Namespace = in.Namespace
-	out.VClusterName = in.VClusterName
+	out.DevsyName = in.DevsyName
 	return nil
 }
 
-// Convert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec is an autogenerated conversion function.
-func Convert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec(in *TranslateVClusterResourceNameSpec, out *management.TranslateVClusterResourceNameSpec, s conversion.Scope) error {
-	return autoConvert_v1_TranslateVClusterResourceNameSpec_To_management_TranslateVClusterResourceNameSpec(in, out, s)
+// Convert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec is an autogenerated conversion function.
+func Convert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec(in *TranslateDevsyResourceNameSpec, out *management.TranslateDevsyResourceNameSpec, s conversion.Scope) error {
+	return autoConvert_v1_TranslateDevsyResourceNameSpec_To_management_TranslateDevsyResourceNameSpec(in, out, s)
 }
 
-func autoConvert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec(in *management.TranslateVClusterResourceNameSpec, out *TranslateVClusterResourceNameSpec, s conversion.Scope) error {
+func autoConvert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec(in *management.TranslateDevsyResourceNameSpec, out *TranslateDevsyResourceNameSpec, s conversion.Scope) error {
 	out.Name = in.Name
 	out.Namespace = in.Namespace
-	out.VClusterName = in.VClusterName
+	out.DevsyName = in.DevsyName
 	return nil
 }
 
-// Convert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec is an autogenerated conversion function.
-func Convert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec(in *management.TranslateVClusterResourceNameSpec, out *TranslateVClusterResourceNameSpec, s conversion.Scope) error {
-	return autoConvert_management_TranslateVClusterResourceNameSpec_To_v1_TranslateVClusterResourceNameSpec(in, out, s)
+// Convert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec is an autogenerated conversion function.
+func Convert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec(in *management.TranslateDevsyResourceNameSpec, out *TranslateDevsyResourceNameSpec, s conversion.Scope) error {
+	return autoConvert_management_TranslateDevsyResourceNameSpec_To_v1_TranslateDevsyResourceNameSpec(in, out, s)
 }
 
-func autoConvert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus(in *TranslateVClusterResourceNameStatus, out *management.TranslateVClusterResourceNameStatus, s conversion.Scope) error {
+func autoConvert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus(in *TranslateDevsyResourceNameStatus, out *management.TranslateDevsyResourceNameStatus, s conversion.Scope) error {
 	out.Name = in.Name
 	return nil
 }
 
-// Convert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus is an autogenerated conversion function.
-func Convert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus(in *TranslateVClusterResourceNameStatus, out *management.TranslateVClusterResourceNameStatus, s conversion.Scope) error {
-	return autoConvert_v1_TranslateVClusterResourceNameStatus_To_management_TranslateVClusterResourceNameStatus(in, out, s)
+// Convert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus is an autogenerated conversion function.
+func Convert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus(in *TranslateDevsyResourceNameStatus, out *management.TranslateDevsyResourceNameStatus, s conversion.Scope) error {
+	return autoConvert_v1_TranslateDevsyResourceNameStatus_To_management_TranslateDevsyResourceNameStatus(in, out, s)
 }
 
-func autoConvert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus(in *management.TranslateVClusterResourceNameStatus, out *TranslateVClusterResourceNameStatus, s conversion.Scope) error {
+func autoConvert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus(in *management.TranslateDevsyResourceNameStatus, out *TranslateDevsyResourceNameStatus, s conversion.Scope) error {
 	out.Name = in.Name
 	return nil
 }
 
-// Convert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus is an autogenerated conversion function.
-func Convert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus(in *management.TranslateVClusterResourceNameStatus, out *TranslateVClusterResourceNameStatus, s conversion.Scope) error {
-	return autoConvert_management_TranslateVClusterResourceNameStatus_To_v1_TranslateVClusterResourceNameStatus(in, out, s)
+// Convert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus is an autogenerated conversion function.
+func Convert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus(in *management.TranslateDevsyResourceNameStatus, out *TranslateDevsyResourceNameStatus, s conversion.Scope) error {
+	return autoConvert_management_TranslateDevsyResourceNameStatus_To_v1_TranslateDevsyResourceNameStatus(in, out, s)
 }
 
 func autoConvert_v1_UsageDownload_To_management_UsageDownload(in *UsageDownload, out *management.UsageDownload, s conversion.Scope) error {

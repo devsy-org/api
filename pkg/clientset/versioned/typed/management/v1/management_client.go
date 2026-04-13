@@ -32,7 +32,7 @@ type ManagementV1Interface interface {
 	IngressAuthTokensGetter
 	LicensesGetter
 	LicenseTokensGetter
-	LoftUpgradesGetter
+	DevsyUpgradesGetter
 	NodeClaimsGetter
 	NodeEnvironmentsGetter
 	NodeProvidersGetter
@@ -52,7 +52,7 @@ type ManagementV1Interface interface {
 	SubjectAccessReviewsGetter
 	TasksGetter
 	TeamsGetter
-	TranslateVClusterResourceNamesGetter
+	TranslateDevsyResourceNamesGetter
 	UsageDownloadsGetter
 	UsersGetter
 	VirtualClusterInstancesGetter
@@ -60,7 +60,7 @@ type ManagementV1Interface interface {
 	VirtualClusterTemplatesGetter
 }
 
-// ManagementV1Client is used to interact with features provided by the management.loft.sh group.
+// ManagementV1Client is used to interact with features provided by the management.devsy.sh group.
 type ManagementV1Client struct {
 	restClient rest.Interface
 }
@@ -145,8 +145,8 @@ func (c *ManagementV1Client) LicenseTokens() LicenseTokenInterface {
 	return newLicenseTokens(c)
 }
 
-func (c *ManagementV1Client) LoftUpgrades() LoftUpgradeInterface {
-	return newLoftUpgrades(c)
+func (c *ManagementV1Client) DevsyUpgrades() DevsyUpgradeInterface {
+	return newDevsyUpgrades(c)
 }
 
 func (c *ManagementV1Client) NodeClaims(namespace string) NodeClaimInterface {
@@ -225,8 +225,8 @@ func (c *ManagementV1Client) Teams() TeamInterface {
 	return newTeams(c)
 }
 
-func (c *ManagementV1Client) TranslateVClusterResourceNames() TranslateVClusterResourceNameInterface {
-	return newTranslateVClusterResourceNames(c)
+func (c *ManagementV1Client) TranslateDevsyResourceNames() TranslateDevsyResourceNameInterface {
+	return newTranslateDevsyResourceNames(c)
 }
 
 func (c *ManagementV1Client) UsageDownloads() UsageDownloadInterface {

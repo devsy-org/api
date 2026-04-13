@@ -20,8 +20,6 @@ type UsageDownload struct {
 	Status UsageDownloadStatus `json:"status,omitempty"`
 }
 
-type UsageDownloadSpec struct {
-}
+type UsageDownloadSpec struct{}
 
-type UsageDownloadStatus struct {
-}
+type UsageDownloadStatus struct{}

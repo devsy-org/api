@@ -96,8 +96,7 @@ type DevPodWorkspacePresetVersion struct {
 }
 
 // DevPodWorkspacePresetStatus holds the status
-type DevPodWorkspacePresetStatus struct {
-}
+type DevPodWorkspacePresetStatus struct{}
 
 type WorkspaceRef struct {
 	// Name is the name of DevPodWorkspaceTemplate this references

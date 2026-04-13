@@ -20,8 +20,7 @@ type DevPodEnvironmentTemplate struct {
 }
 
 // DevPodEnvironmentTemplateStatus holds the status
-type DevPodEnvironmentTemplateStatus struct {
-}
+type DevPodEnvironmentTemplateStatus struct{}
 
 func (a *DevPodEnvironmentTemplate) GetVersions() []VersionAccessor {
 	var retVersions []VersionAccessor
@@ -140,8 +139,8 @@ const (
 
 // DevPodEnvironmentTemplateList contains a list of DevPodEnvironmentTemplate objects
 type DevPodEnvironmentTemplateList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `                            json:",inline"`
+	metav1.ListMeta `                            json:"metadata,omitempty"`
 	Items           []DevPodEnvironmentTemplate `json:"items"`
 }
 

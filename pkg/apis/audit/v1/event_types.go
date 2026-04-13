@@ -29,16 +29,16 @@ type RequestTarget string
 
 // Valid request targets
 const (
-	// RequestTargetManagement specifies a loft management api request
+	// RequestTargetManagement specifies a devsy management api request
 	RequestTargetManagement RequestTarget = "Management"
 	// RequestTargetCluster specifies a connected kubernetes cluster request
 	RequestTargetCluster RequestTarget = "Cluster"
-	// RequestTargetVCluster specifies a virtual kubernetes cluster request
-	RequestTargetVCluster RequestTarget = "VCluster"
+	// RequestTargetDevsy specifies a virtual kubernetes cluster request
+	RequestTargetDevsy RequestTarget = "Devsy"
 	// RequestTargetProjectSpace specifies a project space request
 	RequestTargetProjectSpace RequestTarget = "ProjectSpace"
-	// RequestTargetProjectVCluster specifies a project vcluster request
-	RequestTargetProjectVCluster RequestTarget = "ProjectVCluster"
+	// RequestTargetProjectDevsy specifies a project devsy request
+	RequestTargetProjectDevsy RequestTarget = "ProjectDevsy"
 )
 
 func ordLevel(l Level) int {

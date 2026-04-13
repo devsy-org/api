@@ -247,16 +247,16 @@ var (
 		return NewLicenseTokenRESTFunc(Factory)
 	}
 	NewLicenseTokenRESTFunc      NewRESTFunc
-	ManagementLoftUpgradeStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalLoftUpgrade,
-		func() runtime.Object { return &LoftUpgrade{} },     // Register versioned resource
-		func() runtime.Object { return &LoftUpgradeList{} }, // Register versioned resource list
-		NewLoftUpgradeREST,
+	ManagementDevsyUpgradeStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDevsyUpgrade,
+		func() runtime.Object { return &DevsyUpgrade{} },     // Register versioned resource
+		func() runtime.Object { return &DevsyUpgradeList{} }, // Register versioned resource list
+		NewDevsyUpgradeREST,
 	)
-	NewLoftUpgradeREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewLoftUpgradeRESTFunc(Factory)
+	NewDevsyUpgradeREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyUpgradeRESTFunc(Factory)
 	}
-	NewLoftUpgradeRESTFunc     NewRESTFunc
+	NewDevsyUpgradeRESTFunc     NewRESTFunc
 	ManagementNodeClaimStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
 		InternalNodeClaim,
 		func() runtime.Object { return &NodeClaim{} },     // Register versioned resource
@@ -467,16 +467,16 @@ var (
 		return NewTeamRESTFunc(Factory)
 	}
 	NewTeamRESTFunc                                NewRESTFunc
-	ManagementTranslateVClusterResourceNameStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalTranslateVClusterResourceName,
-		func() runtime.Object { return &TranslateVClusterResourceName{} },     // Register versioned resource
-		func() runtime.Object { return &TranslateVClusterResourceNameList{} }, // Register versioned resource list
-		NewTranslateVClusterResourceNameREST,
+	ManagementTranslateDevsyResourceNameStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalTranslateDevsyResourceName,
+		func() runtime.Object { return &TranslateDevsyResourceName{} },     // Register versioned resource
+		func() runtime.Object { return &TranslateDevsyResourceNameList{} }, // Register versioned resource list
+		NewTranslateDevsyResourceNameREST,
 	)
-	NewTranslateVClusterResourceNameREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewTranslateVClusterResourceNameRESTFunc(Factory)
+	NewTranslateDevsyResourceNameREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewTranslateDevsyResourceNameRESTFunc(Factory)
 	}
-	NewTranslateVClusterResourceNameRESTFunc NewRESTFunc
+	NewTranslateDevsyResourceNameRESTFunc NewRESTFunc
 	ManagementUsageDownloadStorage           = builders.NewApiResourceWithStorage( // Resource status endpoint
 		InternalUsageDownload,
 		func() runtime.Object { return &UsageDownload{} },     // Register versioned resource
@@ -915,17 +915,17 @@ var (
 		func() runtime.Object { return &LicenseToken{} },
 		func() runtime.Object { return &LicenseTokenList{} },
 	)
-	InternalLoftUpgrade = builders.NewInternalResource(
-		"loftupgrades",
-		"LoftUpgrade",
-		func() runtime.Object { return &LoftUpgrade{} },
-		func() runtime.Object { return &LoftUpgradeList{} },
+	InternalDevsyUpgrade = builders.NewInternalResource(
+		"devsyupgrades",
+		"DevsyUpgrade",
+		func() runtime.Object { return &DevsyUpgrade{} },
+		func() runtime.Object { return &DevsyUpgradeList{} },
 	)
-	InternalLoftUpgradeStatus = builders.NewInternalResourceStatus(
-		"loftupgrades",
-		"LoftUpgradeStatus",
-		func() runtime.Object { return &LoftUpgrade{} },
-		func() runtime.Object { return &LoftUpgradeList{} },
+	InternalDevsyUpgradeStatus = builders.NewInternalResourceStatus(
+		"devsyupgrades",
+		"DevsyUpgradeStatus",
+		func() runtime.Object { return &DevsyUpgrade{} },
+		func() runtime.Object { return &DevsyUpgradeList{} },
 	)
 	InternalNodeClaim = builders.NewInternalResource(
 		"nodeclaims",
@@ -1275,17 +1275,17 @@ var (
 		return NewTeamPermissionsRESTFunc(Factory)
 	}
 	NewTeamPermissionsRESTFunc            NewRESTFunc
-	InternalTranslateVClusterResourceName = builders.NewInternalResource(
-		"translatevclusterresourcenames",
-		"TranslateVClusterResourceName",
-		func() runtime.Object { return &TranslateVClusterResourceName{} },
-		func() runtime.Object { return &TranslateVClusterResourceNameList{} },
+	InternalTranslateDevsyResourceName = builders.NewInternalResource(
+		"translatedevsyresourcenames",
+		"TranslateDevsyResourceName",
+		func() runtime.Object { return &TranslateDevsyResourceName{} },
+		func() runtime.Object { return &TranslateDevsyResourceNameList{} },
 	)
-	InternalTranslateVClusterResourceNameStatus = builders.NewInternalResourceStatus(
-		"translatevclusterresourcenames",
-		"TranslateVClusterResourceNameStatus",
-		func() runtime.Object { return &TranslateVClusterResourceName{} },
-		func() runtime.Object { return &TranslateVClusterResourceNameList{} },
+	InternalTranslateDevsyResourceNameStatus = builders.NewInternalResourceStatus(
+		"translatedevsyresourcenames",
+		"TranslateDevsyResourceNameStatus",
+		func() runtime.Object { return &TranslateDevsyResourceName{} },
+		func() runtime.Object { return &TranslateDevsyResourceNameList{} },
 	)
 	InternalUsageDownload = builders.NewInternalResource(
 		"usagedownload",
@@ -1444,7 +1444,7 @@ var (
 		func() runtime.Object { return &VirtualClusterTemplateList{} },
 	)
 	// Registered resources and subresources
-	ApiVersion = builders.NewApiGroup("management.loft.sh").WithKinds(
+	ApiVersion = builders.NewApiGroup("management.devsy.sh").WithKinds(
 		InternalAgentAuditEvent,
 		InternalAgentAuditEventStatus,
 		InternalAnnouncement,
@@ -1504,8 +1504,8 @@ var (
 		InternalLicenseRequestREST,
 		InternalLicenseToken,
 		InternalLicenseTokenStatus,
-		InternalLoftUpgrade,
-		InternalLoftUpgradeStatus,
+		InternalDevsyUpgrade,
+		InternalDevsyUpgradeStatus,
 		InternalNodeClaim,
 		InternalNodeClaimStatus,
 		InternalNodeEnvironment,
@@ -1559,8 +1559,8 @@ var (
 		InternalTeamClustersREST,
 		InternalTeamObjectPermissionsREST,
 		InternalTeamPermissionsREST,
-		InternalTranslateVClusterResourceName,
-		InternalTranslateVClusterResourceNameStatus,
+		InternalTranslateDevsyResourceName,
+		InternalTranslateDevsyResourceNameStatus,
 		InternalUsageDownload,
 		InternalUsageDownloadStatus,
 		InternalUser,
@@ -2505,20 +2505,20 @@ type LicenseTokenStatus struct {
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type LoftUpgrade struct {
+type DevsyUpgrade struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              LoftUpgradeSpec   `json:"spec,omitempty"`
-	Status            LoftUpgradeStatus `json:"status,omitempty"`
+	Spec              DevsyUpgradeSpec   `json:"spec,omitempty"`
+	Status            DevsyUpgradeStatus `json:"status,omitempty"`
 }
 
-type LoftUpgradeSpec struct {
+type DevsyUpgradeSpec struct {
 	Namespace string `json:"namespace,omitempty"`
 	Release   string `json:"release,omitempty"`
 	Version   string `json:"version,omitempty"`
 }
 
-type LoftUpgradeStatus struct {
+type DevsyUpgradeStatus struct {
 }
 
 type MaintenanceWindow struct {
@@ -3216,20 +3216,20 @@ type TeamStatus struct {
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type TranslateVClusterResourceName struct {
+type TranslateDevsyResourceName struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              TranslateVClusterResourceNameSpec   `json:"spec,omitempty"`
-	Status            TranslateVClusterResourceNameStatus `json:"status,omitempty"`
+	Spec              TranslateDevsyResourceNameSpec   `json:"spec,omitempty"`
+	Status            TranslateDevsyResourceNameStatus `json:"status,omitempty"`
 }
 
-type TranslateVClusterResourceNameSpec struct {
+type TranslateDevsyResourceNameSpec struct {
 	Name         string `json:"name"`
 	Namespace    string `json:"namespace"`
-	VClusterName string `json:"vclusterName"`
+	DevsyName string `json:"devsyName"`
 }
 
-type TranslateVClusterResourceNameStatus struct {
+type TranslateDevsyResourceNameStatus struct {
 	Name string `json:"name,omitempty"`
 }
 
@@ -6141,81 +6141,81 @@ func (s *storageLicenseToken) DeleteLicenseToken(ctx context.Context, id string)
 	return sync, err
 }
 
-// LoftUpgrade Functions and Structs
+// DevsyUpgrade Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type LoftUpgradeStrategy struct {
+type DevsyUpgradeStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type LoftUpgradeStatusStrategy struct {
+type DevsyUpgradeStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type LoftUpgradeList struct {
+type DevsyUpgradeList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []LoftUpgrade `json:"items"`
+	Items           []DevsyUpgrade `json:"items"`
 }
 
-func (LoftUpgrade) NewStatus() interface{} {
-	return LoftUpgradeStatus{}
+func (DevsyUpgrade) NewStatus() interface{} {
+	return DevsyUpgradeStatus{}
 }
 
-func (pc *LoftUpgrade) GetStatus() interface{} {
+func (pc *DevsyUpgrade) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *LoftUpgrade) SetStatus(s interface{}) {
-	pc.Status = s.(LoftUpgradeStatus)
+func (pc *DevsyUpgrade) SetStatus(s interface{}) {
+	pc.Status = s.(DevsyUpgradeStatus)
 }
 
-func (pc *LoftUpgrade) GetSpec() interface{} {
+func (pc *DevsyUpgrade) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *LoftUpgrade) SetSpec(s interface{}) {
-	pc.Spec = s.(LoftUpgradeSpec)
+func (pc *DevsyUpgrade) SetSpec(s interface{}) {
+	pc.Spec = s.(DevsyUpgradeSpec)
 }
 
-func (pc *LoftUpgrade) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *DevsyUpgrade) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *LoftUpgrade) SetGeneration(generation int64) {
+func (pc *DevsyUpgrade) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc LoftUpgrade) GetGeneration() int64 {
+func (pc DevsyUpgrade) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store LoftUpgrade.
+// Registry is an interface for things that know how to store DevsyUpgrade.
 // +k8s:deepcopy-gen=false
-type LoftUpgradeRegistry interface {
-	ListLoftUpgrades(ctx context.Context, options *internalversion.ListOptions) (*LoftUpgradeList, error)
-	GetLoftUpgrade(ctx context.Context, id string, options *metav1.GetOptions) (*LoftUpgrade, error)
-	CreateLoftUpgrade(ctx context.Context, id *LoftUpgrade) (*LoftUpgrade, error)
-	UpdateLoftUpgrade(ctx context.Context, id *LoftUpgrade) (*LoftUpgrade, error)
-	DeleteLoftUpgrade(ctx context.Context, id string) (bool, error)
+type DevsyUpgradeRegistry interface {
+	ListDevsyUpgrades(ctx context.Context, options *internalversion.ListOptions) (*DevsyUpgradeList, error)
+	GetDevsyUpgrade(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyUpgrade, error)
+	CreateDevsyUpgrade(ctx context.Context, id *DevsyUpgrade) (*DevsyUpgrade, error)
+	UpdateDevsyUpgrade(ctx context.Context, id *DevsyUpgrade) (*DevsyUpgrade, error)
+	DeleteDevsyUpgrade(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewLoftUpgradeRegistry(sp builders.StandardStorageProvider) LoftUpgradeRegistry {
-	return &storageLoftUpgrade{sp}
+func NewDevsyUpgradeRegistry(sp builders.StandardStorageProvider) DevsyUpgradeRegistry {
+	return &storageDevsyUpgrade{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageLoftUpgrade struct {
+type storageDevsyUpgrade struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageLoftUpgrade) ListLoftUpgrades(ctx context.Context, options *internalversion.ListOptions) (*LoftUpgradeList, error) {
+func (s *storageDevsyUpgrade) ListDevsyUpgrades(ctx context.Context, options *internalversion.ListOptions) (*DevsyUpgradeList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -6224,37 +6224,37 @@ func (s *storageLoftUpgrade) ListLoftUpgrades(ctx context.Context, options *inte
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*LoftUpgradeList), err
+	return obj.(*DevsyUpgradeList), err
 }
 
-func (s *storageLoftUpgrade) GetLoftUpgrade(ctx context.Context, id string, options *metav1.GetOptions) (*LoftUpgrade, error) {
+func (s *storageDevsyUpgrade) GetDevsyUpgrade(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyUpgrade, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*LoftUpgrade), nil
+	return obj.(*DevsyUpgrade), nil
 }
 
-func (s *storageLoftUpgrade) CreateLoftUpgrade(ctx context.Context, object *LoftUpgrade) (*LoftUpgrade, error) {
+func (s *storageDevsyUpgrade) CreateDevsyUpgrade(ctx context.Context, object *DevsyUpgrade) (*DevsyUpgrade, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*LoftUpgrade), nil
+	return obj.(*DevsyUpgrade), nil
 }
 
-func (s *storageLoftUpgrade) UpdateLoftUpgrade(ctx context.Context, object *LoftUpgrade) (*LoftUpgrade, error) {
+func (s *storageDevsyUpgrade) UpdateDevsyUpgrade(ctx context.Context, object *DevsyUpgrade) (*DevsyUpgrade, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*LoftUpgrade), nil
+	return obj.(*DevsyUpgrade), nil
 }
 
-func (s *storageLoftUpgrade) DeleteLoftUpgrade(ctx context.Context, id string) (bool, error) {
+func (s *storageDevsyUpgrade) DeleteDevsyUpgrade(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
@@ -8641,81 +8641,81 @@ func (s *storageTeam) DeleteTeam(ctx context.Context, id string) (bool, error) {
 	return sync, err
 }
 
-// TranslateVClusterResourceName Functions and Structs
+// TranslateDevsyResourceName Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type TranslateVClusterResourceNameStrategy struct {
+type TranslateDevsyResourceNameStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type TranslateVClusterResourceNameStatusStrategy struct {
+type TranslateDevsyResourceNameStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type TranslateVClusterResourceNameList struct {
+type TranslateDevsyResourceNameList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []TranslateVClusterResourceName `json:"items"`
+	Items           []TranslateDevsyResourceName `json:"items"`
 }
 
-func (TranslateVClusterResourceName) NewStatus() interface{} {
-	return TranslateVClusterResourceNameStatus{}
+func (TranslateDevsyResourceName) NewStatus() interface{} {
+	return TranslateDevsyResourceNameStatus{}
 }
 
-func (pc *TranslateVClusterResourceName) GetStatus() interface{} {
+func (pc *TranslateDevsyResourceName) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *TranslateVClusterResourceName) SetStatus(s interface{}) {
-	pc.Status = s.(TranslateVClusterResourceNameStatus)
+func (pc *TranslateDevsyResourceName) SetStatus(s interface{}) {
+	pc.Status = s.(TranslateDevsyResourceNameStatus)
 }
 
-func (pc *TranslateVClusterResourceName) GetSpec() interface{} {
+func (pc *TranslateDevsyResourceName) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *TranslateVClusterResourceName) SetSpec(s interface{}) {
-	pc.Spec = s.(TranslateVClusterResourceNameSpec)
+func (pc *TranslateDevsyResourceName) SetSpec(s interface{}) {
+	pc.Spec = s.(TranslateDevsyResourceNameSpec)
 }
 
-func (pc *TranslateVClusterResourceName) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *TranslateDevsyResourceName) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *TranslateVClusterResourceName) SetGeneration(generation int64) {
+func (pc *TranslateDevsyResourceName) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc TranslateVClusterResourceName) GetGeneration() int64 {
+func (pc TranslateDevsyResourceName) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store TranslateVClusterResourceName.
+// Registry is an interface for things that know how to store TranslateDevsyResourceName.
 // +k8s:deepcopy-gen=false
-type TranslateVClusterResourceNameRegistry interface {
-	ListTranslateVClusterResourceNames(ctx context.Context, options *internalversion.ListOptions) (*TranslateVClusterResourceNameList, error)
-	GetTranslateVClusterResourceName(ctx context.Context, id string, options *metav1.GetOptions) (*TranslateVClusterResourceName, error)
-	CreateTranslateVClusterResourceName(ctx context.Context, id *TranslateVClusterResourceName) (*TranslateVClusterResourceName, error)
-	UpdateTranslateVClusterResourceName(ctx context.Context, id *TranslateVClusterResourceName) (*TranslateVClusterResourceName, error)
-	DeleteTranslateVClusterResourceName(ctx context.Context, id string) (bool, error)
+type TranslateDevsyResourceNameRegistry interface {
+	ListTranslateDevsyResourceNames(ctx context.Context, options *internalversion.ListOptions) (*TranslateDevsyResourceNameList, error)
+	GetTranslateDevsyResourceName(ctx context.Context, id string, options *metav1.GetOptions) (*TranslateDevsyResourceName, error)
+	CreateTranslateDevsyResourceName(ctx context.Context, id *TranslateDevsyResourceName) (*TranslateDevsyResourceName, error)
+	UpdateTranslateDevsyResourceName(ctx context.Context, id *TranslateDevsyResourceName) (*TranslateDevsyResourceName, error)
+	DeleteTranslateDevsyResourceName(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewTranslateVClusterResourceNameRegistry(sp builders.StandardStorageProvider) TranslateVClusterResourceNameRegistry {
-	return &storageTranslateVClusterResourceName{sp}
+func NewTranslateDevsyResourceNameRegistry(sp builders.StandardStorageProvider) TranslateDevsyResourceNameRegistry {
+	return &storageTranslateDevsyResourceName{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageTranslateVClusterResourceName struct {
+type storageTranslateDevsyResourceName struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageTranslateVClusterResourceName) ListTranslateVClusterResourceNames(ctx context.Context, options *internalversion.ListOptions) (*TranslateVClusterResourceNameList, error) {
+func (s *storageTranslateDevsyResourceName) ListTranslateDevsyResourceNames(ctx context.Context, options *internalversion.ListOptions) (*TranslateDevsyResourceNameList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -8724,37 +8724,37 @@ func (s *storageTranslateVClusterResourceName) ListTranslateVClusterResourceName
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*TranslateVClusterResourceNameList), err
+	return obj.(*TranslateDevsyResourceNameList), err
 }
 
-func (s *storageTranslateVClusterResourceName) GetTranslateVClusterResourceName(ctx context.Context, id string, options *metav1.GetOptions) (*TranslateVClusterResourceName, error) {
+func (s *storageTranslateDevsyResourceName) GetTranslateDevsyResourceName(ctx context.Context, id string, options *metav1.GetOptions) (*TranslateDevsyResourceName, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*TranslateVClusterResourceName), nil
+	return obj.(*TranslateDevsyResourceName), nil
 }
 
-func (s *storageTranslateVClusterResourceName) CreateTranslateVClusterResourceName(ctx context.Context, object *TranslateVClusterResourceName) (*TranslateVClusterResourceName, error) {
+func (s *storageTranslateDevsyResourceName) CreateTranslateDevsyResourceName(ctx context.Context, object *TranslateDevsyResourceName) (*TranslateDevsyResourceName, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*TranslateVClusterResourceName), nil
+	return obj.(*TranslateDevsyResourceName), nil
 }
 
-func (s *storageTranslateVClusterResourceName) UpdateTranslateVClusterResourceName(ctx context.Context, object *TranslateVClusterResourceName) (*TranslateVClusterResourceName, error) {
+func (s *storageTranslateDevsyResourceName) UpdateTranslateDevsyResourceName(ctx context.Context, object *TranslateDevsyResourceName) (*TranslateDevsyResourceName, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*TranslateVClusterResourceName), nil
+	return obj.(*TranslateDevsyResourceName), nil
 }
 
-func (s *storageTranslateVClusterResourceName) DeleteTranslateVClusterResourceName(ctx context.Context, id string) (bool, error) {
+func (s *storageTranslateDevsyResourceName) DeleteTranslateDevsyResourceName(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err

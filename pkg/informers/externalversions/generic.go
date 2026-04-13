@@ -38,7 +38,7 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=management.loft.sh, Version=v1
+	// Group=management.devsy.sh, Version=v1
 	case v1.SchemeGroupVersion.WithResource("agentauditevents"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().AgentAuditEvents().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("announcements"):
@@ -79,8 +79,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().Licenses().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("licensetokens"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().LicenseTokens().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("loftupgrades"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().LoftUpgrades().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyupgrades"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyUpgrades().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nodeclaims"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().NodeClaims().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nodeenvironments"):
@@ -119,8 +119,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().Tasks().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("teams"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().Teams().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("translatevclusterresourcenames"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().TranslateVClusterResourceNames().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("translatedevsyresourcenames"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().TranslateDevsyResourceNames().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("usagedownloads"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().UsageDownloads().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("users"):
@@ -132,7 +132,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case v1.SchemeGroupVersion.WithResource("virtualclustertemplates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().VirtualClusterTemplates().Informer()}, nil
 
-		// Group=storage.loft.sh, Version=v1
+		// Group=storage.devsy.sh, Version=v1
 	case storagev1.SchemeGroupVersion.WithResource("accesskeys"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().AccessKeys().Informer()}, nil
 	case storagev1.SchemeGroupVersion.WithResource("apps"):
@@ -180,7 +180,7 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	case storagev1.SchemeGroupVersion.WithResource("virtualclustertemplates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().VirtualClusterTemplates().Informer()}, nil
 
-		// Group=virtualcluster.loft.sh, Version=v1
+		// Group=virtualcluster.devsy.sh, Version=v1
 	case virtualclusterv1.SchemeGroupVersion.WithResource("helmreleases"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Virtualcluster().V1().HelmReleases().Informer()}, nil
 

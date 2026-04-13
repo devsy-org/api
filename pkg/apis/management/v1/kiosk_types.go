@@ -23,15 +23,15 @@ type Kiosk struct {
 }
 
 type KioskSpec struct {
-	// cluster.loft.sh
+	// cluster.devsy.sh
 	HelmRelease     clusterv1.HelmRelease     `json:"helmRelease,omitempty"`
 	SleepModeConfig clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
 	ChartInfo       clusterv1.ChartInfo       `json:"chartInfo,omitempty"`
 
-	// storage.loft.sh
+	// storage.devsy.sh
 	StorageClusterQuota agentstoragev1.ClusterQuota `json:"storageClusterQuota,omitempty"`
 
-	// ui.loft.sh
+	// ui.devsy.sh
 	UISettings uiv1.UISettings `json:"UISettings,omitempty"`
 
 	License License `json:"license,omitempty"`
@@ -47,5 +47,4 @@ type KioskSpec struct {
 	NodeEnvironmentData                 NodeEnvironmentData                 `json:"nodeEnvironmentData,omitempty"`
 }
 
-type KioskStatus struct {
-}
+type KioskStatus struct{}

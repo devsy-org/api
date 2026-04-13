@@ -42,7 +42,7 @@ type LicenseExpansion interface{}
 
 type LicenseTokenExpansion interface{}
 
-type LoftUpgradeExpansion interface{}
+type DevsyUpgradeExpansion interface{}
 
 type NodeClaimExpansion interface{}
 
@@ -82,7 +82,7 @@ type TaskExpansion interface{}
 
 type TeamExpansion interface{}
 
-type TranslateVClusterResourceNameExpansion interface{}
+type TranslateDevsyResourceNameExpansion interface{}
 
 type UsageDownloadExpansion interface{}
 

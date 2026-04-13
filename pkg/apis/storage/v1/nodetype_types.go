@@ -7,19 +7,17 @@ import (
 )
 
 const (
-	NodeTypePropertyKey = "vcluster.com/node-type"
+	NodeTypePropertyKey = "devsy.com/node-type"
 
 	// NodeTypeConditionTypeSynced is the condition that indicates if the node type is synced with provider.
 	NodeTypeConditionTypeSynced  = "Synced"
 	NodeTypeConditionHasCapacity = "HasCapacity"
 )
 
-var (
-	NodeTypeConditions = []agentstoragev1.ConditionType{
-		NodeTypeConditionTypeSynced,
-		NodeTypeConditionHasCapacity,
-	}
-)
+var NodeTypeConditions = []agentstoragev1.ConditionType{
+	NodeTypeConditionTypeSynced,
+	NodeTypeConditionHasCapacity,
+}
 
 // +genclient
 // +genclient:nonNamespaced

@@ -6,12 +6,12 @@ import (
 )
 
 type PrivateClaims struct {
-	Loft Loft `json:"loft.sh,omitempty"`
+	Loft Devsy `json:"devsy.sh,omitempty"`
 }
 
 const LoftAdminKind = "LoftAdmin"
 
-type Loft struct {
+type Devsy struct {
 	// The UID of the user or team that this token is for
 	UID string `json:"uid,omitempty"`
 	// The kubernetes name of the user or team that this token is signed for

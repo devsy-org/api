@@ -545,15 +545,14 @@ type GitCredentialForwarding struct {
 }
 
 // DevPodWorkspaceTemplateStatus holds the status
-type DevPodWorkspaceTemplateStatus struct {
-}
+type DevPodWorkspaceTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // DevPodWorkspaceTemplateList contains a list of DevPodWorkspaceTemplate
 type DevPodWorkspaceTemplateList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `                          json:",inline"`
+	metav1.ListMeta `                          json:"metadata,omitempty"`
 	Items           []DevPodWorkspaceTemplate `json:"items"`
 }
 

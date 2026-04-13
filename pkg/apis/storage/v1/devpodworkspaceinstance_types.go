@@ -14,23 +14,23 @@ var (
 	}
 
 	// DevPodWorkspaceIDLabel holds the actual workspace id of the devpod workspace
-	DevPodWorkspaceIDLabel = "loft.sh/workspace-id"
+	DevPodWorkspaceIDLabel = "devsy.sh/workspace-id"
 
 	// DevPodWorkspaceUIDLabel holds the actual workspace uid of the devpod workspace
-	DevPodWorkspaceUIDLabel = "loft.sh/workspace-uid"
+	DevPodWorkspaceUIDLabel = "devsy.sh/workspace-uid"
 
 	// DevPodKubernetesProviderWorkspaceUIDLabel holds the actual workspace uid of the devpod workspace on resources
 	// created by the DevPod Kubernetes provider.
 	DevPodKubernetesProviderWorkspaceUIDLabel = "devpod.sh/workspace-uid"
 
 	// DevPodWorkspacePictureAnnotation holds the workspace picture url of the devpod workspace
-	DevPodWorkspacePictureAnnotation = "loft.sh/workspace-picture"
+	DevPodWorkspacePictureAnnotation = "devsy.sh/workspace-picture"
 
 	// DevPodWorkspaceSourceAnnotation holds the workspace source of the devpod workspace
-	DevPodWorkspaceSourceAnnotation = "loft.sh/workspace-source"
+	DevPodWorkspaceSourceAnnotation = "devsy.sh/workspace-source"
 
 	// DevPodClientsAnnotation holds the active clients for a workspace networpeer
-	DevPodClientsAnnotation = "loft.sh/devpod-clients"
+	DevPodClientsAnnotation = "devsy.sh/devpod-clients"
 )
 
 var (
@@ -137,7 +137,7 @@ type PresetRef struct {
 
 	// Version holds the preset version to use. Version is expected to
 	// be in semantic versioning format. Alternatively, you can also exchange
-	// major, minor or patch with an 'x' to tell Loft to automatically select
+	// major, minor or patch with an 'x' to tell Devsy to automatically select
 	// the latest major, minor or patch version.
 	// +optional
 	Version string `json:"version,omitempty"`
@@ -440,8 +440,8 @@ type DevPodCommandUpOptions struct {
 
 // DevPodWorkspaceInstanceList contains a list of DevPodWorkspaceInstance objects
 type DevPodWorkspaceInstanceList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `                          json:",inline"`
+	metav1.ListMeta `                          json:"metadata,omitempty"`
 	Items           []DevPodWorkspaceInstance `json:"items"`
 }
 

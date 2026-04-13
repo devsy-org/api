@@ -9,5 +9,5 @@
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package
 // +k8s:defaulter-gen=TypeMeta
-// +groupName=storage.loft.sh
+// +groupName=storage.devsy.sh
 package v1 // import "github.com/skevetter/api/apis/storage/v1"

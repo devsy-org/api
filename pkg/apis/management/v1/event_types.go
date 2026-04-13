@@ -21,8 +21,7 @@ type Event struct {
 }
 
 // EventSpec holds the specification
-type EventSpec struct {
-}
+type EventSpec struct{}
 
 // EventStatus holds the status, which is the parsed raw config
 type EventStatus struct {

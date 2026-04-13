@@ -7,13 +7,13 @@ import (
 )
 
 const (
-	LoftProjectSecret                           = "loft.sh/project-secret"
-	LoftProjectSecretNameLabel                  = "loft.sh/project-secret-name"
-	LoftProjectSecretDescription                = "loft.sh/project-secret-description"
-	LoftProjectSecretDisplayName                = "loft.sh/project-secret-displayname"
-	LoftProjectSecretOwner                      = "loft.sh/project-secret-owner"
-	LoftProjectSecretAccess                     = "loft.sh/project-secret-access"
-	LoftProjectSecretStatusConditionsAnnotation = "loft.sh/project-secret-status-conditions"
+	LoftProjectSecret                           = "devsy.sh/project-secret"
+	LoftProjectSecretNameLabel                  = "devsy.sh/project-secret-name"
+	LoftProjectSecretDescription                = "devsy.sh/project-secret-description"
+	LoftProjectSecretDisplayName                = "devsy.sh/project-secret-displayname"
+	LoftProjectSecretOwner                      = "devsy.sh/project-secret-owner"
+	LoftProjectSecretAccess                     = "devsy.sh/project-secret-access"
+	LoftProjectSecretStatusConditionsAnnotation = "devsy.sh/project-secret-status-conditions"
 )
 
 // +genclient

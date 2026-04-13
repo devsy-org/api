@@ -12,13 +12,11 @@ const (
 	NodeEnvironmentConditionTypeSynced         = "Synced"
 )
 
-var (
-	NodeEnvironmentConditions = []agentstoragev1.ConditionType{
-		NodeEnvironmentConditionTypeSyncProperties,
-		NodeEnvironmentConditionTypeProvisioned,
-		NodeEnvironmentConditionTypeSynced,
-	}
-)
+var NodeEnvironmentConditions = []agentstoragev1.ConditionType{
+	NodeEnvironmentConditionTypeSyncProperties,
+	NodeEnvironmentConditionTypeProvisioned,
+	NodeEnvironmentConditionTypeSynced,
+}
 
 // NodeEnvironmentPhase defines the phase of the NodeEnvironment
 type NodeEnvironmentPhase string
@@ -35,7 +33,7 @@ const (
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 // +kubebuilder:printcolumn:name="Status",type="string",JSONPath=".status.phase"
-// +kubebuilder:printcolumn:name="VCluster",type="string",JSONPath=".spec.vClusterRef"
+// +kubebuilder:printcolumn:name="Devsy",type="string",JSONPath=".spec.vClusterRef"
 // +kubebuilder:printcolumn:name="NodeProvider",type="string",JSONPath=".spec.nodeProviderRef"
 // +kubebuilder:subresource:status
 
@@ -65,8 +63,8 @@ type NodeEnvironmentSpec struct {
 	// ProviderRef is the name of the NodeProvider that this NodeEnvironment is based on.
 	ProviderRef string `json:"providerRef"`
 
-	// VClusterRef references source vCluster. This is required.
-	VClusterRef string `json:"vClusterRef"`
+	// DevsyRef references source vCluster. This is required.
+	DevsyRef string `json:"vClusterRef"`
 }
 
 type NodeEnvironmentStatus struct {

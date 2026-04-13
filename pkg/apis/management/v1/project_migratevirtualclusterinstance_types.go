@@ -6,7 +6,7 @@ import (
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ProjectMigrateVirtualClusterInstance holds project vclusterinstance migrate information
+// ProjectMigrateVirtualClusterInstance holds project devsyinstance migrate information
 // +subresource-request
 type ProjectMigrateVirtualClusterInstance struct {
 	metav1.TypeMeta   `json:",inline"`

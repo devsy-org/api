@@ -22,8 +22,7 @@ type License struct {
 	Status LicenseStatus `json:"status,omitempty"`
 }
 
-type LicenseSpec struct {
-}
+type LicenseSpec struct{}
 
 type LicenseStatus struct {
 	// License is the license data received from the license server.

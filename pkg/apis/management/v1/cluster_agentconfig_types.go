@@ -6,7 +6,7 @@ import (
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ClusterAgentConfig holds the loft agent configuration
+// ClusterAgentConfig holds the devsy agent configuration
 // +subresource-request
 type ClusterAgentConfig struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -28,20 +28,20 @@ type ClusterAgentConfigCommon struct {
 	// +optional
 	DefaultImageRegistry string `json:"defaultImageRegistry,omitempty"`
 
-	// TokenCaCert is the certificate authority the Loft tokens will
+	// TokenCaCert is the certificate authority the Devsy tokens will
 	// be signed with
 	// +optional
 	TokenCaCert []byte `json:"tokenCaCert,omitempty"`
 
-	// LoftHost defines the host for the agent's loft instance
+	// LoftHost defines the host for the agent's devsy instance
 	// +optional
 	LoftHost string `json:"loftHost,omitempty"`
 
-	// ProjectNamespacePrefix holds the prefix for loft project namespaces
+	// ProjectNamespacePrefix holds the prefix for devsy project namespaces
 	// +optional
 	ProjectNamespacePrefix string `json:"projectNamespacePrefix,omitempty"`
 
-	// LoftInstanceID defines the instance id from the loft instance
+	// LoftInstanceID defines the instance id from the devsy instance
 	// +optional
 	LoftInstanceID string `json:"loftInstanceID,omitempty"`
 
@@ -60,7 +60,7 @@ type AgentAuditConfig struct {
 	// +optional
 	Enabled bool `json:"enabled,omitempty"`
 
-	// If true, the agent will not send back any audit logs to Loft itself.
+	// If true, the agent will not send back any audit logs to Devsy itself.
 	// +optional
 	DisableAgentSyncBack bool `json:"disableAgentSyncBack,omitempty"`
 
@@ -68,7 +68,7 @@ type AgentAuditConfig struct {
 	// +optional
 	Level int `json:"level,omitempty"`
 
-	// The audit policy to use and log requests. By default loft will not log anything
+	// The audit policy to use and log requests. By default devsy will not log anything
 	// +optional
 	Policy AuditPolicy `json:"policy,omitempty"`
 

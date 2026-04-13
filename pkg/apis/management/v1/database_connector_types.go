@@ -28,5 +28,4 @@ type DatabaseConnectorSpec struct {
 }
 
 // DatabaseConnectorStatus holds the status
-type DatabaseConnectorStatus struct {
-}
+type DatabaseConnectorStatus struct{}

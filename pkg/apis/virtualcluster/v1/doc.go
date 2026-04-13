@@ -6,5 +6,5 @@
 // +k8s:deepcopy-gen=package,register
 // +k8s:conversion-gen=github.com/skevetter/api/pkg/apis/virtualcluster
 // +k8s:defaulter-gen=TypeMeta
-// +groupName=virtualcluster.loft.sh
+// +groupName=virtualcluster.devsy.sh
 package v1 // import "github.com/skevetter/api/pkg/apis/virtualcluster/v1"

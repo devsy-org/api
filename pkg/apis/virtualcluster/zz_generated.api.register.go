@@ -43,7 +43,7 @@ var (
 		func() runtime.Object { return &HelmReleaseList{} },
 	)
 	// Registered resources and subresources
-	ApiVersion = builders.NewApiGroup("virtualcluster.loft.sh").WithKinds(
+	ApiVersion = builders.NewApiGroup("virtualcluster.devsy.sh").WithKinds(
 		InternalHelmRelease,
 		InternalHelmReleaseStatus,
 	)

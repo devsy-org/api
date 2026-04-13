@@ -8,31 +8,31 @@ import (
 )
 
 const (
-	LoftCluster = "loft-cluster"
+	DevsyCluster = "devsy-cluster"
 
-	MetricsFederationServiceNamespaceAnnotation = "loft.sh/metrics-federation-service-namespace"
-	MetricsFederationServiceNameAnnotation      = "loft.sh/metrics-federation-service-name"
-	MetricsFederationServicePortAnnotation      = "loft.sh/metrics-federation-service-port"
+	MetricsFederationServiceNamespaceAnnotation = "devsy.sh/metrics-federation-service-namespace"
+	MetricsFederationServiceNameAnnotation      = "devsy.sh/metrics-federation-service-name"
+	MetricsFederationServicePortAnnotation      = "devsy.sh/metrics-federation-service-port"
 
-	PrometheusLastAppliedHashAnnotation                              = "loft.sh/prometheus-last-applied-hash"
+	PrometheusLastAppliedHashAnnotation                              = "devsy.sh/prometheus-last-applied-hash"
 	PrometheusDeployed                  agentstoragev1.ConditionType = "PrometheusDeployed"
 	PrometheusAvailable                 agentstoragev1.ConditionType = "PrometheusAvailable"
 
-	GlobalPrometheusServiceAddress                                         = "loft.sh/global-prometheus-service-address"
-	GlobalPrometheusLastAppliedHashAnnotation                              = "loft.sh/global-prometheus-last-applied-hash"
+	GlobalPrometheusServiceAddress                                         = "devsy.sh/global-prometheus-service-address"
+	GlobalPrometheusLastAppliedHashAnnotation                              = "devsy.sh/global-prometheus-last-applied-hash"
 	GlobalPrometheusDeployed                  agentstoragev1.ConditionType = "GlobalPrometheusDeployed"
 	GlobalPrometheusAvailable                 agentstoragev1.ConditionType = "GlobalPrometheusAvailable"
 
-	EmbeddedPostgresAppliedHashAnnotation                              = "loft.sh/platform-db-applied-hash"
+	EmbeddedPostgresAppliedHashAnnotation                              = "devsy.sh/platform-db-applied-hash"
 	EmbeddedPostgresDeployed              agentstoragev1.ConditionType = "EmbeddedPostgresDeployed"
 	EmbeddedPostgresAvailable             agentstoragev1.ConditionType = "EmbeddedPostgresAvailable"
 
-	OpenCostLastAppliedHashAnnotation                              = "loft.sh/opencost-last-applied-hash"
+	OpenCostLastAppliedHashAnnotation                              = "devsy.sh/opencost-last-applied-hash"
 	OpenCostDeployed                  agentstoragev1.ConditionType = "OpenCostDeployed"
 	OpenCostAvailable                 agentstoragev1.ConditionType = "OpenCostAvailable"
 
-	BuildKitServiceAddress                                         = "loft.sh/buildkit-service-address"
-	BuildKitLastAppliedHashAnnotation                              = "loft.sh/buildkit-last-applied-hash"
+	BuildKitServiceAddress                                         = "devsy.sh/buildkit-service-address"
+	BuildKitLastAppliedHashAnnotation                              = "devsy.sh/buildkit-last-applied-hash"
 	BuildKitDeployed                  agentstoragev1.ConditionType = "BuildKitDeployed"
 	BuildKitAvailable                 agentstoragev1.ConditionType = "BuildKitAvailable"
 )
@@ -156,8 +156,8 @@ const (
 
 // ClusterList contains a list of Cluster
 type ClusterList struct {
-	metav1.TypeMeta `json:",inline"`
-	metav1.ListMeta `json:"metadata,omitempty"`
+	metav1.TypeMeta `          json:",inline"`
+	metav1.ListMeta `          json:"metadata,omitempty"`
 	Items           []Cluster `json:"items"`
 }
 

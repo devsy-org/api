@@ -37,7 +37,7 @@ type StorageV1Interface interface {
 	VirtualClusterTemplatesGetter
 }
 
-// StorageV1Client is used to interact with features provided by the storage.loft.sh group.
+// StorageV1Client is used to interact with features provided by the storage.devsy.sh group.
 type StorageV1Client struct {
 	restClient rest.Interface
 }

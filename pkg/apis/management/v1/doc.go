@@ -6,5 +6,5 @@
 // +k8s:deepcopy-gen=package,register
 // +k8s:conversion-gen=github.com/skevetter/api/pkg/apis/management
 // +k8s:defaulter-gen=TypeMeta
-// +groupName=management.loft.sh
+// +groupName=management.devsy.sh
 package v1 // import "github.com/skevetter/api/pkg/apis/management/v1"

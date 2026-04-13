@@ -5,5 +5,5 @@
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package
 // +k8s:defaulter-gen=TypeMeta
-// +groupName=audit.loft.sh
+// +groupName=audit.devsy.sh
 package v1 // import "github.com/loft-sh/api/apis/audit/v1"
