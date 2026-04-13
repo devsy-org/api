@@ -6,6 +6,7 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
         args: ["--allow-multiple-documents"]
+        exclude: "ISSUE_TEMPLATE/"
       - id: check-added-large-files
       - id: check-merge-conflict
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
@@ -41,7 +42,7 @@ repos:
     hooks:
       - id: gitleaks
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.13.9
+    rev: v4.13.10
     hooks:
       - id: commitizen
         stages: [commit-msg]

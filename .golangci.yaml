@@ -8,7 +8,13 @@ formatters:
     - gofumpt
     - goimports
     - golines
+  exclusions:
+    paths:
+      - example
 linters:
+  exclusions:
+    paths:
+      - example
   enable:
     - cyclop
     - decorder
@@ -31,9 +37,6 @@ linters:
     - unparam
     - unused
     - whitespace
-  exclusions:
-    paths:
-      - example
   settings:
     cyclop:
       max-complexity: 8
