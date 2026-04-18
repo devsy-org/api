@@ -13,7 +13,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	"regexp"
 	"runtime"
 	"strings"
 
@@ -212,137 +211,13 @@ func installTools() {
 	}
 }
 
-// runRegister runs the custom API register generator from apiserver/pkg/generate
-// with a GroupConverter that deduplicates import aliases.
-//
-// The upstream generator has two known bugs that are patched here:
-//
-//  1. Import alias collisions: it joins the last two path segments to form aliases
-//     (e.g. "storage"+"v1" → "storagev1"), producing duplicates when two modules
-//     share that suffix. Fixed via a GroupConverter hook.
-//
-//  2. NewRESTFunc signature: the template emits `func() rest.Storage` but subresource
-//     closures call `RESTFunc(Factory)`. The correct signature is
-//     `func(managerfactory.SharedManagerFactory) rest.Storage`. Fixed via post-processing.
 func runRegister() {
 	fmt.Println("==> Generating API register...")
 
-	g := generate.Gen{
-		GroupConverter: fixImportAliases,
-	}
+	g := generate.Gen{}
 	if err := g.Execute("zz_generated.api.register.go", module+"/pkg/apis/..."); err != nil {
 		klog.Fatalf("register generation failed: %v", err)
 	}
-
-	patchRegisterFiles()
-}
-
-// patchRegisterFiles fixes the NewRESTFunc signature and adds the managerfactory
-// import to generated register files in packages that declare a Factory variable.
-func patchRegisterFiles() {
-	targets := []string{
-		filepath.Join("pkg", "apis", "management", "zz_generated.api.register.go"),
-		filepath.Join("pkg", "apis", "virtualcluster", "zz_generated.api.register.go"),
-	}
-
-	mfImport := fmt.Sprintf(`"%s/pkg/managerfactory"`, module)
-
-	for _, path := range targets {
-		data, err := os.ReadFile(path)
-		if err != nil {
-			klog.Warningf("skipping patch for %s: %v", path, err)
-			continue
-		}
-		content := string(data)
-
-		// 1. Fix NewRESTFunc signature.
-		content = strings.Replace(content,
-			"type NewRESTFunc func() rest.Storage",
-			"type NewRESTFunc func(factory managerfactory.SharedManagerFactory) rest.Storage",
-			1)
-
-		// 2. Fix top-level REST closures missing the Factory arg.
-		restFuncCallRe := regexp.MustCompile(`return (New\w+RESTFunc)\(\)`)
-		content = restFuncCallRe.ReplaceAllString(content, "return ${1}(Factory)")
-
-		// 3. Add managerfactory import if not already present.
-		if !strings.Contains(content, mfImport) {
-			content = strings.Replace(content,
-				"import (",
-				"import (\n\t"+mfImport,
-				1)
-		}
-
-		if err := os.WriteFile(path, []byte(content), 0o644); err != nil {
-			klog.Fatalf("failed to write patched %s: %v", path, err)
-		}
-
-		// Run goimports to fix formatting after our edits.
-		goimportsBin := "goimports"
-		if p := filepath.Join(gobin(), "goimports"); fileExists(p) {
-			goimportsBin = p
-		}
-		fmtCmd := exec.Command(goimportsBin, "-w", path)
-		if out, err := fmtCmd.CombinedOutput(); err != nil {
-			fmtCmd = exec.Command("gofmt", "-w", path)
-			if out2, err2 := fmtCmd.CombinedOutput(); err2 != nil {
-				klog.Warningf("gofmt %s: %s %v", path, string(append(out, out2...)), err2)
-			}
-		}
-	}
-}
-
-// fixImportAliases walks every struct field in the API group and rewrites
-// any duplicate import aliases so they are unique.
-func fixImportAliases(apigroup *generate.APIGroup) {
-	seen := map[string]string{}
-	importRe := regexp.MustCompile(`^(\w+)\s+"(.+)"$`)
-
-	for _, s := range apigroup.Structs {
-		for _, f := range s.Fields {
-			if f.UnversionedImport == "" {
-				continue
-			}
-
-			m := importRe.FindStringSubmatch(f.UnversionedImport)
-			if m == nil {
-				continue
-			}
-			alias, pkgPath := m[1], m[2]
-
-			if first, exists := seen[alias]; exists && first != pkgPath {
-				newAlias := disambiguateAlias(pkgPath, alias)
-				f.UnversionedImport = fmt.Sprintf(`%s "%s"`, newAlias, pkgPath)
-				f.UnversionedType = strings.Replace(f.UnversionedType, alias+".", newAlias+".", 1)
-				seen[newAlias] = pkgPath
-			} else {
-				seen[alias] = pkgPath
-			}
-		}
-	}
-}
-
-// disambiguateAlias creates a unique import alias by incorporating the module
-// name from the package path. For "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
-// with base alias "storagev1", this produces "agentstoragev1".
-func disambiguateAlias(pkgPath, baseAlias string) string {
-	parts := strings.Split(pkgPath, "/")
-
-	moduleName := ""
-	if len(parts) >= 3 {
-		moduleName = parts[2]
-	}
-
-	prefix := moduleName
-	prefix = strings.ReplaceAll(prefix, "-", "")
-	prefix = strings.TrimSuffix(prefix, "apis")
-	prefix = strings.TrimSuffix(prefix, "api")
-
-	if prefix == "" || prefix == baseAlias {
-		prefix = strings.ReplaceAll(moduleName, "-", "")
-	}
-
-	return prefix + baseAlias
 }
 
 func runGenerator(tool string, baseArgs ...string) {
