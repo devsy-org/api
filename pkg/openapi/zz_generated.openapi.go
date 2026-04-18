@@ -5350,7 +5350,7 @@ func schema_pkg_apis_management_v1_ConfigStatus(ref common.ReferenceCallback) co
 					},
 					"oidc": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DEPRECATED: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, vCluster Platform as an OIDC Provider is enabled but does not function without OIDC clients.",
+							Description: "DEPRECATED: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, Devsy Platform as an OIDC Provider is enabled but does not function without OIDC clients.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/management/v1.OIDC"),
 						},
 					},
@@ -32224,7 +32224,7 @@ func schema_pkg_apis_ui_v1_UISettingsSpec(ref common.ReferenceCallback) common.O
 					},
 					"hasHelmRelease": {
 						SchemaProps: spec.SchemaProps{
-							Description: "HasHelmRelease indicates whether the vCluster Platform instance has been installed via Helm",
+							Description: "HasHelmRelease indicates whether the Devsy Platform instance has been installed via Helm",
 							Type:        []string{"boolean"},
 							Format:      "",
 						},
@@ -32252,7 +32252,7 @@ func schema_pkg_apis_ui_v1_UISettingsSpec(ref common.ReferenceCallback) common.O
 					},
 					"loftHosted": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevsyHosted indicates whether the vCluster Platform instance is hosted and operated by Devsy Labs Inc.",
+							Description: "DevsyHosted indicates whether the Devsy Platform instance is hosted and operated by Devsy Labs Inc.",
 							Type:        []string{"boolean"},
 							Format:      "",
 						},
