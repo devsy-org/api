@@ -47,7 +47,7 @@ type NetworkPeerStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// NetworkPeerList contains a list of NetworkPeers
+// NetworkPeerList contains a list of NetworkPeers.
 type NetworkPeerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

@@ -19,7 +19,7 @@ type ConvertVirtualClusterConfig struct {
 	Status ConvertVirtualClusterConfigStatus `json:"status,omitempty"`
 }
 
-// ConvertVirtualClusterConfigSpec holds the specification
+// ConvertVirtualClusterConfigSpec holds the specification.
 type ConvertVirtualClusterConfigSpec struct {
 	// Annotations are annotations on the virtual cluster
 	// +optional
@@ -34,7 +34,7 @@ type ConvertVirtualClusterConfigSpec struct {
 	Values string `json:"values,omitempty"`
 }
 
-// ConvertVirtualClusterConfigStatus holds the status
+// ConvertVirtualClusterConfigStatus holds the status.
 type ConvertVirtualClusterConfigStatus struct {
 	// Values are the converted config values for the virtual cluster
 	// +optional

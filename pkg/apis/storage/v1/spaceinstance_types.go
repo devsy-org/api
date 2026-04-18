@@ -212,7 +212,7 @@ var (
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// SpaceInstanceList contains a list of SpaceInstance objects
+// SpaceInstanceList contains a list of SpaceInstance objects.
 type SpaceInstanceList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

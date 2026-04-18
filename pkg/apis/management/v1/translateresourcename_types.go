@@ -19,7 +19,7 @@ type TranslateDevsyResourceName struct {
 	Status TranslateDevsyResourceNameStatus `json:"status,omitempty"`
 }
 
-// TranslateDevsyResourceNameSpec holds the specification
+// TranslateDevsyResourceNameSpec holds the specification.
 type TranslateDevsyResourceNameSpec struct {
 	// Name is the name of resource we want to rename
 	Name string `json:"name"`
@@ -31,7 +31,7 @@ type TranslateDevsyResourceNameSpec struct {
 	DevsyName string `json:"devsyName"`
 }
 
-// TranslateDevsyResourceNameStatus holds the status
+// TranslateDevsyResourceNameStatus holds the status.
 type TranslateDevsyResourceNameStatus struct {
 	// Name is the converted name of resource
 	// +optional

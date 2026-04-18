@@ -20,10 +20,10 @@ type Feature struct {
 	Status FeatureStatus `json:"status,omitempty"`
 }
 
-// FeatureSpec holds the specification
+// FeatureSpec holds the specification.
 type FeatureSpec struct{}
 
-// FeatureStatus holds the status
+// FeatureStatus holds the status.
 type FeatureStatus struct {
 	// Feature contains all feature details (as typically returned by license service)
 	licenseapi.Feature `json:",inline"`

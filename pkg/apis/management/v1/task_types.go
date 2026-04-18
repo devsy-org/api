@@ -21,12 +21,12 @@ type Task struct {
 	Status TaskStatus `json:"status,omitempty"`
 }
 
-// TaskSpec holds the specification
+// TaskSpec holds the specification.
 type TaskSpec struct {
 	storagev1.TaskSpec `json:",inline"`
 }
 
-// TaskStatus holds the status
+// TaskStatus holds the status.
 type TaskStatus struct {
 	storagev1.TaskStatus `json:",inline"`
 

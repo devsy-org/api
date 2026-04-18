@@ -71,7 +71,7 @@ func Resource(resource string) schema.GroupResource {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type HelmRelease struct {

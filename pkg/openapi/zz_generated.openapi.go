@@ -1531,7 +1531,7 @@ func schema_pkg_apis_management_v1_AgentAuditEventSpec(ref common.ReferenceCallb
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AgentAuditEventSpec holds the specification",
+				Description: "AgentAuditEventSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"events": {
@@ -1559,7 +1559,7 @@ func schema_pkg_apis_management_v1_AgentAuditEventStatus(ref common.ReferenceCal
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AgentAuditEventStatus holds the status",
+				Description: "AgentAuditEventStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -1922,7 +1922,7 @@ func schema_pkg_apis_management_v1_AppSpec(ref common.ReferenceCallback) common.
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AppSpec holds the specification",
+				Description: "AppSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -2090,7 +2090,7 @@ func schema_pkg_apis_management_v1_AppStatus(ref common.ReferenceCallback) commo
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AppStatus holds the status",
+				Description: "AppStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -3537,7 +3537,7 @@ func schema_pkg_apis_management_v1_BackupStatus(ref common.ReferenceCallback) co
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "BackupStatus holds the status",
+				Description: "BackupStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"rawBackup": {
@@ -3584,7 +3584,7 @@ func schema_pkg_apis_management_v1_Cluster(ref common.ReferenceCallback) common.
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "Cluster holds the cluster information",
+				Description: "Cluster holds the cluster information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -3893,7 +3893,7 @@ func schema_pkg_apis_management_v1_ClusterAccessSpec(ref common.ReferenceCallbac
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterAccessSpec holds the specification",
+				Description: "ClusterAccessSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -3964,7 +3964,7 @@ func schema_pkg_apis_management_v1_ClusterAccessStatus(ref common.ReferenceCallb
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterAccessStatus holds the status",
+				Description: "ClusterAccessStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"clusters": {
@@ -4962,7 +4962,7 @@ func schema_pkg_apis_management_v1_ClusterRoleTemplateSpec(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterRoleTemplateSpec holds the specification",
+				Description: "ClusterRoleTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -5046,7 +5046,7 @@ func schema_pkg_apis_management_v1_ClusterRoleTemplateStatus(ref common.Referenc
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterRoleTemplateStatus holds the status",
+				Description: "ClusterRoleTemplateStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"clusters": {
@@ -5073,7 +5073,7 @@ func schema_pkg_apis_management_v1_ClusterSpec(ref common.ReferenceCallback) com
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterSpec holds the specification",
+				Description: "ClusterSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -5169,7 +5169,7 @@ func schema_pkg_apis_management_v1_ClusterStatus(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterStatus holds the status",
+				Description: "ClusterStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"phase": {
@@ -5223,7 +5223,7 @@ func schema_pkg_apis_management_v1_Config(ref common.ReferenceCallback) common.O
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "Config holds the devsy configuration",
+				Description: "Config holds the devsy configuration.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -5318,12 +5318,12 @@ func schema_pkg_apis_management_v1_ConfigSpec(ref common.ReferenceCallback) comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ConfigSpec holds the specification",
+				Description: "ConfigSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"raw": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Raw holds the raw config",
+							Description: "Raw holds the raw config.",
 							Type:        []string{"string"},
 							Format:      "byte",
 						},
@@ -5658,7 +5658,7 @@ func schema_pkg_apis_management_v1_ConvertVirtualClusterConfigSpec(ref common.Re
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ConvertVirtualClusterConfigSpec holds the specification",
+				Description: "ConvertVirtualClusterConfigSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"annotations": {
@@ -5701,7 +5701,7 @@ func schema_pkg_apis_management_v1_ConvertVirtualClusterConfigStatus(ref common.
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ConvertVirtualClusterConfigStatus holds the status",
+				Description: "ConvertVirtualClusterConfigStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"values": {
@@ -6010,7 +6010,7 @@ func schema_pkg_apis_management_v1_DatabaseConnectorSpec(ref common.ReferenceCal
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DatabaseConnectorSpec holds the specification",
+				Description: "DatabaseConnectorSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"type": {
@@ -6036,7 +6036,7 @@ func schema_pkg_apis_management_v1_DatabaseConnectorStatus(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DatabaseConnectorStatus holds the status",
+				Description: "DatabaseConnectorStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -6142,7 +6142,7 @@ func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateSpec(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyEnvironmentTemplateSpec holds the specification",
+				Description: "DevsyEnvironmentTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -6211,7 +6211,7 @@ func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateStatus(ref common.Ref
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyEnvironmentTemplateStatus holds the status",
+				Description: "DevsyEnvironmentTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -6780,7 +6780,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceInstanceSpec holds the specification",
+				Description: "DevsyWorkspaceInstanceSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -6881,7 +6881,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStatus(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceInstanceStatus holds the status",
+				Description: "DevsyWorkspaceInstanceStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"resolvedTarget": {
@@ -7705,7 +7705,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspacePresetSpec(ref common.Reference
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePresetSpec holds the specification",
+				Description: "DevsyWorkspacePresetSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -7787,7 +7787,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspacePresetStatus(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePresetStatus holds the status",
+				Description: "DevsyWorkspacePresetStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -7893,7 +7893,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceTemplateSpec holds the specification",
+				Description: "DevsyWorkspaceTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -7977,7 +7977,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateStatus(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceTemplateStatus holds the status",
+				Description: "DevsyWorkspaceTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -8225,7 +8225,7 @@ func schema_pkg_apis_management_v1_EventSpec(ref common.ReferenceCallback) commo
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "EventSpec holds the specification",
+				Description: "EventSpec holds the specification.",
 				Type:        []string{"object"},
 			},
 		},
@@ -8488,7 +8488,7 @@ func schema_pkg_apis_management_v1_FeatureSpec(ref common.ReferenceCallback) com
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "FeatureSpec holds the specification",
+				Description: "FeatureSpec holds the specification.",
 				Type:        []string{"object"},
 			},
 		},
@@ -8499,7 +8499,7 @@ func schema_pkg_apis_management_v1_FeatureStatus(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "FeatureStatus holds the status",
+				Description: "FeatureStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -9001,7 +9001,7 @@ func schema_pkg_apis_management_v1_License(ref common.ReferenceCallback) common.
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "License holds the license information",
+				Description: "License holds the license information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -10980,7 +10980,7 @@ func schema_pkg_apis_management_v1_OIDCClientSpec(ref common.ReferenceCallback) 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "OIDCClientSpec holds the specification",
+				Description: "OIDCClientSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -11030,7 +11030,7 @@ func schema_pkg_apis_management_v1_OIDCClientStatus(ref common.ReferenceCallback
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "OIDCClientStatus holds the status",
+				Description: "OIDCClientStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -12738,7 +12738,7 @@ func schema_pkg_apis_management_v1_ProjectSecretSpec(ref common.ReferenceCallbac
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ProjectSecretSpec holds the specification",
+				Description: "ProjectSecretSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -12802,7 +12802,7 @@ func schema_pkg_apis_management_v1_ProjectSecretStatus(ref common.ReferenceCallb
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ProjectSecretStatus holds the status",
+				Description: "ProjectSecretStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"conditions": {
@@ -12831,7 +12831,7 @@ func schema_pkg_apis_management_v1_ProjectSpec(ref common.ReferenceCallback) com
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ProjectSpec holds the specification",
+				Description: "ProjectSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -12987,12 +12987,12 @@ func schema_pkg_apis_management_v1_ProjectStatus(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ProjectStatus holds the status",
+				Description: "ProjectStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"quotas": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Quotas holds the quota status",
+							Description: "Quotas holds the quota status.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"),
 						},
 					},
@@ -13451,7 +13451,7 @@ func schema_pkg_apis_management_v1_RegisterVirtualClusterSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "RegisterVirtualClusterSpec holds the specification",
+				Description: "RegisterVirtualClusterSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"serviceUID": {
@@ -13513,7 +13513,7 @@ func schema_pkg_apis_management_v1_RegisterVirtualClusterStatus(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "RegisterVirtualClusterStatus holds the status",
+				Description: "RegisterVirtualClusterStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -14259,7 +14259,7 @@ func schema_pkg_apis_management_v1_SharedSecretSpec(ref common.ReferenceCallback
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SharedSecretSpec holds the specification",
+				Description: "SharedSecretSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -14323,7 +14323,7 @@ func schema_pkg_apis_management_v1_SharedSecretStatus(ref common.ReferenceCallba
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SharedSecretStatus holds the status",
+				Description: "SharedSecretStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"conditions": {
@@ -14489,7 +14489,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceSpec(ref common.ReferenceCallbac
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceInstanceSpec holds the specification",
+				Description: "SpaceInstanceSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -14578,7 +14578,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceInstanceStatus holds the status",
+				Description: "SpaceInstanceStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"phase": {
@@ -14762,7 +14762,7 @@ func schema_pkg_apis_management_v1_SpaceTemplateSpec(ref common.ReferenceCallbac
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceTemplateSpec holds the specification",
+				Description: "SpaceTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -14846,7 +14846,7 @@ func schema_pkg_apis_management_v1_SpaceTemplateStatus(ref common.ReferenceCallb
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceTemplateStatus holds the status",
+				Description: "SpaceTemplateStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"apps": {
@@ -15447,7 +15447,7 @@ func schema_pkg_apis_management_v1_TaskSpec(ref common.ReferenceCallback) common
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TaskSpec holds the specification",
+				Description: "TaskSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -15509,7 +15509,7 @@ func schema_pkg_apis_management_v1_TaskStatus(ref common.ReferenceCallback) comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TaskStatus holds the status",
+				Description: "TaskStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"started": {
@@ -15576,7 +15576,7 @@ func schema_pkg_apis_management_v1_Team(ref common.ReferenceCallback) common.Ope
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "Team holds the team information",
+				Description: "Team holds the team information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -16325,7 +16325,7 @@ func schema_pkg_apis_management_v1_TranslateDevsyResourceNameSpec(ref common.Ref
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TranslateDevsyResourceNameSpec holds the specification",
+				Description: "TranslateDevsyResourceNameSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -16363,7 +16363,7 @@ func schema_pkg_apis_management_v1_TranslateDevsyResourceNameStatus(ref common.R
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TranslateDevsyResourceNameStatus holds the status",
+				Description: "TranslateDevsyResourceNameStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -16498,7 +16498,7 @@ func schema_pkg_apis_management_v1_User(ref common.ReferenceCallback) common.Ope
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "User holds the user information",
+				Description: "User holds the user information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -18425,7 +18425,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterInstanceSpec holds the specification",
+				Description: "VirtualClusterInstanceSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -18535,7 +18535,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterInstanceStatus holds the status",
+				Description: "VirtualClusterInstanceStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"phase": {
@@ -19221,7 +19221,7 @@ func schema_pkg_apis_management_v1_VirtualClusterTemplateSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterTemplateSpec holds the specification",
+				Description: "VirtualClusterTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -19311,7 +19311,7 @@ func schema_pkg_apis_management_v1_VirtualClusterTemplateStatus(ref common.Refer
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterTemplateStatus holds the status",
+				Description: "VirtualClusterTemplateStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"apps": {
@@ -19419,7 +19419,7 @@ func schema_pkg_apis_storage_v1_AccessKey(ref common.ReferenceCallback) common.O
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AccessKey holds the session information",
+				Description: "AccessKey holds the session information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -19466,7 +19466,7 @@ func schema_pkg_apis_storage_v1_AccessKeyList(ref common.ReferenceCallback) comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AccessKeyList contains a list of AccessKey",
+				Description: "AccessKeyList contains a list of AccessKey.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -20354,7 +20354,7 @@ func schema_pkg_apis_storage_v1_AppList(ref common.ReferenceCallback) common.Ope
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AppList contains a list of App",
+				Description: "AppList contains a list of App.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -20561,7 +20561,7 @@ func schema_pkg_apis_storage_v1_AppSpec(ref common.ReferenceCallback) common.Ope
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AppSpec holds the specification",
+				Description: "AppSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -20729,7 +20729,7 @@ func schema_pkg_apis_storage_v1_AppStatus(ref common.ReferenceCallback) common.O
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "AppStatus holds the status",
+				Description: "AppStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -21443,7 +21443,7 @@ func schema_pkg_apis_storage_v1_ClusterAccessList(ref common.ReferenceCallback) 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterAccessList contains a list of ClusterAccess objects",
+				Description: "ClusterAccessList contains a list of ClusterAccess objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -21573,7 +21573,7 @@ func schema_pkg_apis_storage_v1_ClusterList(ref common.ReferenceCallback) common
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterList contains a list of Cluster",
+				Description: "ClusterList contains a list of Cluster.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -21714,7 +21714,7 @@ func schema_pkg_apis_storage_v1_ClusterRoleTemplateList(ref common.ReferenceCall
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ClusterRoleTemplateList contains a list of ClusterRoleTemplate objects",
+				Description: "ClusterRoleTemplateList contains a list of ClusterRoleTemplate objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -23041,7 +23041,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceList(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects",
+				Description: "DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -23578,7 +23578,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplate(ref common.ReferenceCa
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePodTemplate is a less restrictive PodTemplate",
+				Description: "DevsyWorkspacePodTemplate is a less restrictive PodTemplate.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"metadata": {
@@ -23606,7 +23606,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplateSpec(ref common.Referen
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePodTemplateSpec is a less restrictive PodSpec",
+				Description: "DevsyWorkspacePodTemplateSpec is a less restrictive PodSpec.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"volumes": {
@@ -24017,7 +24017,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePresetList(ref common.ReferenceCal
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePresetList contains a list of DevsyWorkspacePreset objects",
+				Description: "DevsyWorkspacePresetList contains a list of DevsyWorkspacePreset objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -24173,7 +24173,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePresetStatus(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspacePresetStatus holds the status",
+				Description: "DevsyWorkspacePresetStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -24436,7 +24436,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateList(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate",
+				Description: "DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -24485,7 +24485,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateSpec(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceTemplateSpec holds the specification",
+				Description: "DevsyWorkspaceTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -24569,7 +24569,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateStatus(ref common.Referenc
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyWorkspaceTemplateStatus holds the status",
+				Description: "DevsyWorkspaceTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -26090,7 +26090,7 @@ func schema_pkg_apis_storage_v1_NetworkPeerList(ref common.ReferenceCallback) co
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NetworkPeerList contains a list of NetworkPeers",
+				Description: "NetworkPeerList contains a list of NetworkPeers.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -26297,7 +26297,7 @@ func schema_pkg_apis_storage_v1_NodeClaimList(ref common.ReferenceCallback) comm
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeClaimList contains a list of NodeClaim",
+				Description: "NodeClaimList contains a list of NodeClaim.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -26559,7 +26559,7 @@ func schema_pkg_apis_storage_v1_NodeEnvironmentList(ref common.ReferenceCallback
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeEnvironmentList contains a list of NodeEnvironment",
+				Description: "NodeEnvironmentList contains a list of NodeEnvironment.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -26836,7 +26836,7 @@ func schema_pkg_apis_storage_v1_NodeProviderList(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeProviderList contains a list of NodeProvider",
+				Description: "NodeProviderList contains a list of NodeProvider.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27093,7 +27093,7 @@ func schema_pkg_apis_storage_v1_NodeTypeList(ref common.ReferenceCallback) commo
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeTypeList contains a list of NodeType",
+				Description: "NodeTypeList contains a list of NodeType.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27499,7 +27499,7 @@ func schema_pkg_apis_storage_v1_ProjectList(ref common.ReferenceCallback) common
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ProjectList contains a list of Project objects",
+				Description: "ProjectList contains a list of Project objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27707,7 +27707,7 @@ func schema_pkg_apis_storage_v1_ProjectStatus(ref common.ReferenceCallback) comm
 				Properties: map[string]spec.Schema{
 					"quotas": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Quotas holds the quota status",
+							Description: "Quotas holds the quota status.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"),
 						},
 					},
@@ -28303,7 +28303,7 @@ func schema_pkg_apis_storage_v1_SharedSecretList(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SharedSecretList contains a list of SharedSecret",
+				Description: "SharedSecretList contains a list of SharedSecret.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -28352,7 +28352,7 @@ func schema_pkg_apis_storage_v1_SharedSecretSpec(ref common.ReferenceCallback) c
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SharedSecretSpec holds the specification",
+				Description: "SharedSecretSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -28416,7 +28416,7 @@ func schema_pkg_apis_storage_v1_SharedSecretStatus(ref common.ReferenceCallback)
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SharedSecretStatus holds the status",
+				Description: "SharedSecretStatus holds the status.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"conditions": {
@@ -28492,7 +28492,7 @@ func schema_pkg_apis_storage_v1_SpaceInstanceList(ref common.ReferenceCallback) 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceInstanceList contains a list of SpaceInstance objects",
+				Description: "SpaceInstanceList contains a list of SpaceInstance objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -28835,7 +28835,7 @@ func schema_pkg_apis_storage_v1_SpaceTemplateList(ref common.ReferenceCallback) 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceTemplateList contains a list of SpaceTemplate",
+				Description: "SpaceTemplateList contains a list of SpaceTemplate.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -28884,7 +28884,7 @@ func schema_pkg_apis_storage_v1_SpaceTemplateSpec(ref common.ReferenceCallback) 
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceTemplateSpec holds the specification",
+				Description: "SpaceTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -28968,7 +28968,7 @@ func schema_pkg_apis_storage_v1_SpaceTemplateStatus(ref common.ReferenceCallback
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SpaceTemplateStatus holds the status",
+				Description: "SpaceTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -29299,7 +29299,7 @@ func schema_pkg_apis_storage_v1_TaskList(ref common.ReferenceCallback) common.Op
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TaskList contains a list of Task",
+				Description: "TaskList contains a list of Task.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -29512,7 +29512,7 @@ func schema_pkg_apis_storage_v1_TeamList(ref common.ReferenceCallback) common.Op
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "TeamList contains a list of Team",
+				Description: "TeamList contains a list of Team.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -30114,7 +30114,7 @@ func schema_pkg_apis_storage_v1_UserList(ref common.ReferenceCallback) common.Op
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "UserList contains a list of User",
+				Description: "UserList contains a list of User.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -30830,7 +30830,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterInstanceList(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterInstanceList contains a list of VirtualClusterInstance objects",
+				Description: "VirtualClusterInstanceList contains a list of VirtualClusterInstance objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -31414,7 +31414,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterTemplateList(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterTemplateList contains a list of VirtualClusterTemplate",
+				Description: "VirtualClusterTemplateList contains a list of VirtualClusterTemplate.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -31482,7 +31482,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterTemplateSpec(ref common.ReferenceC
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterTemplateSpec holds the specification",
+				Description: "VirtualClusterTemplateSpec holds the specification.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -31572,7 +31572,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterTemplateStatus(ref common.Referenc
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "VirtualClusterTemplateStatus holds the status",
+				Description: "VirtualClusterTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},

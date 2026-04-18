@@ -48,7 +48,7 @@ func (a *VirtualClusterTemplate) SetAccess(access []Access) {
 	a.Spec.Access = access
 }
 
-// VirtualClusterTemplateSpec holds the specification
+// VirtualClusterTemplateSpec holds the specification.
 type VirtualClusterTemplateSpec struct {
 	// DisplayName is the name that is shown in the UI
 	// +optional
@@ -163,12 +163,12 @@ type TemplateMetadata struct {
 	Annotations map[string]string `json:"annotations,omitempty"`
 }
 
-// VirtualClusterTemplateStatus holds the status
+// VirtualClusterTemplateStatus holds the status.
 type VirtualClusterTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualClusterTemplateList contains a list of VirtualClusterTemplate
+// VirtualClusterTemplateList contains a list of VirtualClusterTemplate.
 type VirtualClusterTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

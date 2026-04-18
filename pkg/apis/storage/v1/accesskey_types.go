@@ -8,7 +8,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AccessKey holds the session information
+// AccessKey holds the session information.
 // +k8s:openapi-gen=true
 type AccessKey struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -446,7 +446,7 @@ type AccessKeyStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AccessKeyList contains a list of AccessKey
+// AccessKeyList contains a list of AccessKey.
 type AccessKeyList struct {
 	metav1.TypeMeta `            json:",inline"`
 	metav1.ListMeta `            json:"metadata,omitempty"`

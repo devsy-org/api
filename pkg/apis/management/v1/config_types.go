@@ -12,7 +12,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Config holds the devsy configuration
+// Config holds the devsy configuration.
 // +k8s:openapi-gen=true
 // +resource:path=configs,rest=ConfigREST
 type Config struct {
@@ -23,9 +23,9 @@ type Config struct {
 	Status ConfigStatus `json:"status,omitempty"`
 }
 
-// ConfigSpec holds the specification
+// ConfigSpec holds the specification.
 type ConfigSpec struct {
-	// Raw holds the raw config
+	// Raw holds the raw config.
 	// +optional
 	Raw []byte `json:"raw,omitempty"`
 }

@@ -8,9 +8,9 @@ import (
 
 	pkglicenseapi "github.com/devsy-org/admin-apis/pkg/licenseapi"
 	clusterv1 "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1"
-	storagev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
+	agentstoragev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
 	auditv1 "github.com/devsy-org/api/pkg/apis/audit/v1"
-	apistoragev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
 	uiv1 "github.com/devsy-org/api/pkg/apis/ui/v1"
 	"github.com/devsy-org/apiserver/pkg/builders"
 	"github.com/devsy-org/apiserver/pkg/managerfactory"
@@ -1691,17 +1691,17 @@ type AppCredentials struct {
 }
 
 type AppSpec struct {
-	apistoragev1.AppSpec `json:",inline"`
+	storagev1.AppSpec `json:",inline"`
 }
 
 type AppStatus struct {
-	apistoragev1.AppStatus `json:",inline"`
+	storagev1.AppStatus `json:",inline"`
 }
 
 type Apps struct {
-	NoDefault      bool                               `json:"noDefault,omitempty"`
-	Repositories   []apistoragev1.HelmChartRepository `json:"repositories,omitempty"`
-	PredefinedApps []PredefinedApp                    `json:"predefinedApps,omitempty"`
+	NoDefault      bool                            `json:"noDefault,omitempty"`
+	Repositories   []storagev1.HelmChartRepository `json:"repositories,omitempty"`
+	PredefinedApps []PredefinedApp                 `json:"predefinedApps,omitempty"`
 }
 
 type AssignedVia struct {
@@ -1883,7 +1883,7 @@ type Cloud struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type Cluster struct {
@@ -1922,19 +1922,19 @@ type ClusterAccessRole struct {
 }
 
 type ClusterAccessSpec struct {
-	apistoragev1.ClusterAccessSpec `json:",inline"`
+	storagev1.ClusterAccessSpec `json:",inline"`
 }
 
 type ClusterAccessStatus struct {
-	apistoragev1.ClusterAccessStatus `json:",inline"`
-	Clusters                         []*apistoragev1.EntityInfo       `json:"clusters,omitempty"`
-	Users                            []*apistoragev1.UserOrTeamEntity `json:"users,omitempty"`
-	Teams                            []*apistoragev1.EntityInfo       `json:"teams,omitempty"`
+	storagev1.ClusterAccessStatus `json:",inline"`
+	Clusters                      []*storagev1.EntityInfo       `json:"clusters,omitempty"`
+	Users                         []*storagev1.UserOrTeamEntity `json:"users,omitempty"`
+	Teams                         []*storagev1.EntityInfo       `json:"teams,omitempty"`
 }
 
 type ClusterAccounts struct {
-	Accounts []string             `json:"accounts,omitempty"`
-	Cluster  apistoragev1.Cluster `json:"cluster,omitempty"`
+	Accounts []string          `json:"accounts,omitempty"`
+	Cluster  storagev1.Cluster `json:"cluster,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -1963,8 +1963,8 @@ type ClusterAgentConfigCommon struct {
 type ClusterCharts struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Charts            []apistoragev1.HelmChart `json:"charts"`
-	Busy              bool                     `json:"busy,omitempty"`
+	Charts            []storagev1.HelmChart `json:"charts"`
+	Busy              bool                  `json:"busy,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -1977,7 +1977,7 @@ type ClusterDomain struct {
 }
 
 type ClusterMember struct {
-	Info apistoragev1.EntityInfo `json:"info,omitempty"`
+	Info storagev1.EntityInfo `json:"info,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2019,21 +2019,21 @@ type ClusterRoleTemplate struct {
 }
 
 type ClusterRoleTemplateSpec struct {
-	apistoragev1.ClusterRoleTemplateSpec `json:",inline"`
+	storagev1.ClusterRoleTemplateSpec `json:",inline"`
 }
 
 type ClusterRoleTemplateStatus struct {
-	apistoragev1.ClusterRoleTemplateStatus `json:",inline"`
-	Clusters                               []*apistoragev1.EntityInfo `json:"clusters,omitempty"`
+	storagev1.ClusterRoleTemplateStatus `json:",inline"`
+	Clusters                            []*storagev1.EntityInfo `json:"clusters,omitempty"`
 }
 
 type ClusterSpec struct {
-	apistoragev1.ClusterSpec `json:",inline"`
+	storagev1.ClusterSpec `json:",inline"`
 }
 
 type ClusterStatus struct {
-	apistoragev1.ClusterStatus `json:",inline"`
-	Online                     bool `json:"online,omitempty"`
+	storagev1.ClusterStatus `json:",inline"`
+	Online                  bool `json:"online,omitempty"`
 }
 
 // +genclient
@@ -2052,21 +2052,21 @@ type ConfigSpec struct {
 }
 
 type ConfigStatus struct {
-	Authentication              Authentication                     `json:"auth,omitempty"`
-	OIDC                        *OIDC                              `json:"oidc,omitempty"`
-	Apps                        *Apps                              `json:"apps,omitempty"`
-	Audit                       *Audit                             `json:"audit,omitempty"`
-	DevsyHost                   string                             `json:"loftHost,omitempty"`
-	ProjectNamespacePrefix      *string                            `json:"projectNamespacePrefix,omitempty"`
-	DevsySubDomain              string                             `json:"devPodSubDomain,omitempty"`
-	UISettings                  *uiv1.UISettingsConfig             `json:"uiSettings,omitempty"`
-	VaultIntegration            *apistoragev1.VaultIntegrationSpec `json:"vault,omitempty"`
-	DisableConfigEndpoint       bool                               `json:"disableConfigEndpoint,omitempty"`
-	AuthenticateVersionEndpoint bool                               `json:"authenticateVersionEndpoint,omitempty"`
-	Cloud                       *Cloud                             `json:"cloud,omitempty"`
-	CostControl                 *CostControl                       `json:"costControl,omitempty"`
-	PlatformDB                  *PlatformDB                        `json:"platformDB,omitempty"`
-	ImageBuilder                *ImageBuilder                      `json:"imageBuilder,omitempty"`
+	Authentication              Authentication                  `json:"auth,omitempty"`
+	OIDC                        *OIDC                           `json:"oidc,omitempty"`
+	Apps                        *Apps                           `json:"apps,omitempty"`
+	Audit                       *Audit                          `json:"audit,omitempty"`
+	DevsyHost                   string                          `json:"loftHost,omitempty"`
+	ProjectNamespacePrefix      *string                         `json:"projectNamespacePrefix,omitempty"`
+	DevsySubDomain              string                          `json:"devPodSubDomain,omitempty"`
+	UISettings                  *uiv1.UISettingsConfig          `json:"uiSettings,omitempty"`
+	VaultIntegration            *storagev1.VaultIntegrationSpec `json:"vault,omitempty"`
+	DisableConfigEndpoint       bool                            `json:"disableConfigEndpoint,omitempty"`
+	AuthenticateVersionEndpoint bool                            `json:"authenticateVersionEndpoint,omitempty"`
+	Cloud                       *Cloud                          `json:"cloud,omitempty"`
+	CostControl                 *CostControl                    `json:"costControl,omitempty"`
+	PlatformDB                  *PlatformDB                     `json:"platformDB,omitempty"`
+	ImageBuilder                *ImageBuilder                   `json:"imageBuilder,omitempty"`
 }
 
 type Connector struct {
@@ -2114,8 +2114,8 @@ type CostControl struct {
 }
 
 type CostControlClusterConfig struct {
-	Metrics  *apistoragev1.Metrics  `json:"metrics,omitempty"`
-	OpenCost *apistoragev1.OpenCost `json:"opencost,omitempty"`
+	Metrics  *storagev1.Metrics  `json:"metrics,omitempty"`
+	OpenCost *storagev1.OpenCost `json:"opencost,omitempty"`
 }
 
 type CostControlGPUSettings struct {
@@ -2124,7 +2124,7 @@ type CostControlGPUSettings struct {
 }
 
 type CostControlGlobalConfig struct {
-	Metrics *apistoragev1.Metrics `json:"metrics,omitempty"`
+	Metrics *storagev1.Metrics `json:"metrics,omitempty"`
 }
 
 type CostControlResourcePrice struct {
@@ -2160,7 +2160,7 @@ type DatabaseConnectorStatus struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type DevsyEnvironmentTemplate struct {
@@ -2171,7 +2171,7 @@ type DevsyEnvironmentTemplate struct {
 }
 
 type DevsyEnvironmentTemplateSpec struct {
-	apistoragev1.DevsyEnvironmentTemplateSpec `json:",inline"`
+	storagev1.DevsyEnvironmentTemplateSpec `json:",inline"`
 }
 
 type DevsyEnvironmentTemplateStatus struct {
@@ -2198,7 +2198,7 @@ type DevsyUpgradeStatus struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type DevsyWorkspaceInstance struct {
@@ -2231,12 +2231,12 @@ type DevsyWorkspaceInstanceLog struct {
 }
 
 type DevsyWorkspaceInstanceSpec struct {
-	apistoragev1.DevsyWorkspaceInstanceSpec `json:",inline"`
+	storagev1.DevsyWorkspaceInstanceSpec `json:",inline"`
 }
 
 type DevsyWorkspaceInstanceStatus struct {
-	apistoragev1.DevsyWorkspaceInstanceStatus `json:",inline"`
-	SleepModeConfig                           *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
+	storagev1.DevsyWorkspaceInstanceStatus `json:",inline"`
+	SleepModeConfig                        *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2278,13 +2278,13 @@ type DevsyWorkspaceInstanceTasks struct {
 type DevsyWorkspaceInstanceTroubleshoot struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	State             string                               `json:"state,omitempty"`
-	Workspace         *DevsyWorkspaceInstance              `json:"workspace,omitempty"`
-	Template          *apistoragev1.DevsyWorkspaceTemplate `json:"template,omitempty"`
-	Pods              []corev1.Pod                         `json:"pods,omitempty"`
-	PVCs              []corev1.PersistentVolumeClaim       `json:"pvcs,omitempty"`
-	Netmaps           []string                             `json:"netmaps,omitempty"`
-	Errors            []string                             `json:"errors,omitempty"`
+	State             string                            `json:"state,omitempty"`
+	Workspace         *DevsyWorkspaceInstance           `json:"workspace,omitempty"`
+	Template          *storagev1.DevsyWorkspaceTemplate `json:"template,omitempty"`
+	Pods              []corev1.Pod                      `json:"pods,omitempty"`
+	PVCs              []corev1.PersistentVolumeClaim    `json:"pvcs,omitempty"`
+	Netmaps           []string                          `json:"netmaps,omitempty"`
+	Errors            []string                          `json:"errors,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2306,7 +2306,7 @@ type DevsyWorkspaceInstanceUpStatus struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type DevsyWorkspacePreset struct {
@@ -2317,14 +2317,14 @@ type DevsyWorkspacePreset struct {
 }
 
 type DevsyWorkspacePresetSpec struct {
-	apistoragev1.DevsyWorkspacePresetSpec `json:",inline"`
+	storagev1.DevsyWorkspacePresetSpec `json:",inline"`
 }
 
 type DevsyWorkspacePresetStatus struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type DevsyWorkspaceTemplate struct {
@@ -2335,11 +2335,11 @@ type DevsyWorkspaceTemplate struct {
 }
 
 type DevsyWorkspaceTemplateSpec struct {
-	apistoragev1.DevsyWorkspaceTemplateSpec `json:",inline"`
+	storagev1.DevsyWorkspaceTemplateSpec `json:",inline"`
 }
 
 type DevsyWorkspaceTemplateStatus struct {
-	apistoragev1.DevsyWorkspaceTemplateStatus `json:",inline"`
+	storagev1.DevsyWorkspaceTemplateStatus `json:",inline"`
 }
 
 // +genclient
@@ -2354,8 +2354,8 @@ type DirectClusterEndpointToken struct {
 }
 
 type DirectClusterEndpointTokenSpec struct {
-	TTL   int64                        `json:"ttl,omitempty"`
-	Scope *apistoragev1.AccessKeyScope `json:"scope,omitempty"`
+	TTL   int64                     `json:"ttl,omitempty"`
+	Scope *storagev1.AccessKeyScope `json:"scope,omitempty"`
 }
 
 type DirectClusterEndpointTokenStatus struct {
@@ -2433,7 +2433,7 @@ type IngressAuthTokenStatus struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type Kiosk struct {
@@ -2447,7 +2447,7 @@ type KioskSpec struct {
 	HelmRelease                         clusterv1.HelmRelease               `json:"helmRelease,omitempty"`
 	SleepModeConfig                     clusterv1.SleepModeConfig           `json:"sleepModeConfig,omitempty"`
 	ChartInfo                           clusterv1.ChartInfo                 `json:"chartInfo,omitempty"`
-	StorageClusterQuota                 storagev1.ClusterQuota              `json:"storageClusterQuota,omitempty"`
+	StorageClusterQuota                 agentstoragev1.ClusterQuota         `json:"storageClusterQuota,omitempty"`
 	UISettings                          uiv1.UISettings                     `json:"UISettings,omitempty"`
 	License                             License                             `json:"license,omitempty"`
 	NodeProviderBCMNodeWithResources    NodeProviderBCMNodeWithResources    `json:"nodeProviderBCMNodeWithResources,omitempty"`
@@ -2464,7 +2464,7 @@ type KioskStatus struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type License struct {
@@ -2532,7 +2532,7 @@ type ManagementRole struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type NodeClaim struct {
@@ -2549,15 +2549,15 @@ type NodeClaimData struct {
 }
 
 type NodeClaimSpec struct {
-	apistoragev1.NodeClaimSpec `json:",inline"`
+	storagev1.NodeClaimSpec `json:",inline"`
 }
 
 type NodeClaimStatus struct {
-	apistoragev1.NodeClaimStatus `json:",inline"`
+	storagev1.NodeClaimStatus `json:",inline"`
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type NodeEnvironment struct {
@@ -2574,11 +2574,11 @@ type NodeEnvironmentData struct {
 }
 
 type NodeEnvironmentSpec struct {
-	apistoragev1.NodeEnvironmentSpec `json:",inline"`
+	storagev1.NodeEnvironmentSpec `json:",inline"`
 }
 
 type NodeEnvironmentStatus struct {
-	apistoragev1.NodeEnvironmentStatus `json:",inline"`
+	storagev1.NodeEnvironmentStatus `json:",inline"`
 }
 
 // +genclient
@@ -2640,11 +2640,11 @@ type NodeProviderExecStatus struct {
 }
 
 type NodeProviderSpec struct {
-	apistoragev1.NodeProviderSpec `json:",inline"`
+	storagev1.NodeProviderSpec `json:",inline"`
 }
 
 type NodeProviderStatus struct {
-	apistoragev1.NodeProviderStatus `json:",inline"`
+	storagev1.NodeProviderStatus `json:",inline"`
 }
 
 type NodeProviderTerraformValidateResult struct {
@@ -2664,11 +2664,11 @@ type NodeType struct {
 }
 
 type NodeTypeSpec struct {
-	apistoragev1.NodeTypeSpec `json:",inline"`
+	storagev1.NodeTypeSpec `json:",inline"`
 }
 
 type NodeTypeStatus struct {
-	apistoragev1.NodeTypeStatus `json:",inline"`
+	storagev1.NodeTypeStatus `json:",inline"`
 }
 
 type OIDC struct {
@@ -2718,7 +2718,7 @@ type Operation struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type OwnedAccessKey struct {
@@ -2729,11 +2729,11 @@ type OwnedAccessKey struct {
 }
 
 type OwnedAccessKeySpec struct {
-	apistoragev1.AccessKeySpec `json:",inline"`
+	storagev1.AccessKeySpec `json:",inline"`
 }
 
 type OwnedAccessKeyStatus struct {
-	apistoragev1.AccessKeyStatus `json:",inline"`
+	storagev1.AccessKeyStatus `json:",inline"`
 }
 
 type PlatformDB struct {
@@ -2783,8 +2783,8 @@ type ProjectChartInfoStatus struct {
 type ProjectCharts struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Charts            []apistoragev1.HelmChart `json:"charts"`
-	Busy              bool                     `json:"busy,omitempty"`
+	Charts            []storagev1.HelmChart `json:"charts"`
+	Busy              bool                  `json:"busy,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2810,7 +2810,7 @@ type ProjectImportSpaceSource struct {
 }
 
 type ProjectMember struct {
-	Info apistoragev1.EntityInfo `json:"info,omitempty"`
+	Info storagev1.EntityInfo `json:"info,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2859,8 +2859,8 @@ type ProjectMigrateVirtualClusterInstanceSource struct {
 type ProjectNodeTypes struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	NodeProviders     []apistoragev1.NodeProvider `json:"nodeProviders,omitempty"`
-	NodeTypes         []apistoragev1.NodeType     `json:"nodeTypes,omitempty"`
+	NodeProviders     []storagev1.NodeProvider `json:"nodeProviders,omitempty"`
+	NodeTypes         []storagev1.NodeType     `json:"nodeTypes,omitempty"`
 }
 
 type ProjectRole struct {
@@ -2869,7 +2869,7 @@ type ProjectRole struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type ProjectSecret struct {
@@ -2880,23 +2880,23 @@ type ProjectSecret struct {
 }
 
 type ProjectSecretSpec struct {
-	DisplayName string                   `json:"displayName,omitempty"`
-	Description string                   `json:"description,omitempty"`
-	Owner       *apistoragev1.UserOrTeam `json:"owner,omitempty"`
-	Data        map[string][]byte        `json:"data,omitempty"`
-	Access      []apistoragev1.Access    `json:"access,omitempty"`
+	DisplayName string                `json:"displayName,omitempty"`
+	Description string                `json:"description,omitempty"`
+	Owner       *storagev1.UserOrTeam `json:"owner,omitempty"`
+	Data        map[string][]byte     `json:"data,omitempty"`
+	Access      []storagev1.Access    `json:"access,omitempty"`
 }
 
 type ProjectSecretStatus struct {
-	Conditions storagev1.Conditions `json:"conditions,omitempty"`
+	Conditions agentstoragev1.Conditions `json:"conditions,omitempty"`
 }
 
 type ProjectSpec struct {
-	apistoragev1.ProjectSpec `json:",inline"`
+	storagev1.ProjectSpec `json:",inline"`
 }
 
 type ProjectStatus struct {
-	apistoragev1.ProjectStatus `json:",inline"`
+	storagev1.ProjectStatus `json:",inline"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -2971,11 +2971,11 @@ type ResetAccessKey struct {
 }
 
 type ResetAccessKeySpec struct {
-	apistoragev1.AccessKeySpec `json:",inline"`
+	storagev1.AccessKeySpec `json:",inline"`
 }
 
 type ResetAccessKeyStatus struct {
-	apistoragev1.AccessKeyStatus `json:",inline"`
+	storagev1.AccessKeyStatus `json:",inline"`
 }
 
 // +genclient
@@ -2994,18 +2994,18 @@ type SelfSpec struct {
 }
 
 type SelfStatus struct {
-	User                   *UserInfo                    `json:"user,omitempty"`
-	Team                   *apistoragev1.EntityInfo     `json:"team,omitempty"`
-	AccessKey              string                       `json:"accessKey,omitempty"`
-	AccessKeyScope         *apistoragev1.AccessKeyScope `json:"accessKeyScope,omitempty"`
-	AccessKeyType          apistoragev1.AccessKeyType   `json:"accessKeyType,omitempty"`
-	Subject                string                       `json:"subject,omitempty"`
-	UID                    string                       `json:"uid,omitempty"`
-	Groups                 []string                     `json:"groups,omitempty"`
-	ChatAuthToken          string                       `json:"chatAuthToken,omitempty"`
-	InstanceID             string                       `json:"instanceID,omitempty"`
-	DevsyHost              string                       `json:"loftHost,omitempty"`
-	ProjectNamespacePrefix *string                      `json:"projectNamespacePrefix,omitempty"`
+	User                   *UserInfo                 `json:"user,omitempty"`
+	Team                   *storagev1.EntityInfo     `json:"team,omitempty"`
+	AccessKey              string                    `json:"accessKey,omitempty"`
+	AccessKeyScope         *storagev1.AccessKeyScope `json:"accessKeyScope,omitempty"`
+	AccessKeyType          storagev1.AccessKeyType   `json:"accessKeyType,omitempty"`
+	Subject                string                    `json:"subject,omitempty"`
+	UID                    string                    `json:"uid,omitempty"`
+	Groups                 []string                  `json:"groups,omitempty"`
+	ChatAuthToken          string                    `json:"chatAuthToken,omitempty"`
+	InstanceID             string                    `json:"instanceID,omitempty"`
+	DevsyHost              string                    `json:"loftHost,omitempty"`
+	ProjectNamespacePrefix *string                   `json:"projectNamespacePrefix,omitempty"`
 }
 
 // +genclient
@@ -3028,7 +3028,7 @@ type SelfSubjectAccessReviewStatus struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type SharedSecret struct {
@@ -3039,11 +3039,11 @@ type SharedSecret struct {
 }
 
 type SharedSecretSpec struct {
-	apistoragev1.SharedSecretSpec `json:",inline"`
+	storagev1.SharedSecretSpec `json:",inline"`
 }
 
 type SharedSecretStatus struct {
-	apistoragev1.SharedSecretStatus `json:",inline"`
+	storagev1.SharedSecretStatus `json:",inline"`
 }
 
 type SnapshotTaken struct {
@@ -3055,7 +3055,7 @@ type SnapshotTaken struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type SpaceInstance struct {
@@ -3066,18 +3066,18 @@ type SpaceInstance struct {
 }
 
 type SpaceInstanceSpec struct {
-	apistoragev1.SpaceInstanceSpec `json:",inline"`
+	storagev1.SpaceInstanceSpec `json:",inline"`
 }
 
 type SpaceInstanceStatus struct {
-	apistoragev1.SpaceInstanceStatus `json:",inline"`
-	SleepModeConfig                  *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
-	CanUse                           bool                       `json:"canUse,omitempty"`
-	CanUpdate                        bool                       `json:"canUpdate,omitempty"`
+	storagev1.SpaceInstanceStatus `json:",inline"`
+	SleepModeConfig               *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
+	CanUse                        bool                       `json:"canUse,omitempty"`
+	CanUpdate                     bool                       `json:"canUpdate,omitempty"`
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type SpaceTemplate struct {
@@ -3088,12 +3088,12 @@ type SpaceTemplate struct {
 }
 
 type SpaceTemplateSpec struct {
-	apistoragev1.SpaceTemplateSpec `json:",inline"`
+	storagev1.SpaceTemplateSpec `json:",inline"`
 }
 
 type SpaceTemplateStatus struct {
-	apistoragev1.SpaceTemplateStatus `json:",inline"`
-	Apps                             []*apistoragev1.EntityInfo `json:"apps,omitempty"`
+	storagev1.SpaceTemplateStatus `json:",inline"`
+	Apps                          []*storagev1.EntityInfo `json:"apps,omitempty"`
 }
 
 type StandaloneEtcdPeer struct {
@@ -3148,13 +3148,13 @@ type TaskLog struct {
 }
 
 type TaskSpec struct {
-	apistoragev1.TaskSpec `json:",inline"`
+	storagev1.TaskSpec `json:",inline"`
 }
 
 type TaskStatus struct {
-	apistoragev1.TaskStatus `json:",inline"`
-	Owner                   *apistoragev1.UserOrTeamEntity `json:"owner,omitempty"`
-	Cluster                 *apistoragev1.EntityInfo       `json:"cluster,omitempty"`
+	storagev1.TaskStatus `json:",inline"`
+	Owner                *storagev1.UserOrTeamEntity `json:"owner,omitempty"`
+	Cluster              *storagev1.EntityInfo       `json:"cluster,omitempty"`
 }
 
 // +genclient
@@ -3205,11 +3205,11 @@ type TeamPermissions struct {
 }
 
 type TeamSpec struct {
-	apistoragev1.TeamSpec `json:",inline"`
+	storagev1.TeamSpec `json:",inline"`
 }
 
 type TeamStatus struct {
-	apistoragev1.TeamStatus `json:",inline"`
+	storagev1.TeamStatus `json:",inline"`
 }
 
 // +genclient
@@ -3278,8 +3278,8 @@ type UserClusters struct {
 }
 
 type UserInfo struct {
-	apistoragev1.EntityInfo `json:",inline"`
-	Teams                   []*apistoragev1.EntityInfo `json:"teams,omitempty"`
+	storagev1.EntityInfo `json:",inline"`
+	Teams                []*storagev1.EntityInfo `json:"teams,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -3332,11 +3332,11 @@ type UserProfileSecret struct {
 }
 
 type UserSpec struct {
-	apistoragev1.UserSpec `json:",inline"`
+	storagev1.UserSpec `json:",inline"`
 }
 
 type UserStatus struct {
-	apistoragev1.UserStatus `json:",inline"`
+	storagev1.UserStatus `json:",inline"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -3365,7 +3365,7 @@ type VirtualClusterExternalDatabaseStatus struct {
 }
 
 // +genclient
-// +genclient
+
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type VirtualClusterInstance struct {
@@ -3414,15 +3414,15 @@ type VirtualClusterInstanceSnapshotStatus struct {
 }
 
 type VirtualClusterInstanceSpec struct {
-	apistoragev1.VirtualClusterInstanceSpec `json:",inline"`
+	storagev1.VirtualClusterInstanceSpec `json:",inline"`
 }
 
 type VirtualClusterInstanceStatus struct {
-	apistoragev1.VirtualClusterInstanceStatus `json:",inline"`
-	SleepModeConfig                           *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
-	CanUse                                    bool                       `json:"canUse,omitempty"`
-	CanUpdate                                 bool                       `json:"canUpdate,omitempty"`
-	Online                                    bool                       `json:"online,omitempty"`
+	storagev1.VirtualClusterInstanceStatus `json:",inline"`
+	SleepModeConfig                        *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
+	CanUse                                 bool                       `json:"canUse,omitempty"`
+	CanUpdate                              bool                       `json:"canUpdate,omitempty"`
+	Online                                 bool                       `json:"online,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -3487,7 +3487,7 @@ type VirtualClusterStandaloneStatus struct {
 }
 
 // +genclient
-// +genclient
+// +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 type VirtualClusterTemplate struct {
@@ -3498,12 +3498,12 @@ type VirtualClusterTemplate struct {
 }
 
 type VirtualClusterTemplateSpec struct {
-	apistoragev1.VirtualClusterTemplateSpec `json:",inline"`
+	storagev1.VirtualClusterTemplateSpec `json:",inline"`
 }
 
 type VirtualClusterTemplateStatus struct {
-	apistoragev1.VirtualClusterTemplateStatus `json:",inline"`
-	Apps                                      []*apistoragev1.EntityInfo `json:"apps,omitempty"`
+	storagev1.VirtualClusterTemplateStatus `json:",inline"`
+	Apps                                   []*storagev1.EntityInfo `json:"apps,omitempty"`
 }
 
 // AgentAuditEvent Functions and Structs

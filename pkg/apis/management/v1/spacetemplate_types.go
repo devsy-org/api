@@ -20,12 +20,12 @@ type SpaceTemplate struct {
 	Status SpaceTemplateStatus `json:"status,omitempty"`
 }
 
-// SpaceTemplateSpec holds the specification
+// SpaceTemplateSpec holds the specification.
 type SpaceTemplateSpec struct {
 	storagev1.SpaceTemplateSpec `json:",inline"`
 }
 
-// SpaceTemplateStatus holds the status
+// SpaceTemplateStatus holds the status.
 type SpaceTemplateStatus struct {
 	storagev1.SpaceTemplateStatus `json:",inline"`
 

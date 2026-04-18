@@ -35,7 +35,7 @@ func (a *App) SetAccess(access []Access) {
 	a.Spec.Access = access
 }
 
-// AppSpec holds the specification
+// AppSpec holds the specification.
 type AppSpec struct {
 	// DisplayName is the name that should be displayed in the UI
 	// +optional
@@ -229,7 +229,7 @@ type HelmConfiguration struct {
 	Insecure bool `json:"insecure,omitempty"`
 }
 
-// AppStatus holds the status
+// AppStatus holds the status.
 type AppStatus struct{}
 
 // RecommendedApp describes where an app can be displayed as recommended app
@@ -250,7 +250,7 @@ func (x RecommendedApp) String() string { return string(x) }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AppList contains a list of App
+// AppList contains a list of App.
 type AppList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

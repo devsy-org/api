@@ -20,12 +20,12 @@ type ClusterRoleTemplate struct {
 	Status ClusterRoleTemplateStatus `json:"status,omitempty"`
 }
 
-// ClusterRoleTemplateSpec holds the specification
+// ClusterRoleTemplateSpec holds the specification.
 type ClusterRoleTemplateSpec struct {
 	storagev1.ClusterRoleTemplateSpec `json:",inline"`
 }
 
-// ClusterRoleTemplateStatus holds the status
+// ClusterRoleTemplateStatus holds the status.
 type ClusterRoleTemplateStatus struct {
 	storagev1.ClusterRoleTemplateStatus `json:",inline"`
 

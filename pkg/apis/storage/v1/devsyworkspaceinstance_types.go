@@ -13,23 +13,23 @@ var (
 		InstanceTemplateResolved,
 	}
 
-	// DevsyWorkspaceIDLabel holds the actual workspace id of the devsy workspace
+	// DevsyWorkspaceIDLabel holds the actual workspace id of the devsy workspace.
 	DevsyWorkspaceIDLabel = "devsy.sh/workspace-id"
 
-	// DevsyWorkspaceUIDLabel holds the actual workspace uid of the devsy workspace
+	// DevsyWorkspaceUIDLabel holds the actual workspace uid of the devsy workspace.
 	DevsyWorkspaceUIDLabel = "devsy.sh/workspace-uid"
 
 	// DevsyKubernetesProviderWorkspaceUIDLabel holds the actual workspace uid of the
 	// devsy workspace on resources created by the Devsy Kubernetes provider.
 	DevsyKubernetesProviderWorkspaceUIDLabel = "devpod.sh/workspace-uid"
 
-	// DevsyWorkspacePictureAnnotation holds the workspace picture url of the devsy workspace
+	// DevsyWorkspacePictureAnnotation holds the workspace picture url of the devsy workspace.
 	DevsyWorkspacePictureAnnotation = "devsy.sh/workspace-picture"
 
-	// DevsyWorkspaceSourceAnnotation holds the workspace source of the devsy workspace
+	// DevsyWorkspaceSourceAnnotation holds the workspace source of the devsy workspace.
 	DevsyWorkspaceSourceAnnotation = "devsy.sh/workspace-source"
 
-	// DevsyClientsAnnotation holds the active clients for a workspace networpeer
+	// DevsyClientsAnnotation holds the active clients for a workspace networpeer.
 	DevsyClientsAnnotation = "devsy.sh/devpod-clients"
 )
 
@@ -438,7 +438,7 @@ type DevsyCommandUpOptions struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects
+// DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects.
 type DevsyWorkspaceInstanceList struct {
 	metav1.TypeMeta `                         json:",inline"`
 	metav1.ListMeta `                         json:"metadata,omitempty"`

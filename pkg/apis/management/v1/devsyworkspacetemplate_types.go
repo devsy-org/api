@@ -20,12 +20,12 @@ type DevsyWorkspaceTemplate struct {
 	Status DevsyWorkspaceTemplateStatus `json:"status,omitempty"`
 }
 
-// DevsyWorkspaceTemplateSpec holds the specification
+// DevsyWorkspaceTemplateSpec holds the specification.
 type DevsyWorkspaceTemplateSpec struct {
 	storagev1.DevsyWorkspaceTemplateSpec `json:",inline"`
 }
 
-// DevsyWorkspaceTemplateStatus holds the status
+// DevsyWorkspaceTemplateStatus holds the status.
 type DevsyWorkspaceTemplateStatus struct {
 	storagev1.DevsyWorkspaceTemplateStatus `json:",inline"`
 }

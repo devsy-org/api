@@ -23,7 +23,7 @@ func Replace(content string) string {
 	switch Name() {
 	case licenseapi.DevsyPro:
 		content = strings.ReplaceAll(content, "devsy.sh", "devsy.pro")
-		content = strings.ReplaceAll(content, "devsy.host", "devsy.host")
+		content = strings.ReplaceAll(content, "devsy.host", "devsy.pro")
 
 		content = strings.ReplaceAll(content, "devsy", "devsy platform")
 		content = strings.ReplaceAll(content, "Devsy", "Devsy Platform")

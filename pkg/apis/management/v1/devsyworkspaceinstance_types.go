@@ -33,12 +33,12 @@ type DevsyWorkspaceInstance struct {
 	Status DevsyWorkspaceInstanceStatus `json:"status,omitempty"`
 }
 
-// DevsyWorkspaceInstanceSpec holds the specification
+// DevsyWorkspaceInstanceSpec holds the specification.
 type DevsyWorkspaceInstanceSpec struct {
 	storagev1.DevsyWorkspaceInstanceSpec `json:",inline"`
 }
 
-// DevsyWorkspaceInstanceStatus holds the status
+// DevsyWorkspaceInstanceStatus holds the status.
 type DevsyWorkspaceInstanceStatus struct {
 	storagev1.DevsyWorkspaceInstanceStatus `json:",inline"`
 

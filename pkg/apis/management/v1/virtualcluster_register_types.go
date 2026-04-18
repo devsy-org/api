@@ -19,7 +19,7 @@ type RegisterVirtualCluster struct {
 	Status RegisterVirtualClusterStatus `json:"status,omitempty"`
 }
 
-// RegisterVirtualClusterSpec holds the specification
+// RegisterVirtualClusterSpec holds the specification.
 type RegisterVirtualClusterSpec struct {
 	// ServiceUID uniquely identifies the virtual cluster based on the service uid.
 	// +optional
@@ -51,7 +51,7 @@ type RegisterVirtualClusterSpec struct {
 	Values string `json:"values,omitempty"`
 }
 
-// RegisterVirtualClusterStatus holds the status
+// RegisterVirtualClusterStatus holds the status.
 type RegisterVirtualClusterStatus struct {
 	// Name is the actual name of the virtual cluster instance.
 	// +optional

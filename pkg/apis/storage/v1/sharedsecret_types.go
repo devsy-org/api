@@ -44,7 +44,7 @@ func (a *SharedSecret) SetAccess(access []Access) {
 	a.Spec.Access = access
 }
 
-// SharedSecretSpec holds the specification
+// SharedSecretSpec holds the specification.
 type SharedSecretSpec struct {
 	// DisplayName is the name that should be displayed in the UI
 	// +optional
@@ -93,7 +93,7 @@ type Access struct {
 	Teams []string `json:"teams,omitempty"`
 }
 
-// SharedSecretStatus holds the status
+// SharedSecretStatus holds the status.
 type SharedSecretStatus struct {
 	// Conditions holds several conditions the project might be in
 	// +optional
@@ -102,7 +102,7 @@ type SharedSecretStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// SharedSecretList contains a list of SharedSecret
+// SharedSecretList contains a list of SharedSecret.
 type SharedSecretList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

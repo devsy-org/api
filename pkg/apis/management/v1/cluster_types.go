@@ -14,7 +14,7 @@ import (
 // +genclient:method=GetAccessKey,verb=get,subresource=accesskey,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKey
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Cluster holds the cluster information
+// Cluster holds the cluster information.
 // +k8s:openapi-gen=true
 // +resource:path=clusters,rest=ClusterREST,statusRest=ClusterStatusREST
 // +subresource:request=ClusterMemberAccess,path=memberaccess,kind=ClusterMemberAccess,rest=ClusterMemberAccessREST
@@ -32,12 +32,12 @@ type Cluster struct {
 	Status ClusterStatus `json:"status,omitempty"`
 }
 
-// ClusterSpec holds the specification
+// ClusterSpec holds the specification.
 type ClusterSpec struct {
 	storagev1.ClusterSpec `json:",inline"`
 }
 
-// ClusterStatus holds the status
+// ClusterStatus holds the status.
 type ClusterStatus struct {
 	storagev1.ClusterStatus `json:",inline"`
 

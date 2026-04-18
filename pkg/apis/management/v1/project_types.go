@@ -35,12 +35,12 @@ type Project struct {
 	Status ProjectStatus `json:"status,omitempty"`
 }
 
-// ProjectSpec holds the specification
+// ProjectSpec holds the specification.
 type ProjectSpec struct {
 	storagev1.ProjectSpec `json:",inline"`
 }
 
-// ProjectStatus holds the status
+// ProjectStatus holds the status.
 type ProjectStatus struct {
 	storagev1.ProjectStatus `json:",inline"`
 }

@@ -49,7 +49,7 @@ func (a *DevsyWorkspaceTemplate) SetAccess(access []Access) {
 	a.Spec.Access = access
 }
 
-// DevsyWorkspaceTemplateSpec holds the specification
+// DevsyWorkspaceTemplateSpec holds the specification.
 type DevsyWorkspaceTemplateSpec struct {
 	// DisplayName is the name that is shown in the UI
 	// +optional
@@ -146,7 +146,7 @@ type DevsyWorkspaceKubernetesSpec struct {
 	VirtualClusterTemplate *VirtualClusterTemplateDefinition `json:"virtualClusterTemplate,omitempty"`
 }
 
-// DevsyWorkspacePodTemplate is a less restrictive PodTemplate
+// DevsyWorkspacePodTemplate is a less restrictive PodTemplate.
 type DevsyWorkspacePodTemplate struct {
 	// The pods metadata
 	// +kubebuilder:pruning:PreserveUnknownFields
@@ -251,7 +251,7 @@ type DevsyWorkspaceContainer struct {
 	TTY bool `json:"tty,omitempty"`
 }
 
-// DevsyWorkspacePodTemplateSpec is a less restrictive PodSpec
+// DevsyWorkspacePodTemplateSpec is a less restrictive PodSpec.
 type DevsyWorkspacePodTemplateSpec struct {
 	// List of volumes that can be mounted by containers belonging to the pod.
 	// +optional
@@ -544,12 +544,12 @@ type GitCredentialForwarding struct {
 	Disabled bool `json:"disabled,omitempty"`
 }
 
-// DevsyWorkspaceTemplateStatus holds the status
+// DevsyWorkspaceTemplateStatus holds the status.
 type DevsyWorkspaceTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate
+// DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate.
 type DevsyWorkspaceTemplateList struct {
 	metav1.TypeMeta `                         json:",inline"`
 	metav1.ListMeta `                         json:"metadata,omitempty"`

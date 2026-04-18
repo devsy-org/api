@@ -95,7 +95,7 @@ type DevsyWorkspacePresetVersion struct {
 	EnvironmentRef *EnvironmentRef `json:"environmentRef,omitempty"`
 }
 
-// DevsyWorkspacePresetStatus holds the status
+// DevsyWorkspacePresetStatus holds the status.
 type DevsyWorkspacePresetStatus struct{}
 
 type WorkspaceRef struct {
@@ -104,7 +104,7 @@ type WorkspaceRef struct {
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
-// DevsyWorkspacePresetList contains a list of DevsyWorkspacePreset objects
+// DevsyWorkspacePresetList contains a list of DevsyWorkspacePreset objects.
 type DevsyWorkspacePresetList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

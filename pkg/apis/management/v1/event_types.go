@@ -20,7 +20,7 @@ type Event struct {
 	Status EventStatus `json:"status,omitempty"`
 }
 
-// EventSpec holds the specification
+// EventSpec holds the specification.
 type EventSpec struct{}
 
 // EventStatus holds the status, which is the parsed raw config

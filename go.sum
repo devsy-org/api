@@ -27,8 +27,8 @@ github.com/devsy-org/admin-apis v1.0.0 h1:PXEIyhecYMBxXF1Si6Q35m4aMmzybQ6WffePar
 github.com/devsy-org/admin-apis v1.0.0/go.mod h1:N2PrbYDtigY4By1yE1c6gfsWE5bIb6zwY9rUGK/9RWI=
 github.com/devsy-org/agentapi v1.0.1 h1:qdSs162AWvtGwsXrYcM0hJqQ79M0t/HTrZ+/KFeTxCs=
 github.com/devsy-org/agentapi v1.0.1/go.mod h1:VmUPw3OdIJ27ONFInfUrHliTyokhQtGmoiGWtmBzDrU=
-github.com/devsy-org/apiserver v1.1.1 h1:vEHRcO4gJUAKlK9uenqSPguMheAGZV8rRdAdpHh7Tw8=
-github.com/devsy-org/apiserver v1.1.1/go.mod h1:2jKuqy8XdH/g4bIjmkj3efQgshN/NjMzm17SkvvSR88=
+github.com/devsy-org/apiserver v1.2.1-0.20260418221832-0adfff4957ac h1:aI0Rn483d+sDEx4ZPxOlC1FocG4cb9hIXhQwDOzJJPU=
+github.com/devsy-org/apiserver v1.2.1-0.20260418221832-0adfff4957ac/go.mod h1:2jKuqy8XdH/g4bIjmkj3efQgshN/NjMzm17SkvvSR88=
 github.com/dustin/go-humanize v1.0.1 h1:GzkhY7T5VNhEkwH0PVJgjz+fX1rhBrR7pRT3mDkpeCY=
 github.com/dustin/go-humanize v1.0.1/go.mod h1:Mu1zIs6XwVuF/gI1OepvI0qD18qycQx+mFykh5fBlto=
 github.com/emicklei/go-restful/v3 v3.13.0 h1:C4Bl2xDndpU6nJ4bc1jXd+uTmYPVUwkD6bFY/oTyCes=

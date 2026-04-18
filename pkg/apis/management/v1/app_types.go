@@ -22,12 +22,12 @@ type App struct {
 	Status AppStatus `json:"status,omitempty"`
 }
 
-// AppSpec holds the specification
+// AppSpec holds the specification.
 type AppSpec struct {
 	storagev1.AppSpec `json:",inline"`
 }
 
-// AppStatus holds the status
+// AppStatus holds the status.
 type AppStatus struct {
 	storagev1.AppStatus `json:",inline"`
 }

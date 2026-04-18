@@ -232,7 +232,7 @@ type AllowedCluster struct {
 }
 
 type ProjectStatus struct {
-	// Quotas holds the quota status
+	// Quotas holds the quota status.
 	// +optional
 	Quotas *QuotaStatus `json:"quotas,omitempty"`
 
@@ -557,7 +557,7 @@ type GitProjectCredentials struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ProjectList contains a list of Project objects
+// ProjectList contains a list of Project objects.
 type ProjectList struct {
 	metav1.TypeMeta `          json:",inline"`
 	metav1.ListMeta `          json:"metadata,omitempty"`

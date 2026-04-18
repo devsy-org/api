@@ -111,7 +111,7 @@ type ClusterAccessStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ClusterAccessList contains a list of ClusterAccess objects
+// ClusterAccessList contains a list of ClusterAccess objects.
 type ClusterAccessList struct {
 	metav1.TypeMeta `                json:",inline"`
 	metav1.ListMeta `                json:"metadata,omitempty"`

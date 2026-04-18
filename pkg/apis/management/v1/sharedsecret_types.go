@@ -19,12 +19,12 @@ type SharedSecret struct {
 	Status SharedSecretStatus `json:"status,omitempty"`
 }
 
-// SharedSecretSpec holds the specification
+// SharedSecretSpec holds the specification.
 type SharedSecretSpec struct {
 	storagev1.SharedSecretSpec `json:",inline"`
 }
 
-// SharedSecretStatus holds the status
+// SharedSecretStatus holds the status.
 type SharedSecretStatus struct {
 	storagev1.SharedSecretStatus `json:",inline"`
 }

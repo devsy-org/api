@@ -95,7 +95,7 @@ func main() {
 	}
 }
 
-func buildCommands() []*cli.Command {
+func buildCommands() []*cli.Command { //nolint:funlen // declarative command list
 	return []*cli.Command{
 		{
 			Name:  "all",
@@ -304,7 +304,7 @@ func run(name string, args ...string) {
 	if p := filepath.Join(gobin(), name); fileExists(p) {
 		bin = p
 	}
-	cmd := exec.Command(bin, args...) //nolint:gosec // G204: binary is resolved from GOBIN or PATH, not user input
+	cmd := exec.Command(bin, args...) //nolint:gosec
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {

@@ -13,7 +13,7 @@ import (
 // +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// User holds the user information
+// User holds the user information.
 // +k8s:openapi-gen=true
 // +resource:path=users,rest=UserREST
 // +subresource:request=UserClusters,path=clusters,kind=UserClusters,rest=UserClustersREST

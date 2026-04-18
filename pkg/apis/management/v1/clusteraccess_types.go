@@ -20,12 +20,12 @@ type ClusterAccess struct {
 	Status ClusterAccessStatus `json:"status,omitempty"`
 }
 
-// ClusterAccessSpec holds the specification
+// ClusterAccessSpec holds the specification.
 type ClusterAccessSpec struct {
 	storagev1.ClusterAccessSpec `json:",inline"`
 }
 
-// ClusterAccessStatus holds the status
+// ClusterAccessStatus holds the status.
 type ClusterAccessStatus struct {
 	storagev1.ClusterAccessStatus `json:",inline"`
 

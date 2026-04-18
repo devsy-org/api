@@ -21,12 +21,12 @@ type DevsyEnvironmentTemplate struct {
 	Status DevsyEnvironmentTemplateStatus `json:"status,omitempty"`
 }
 
-// DevsyEnvironmentTemplateSpec holds the specification
+// DevsyEnvironmentTemplateSpec holds the specification.
 type DevsyEnvironmentTemplateSpec struct {
 	storagev1.DevsyEnvironmentTemplateSpec `json:",inline"`
 }
 
-// DevsyEnvironmentTemplateStatus holds the status
+// DevsyEnvironmentTemplateStatus holds the status.
 type DevsyEnvironmentTemplateStatus struct{}
 
 func (a *DevsyEnvironmentTemplate) GetVersions() []storagev1.VersionAccessor {

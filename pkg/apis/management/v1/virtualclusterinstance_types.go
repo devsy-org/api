@@ -34,12 +34,12 @@ type VirtualClusterInstance struct {
 	Status VirtualClusterInstanceStatus `json:"status,omitempty"`
 }
 
-// VirtualClusterInstanceSpec holds the specification
+// VirtualClusterInstanceSpec holds the specification.
 type VirtualClusterInstanceSpec struct {
 	storagev1.VirtualClusterInstanceSpec `json:",inline"`
 }
 
-// VirtualClusterInstanceStatus holds the status
+// VirtualClusterInstanceStatus holds the status.
 type VirtualClusterInstanceStatus struct {
 	storagev1.VirtualClusterInstanceStatus `json:",inline"`
 

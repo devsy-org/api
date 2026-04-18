@@ -20,7 +20,7 @@ type DevsyWorkspacePreset struct {
 	Status DevsyWorkspacePresetStatus `json:"status,omitempty"`
 }
 
-// DevsyWorkspacePresetSpec holds the specification
+// DevsyWorkspacePresetSpec holds the specification.
 type DevsyWorkspacePresetSpec struct {
 	storagev1.DevsyWorkspacePresetSpec `json:",inline"`
 }
@@ -47,5 +47,5 @@ func (a *DevsyWorkspacePreset) SetAccess(access []storagev1.Access) {
 	a.Spec.Access = access
 }
 
-// DevsyWorkspacePresetStatus holds the status
+// DevsyWorkspacePresetStatus holds the status.
 type DevsyWorkspacePresetStatus struct{}

@@ -23,7 +23,7 @@ type Backup struct {
 // BackupSpec holds the spec
 type BackupSpec struct{}
 
-// BackupStatus holds the status
+// BackupStatus holds the status.
 type BackupStatus struct {
 	RawBackup string `json:"rawBackup,omitempty"`
 }

@@ -19,7 +19,7 @@ type OIDCClient struct {
 	Status OIDCClientStatus `json:"status,omitempty"`
 }
 
-// OIDCClientSpec holds the specification
+// OIDCClientSpec holds the specification.
 type OIDCClientSpec struct {
 	// The client name
 	Name string `json:"name,omitempty"`
@@ -35,5 +35,5 @@ type OIDCClientSpec struct {
 	RedirectURIs []string `json:"redirectURIs"`
 }
 
-// OIDCClientStatus holds the status
+// OIDCClientStatus holds the status.
 type OIDCClientStatus struct{}
