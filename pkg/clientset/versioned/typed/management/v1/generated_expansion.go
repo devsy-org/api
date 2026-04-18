@@ -22,13 +22,13 @@ type ConvertVirtualClusterConfigExpansion interface{}
 
 type DatabaseConnectorExpansion interface{}
 
-type DevPodEnvironmentTemplateExpansion interface{}
+type DevsyEnvironmentTemplateExpansion interface{}
 
-type DevPodWorkspaceInstanceExpansion interface{}
+type DevsyWorkspaceInstanceExpansion interface{}
 
-type DevPodWorkspacePresetExpansion interface{}
+type DevsyWorkspacePresetExpansion interface{}
 
-type DevPodWorkspaceTemplateExpansion interface{}
+type DevsyWorkspaceTemplateExpansion interface{}
 
 type DirectClusterEndpointTokenExpansion interface{}
 

@@ -22,25 +22,25 @@ type ClusterAccessListerExpansion interface{}
 // ClusterRoleTemplateLister.
 type ClusterRoleTemplateListerExpansion interface{}
 
-// DevPodEnvironmentTemplateListerExpansion allows custom methods to be added to
-// DevPodEnvironmentTemplateLister.
-type DevPodEnvironmentTemplateListerExpansion interface{}
+// DevsyEnvironmentTemplateListerExpansion allows custom methods to be added to
+// DevsyEnvironmentTemplateLister.
+type DevsyEnvironmentTemplateListerExpansion interface{}
 
-// DevPodWorkspaceInstanceListerExpansion allows custom methods to be added to
-// DevPodWorkspaceInstanceLister.
-type DevPodWorkspaceInstanceListerExpansion interface{}
+// DevsyWorkspaceInstanceListerExpansion allows custom methods to be added to
+// DevsyWorkspaceInstanceLister.
+type DevsyWorkspaceInstanceListerExpansion interface{}
 
-// DevPodWorkspaceInstanceNamespaceListerExpansion allows custom methods to be added to
-// DevPodWorkspaceInstanceNamespaceLister.
-type DevPodWorkspaceInstanceNamespaceListerExpansion interface{}
+// DevsyWorkspaceInstanceNamespaceListerExpansion allows custom methods to be added to
+// DevsyWorkspaceInstanceNamespaceLister.
+type DevsyWorkspaceInstanceNamespaceListerExpansion interface{}
 
-// DevPodWorkspacePresetListerExpansion allows custom methods to be added to
-// DevPodWorkspacePresetLister.
-type DevPodWorkspacePresetListerExpansion interface{}
+// DevsyWorkspacePresetListerExpansion allows custom methods to be added to
+// DevsyWorkspacePresetLister.
+type DevsyWorkspacePresetListerExpansion interface{}
 
-// DevPodWorkspaceTemplateListerExpansion allows custom methods to be added to
-// DevPodWorkspaceTemplateLister.
-type DevPodWorkspaceTemplateListerExpansion interface{}
+// DevsyWorkspaceTemplateListerExpansion allows custom methods to be added to
+// DevsyWorkspaceTemplateLister.
+type DevsyWorkspaceTemplateListerExpansion interface{}
 
 // NetworkPeerListerExpansion allows custom methods to be added to
 // NetworkPeerLister.

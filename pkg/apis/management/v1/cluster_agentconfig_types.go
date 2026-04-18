@@ -33,17 +33,17 @@ type ClusterAgentConfigCommon struct {
 	// +optional
 	TokenCaCert []byte `json:"tokenCaCert,omitempty"`
 
-	// LoftHost defines the host for the agent's devsy instance
+	// DevsyHost defines the host for the agent's devsy instance
 	// +optional
-	LoftHost string `json:"loftHost,omitempty"`
+	DevsyHost string `json:"loftHost,omitempty"`
 
 	// ProjectNamespacePrefix holds the prefix for devsy project namespaces
 	// +optional
 	ProjectNamespacePrefix string `json:"projectNamespacePrefix,omitempty"`
 
-	// LoftInstanceID defines the instance id from the devsy instance
+	// DevsyInstanceID defines the instance id from the devsy instance
 	// +optional
-	LoftInstanceID string `json:"loftInstanceID,omitempty"`
+	DevsyInstanceID string `json:"loftInstanceID,omitempty"`
 
 	// AnalyticsSpec holds info needed for the agent to send analytics data to the analytics backend.
 	AnalyticsSpec AgentAnalyticsSpec `json:"analyticsSpec"`

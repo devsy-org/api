@@ -130,7 +130,7 @@ type AccessKeyScope struct {
 	// +optional
 	Rules []AccessKeyScopeRule `json:"rules,omitempty"`
 
-	// AllowLoftCLI allows certain read-only management requests to
+	// AllowDevsyCLI allows certain read-only management requests to
 	// make sure devsy cli works correctly with this specific access key.
 	//
 	// Deprecated: Use the `roles` field instead
@@ -140,11 +140,11 @@ type AccessKeyScope struct {
 	//    - role: loftCLI
 	//  ```
 	// +optional
-	AllowLoftCLI bool `json:"allowLoftCli,omitempty"`
+	AllowDevsyCLI bool `json:"allowLoftCli,omitempty"`
 }
 
 func (a AccessKeyScope) ContainsRole(val AccessKeyScopeRoleName) bool {
-	if a.AllowLoftCLI && val == AccessKeyScopeRoleLoftCLI {
+	if a.AllowDevsyCLI && val == AccessKeyScopeRoleDevsyCLI {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (a AccessKeyScope) ContainsRole(val AccessKeyScopeRoleName) bool {
 			// (ThomasK33): Adding this so that the exhaustive linter is happy
 			case AccessKeyScopeRoleNetworkPeer:
 				return true
-			case AccessKeyScopeRoleLoftCLI:
+			case AccessKeyScopeRoleDevsyCLI:
 				return false
 			}
 		}
@@ -208,7 +208,7 @@ const (
 	AccessKeyScopeRoleAgent       AccessKeyScopeRoleName = "agent"
 	AccessKeyScopeRoleDevsy       AccessKeyScopeRoleName = "devsy"
 	AccessKeyScopeRoleNetworkPeer AccessKeyScopeRoleName = "network-peer"
-	AccessKeyScopeRoleLoftCLI     AccessKeyScopeRoleName = "devsy-cli"
+	AccessKeyScopeRoleDevsyCLI     AccessKeyScopeRoleName = "devsy-cli"
 	AccessKeyScopeRoleRunner      AccessKeyScopeRoleName = "runner"
 	AccessKeyScopeRoleWorkspace   AccessKeyScopeRoleName = "workspace"
 )

@@ -133,46 +133,46 @@ var (
 		return NewDatabaseConnectorRESTFunc(Factory)
 	}
 	NewDatabaseConnectorRESTFunc               NewRESTFunc
-	ManagementDevPodEnvironmentTemplateStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalDevPodEnvironmentTemplate,
-		func() runtime.Object { return &DevPodEnvironmentTemplate{} },     // Register versioned resource
-		func() runtime.Object { return &DevPodEnvironmentTemplateList{} }, // Register versioned resource list
-		NewDevPodEnvironmentTemplateREST,
+	ManagementDevsyEnvironmentTemplateStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDevsyEnvironmentTemplate,
+		func() runtime.Object { return &DevsyEnvironmentTemplate{} },     // Register versioned resource
+		func() runtime.Object { return &DevsyEnvironmentTemplateList{} }, // Register versioned resource list
+		NewDevsyEnvironmentTemplateREST,
 	)
-	NewDevPodEnvironmentTemplateREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodEnvironmentTemplateRESTFunc(Factory)
+	NewDevsyEnvironmentTemplateREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyEnvironmentTemplateRESTFunc(Factory)
 	}
-	NewDevPodEnvironmentTemplateRESTFunc     NewRESTFunc
-	ManagementDevPodWorkspaceInstanceStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalDevPodWorkspaceInstance,
-		func() runtime.Object { return &DevPodWorkspaceInstance{} },     // Register versioned resource
-		func() runtime.Object { return &DevPodWorkspaceInstanceList{} }, // Register versioned resource list
-		NewDevPodWorkspaceInstanceREST,
+	NewDevsyEnvironmentTemplateRESTFunc     NewRESTFunc
+	ManagementDevsyWorkspaceInstanceStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDevsyWorkspaceInstance,
+		func() runtime.Object { return &DevsyWorkspaceInstance{} },     // Register versioned resource
+		func() runtime.Object { return &DevsyWorkspaceInstanceList{} }, // Register versioned resource list
+		NewDevsyWorkspaceInstanceREST,
 	)
-	NewDevPodWorkspaceInstanceREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceRESTFunc     NewRESTFunc
-	ManagementDevPodWorkspacePresetStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalDevPodWorkspacePreset,
-		func() runtime.Object { return &DevPodWorkspacePreset{} },     // Register versioned resource
-		func() runtime.Object { return &DevPodWorkspacePresetList{} }, // Register versioned resource list
-		NewDevPodWorkspacePresetREST,
+	NewDevsyWorkspaceInstanceRESTFunc     NewRESTFunc
+	ManagementDevsyWorkspacePresetStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDevsyWorkspacePreset,
+		func() runtime.Object { return &DevsyWorkspacePreset{} },     // Register versioned resource
+		func() runtime.Object { return &DevsyWorkspacePresetList{} }, // Register versioned resource list
+		NewDevsyWorkspacePresetREST,
 	)
-	NewDevPodWorkspacePresetREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspacePresetRESTFunc(Factory)
+	NewDevsyWorkspacePresetREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspacePresetRESTFunc(Factory)
 	}
-	NewDevPodWorkspacePresetRESTFunc         NewRESTFunc
-	ManagementDevPodWorkspaceTemplateStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
-		InternalDevPodWorkspaceTemplate,
-		func() runtime.Object { return &DevPodWorkspaceTemplate{} },     // Register versioned resource
-		func() runtime.Object { return &DevPodWorkspaceTemplateList{} }, // Register versioned resource list
-		NewDevPodWorkspaceTemplateREST,
+	NewDevsyWorkspacePresetRESTFunc         NewRESTFunc
+	ManagementDevsyWorkspaceTemplateStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
+		InternalDevsyWorkspaceTemplate,
+		func() runtime.Object { return &DevsyWorkspaceTemplate{} },     // Register versioned resource
+		func() runtime.Object { return &DevsyWorkspaceTemplateList{} }, // Register versioned resource list
+		NewDevsyWorkspaceTemplateREST,
 	)
-	NewDevPodWorkspaceTemplateREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceTemplateRESTFunc(Factory)
+	NewDevsyWorkspaceTemplateREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceTemplateRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceTemplateRESTFunc          NewRESTFunc
+	NewDevsyWorkspaceTemplateRESTFunc          NewRESTFunc
 	ManagementDirectClusterEndpointTokenStorage = builders.NewApiResourceWithStorage( // Resource status endpoint
 		InternalDirectClusterEndpointToken,
 		func() runtime.Object { return &DirectClusterEndpointToken{} },     // Register versioned resource
@@ -719,109 +719,109 @@ var (
 		func() runtime.Object { return &DatabaseConnector{} },
 		func() runtime.Object { return &DatabaseConnectorList{} },
 	)
-	InternalDevPodEnvironmentTemplate = builders.NewInternalResource(
+	InternalDevsyEnvironmentTemplate = builders.NewInternalResource(
 		"devpodenvironmenttemplates",
-		"DevPodEnvironmentTemplate",
-		func() runtime.Object { return &DevPodEnvironmentTemplate{} },
-		func() runtime.Object { return &DevPodEnvironmentTemplateList{} },
+		"DevsyEnvironmentTemplate",
+		func() runtime.Object { return &DevsyEnvironmentTemplate{} },
+		func() runtime.Object { return &DevsyEnvironmentTemplateList{} },
 	)
-	InternalDevPodEnvironmentTemplateStatus = builders.NewInternalResourceStatus(
+	InternalDevsyEnvironmentTemplateStatus = builders.NewInternalResourceStatus(
 		"devpodenvironmenttemplates",
-		"DevPodEnvironmentTemplateStatus",
-		func() runtime.Object { return &DevPodEnvironmentTemplate{} },
-		func() runtime.Object { return &DevPodEnvironmentTemplateList{} },
+		"DevsyEnvironmentTemplateStatus",
+		func() runtime.Object { return &DevsyEnvironmentTemplate{} },
+		func() runtime.Object { return &DevsyEnvironmentTemplateList{} },
 	)
-	InternalDevPodWorkspaceInstance = builders.NewInternalResource(
+	InternalDevsyWorkspaceInstance = builders.NewInternalResource(
 		"devpodworkspaceinstances",
-		"DevPodWorkspaceInstance",
-		func() runtime.Object { return &DevPodWorkspaceInstance{} },
-		func() runtime.Object { return &DevPodWorkspaceInstanceList{} },
+		"DevsyWorkspaceInstance",
+		func() runtime.Object { return &DevsyWorkspaceInstance{} },
+		func() runtime.Object { return &DevsyWorkspaceInstanceList{} },
 	)
-	InternalDevPodWorkspaceInstanceStatus = builders.NewInternalResourceStatus(
+	InternalDevsyWorkspaceInstanceStatus = builders.NewInternalResourceStatus(
 		"devpodworkspaceinstances",
-		"DevPodWorkspaceInstanceStatus",
-		func() runtime.Object { return &DevPodWorkspaceInstance{} },
-		func() runtime.Object { return &DevPodWorkspaceInstanceList{} },
+		"DevsyWorkspaceInstanceStatus",
+		func() runtime.Object { return &DevsyWorkspaceInstance{} },
+		func() runtime.Object { return &DevsyWorkspaceInstanceList{} },
 	)
-	InternalDevPodWorkspaceInstanceCancelREST = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceCancel", "cancel",
-		func() runtime.Object { return &DevPodWorkspaceInstanceCancel{} },
+	InternalDevsyWorkspaceInstanceCancelREST = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceCancel", "cancel",
+		func() runtime.Object { return &DevsyWorkspaceInstanceCancel{} },
 	)
-	NewDevPodWorkspaceInstanceCancelREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceCancelRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceCancelREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceCancelRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceCancelRESTFunc    NewRESTFunc
-	InternalDevPodWorkspaceInstanceDownloadREST = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceDownload", "download",
-		func() runtime.Object { return &DevPodWorkspaceInstanceDownload{} },
+	NewDevsyWorkspaceInstanceCancelRESTFunc    NewRESTFunc
+	InternalDevsyWorkspaceInstanceDownloadREST = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceDownload", "download",
+		func() runtime.Object { return &DevsyWorkspaceInstanceDownload{} },
 	)
-	NewDevPodWorkspaceInstanceDownloadREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceDownloadRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceDownloadREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceDownloadRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceDownloadRESTFunc NewRESTFunc
-	InternalDevPodWorkspaceInstanceLogREST     = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceLog", "log",
-		func() runtime.Object { return &DevPodWorkspaceInstanceLog{} },
+	NewDevsyWorkspaceInstanceDownloadRESTFunc NewRESTFunc
+	InternalDevsyWorkspaceInstanceLogREST     = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceLog", "log",
+		func() runtime.Object { return &DevsyWorkspaceInstanceLog{} },
 	)
-	NewDevPodWorkspaceInstanceLogREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceLogRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceLogREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceLogRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceLogRESTFunc   NewRESTFunc
-	InternalDevPodWorkspaceInstanceStopREST = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceStop", "stop",
-		func() runtime.Object { return &DevPodWorkspaceInstanceStop{} },
+	NewDevsyWorkspaceInstanceLogRESTFunc   NewRESTFunc
+	InternalDevsyWorkspaceInstanceStopREST = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceStop", "stop",
+		func() runtime.Object { return &DevsyWorkspaceInstanceStop{} },
 	)
-	NewDevPodWorkspaceInstanceStopREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceStopRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceStopREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceStopRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceStopRESTFunc   NewRESTFunc
-	InternalDevPodWorkspaceInstanceTasksREST = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceTasks", "tasks",
-		func() runtime.Object { return &DevPodWorkspaceInstanceTasks{} },
+	NewDevsyWorkspaceInstanceStopRESTFunc   NewRESTFunc
+	InternalDevsyWorkspaceInstanceTasksREST = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceTasks", "tasks",
+		func() runtime.Object { return &DevsyWorkspaceInstanceTasks{} },
 	)
-	NewDevPodWorkspaceInstanceTasksREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceTasksRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceTasksREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceTasksRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceTasksRESTFunc         NewRESTFunc
-	InternalDevPodWorkspaceInstanceTroubleshootREST = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceTroubleshoot", "troubleshoot",
-		func() runtime.Object { return &DevPodWorkspaceInstanceTroubleshoot{} },
+	NewDevsyWorkspaceInstanceTasksRESTFunc         NewRESTFunc
+	InternalDevsyWorkspaceInstanceTroubleshootREST = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceTroubleshoot", "troubleshoot",
+		func() runtime.Object { return &DevsyWorkspaceInstanceTroubleshoot{} },
 	)
-	NewDevPodWorkspaceInstanceTroubleshootREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceTroubleshootRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceTroubleshootREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceTroubleshootRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceTroubleshootRESTFunc NewRESTFunc
-	InternalDevPodWorkspaceInstanceUpREST          = builders.NewInternalSubresource(
-		"devpodworkspaceinstances", "DevPodWorkspaceInstanceUp", "up",
-		func() runtime.Object { return &DevPodWorkspaceInstanceUp{} },
+	NewDevsyWorkspaceInstanceTroubleshootRESTFunc NewRESTFunc
+	InternalDevsyWorkspaceInstanceUpREST          = builders.NewInternalSubresource(
+		"devpodworkspaceinstances", "DevsyWorkspaceInstanceUp", "up",
+		func() runtime.Object { return &DevsyWorkspaceInstanceUp{} },
 	)
-	NewDevPodWorkspaceInstanceUpREST = func(getter generic.RESTOptionsGetter) rest.Storage {
-		return NewDevPodWorkspaceInstanceUpRESTFunc(Factory)
+	NewDevsyWorkspaceInstanceUpREST = func(getter generic.RESTOptionsGetter) rest.Storage {
+		return NewDevsyWorkspaceInstanceUpRESTFunc(Factory)
 	}
-	NewDevPodWorkspaceInstanceUpRESTFunc NewRESTFunc
-	InternalDevPodWorkspacePreset        = builders.NewInternalResource(
+	NewDevsyWorkspaceInstanceUpRESTFunc NewRESTFunc
+	InternalDevsyWorkspacePreset        = builders.NewInternalResource(
 		"devpodworkspacepresets",
-		"DevPodWorkspacePreset",
-		func() runtime.Object { return &DevPodWorkspacePreset{} },
-		func() runtime.Object { return &DevPodWorkspacePresetList{} },
+		"DevsyWorkspacePreset",
+		func() runtime.Object { return &DevsyWorkspacePreset{} },
+		func() runtime.Object { return &DevsyWorkspacePresetList{} },
 	)
-	InternalDevPodWorkspacePresetStatus = builders.NewInternalResourceStatus(
+	InternalDevsyWorkspacePresetStatus = builders.NewInternalResourceStatus(
 		"devpodworkspacepresets",
-		"DevPodWorkspacePresetStatus",
-		func() runtime.Object { return &DevPodWorkspacePreset{} },
-		func() runtime.Object { return &DevPodWorkspacePresetList{} },
+		"DevsyWorkspacePresetStatus",
+		func() runtime.Object { return &DevsyWorkspacePreset{} },
+		func() runtime.Object { return &DevsyWorkspacePresetList{} },
 	)
-	InternalDevPodWorkspaceTemplate = builders.NewInternalResource(
+	InternalDevsyWorkspaceTemplate = builders.NewInternalResource(
 		"devpodworkspacetemplates",
-		"DevPodWorkspaceTemplate",
-		func() runtime.Object { return &DevPodWorkspaceTemplate{} },
-		func() runtime.Object { return &DevPodWorkspaceTemplateList{} },
+		"DevsyWorkspaceTemplate",
+		func() runtime.Object { return &DevsyWorkspaceTemplate{} },
+		func() runtime.Object { return &DevsyWorkspaceTemplateList{} },
 	)
-	InternalDevPodWorkspaceTemplateStatus = builders.NewInternalResourceStatus(
+	InternalDevsyWorkspaceTemplateStatus = builders.NewInternalResourceStatus(
 		"devpodworkspacetemplates",
-		"DevPodWorkspaceTemplateStatus",
-		func() runtime.Object { return &DevPodWorkspaceTemplate{} },
-		func() runtime.Object { return &DevPodWorkspaceTemplateList{} },
+		"DevsyWorkspaceTemplateStatus",
+		func() runtime.Object { return &DevsyWorkspaceTemplate{} },
+		func() runtime.Object { return &DevsyWorkspaceTemplateList{} },
 	)
 	InternalDirectClusterEndpointToken = builders.NewInternalResource(
 		"directclusterendpointtokens",
@@ -1474,21 +1474,21 @@ var (
 		InternalConvertVirtualClusterConfigStatus,
 		InternalDatabaseConnector,
 		InternalDatabaseConnectorStatus,
-		InternalDevPodEnvironmentTemplate,
-		InternalDevPodEnvironmentTemplateStatus,
-		InternalDevPodWorkspaceInstance,
-		InternalDevPodWorkspaceInstanceStatus,
-		InternalDevPodWorkspaceInstanceCancelREST,
-		InternalDevPodWorkspaceInstanceDownloadREST,
-		InternalDevPodWorkspaceInstanceLogREST,
-		InternalDevPodWorkspaceInstanceStopREST,
-		InternalDevPodWorkspaceInstanceTasksREST,
-		InternalDevPodWorkspaceInstanceTroubleshootREST,
-		InternalDevPodWorkspaceInstanceUpREST,
-		InternalDevPodWorkspacePreset,
-		InternalDevPodWorkspacePresetStatus,
-		InternalDevPodWorkspaceTemplate,
-		InternalDevPodWorkspaceTemplateStatus,
+		InternalDevsyEnvironmentTemplate,
+		InternalDevsyEnvironmentTemplateStatus,
+		InternalDevsyWorkspaceInstance,
+		InternalDevsyWorkspaceInstanceStatus,
+		InternalDevsyWorkspaceInstanceCancelREST,
+		InternalDevsyWorkspaceInstanceDownloadREST,
+		InternalDevsyWorkspaceInstanceLogREST,
+		InternalDevsyWorkspaceInstanceStopREST,
+		InternalDevsyWorkspaceInstanceTasksREST,
+		InternalDevsyWorkspaceInstanceTroubleshootREST,
+		InternalDevsyWorkspaceInstanceUpREST,
+		InternalDevsyWorkspacePreset,
+		InternalDevsyWorkspacePresetStatus,
+		InternalDevsyWorkspaceTemplate,
+		InternalDevsyWorkspaceTemplateStatus,
 		InternalDirectClusterEndpointToken,
 		InternalDirectClusterEndpointTokenStatus,
 		InternalEvent,
@@ -1807,7 +1807,7 @@ type AuthenticationOIDC struct {
 	CAFile                 string   `json:"caFile,omitempty"`
 	InsecureCA             bool     `json:"insecureCa,omitempty"`
 	PreferredUsernameClaim string   `json:"preferredUsername,omitempty"`
-	LoftUsernameClaim      string   `json:"loftUsernameClaim,omitempty"`
+	DevsyUsernameClaim      string   `json:"loftUsernameClaim,omitempty"`
 	UsernameClaim          string   `json:"usernameClaim,omitempty"`
 	EmailClaim             string   `json:"emailClaim,omitempty"`
 	AllowedExtraClaims     []string `json:"allowedExtraClaims,omitempty"`
@@ -1910,7 +1910,7 @@ type ClusterAccessKey struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	AccessKey         string `json:"accessKey,omitempty"`
-	LoftHost          string `json:"loftHost,omitempty"`
+	DevsyHost          string `json:"loftHost,omitempty"`
 	Insecure          bool   `json:"insecure,omitempty"`
 	CaCert            string `json:"caCert,omitempty"`
 }
@@ -1950,9 +1950,9 @@ type ClusterAgentConfigCommon struct {
 	Audit                       *AgentAuditConfig       `json:"audit,omitempty"`
 	DefaultImageRegistry        string                  `json:"defaultImageRegistry,omitempty"`
 	TokenCaCert                 []byte                  `json:"tokenCaCert,omitempty"`
-	LoftHost                    string                  `json:"loftHost,omitempty"`
+	DevsyHost                    string                  `json:"loftHost,omitempty"`
 	ProjectNamespacePrefix      string                  `json:"projectNamespacePrefix,omitempty"`
-	LoftInstanceID              string                  `json:"loftInstanceID,omitempty"`
+	DevsyInstanceID              string                  `json:"loftInstanceID,omitempty"`
 	AnalyticsSpec               AgentAnalyticsSpec      `json:"analyticsSpec"`
 	CostControl                 *AgentCostControlConfig `json:"costControl,omitempty"`
 	AuthenticateVersionEndpoint bool                    `json:"authenticateVersionEndpoint,omitempty"`
@@ -2056,9 +2056,9 @@ type ConfigStatus struct {
 	OIDC                        *OIDC                           `json:"oidc,omitempty"`
 	Apps                        *Apps                           `json:"apps,omitempty"`
 	Audit                       *Audit                          `json:"audit,omitempty"`
-	LoftHost                    string                          `json:"loftHost,omitempty"`
+	DevsyHost                    string                          `json:"loftHost,omitempty"`
 	ProjectNamespacePrefix      *string                         `json:"projectNamespacePrefix,omitempty"`
-	DevPodSubDomain             string                          `json:"devPodSubDomain,omitempty"`
+	DevsySubDomain             string                          `json:"devPodSubDomain,omitempty"`
 	UISettings                  *uiv1.UISettingsConfig          `json:"uiSettings,omitempty"`
 	VaultIntegration            *storagev1.VaultIntegrationSpec `json:"vault,omitempty"`
 	DisableConfigEndpoint       bool                            `json:"disableConfigEndpoint,omitempty"`
@@ -2163,34 +2163,34 @@ type DatabaseConnectorStatus struct {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodEnvironmentTemplate struct {
+type DevsyEnvironmentTemplate struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodEnvironmentTemplateSpec   `json:"spec,omitempty"`
-	Status            DevPodEnvironmentTemplateStatus `json:"status,omitempty"`
+	Spec              DevsyEnvironmentTemplateSpec   `json:"spec,omitempty"`
+	Status            DevsyEnvironmentTemplateStatus `json:"status,omitempty"`
 }
 
-type DevPodEnvironmentTemplateSpec struct {
-	storagev1.DevPodEnvironmentTemplateSpec `json:",inline"`
+type DevsyEnvironmentTemplateSpec struct {
+	storagev1.DevsyEnvironmentTemplateSpec `json:",inline"`
 }
 
-type DevPodEnvironmentTemplateStatus struct {
+type DevsyEnvironmentTemplateStatus struct {
 }
 
 // +genclient
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstance struct {
+type DevsyWorkspaceInstance struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodWorkspaceInstanceSpec   `json:"spec,omitempty"`
-	Status            DevPodWorkspaceInstanceStatus `json:"status,omitempty"`
+	Spec              DevsyWorkspaceInstanceSpec   `json:"spec,omitempty"`
+	Status            DevsyWorkspaceInstanceStatus `json:"status,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceCancel struct {
+type DevsyWorkspaceInstanceCancel struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	TaskID            string `json:"taskId,omitempty"`
@@ -2198,45 +2198,45 @@ type DevPodWorkspaceInstanceCancel struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceDownload struct {
+type DevsyWorkspaceInstanceDownload struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceLog struct {
+type DevsyWorkspaceInstanceLog struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 }
 
-type DevPodWorkspaceInstanceSpec struct {
-	storagev1.DevPodWorkspaceInstanceSpec `json:",inline"`
+type DevsyWorkspaceInstanceSpec struct {
+	storagev1.DevsyWorkspaceInstanceSpec `json:",inline"`
 }
 
-type DevPodWorkspaceInstanceStatus struct {
-	storagev1.DevPodWorkspaceInstanceStatus `json:",inline"`
+type DevsyWorkspaceInstanceStatus struct {
+	storagev1.DevsyWorkspaceInstanceStatus `json:",inline"`
 	SleepModeConfig                         *clusterv1.SleepModeConfig `json:"sleepModeConfig,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceStop struct {
+type DevsyWorkspaceInstanceStop struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodWorkspaceInstanceStopSpec   `json:"spec,omitempty"`
-	Status            DevPodWorkspaceInstanceStopStatus `json:"status,omitempty"`
+	Spec              DevsyWorkspaceInstanceStopSpec   `json:"spec,omitempty"`
+	Status            DevsyWorkspaceInstanceStopStatus `json:"status,omitempty"`
 }
 
-type DevPodWorkspaceInstanceStopSpec struct {
+type DevsyWorkspaceInstanceStopSpec struct {
 	Options string `json:"options,omitempty"`
 }
 
-type DevPodWorkspaceInstanceStopStatus struct {
+type DevsyWorkspaceInstanceStopStatus struct {
 	TaskID string `json:"taskId,omitempty"`
 }
 
-type DevPodWorkspaceInstanceTask struct {
+type DevsyWorkspaceInstanceTask struct {
 	ID        string      `json:"id,omitempty"`
 	Type      string      `json:"type,omitempty"`
 	Status    string      `json:"status,omitempty"`
@@ -2247,20 +2247,20 @@ type DevPodWorkspaceInstanceTask struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTasks struct {
+type DevsyWorkspaceInstanceTasks struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Tasks             []DevPodWorkspaceInstanceTask `json:"tasks,omitempty"`
+	Tasks             []DevsyWorkspaceInstanceTask `json:"tasks,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTroubleshoot struct {
+type DevsyWorkspaceInstanceTroubleshoot struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	State             string                             `json:"state,omitempty"`
-	Workspace         *DevPodWorkspaceInstance           `json:"workspace,omitempty"`
-	Template          *storagev1.DevPodWorkspaceTemplate `json:"template,omitempty"`
+	Workspace         *DevsyWorkspaceInstance           `json:"workspace,omitempty"`
+	Template          *storagev1.DevsyWorkspaceTemplate `json:"template,omitempty"`
 	Pods              []corev1.Pod                       `json:"pods,omitempty"`
 	PVCs              []corev1.PersistentVolumeClaim     `json:"pvcs,omitempty"`
 	Netmaps           []string                           `json:"netmaps,omitempty"`
@@ -2269,19 +2269,19 @@ type DevPodWorkspaceInstanceTroubleshoot struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceUp struct {
+type DevsyWorkspaceInstanceUp struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodWorkspaceInstanceUpSpec   `json:"spec,omitempty"`
-	Status            DevPodWorkspaceInstanceUpStatus `json:"status,omitempty"`
+	Spec              DevsyWorkspaceInstanceUpSpec   `json:"spec,omitempty"`
+	Status            DevsyWorkspaceInstanceUpStatus `json:"status,omitempty"`
 }
 
-type DevPodWorkspaceInstanceUpSpec struct {
+type DevsyWorkspaceInstanceUpSpec struct {
 	Debug   bool   `json:"debug,omitempty"`
 	Options string `json:"options,omitempty"`
 }
 
-type DevPodWorkspaceInstanceUpStatus struct {
+type DevsyWorkspaceInstanceUpStatus struct {
 	TaskID string `json:"taskId,omitempty"`
 }
 
@@ -2289,37 +2289,37 @@ type DevPodWorkspaceInstanceUpStatus struct {
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspacePreset struct {
+type DevsyWorkspacePreset struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodWorkspacePresetSpec   `json:"spec,omitempty"`
-	Status            DevPodWorkspacePresetStatus `json:"status,omitempty"`
+	Spec              DevsyWorkspacePresetSpec   `json:"spec,omitempty"`
+	Status            DevsyWorkspacePresetStatus `json:"status,omitempty"`
 }
 
-type DevPodWorkspacePresetSpec struct {
-	storagev1.DevPodWorkspacePresetSpec `json:",inline"`
+type DevsyWorkspacePresetSpec struct {
+	storagev1.DevsyWorkspacePresetSpec `json:",inline"`
 }
 
-type DevPodWorkspacePresetStatus struct {
+type DevsyWorkspacePresetStatus struct {
 }
 
 // +genclient
 // +genclient
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceTemplate struct {
+type DevsyWorkspaceTemplate struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DevPodWorkspaceTemplateSpec   `json:"spec,omitempty"`
-	Status            DevPodWorkspaceTemplateStatus `json:"status,omitempty"`
+	Spec              DevsyWorkspaceTemplateSpec   `json:"spec,omitempty"`
+	Status            DevsyWorkspaceTemplateStatus `json:"status,omitempty"`
 }
 
-type DevPodWorkspaceTemplateSpec struct {
-	storagev1.DevPodWorkspaceTemplateSpec `json:",inline"`
+type DevsyWorkspaceTemplateSpec struct {
+	storagev1.DevsyWorkspaceTemplateSpec `json:",inline"`
 }
 
-type DevPodWorkspaceTemplateStatus struct {
-	storagev1.DevPodWorkspaceTemplateStatus `json:",inline"`
+type DevsyWorkspaceTemplateStatus struct {
+	storagev1.DevsyWorkspaceTemplateStatus `json:",inline"`
 }
 
 // +genclient
@@ -2908,11 +2908,11 @@ type ProjectTemplates struct {
 	VirtualClusterTemplates          []VirtualClusterTemplate    `json:"virtualClusterTemplates,omitempty"`
 	DefaultSpaceTemplate             string                      `json:"defaultSpaceTemplate,omitempty"`
 	SpaceTemplates                   []SpaceTemplate             `json:"spaceTemplates,omitempty"`
-	DefaultDevPodWorkspaceTemplate   string                      `json:"defaultDevPodWorkspaceTemplate,omitempty"`
-	DevPodWorkspaceTemplates         []DevPodWorkspaceTemplate   `json:"devPodWorkspaceTemplates,omitempty"`
-	DevPodEnvironmentTemplates       []DevPodEnvironmentTemplate `json:"devPodEnvironmentTemplates,omitempty"`
-	DevPodWorkspacePresets           []DevPodWorkspacePreset     `json:"devPodWorkspacePresets,omitempty"`
-	DefaultDevPodEnvironmentTemplate string                      `json:"defaultDevPodEnvironmentTemplate,omitempty"`
+	DefaultDevsyWorkspaceTemplate   string                      `json:"defaultDevsyWorkspaceTemplate,omitempty"`
+	DevsyWorkspaceTemplates         []DevsyWorkspaceTemplate   `json:"devPodWorkspaceTemplates,omitempty"`
+	DevsyEnvironmentTemplates       []DevsyEnvironmentTemplate `json:"devPodEnvironmentTemplates,omitempty"`
+	DevsyWorkspacePresets           []DevsyWorkspacePreset     `json:"devPodWorkspacePresets,omitempty"`
+	DefaultDevsyEnvironmentTemplate string                      `json:"defaultDevsyEnvironmentTemplate,omitempty"`
 }
 
 // +genclient
@@ -3004,7 +3004,7 @@ type SelfStatus struct {
 	Groups                 []string                  `json:"groups,omitempty"`
 	ChatAuthToken          string                    `json:"chatAuthToken,omitempty"`
 	InstanceID             string                    `json:"instanceID,omitempty"`
-	LoftHost               string                    `json:"loftHost,omitempty"`
+	DevsyHost               string                    `json:"loftHost,omitempty"`
 	ProjectNamespacePrefix *string                   `json:"projectNamespacePrefix,omitempty"`
 }
 
@@ -4768,81 +4768,81 @@ func (s *storageDatabaseConnector) DeleteDatabaseConnector(ctx context.Context, 
 	return sync, err
 }
 
-// DevPodEnvironmentTemplate Functions and Structs
+// DevsyEnvironmentTemplate Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type DevPodEnvironmentTemplateStrategy struct {
+type DevsyEnvironmentTemplateStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type DevPodEnvironmentTemplateStatusStrategy struct {
+type DevsyEnvironmentTemplateStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodEnvironmentTemplateList struct {
+type DevsyEnvironmentTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodEnvironmentTemplate `json:"items"`
+	Items           []DevsyEnvironmentTemplate `json:"items"`
 }
 
-func (DevPodEnvironmentTemplate) NewStatus() interface{} {
-	return DevPodEnvironmentTemplateStatus{}
+func (DevsyEnvironmentTemplate) NewStatus() interface{} {
+	return DevsyEnvironmentTemplateStatus{}
 }
 
-func (pc *DevPodEnvironmentTemplate) GetStatus() interface{} {
+func (pc *DevsyEnvironmentTemplate) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *DevPodEnvironmentTemplate) SetStatus(s interface{}) {
-	pc.Status = s.(DevPodEnvironmentTemplateStatus)
+func (pc *DevsyEnvironmentTemplate) SetStatus(s interface{}) {
+	pc.Status = s.(DevsyEnvironmentTemplateStatus)
 }
 
-func (pc *DevPodEnvironmentTemplate) GetSpec() interface{} {
+func (pc *DevsyEnvironmentTemplate) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *DevPodEnvironmentTemplate) SetSpec(s interface{}) {
-	pc.Spec = s.(DevPodEnvironmentTemplateSpec)
+func (pc *DevsyEnvironmentTemplate) SetSpec(s interface{}) {
+	pc.Spec = s.(DevsyEnvironmentTemplateSpec)
 }
 
-func (pc *DevPodEnvironmentTemplate) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *DevsyEnvironmentTemplate) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *DevPodEnvironmentTemplate) SetGeneration(generation int64) {
+func (pc *DevsyEnvironmentTemplate) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc DevPodEnvironmentTemplate) GetGeneration() int64 {
+func (pc DevsyEnvironmentTemplate) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store DevPodEnvironmentTemplate.
+// Registry is an interface for things that know how to store DevsyEnvironmentTemplate.
 // +k8s:deepcopy-gen=false
-type DevPodEnvironmentTemplateRegistry interface {
-	ListDevPodEnvironmentTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevPodEnvironmentTemplateList, error)
-	GetDevPodEnvironmentTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodEnvironmentTemplate, error)
-	CreateDevPodEnvironmentTemplate(ctx context.Context, id *DevPodEnvironmentTemplate) (*DevPodEnvironmentTemplate, error)
-	UpdateDevPodEnvironmentTemplate(ctx context.Context, id *DevPodEnvironmentTemplate) (*DevPodEnvironmentTemplate, error)
-	DeleteDevPodEnvironmentTemplate(ctx context.Context, id string) (bool, error)
+type DevsyEnvironmentTemplateRegistry interface {
+	ListDevsyEnvironmentTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevsyEnvironmentTemplateList, error)
+	GetDevsyEnvironmentTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyEnvironmentTemplate, error)
+	CreateDevsyEnvironmentTemplate(ctx context.Context, id *DevsyEnvironmentTemplate) (*DevsyEnvironmentTemplate, error)
+	UpdateDevsyEnvironmentTemplate(ctx context.Context, id *DevsyEnvironmentTemplate) (*DevsyEnvironmentTemplate, error)
+	DeleteDevsyEnvironmentTemplate(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewDevPodEnvironmentTemplateRegistry(sp builders.StandardStorageProvider) DevPodEnvironmentTemplateRegistry {
-	return &storageDevPodEnvironmentTemplate{sp}
+func NewDevsyEnvironmentTemplateRegistry(sp builders.StandardStorageProvider) DevsyEnvironmentTemplateRegistry {
+	return &storageDevsyEnvironmentTemplate{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageDevPodEnvironmentTemplate struct {
+type storageDevsyEnvironmentTemplate struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageDevPodEnvironmentTemplate) ListDevPodEnvironmentTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevPodEnvironmentTemplateList, error) {
+func (s *storageDevsyEnvironmentTemplate) ListDevsyEnvironmentTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevsyEnvironmentTemplateList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -4851,173 +4851,173 @@ func (s *storageDevPodEnvironmentTemplate) ListDevPodEnvironmentTemplates(ctx co
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodEnvironmentTemplateList), err
+	return obj.(*DevsyEnvironmentTemplateList), err
 }
 
-func (s *storageDevPodEnvironmentTemplate) GetDevPodEnvironmentTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodEnvironmentTemplate, error) {
+func (s *storageDevsyEnvironmentTemplate) GetDevsyEnvironmentTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyEnvironmentTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodEnvironmentTemplate), nil
+	return obj.(*DevsyEnvironmentTemplate), nil
 }
 
-func (s *storageDevPodEnvironmentTemplate) CreateDevPodEnvironmentTemplate(ctx context.Context, object *DevPodEnvironmentTemplate) (*DevPodEnvironmentTemplate, error) {
+func (s *storageDevsyEnvironmentTemplate) CreateDevsyEnvironmentTemplate(ctx context.Context, object *DevsyEnvironmentTemplate) (*DevsyEnvironmentTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodEnvironmentTemplate), nil
+	return obj.(*DevsyEnvironmentTemplate), nil
 }
 
-func (s *storageDevPodEnvironmentTemplate) UpdateDevPodEnvironmentTemplate(ctx context.Context, object *DevPodEnvironmentTemplate) (*DevPodEnvironmentTemplate, error) {
+func (s *storageDevsyEnvironmentTemplate) UpdateDevsyEnvironmentTemplate(ctx context.Context, object *DevsyEnvironmentTemplate) (*DevsyEnvironmentTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodEnvironmentTemplate), nil
+	return obj.(*DevsyEnvironmentTemplate), nil
 }
 
-func (s *storageDevPodEnvironmentTemplate) DeleteDevPodEnvironmentTemplate(ctx context.Context, id string) (bool, error) {
+func (s *storageDevsyEnvironmentTemplate) DeleteDevsyEnvironmentTemplate(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
 }
 
-// DevPodWorkspaceInstance Functions and Structs
+// DevsyWorkspaceInstance Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceInstanceStrategy struct {
+type DevsyWorkspaceInstanceStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceInstanceStatusStrategy struct {
+type DevsyWorkspaceInstanceStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceList struct {
+type DevsyWorkspaceInstanceList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstance `json:"items"`
+	Items           []DevsyWorkspaceInstance `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceCancelList struct {
+type DevsyWorkspaceInstanceCancelList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceCancel `json:"items"`
+	Items           []DevsyWorkspaceInstanceCancel `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceDownloadList struct {
+type DevsyWorkspaceInstanceDownloadList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceDownload `json:"items"`
+	Items           []DevsyWorkspaceInstanceDownload `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceLogList struct {
+type DevsyWorkspaceInstanceLogList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceLog `json:"items"`
+	Items           []DevsyWorkspaceInstanceLog `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceStopList struct {
+type DevsyWorkspaceInstanceStopList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceStop `json:"items"`
+	Items           []DevsyWorkspaceInstanceStop `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTasksList struct {
+type DevsyWorkspaceInstanceTasksList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceTasks `json:"items"`
+	Items           []DevsyWorkspaceInstanceTasks `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTroubleshootList struct {
+type DevsyWorkspaceInstanceTroubleshootList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceTroubleshoot `json:"items"`
+	Items           []DevsyWorkspaceInstanceTroubleshoot `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceUpList struct {
+type DevsyWorkspaceInstanceUpList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceUp `json:"items"`
+	Items           []DevsyWorkspaceInstanceUp `json:"items"`
 }
 
-func (DevPodWorkspaceInstance) NewStatus() interface{} {
-	return DevPodWorkspaceInstanceStatus{}
+func (DevsyWorkspaceInstance) NewStatus() interface{} {
+	return DevsyWorkspaceInstanceStatus{}
 }
 
-func (pc *DevPodWorkspaceInstance) GetStatus() interface{} {
+func (pc *DevsyWorkspaceInstance) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *DevPodWorkspaceInstance) SetStatus(s interface{}) {
-	pc.Status = s.(DevPodWorkspaceInstanceStatus)
+func (pc *DevsyWorkspaceInstance) SetStatus(s interface{}) {
+	pc.Status = s.(DevsyWorkspaceInstanceStatus)
 }
 
-func (pc *DevPodWorkspaceInstance) GetSpec() interface{} {
+func (pc *DevsyWorkspaceInstance) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *DevPodWorkspaceInstance) SetSpec(s interface{}) {
-	pc.Spec = s.(DevPodWorkspaceInstanceSpec)
+func (pc *DevsyWorkspaceInstance) SetSpec(s interface{}) {
+	pc.Spec = s.(DevsyWorkspaceInstanceSpec)
 }
 
-func (pc *DevPodWorkspaceInstance) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *DevsyWorkspaceInstance) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *DevPodWorkspaceInstance) SetGeneration(generation int64) {
+func (pc *DevsyWorkspaceInstance) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc DevPodWorkspaceInstance) GetGeneration() int64 {
+func (pc DevsyWorkspaceInstance) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store DevPodWorkspaceInstance.
+// Registry is an interface for things that know how to store DevsyWorkspaceInstance.
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceInstanceRegistry interface {
-	ListDevPodWorkspaceInstances(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspaceInstanceList, error)
-	GetDevPodWorkspaceInstance(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspaceInstance, error)
-	CreateDevPodWorkspaceInstance(ctx context.Context, id *DevPodWorkspaceInstance) (*DevPodWorkspaceInstance, error)
-	UpdateDevPodWorkspaceInstance(ctx context.Context, id *DevPodWorkspaceInstance) (*DevPodWorkspaceInstance, error)
-	DeleteDevPodWorkspaceInstance(ctx context.Context, id string) (bool, error)
+type DevsyWorkspaceInstanceRegistry interface {
+	ListDevsyWorkspaceInstances(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspaceInstanceList, error)
+	GetDevsyWorkspaceInstance(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspaceInstance, error)
+	CreateDevsyWorkspaceInstance(ctx context.Context, id *DevsyWorkspaceInstance) (*DevsyWorkspaceInstance, error)
+	UpdateDevsyWorkspaceInstance(ctx context.Context, id *DevsyWorkspaceInstance) (*DevsyWorkspaceInstance, error)
+	DeleteDevsyWorkspaceInstance(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewDevPodWorkspaceInstanceRegistry(sp builders.StandardStorageProvider) DevPodWorkspaceInstanceRegistry {
-	return &storageDevPodWorkspaceInstance{sp}
+func NewDevsyWorkspaceInstanceRegistry(sp builders.StandardStorageProvider) DevsyWorkspaceInstanceRegistry {
+	return &storageDevsyWorkspaceInstance{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageDevPodWorkspaceInstance struct {
+type storageDevsyWorkspaceInstance struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageDevPodWorkspaceInstance) ListDevPodWorkspaceInstances(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspaceInstanceList, error) {
+func (s *storageDevsyWorkspaceInstance) ListDevsyWorkspaceInstances(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspaceInstanceList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -5026,117 +5026,117 @@ func (s *storageDevPodWorkspaceInstance) ListDevPodWorkspaceInstances(ctx contex
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceInstanceList), err
+	return obj.(*DevsyWorkspaceInstanceList), err
 }
 
-func (s *storageDevPodWorkspaceInstance) GetDevPodWorkspaceInstance(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspaceInstance, error) {
+func (s *storageDevsyWorkspaceInstance) GetDevsyWorkspaceInstance(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspaceInstance, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceInstance), nil
+	return obj.(*DevsyWorkspaceInstance), nil
 }
 
-func (s *storageDevPodWorkspaceInstance) CreateDevPodWorkspaceInstance(ctx context.Context, object *DevPodWorkspaceInstance) (*DevPodWorkspaceInstance, error) {
+func (s *storageDevsyWorkspaceInstance) CreateDevsyWorkspaceInstance(ctx context.Context, object *DevsyWorkspaceInstance) (*DevsyWorkspaceInstance, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceInstance), nil
+	return obj.(*DevsyWorkspaceInstance), nil
 }
 
-func (s *storageDevPodWorkspaceInstance) UpdateDevPodWorkspaceInstance(ctx context.Context, object *DevPodWorkspaceInstance) (*DevPodWorkspaceInstance, error) {
+func (s *storageDevsyWorkspaceInstance) UpdateDevsyWorkspaceInstance(ctx context.Context, object *DevsyWorkspaceInstance) (*DevsyWorkspaceInstance, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceInstance), nil
+	return obj.(*DevsyWorkspaceInstance), nil
 }
 
-func (s *storageDevPodWorkspaceInstance) DeleteDevPodWorkspaceInstance(ctx context.Context, id string) (bool, error) {
+func (s *storageDevsyWorkspaceInstance) DeleteDevsyWorkspaceInstance(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
 }
 
-// DevPodWorkspacePreset Functions and Structs
+// DevsyWorkspacePreset Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type DevPodWorkspacePresetStrategy struct {
+type DevsyWorkspacePresetStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type DevPodWorkspacePresetStatusStrategy struct {
+type DevsyWorkspacePresetStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspacePresetList struct {
+type DevsyWorkspacePresetList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspacePreset `json:"items"`
+	Items           []DevsyWorkspacePreset `json:"items"`
 }
 
-func (DevPodWorkspacePreset) NewStatus() interface{} {
-	return DevPodWorkspacePresetStatus{}
+func (DevsyWorkspacePreset) NewStatus() interface{} {
+	return DevsyWorkspacePresetStatus{}
 }
 
-func (pc *DevPodWorkspacePreset) GetStatus() interface{} {
+func (pc *DevsyWorkspacePreset) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *DevPodWorkspacePreset) SetStatus(s interface{}) {
-	pc.Status = s.(DevPodWorkspacePresetStatus)
+func (pc *DevsyWorkspacePreset) SetStatus(s interface{}) {
+	pc.Status = s.(DevsyWorkspacePresetStatus)
 }
 
-func (pc *DevPodWorkspacePreset) GetSpec() interface{} {
+func (pc *DevsyWorkspacePreset) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *DevPodWorkspacePreset) SetSpec(s interface{}) {
-	pc.Spec = s.(DevPodWorkspacePresetSpec)
+func (pc *DevsyWorkspacePreset) SetSpec(s interface{}) {
+	pc.Spec = s.(DevsyWorkspacePresetSpec)
 }
 
-func (pc *DevPodWorkspacePreset) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *DevsyWorkspacePreset) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *DevPodWorkspacePreset) SetGeneration(generation int64) {
+func (pc *DevsyWorkspacePreset) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc DevPodWorkspacePreset) GetGeneration() int64 {
+func (pc DevsyWorkspacePreset) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store DevPodWorkspacePreset.
+// Registry is an interface for things that know how to store DevsyWorkspacePreset.
 // +k8s:deepcopy-gen=false
-type DevPodWorkspacePresetRegistry interface {
-	ListDevPodWorkspacePresets(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspacePresetList, error)
-	GetDevPodWorkspacePreset(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspacePreset, error)
-	CreateDevPodWorkspacePreset(ctx context.Context, id *DevPodWorkspacePreset) (*DevPodWorkspacePreset, error)
-	UpdateDevPodWorkspacePreset(ctx context.Context, id *DevPodWorkspacePreset) (*DevPodWorkspacePreset, error)
-	DeleteDevPodWorkspacePreset(ctx context.Context, id string) (bool, error)
+type DevsyWorkspacePresetRegistry interface {
+	ListDevsyWorkspacePresets(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspacePresetList, error)
+	GetDevsyWorkspacePreset(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspacePreset, error)
+	CreateDevsyWorkspacePreset(ctx context.Context, id *DevsyWorkspacePreset) (*DevsyWorkspacePreset, error)
+	UpdateDevsyWorkspacePreset(ctx context.Context, id *DevsyWorkspacePreset) (*DevsyWorkspacePreset, error)
+	DeleteDevsyWorkspacePreset(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewDevPodWorkspacePresetRegistry(sp builders.StandardStorageProvider) DevPodWorkspacePresetRegistry {
-	return &storageDevPodWorkspacePreset{sp}
+func NewDevsyWorkspacePresetRegistry(sp builders.StandardStorageProvider) DevsyWorkspacePresetRegistry {
+	return &storageDevsyWorkspacePreset{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageDevPodWorkspacePreset struct {
+type storageDevsyWorkspacePreset struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageDevPodWorkspacePreset) ListDevPodWorkspacePresets(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspacePresetList, error) {
+func (s *storageDevsyWorkspacePreset) ListDevsyWorkspacePresets(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspacePresetList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -5145,117 +5145,117 @@ func (s *storageDevPodWorkspacePreset) ListDevPodWorkspacePresets(ctx context.Co
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspacePresetList), err
+	return obj.(*DevsyWorkspacePresetList), err
 }
 
-func (s *storageDevPodWorkspacePreset) GetDevPodWorkspacePreset(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspacePreset, error) {
+func (s *storageDevsyWorkspacePreset) GetDevsyWorkspacePreset(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspacePreset, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspacePreset), nil
+	return obj.(*DevsyWorkspacePreset), nil
 }
 
-func (s *storageDevPodWorkspacePreset) CreateDevPodWorkspacePreset(ctx context.Context, object *DevPodWorkspacePreset) (*DevPodWorkspacePreset, error) {
+func (s *storageDevsyWorkspacePreset) CreateDevsyWorkspacePreset(ctx context.Context, object *DevsyWorkspacePreset) (*DevsyWorkspacePreset, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspacePreset), nil
+	return obj.(*DevsyWorkspacePreset), nil
 }
 
-func (s *storageDevPodWorkspacePreset) UpdateDevPodWorkspacePreset(ctx context.Context, object *DevPodWorkspacePreset) (*DevPodWorkspacePreset, error) {
+func (s *storageDevsyWorkspacePreset) UpdateDevsyWorkspacePreset(ctx context.Context, object *DevsyWorkspacePreset) (*DevsyWorkspacePreset, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspacePreset), nil
+	return obj.(*DevsyWorkspacePreset), nil
 }
 
-func (s *storageDevPodWorkspacePreset) DeleteDevPodWorkspacePreset(ctx context.Context, id string) (bool, error) {
+func (s *storageDevsyWorkspacePreset) DeleteDevsyWorkspacePreset(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err
 }
 
-// DevPodWorkspaceTemplate Functions and Structs
+// DevsyWorkspaceTemplate Functions and Structs
 //
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceTemplateStrategy struct {
+type DevsyWorkspaceTemplateStrategy struct {
 	builders.DefaultStorageStrategy
 }
 
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceTemplateStatusStrategy struct {
+type DevsyWorkspaceTemplateStatusStrategy struct {
 	builders.DefaultStatusStorageStrategy
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceTemplateList struct {
+type DevsyWorkspaceTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceTemplate `json:"items"`
+	Items           []DevsyWorkspaceTemplate `json:"items"`
 }
 
-func (DevPodWorkspaceTemplate) NewStatus() interface{} {
-	return DevPodWorkspaceTemplateStatus{}
+func (DevsyWorkspaceTemplate) NewStatus() interface{} {
+	return DevsyWorkspaceTemplateStatus{}
 }
 
-func (pc *DevPodWorkspaceTemplate) GetStatus() interface{} {
+func (pc *DevsyWorkspaceTemplate) GetStatus() interface{} {
 	return pc.Status
 }
 
-func (pc *DevPodWorkspaceTemplate) SetStatus(s interface{}) {
-	pc.Status = s.(DevPodWorkspaceTemplateStatus)
+func (pc *DevsyWorkspaceTemplate) SetStatus(s interface{}) {
+	pc.Status = s.(DevsyWorkspaceTemplateStatus)
 }
 
-func (pc *DevPodWorkspaceTemplate) GetSpec() interface{} {
+func (pc *DevsyWorkspaceTemplate) GetSpec() interface{} {
 	return pc.Spec
 }
 
-func (pc *DevPodWorkspaceTemplate) SetSpec(s interface{}) {
-	pc.Spec = s.(DevPodWorkspaceTemplateSpec)
+func (pc *DevsyWorkspaceTemplate) SetSpec(s interface{}) {
+	pc.Spec = s.(DevsyWorkspaceTemplateSpec)
 }
 
-func (pc *DevPodWorkspaceTemplate) GetObjectMeta() *metav1.ObjectMeta {
+func (pc *DevsyWorkspaceTemplate) GetObjectMeta() *metav1.ObjectMeta {
 	return &pc.ObjectMeta
 }
 
-func (pc *DevPodWorkspaceTemplate) SetGeneration(generation int64) {
+func (pc *DevsyWorkspaceTemplate) SetGeneration(generation int64) {
 	pc.ObjectMeta.Generation = generation
 }
 
-func (pc DevPodWorkspaceTemplate) GetGeneration() int64 {
+func (pc DevsyWorkspaceTemplate) GetGeneration() int64 {
 	return pc.ObjectMeta.Generation
 }
 
-// Registry is an interface for things that know how to store DevPodWorkspaceTemplate.
+// Registry is an interface for things that know how to store DevsyWorkspaceTemplate.
 // +k8s:deepcopy-gen=false
-type DevPodWorkspaceTemplateRegistry interface {
-	ListDevPodWorkspaceTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspaceTemplateList, error)
-	GetDevPodWorkspaceTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspaceTemplate, error)
-	CreateDevPodWorkspaceTemplate(ctx context.Context, id *DevPodWorkspaceTemplate) (*DevPodWorkspaceTemplate, error)
-	UpdateDevPodWorkspaceTemplate(ctx context.Context, id *DevPodWorkspaceTemplate) (*DevPodWorkspaceTemplate, error)
-	DeleteDevPodWorkspaceTemplate(ctx context.Context, id string) (bool, error)
+type DevsyWorkspaceTemplateRegistry interface {
+	ListDevsyWorkspaceTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspaceTemplateList, error)
+	GetDevsyWorkspaceTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspaceTemplate, error)
+	CreateDevsyWorkspaceTemplate(ctx context.Context, id *DevsyWorkspaceTemplate) (*DevsyWorkspaceTemplate, error)
+	UpdateDevsyWorkspaceTemplate(ctx context.Context, id *DevsyWorkspaceTemplate) (*DevsyWorkspaceTemplate, error)
+	DeleteDevsyWorkspaceTemplate(ctx context.Context, id string) (bool, error)
 }
 
 // NewRegistry returns a new Registry interface for the given Storage. Any mismatched types will panic.
-func NewDevPodWorkspaceTemplateRegistry(sp builders.StandardStorageProvider) DevPodWorkspaceTemplateRegistry {
-	return &storageDevPodWorkspaceTemplate{sp}
+func NewDevsyWorkspaceTemplateRegistry(sp builders.StandardStorageProvider) DevsyWorkspaceTemplateRegistry {
+	return &storageDevsyWorkspaceTemplate{sp}
 }
 
 // Implement Registry
 // storage puts strong typing around storage calls
 // +k8s:deepcopy-gen=false
-type storageDevPodWorkspaceTemplate struct {
+type storageDevsyWorkspaceTemplate struct {
 	builders.StandardStorageProvider
 }
 
-func (s *storageDevPodWorkspaceTemplate) ListDevPodWorkspaceTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevPodWorkspaceTemplateList, error) {
+func (s *storageDevsyWorkspaceTemplate) ListDevsyWorkspaceTemplates(ctx context.Context, options *internalversion.ListOptions) (*DevsyWorkspaceTemplateList, error) {
 	if options != nil && options.FieldSelector != nil && !options.FieldSelector.Empty() {
 		return nil, fmt.Errorf("field selector not supported yet")
 	}
@@ -5264,37 +5264,37 @@ func (s *storageDevPodWorkspaceTemplate) ListDevPodWorkspaceTemplates(ctx contex
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceTemplateList), err
+	return obj.(*DevsyWorkspaceTemplateList), err
 }
 
-func (s *storageDevPodWorkspaceTemplate) GetDevPodWorkspaceTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevPodWorkspaceTemplate, error) {
+func (s *storageDevsyWorkspaceTemplate) GetDevsyWorkspaceTemplate(ctx context.Context, id string, options *metav1.GetOptions) (*DevsyWorkspaceTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Get(ctx, id, options)
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceTemplate), nil
+	return obj.(*DevsyWorkspaceTemplate), nil
 }
 
-func (s *storageDevPodWorkspaceTemplate) CreateDevPodWorkspaceTemplate(ctx context.Context, object *DevPodWorkspaceTemplate) (*DevPodWorkspaceTemplate, error) {
+func (s *storageDevsyWorkspaceTemplate) CreateDevsyWorkspaceTemplate(ctx context.Context, object *DevsyWorkspaceTemplate) (*DevsyWorkspaceTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, err := st.Create(ctx, object, nil, &metav1.CreateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceTemplate), nil
+	return obj.(*DevsyWorkspaceTemplate), nil
 }
 
-func (s *storageDevPodWorkspaceTemplate) UpdateDevPodWorkspaceTemplate(ctx context.Context, object *DevPodWorkspaceTemplate) (*DevPodWorkspaceTemplate, error) {
+func (s *storageDevsyWorkspaceTemplate) UpdateDevsyWorkspaceTemplate(ctx context.Context, object *DevsyWorkspaceTemplate) (*DevsyWorkspaceTemplate, error) {
 	st := s.GetStandardStorage()
 	obj, _, err := st.Update(ctx, object.Name, rest.DefaultUpdatedObjectInfo(object), nil, nil, false, &metav1.UpdateOptions{})
 	if err != nil {
 		return nil, err
 	}
-	return obj.(*DevPodWorkspaceTemplate), nil
+	return obj.(*DevsyWorkspaceTemplate), nil
 }
 
-func (s *storageDevPodWorkspaceTemplate) DeleteDevPodWorkspaceTemplate(ctx context.Context, id string) (bool, error) {
+func (s *storageDevsyWorkspaceTemplate) DeleteDevsyWorkspaceTemplate(ctx context.Context, id string) (bool, error) {
 	st := s.GetStandardStorage()
 	_, sync, err := st.Delete(ctx, id, nil, &metav1.DeleteOptions{})
 	return sync, err

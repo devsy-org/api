@@ -6,10 +6,10 @@ import (
 )
 
 type PrivateClaims struct {
-	Loft Devsy `json:"devsy.sh,omitempty"`
+	Devsy Devsy `json:"devsy.sh,omitempty"`
 }
 
-const LoftAdminKind = "LoftAdmin"
+const DevsyAdminKind = "DevsyAdmin"
 
 type Devsy struct {
 	// The UID of the user or team that this token is for

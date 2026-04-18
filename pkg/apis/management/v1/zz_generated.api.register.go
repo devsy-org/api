@@ -42,21 +42,21 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&ConvertVirtualClusterConfigList{},
 		&DatabaseConnector{},
 		&DatabaseConnectorList{},
-		&DevPodEnvironmentTemplate{},
-		&DevPodEnvironmentTemplateList{},
-		&DevPodWorkspaceInstance{},
-		&DevPodWorkspaceInstanceList{},
-		&DevPodWorkspaceInstanceCancel{},
-		&DevPodWorkspaceInstanceDownload{},
-		&DevPodWorkspaceInstanceLog{},
-		&DevPodWorkspaceInstanceStop{},
-		&DevPodWorkspaceInstanceTasks{},
-		&DevPodWorkspaceInstanceTroubleshoot{},
-		&DevPodWorkspaceInstanceUp{},
-		&DevPodWorkspacePreset{},
-		&DevPodWorkspacePresetList{},
-		&DevPodWorkspaceTemplate{},
-		&DevPodWorkspaceTemplateList{},
+		&DevsyEnvironmentTemplate{},
+		&DevsyEnvironmentTemplateList{},
+		&DevsyWorkspaceInstance{},
+		&DevsyWorkspaceInstanceList{},
+		&DevsyWorkspaceInstanceCancel{},
+		&DevsyWorkspaceInstanceDownload{},
+		&DevsyWorkspaceInstanceLog{},
+		&DevsyWorkspaceInstanceStop{},
+		&DevsyWorkspaceInstanceTasks{},
+		&DevsyWorkspaceInstanceTroubleshoot{},
+		&DevsyWorkspaceInstanceUp{},
+		&DevsyWorkspacePreset{},
+		&DevsyWorkspacePresetList{},
+		&DevsyWorkspaceTemplate{},
+		&DevsyWorkspaceTemplateList{},
 		&DirectClusterEndpointToken{},
 		&DirectClusterEndpointTokenList{},
 		&Event{},
@@ -226,52 +226,52 @@ var (
 		management.ManagementConfigStorage,
 		management.ManagementConvertVirtualClusterConfigStorage,
 		management.ManagementDatabaseConnectorStorage,
-		management.ManagementDevPodEnvironmentTemplateStorage,
-		management.ManagementDevPodWorkspaceInstanceStorage,
+		management.ManagementDevsyEnvironmentTemplateStorage,
+		management.ManagementDevsyWorkspaceInstanceStorage,
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceCancelREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceCancel{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceCancelREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceCancel{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceCancelREST,
+			management.NewDevsyWorkspaceInstanceCancelREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceDownloadREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceDownload{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceDownloadREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceDownload{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceDownloadREST,
+			management.NewDevsyWorkspaceInstanceDownloadREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceLogREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceLog{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceLogREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceLog{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceLogREST,
+			management.NewDevsyWorkspaceInstanceLogREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceStopREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceStop{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceStopREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceStop{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceStopREST,
+			management.NewDevsyWorkspaceInstanceStopREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceTasksREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceTasks{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceTasksREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceTasks{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceTasksREST,
+			management.NewDevsyWorkspaceInstanceTasksREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceTroubleshootREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceTroubleshoot{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceTroubleshootREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceTroubleshoot{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceTroubleshootREST,
+			management.NewDevsyWorkspaceInstanceTroubleshootREST,
 		),
 		builders.NewApiResourceWithStorage(
-			management.InternalDevPodWorkspaceInstanceUpREST,
-			func() runtime.Object { return &DevPodWorkspaceInstanceUp{} }, // Register versioned resource
+			management.InternalDevsyWorkspaceInstanceUpREST,
+			func() runtime.Object { return &DevsyWorkspaceInstanceUp{} }, // Register versioned resource
 			nil,
-			management.NewDevPodWorkspaceInstanceUpREST,
+			management.NewDevsyWorkspaceInstanceUpREST,
 		),
-		management.ManagementDevPodWorkspacePresetStorage,
-		management.ManagementDevPodWorkspaceTemplateStorage,
+		management.ManagementDevsyWorkspacePresetStorage,
+		management.ManagementDevsyWorkspaceTemplateStorage,
 		management.ManagementDirectClusterEndpointTokenStorage,
 		management.ManagementEventStorage,
 		management.ManagementFeatureStorage,
@@ -688,90 +688,90 @@ type DatabaseConnectorList struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodEnvironmentTemplateList struct {
+type DevsyEnvironmentTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodEnvironmentTemplate `json:"items"`
+	Items           []DevsyEnvironmentTemplate `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceList struct {
+type DevsyWorkspaceInstanceList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstance `json:"items"`
+	Items           []DevsyWorkspaceInstance `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceCancelList struct {
+type DevsyWorkspaceInstanceCancelList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceCancel `json:"items"`
+	Items           []DevsyWorkspaceInstanceCancel `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceDownloadList struct {
+type DevsyWorkspaceInstanceDownloadList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceDownload `json:"items"`
+	Items           []DevsyWorkspaceInstanceDownload `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceLogList struct {
+type DevsyWorkspaceInstanceLogList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceLog `json:"items"`
+	Items           []DevsyWorkspaceInstanceLog `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceStopList struct {
+type DevsyWorkspaceInstanceStopList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceStop `json:"items"`
+	Items           []DevsyWorkspaceInstanceStop `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTasksList struct {
+type DevsyWorkspaceInstanceTasksList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceTasks `json:"items"`
+	Items           []DevsyWorkspaceInstanceTasks `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTroubleshootList struct {
+type DevsyWorkspaceInstanceTroubleshootList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceTroubleshoot `json:"items"`
+	Items           []DevsyWorkspaceInstanceTroubleshoot `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceUpList struct {
+type DevsyWorkspaceInstanceUpList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceInstanceUp `json:"items"`
+	Items           []DevsyWorkspaceInstanceUp `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspacePresetList struct {
+type DevsyWorkspacePresetList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspacePreset `json:"items"`
+	Items           []DevsyWorkspacePreset `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceTemplateList struct {
+type DevsyWorkspaceTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []DevPodWorkspaceTemplate `json:"items"`
+	Items           []DevsyWorkspaceTemplate `json:"items"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

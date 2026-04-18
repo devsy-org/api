@@ -182,45 +182,45 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorList":                           schema_pkg_apis_management_v1_DatabaseConnectorList(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorSpec":                           schema_pkg_apis_management_v1_DatabaseConnectorSpec(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorStatus":                         schema_pkg_apis_management_v1_DatabaseConnectorStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplate":                       schema_pkg_apis_management_v1_DevPodEnvironmentTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateList":                   schema_pkg_apis_management_v1_DevPodEnvironmentTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateSpec":                   schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateStatus":                 schema_pkg_apis_management_v1_DevPodEnvironmentTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstance":                         schema_pkg_apis_management_v1_DevPodWorkspaceInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel":                   schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancel(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancelList":               schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancelList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceDownload":                 schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownload(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceDownloadList":             schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceDownloadOptions":          schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceList":                     schema_pkg_apis_management_v1_DevPodWorkspaceInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceLog":                      schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLog(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceLogList":                  schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceLogOptions":               schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceSpec":                     schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStatus":                   schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop":                     schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStop(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopList":                 schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopSpec":                 schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopStatus":               schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTask":                     schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTask(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTasks":                    schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasks(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTasksList":                schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTasksOptions":             schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshoot":             schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshoot(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshootList":         schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshootList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp":                       schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUp(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpList":                   schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpSpec":                   schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpStatus":                 schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePreset":                           schema_pkg_apis_management_v1_DevPodWorkspacePreset(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetList":                       schema_pkg_apis_management_v1_DevPodWorkspacePresetList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetSource":                     schema_pkg_apis_management_v1_DevPodWorkspacePresetSource(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetSpec":                       schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetStatus":                     schema_pkg_apis_management_v1_DevPodWorkspacePresetStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplate":                         schema_pkg_apis_management_v1_DevPodWorkspaceTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateList":                     schema_pkg_apis_management_v1_DevPodWorkspaceTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateSpec":                     schema_pkg_apis_management_v1_DevPodWorkspaceTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateStatus":                   schema_pkg_apis_management_v1_DevPodWorkspaceTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate":                       schema_pkg_apis_management_v1_DevsyEnvironmentTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateList":                   schema_pkg_apis_management_v1_DevsyEnvironmentTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateSpec":                   schema_pkg_apis_management_v1_DevsyEnvironmentTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateStatus":                 schema_pkg_apis_management_v1_DevsyEnvironmentTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance":                         schema_pkg_apis_management_v1_DevsyWorkspaceInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancel":                   schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancel(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancelList":               schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancelList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceDownload":                 schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownload(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceDownloadList":             schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownloadList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceDownloadOptions":          schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownloadOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceList":                     schema_pkg_apis_management_v1_DevsyWorkspaceInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceLog":                      schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLog(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceLogList":                  schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLogList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceLogOptions":               schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLogOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceSpec":                     schema_pkg_apis_management_v1_DevsyWorkspaceInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStatus":                   schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStop":                     schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStop(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopList":                 schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopSpec":                 schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopStatus":               schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTask":                     schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTask(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTasks":                    schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasks(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTasksList":                schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasksList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTasksOptions":             schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasksOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTroubleshoot":             schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTroubleshoot(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTroubleshootList":         schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTroubleshootList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUp":                       schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUp(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpList":                   schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpSpec":                   schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpStatus":                 schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePreset":                           schema_pkg_apis_management_v1_DevsyWorkspacePreset(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetList":                       schema_pkg_apis_management_v1_DevsyWorkspacePresetList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetSource":                     schema_pkg_apis_management_v1_DevsyWorkspacePresetSource(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetSpec":                       schema_pkg_apis_management_v1_DevsyWorkspacePresetSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetStatus":                     schema_pkg_apis_management_v1_DevsyWorkspacePresetStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplate":                         schema_pkg_apis_management_v1_DevsyWorkspaceTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateList":                     schema_pkg_apis_management_v1_DevsyWorkspaceTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateSpec":                     schema_pkg_apis_management_v1_DevsyWorkspaceTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateStatus":                   schema_pkg_apis_management_v1_DevsyWorkspaceTemplateStatus(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade":                                    schema_pkg_apis_management_v1_DevsyUpgrade(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeList":                                schema_pkg_apis_management_v1_DevsyUpgradeList(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec":                                schema_pkg_apis_management_v1_DevsyUpgradeSpec(ref),
@@ -517,50 +517,50 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterSpec":                                        schema_pkg_apis_storage_v1_ClusterSpec(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterStatus":                                      schema_pkg_apis_storage_v1_ClusterStatus(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.CredentialForwarding":                               schema_pkg_apis_storage_v1_CredentialForwarding(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodCommandDeleteOptions":                         schema_pkg_apis_storage_v1_DevPodCommandDeleteOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodCommandStatusOptions":                         schema_pkg_apis_storage_v1_DevPodCommandStatusOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodCommandStopOptions":                           schema_pkg_apis_storage_v1_DevPodCommandStopOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodCommandUpOptions":                             schema_pkg_apis_storage_v1_DevPodCommandUpOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplate":                          schema_pkg_apis_storage_v1_DevPodEnvironmentTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition":                schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateList":                      schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateSpec":                      schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateStatus":                    schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateVersion":                   schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProjectSpec":                                  schema_pkg_apis_storage_v1_DevPodProjectSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption":                               schema_pkg_apis_storage_v1_DevPodProviderOption(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOptionFrom":                           schema_pkg_apis_storage_v1_DevPodProviderOptionFrom(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderSource":                               schema_pkg_apis_storage_v1_DevPodProviderSource(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceContainer":                           schema_pkg_apis_storage_v1_DevPodWorkspaceContainer(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstance":                            schema_pkg_apis_storage_v1_DevPodWorkspaceInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceContainerResource":           schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceContainerResource(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceEvent":                       schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceEvent(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus":            schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceKubernetesStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceList":                        schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePersistentVolumeClaimStatus": schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePersistentVolumeClaimStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePodStatus":                   schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePodStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceSpec":                        schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceStatus":                      schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceTemplateDefinition":          schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceKubernetesSpec":                      schema_pkg_apis_storage_v1_DevPodWorkspaceKubernetesSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplate":                         schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplateSpec":                     schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePreset":                              schema_pkg_apis_storage_v1_DevPodWorkspacePreset(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetList":                          schema_pkg_apis_storage_v1_DevPodWorkspacePresetList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource":                        schema_pkg_apis_storage_v1_DevPodWorkspacePresetSource(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSpec":                          schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetStatus":                        schema_pkg_apis_storage_v1_DevPodWorkspacePresetStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetVersion":                       schema_pkg_apis_storage_v1_DevPodWorkspacePresetVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceProvider":                            schema_pkg_apis_storage_v1_DevPodWorkspaceProvider(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements":                schema_pkg_apis_storage_v1_DevPodWorkspaceResourceRequirements(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplate":                            schema_pkg_apis_storage_v1_DevPodWorkspaceTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition":                  schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateList":                        schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateSpec":                        schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateStatus":                      schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateVersion":                     schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimSpec":                     schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimTemplate":                 schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandDeleteOptions":                         schema_pkg_apis_storage_v1_DevsyCommandDeleteOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandStatusOptions":                         schema_pkg_apis_storage_v1_DevsyCommandStatusOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandStopOptions":                           schema_pkg_apis_storage_v1_DevsyCommandStopOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandUpOptions":                             schema_pkg_apis_storage_v1_DevsyCommandUpOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplate":                          schema_pkg_apis_storage_v1_DevsyEnvironmentTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition":                schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateList":                      schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateSpec":                      schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateStatus":                    schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateVersion":                   schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProjectSpec":                                  schema_pkg_apis_storage_v1_DevsyProjectSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption":                               schema_pkg_apis_storage_v1_DevsyProviderOption(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOptionFrom":                           schema_pkg_apis_storage_v1_DevsyProviderOptionFrom(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderSource":                               schema_pkg_apis_storage_v1_DevsyProviderSource(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer":                           schema_pkg_apis_storage_v1_DevsyWorkspaceContainer(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstance":                            schema_pkg_apis_storage_v1_DevsyWorkspaceInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceContainerResource":           schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceContainerResource(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent":                       schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceEvent(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus":            schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceKubernetesStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceList":                        schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePersistentVolumeClaimStatus": schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePersistentVolumeClaimStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePodStatus":                   schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePodStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceSpec":                        schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceStatus":                      schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceTemplateDefinition":          schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceKubernetesSpec":                      schema_pkg_apis_storage_v1_DevsyWorkspaceKubernetesSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplate":                         schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplateSpec":                     schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePreset":                              schema_pkg_apis_storage_v1_DevsyWorkspacePreset(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetList":                          schema_pkg_apis_storage_v1_DevsyWorkspacePresetList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource":                        schema_pkg_apis_storage_v1_DevsyWorkspacePresetSource(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSpec":                          schema_pkg_apis_storage_v1_DevsyWorkspacePresetSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetStatus":                        schema_pkg_apis_storage_v1_DevsyWorkspacePresetStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetVersion":                       schema_pkg_apis_storage_v1_DevsyWorkspacePresetVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceProvider":                            schema_pkg_apis_storage_v1_DevsyWorkspaceProvider(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements":                schema_pkg_apis_storage_v1_DevsyWorkspaceResourceRequirements(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplate":                            schema_pkg_apis_storage_v1_DevsyWorkspaceTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition":                  schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateList":                        schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateSpec":                        schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateStatus":                      schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion":                     schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimSpec":                     schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimTemplate":                 schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimTemplate(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DockerCredentialForwarding":                         schema_pkg_apis_storage_v1_DockerCredentialForwarding(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.EntityInfo":                                         schema_pkg_apis_storage_v1_EntityInfo(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef":                                     schema_pkg_apis_storage_v1_EnvironmentRef(ref),
@@ -6435,7 +6435,7 @@ func schema_pkg_apis_management_v1_AuthenticationOIDC(ref common.ReferenceCallba
 					},
 					"loftUsernameClaim": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftUsernameClaim is the JWT field to use as the user's username.",
+							Description: "DevsyUsernameClaim is the JWT field to use as the user's username.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -7127,7 +7127,7 @@ func schema_pkg_apis_management_v1_ClusterAccessKey(ref common.ReferenceCallback
 					},
 					"loftHost": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftHost is the devsy host used by the agent",
+							Description: "DevsyHost is the devsy host used by the agent",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -7520,7 +7520,7 @@ func schema_pkg_apis_management_v1_ClusterAgentConfig(ref common.ReferenceCallba
 					},
 					"loftHost": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftHost defines the host for the agent's devsy instance",
+							Description: "DevsyHost defines the host for the agent's devsy instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -7534,7 +7534,7 @@ func schema_pkg_apis_management_v1_ClusterAgentConfig(ref common.ReferenceCallba
 					},
 					"loftInstanceID": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftInstanceID defines the instance id from the devsy instance",
+							Description: "DevsyInstanceID defines the instance id from the devsy instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -7603,7 +7603,7 @@ func schema_pkg_apis_management_v1_ClusterAgentConfigCommon(ref common.Reference
 					},
 					"loftHost": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftHost defines the host for the agent's devsy instance",
+							Description: "DevsyHost defines the host for the agent's devsy instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -7617,7 +7617,7 @@ func schema_pkg_apis_management_v1_ClusterAgentConfigCommon(ref common.Reference
 					},
 					"loftInstanceID": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftInstanceID defines the instance id from the devsy instance",
+							Description: "DevsyInstanceID defines the instance id from the devsy instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -8785,7 +8785,7 @@ func schema_pkg_apis_management_v1_ConfigStatus(ref common.ReferenceCallback) co
 					},
 					"loftHost": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com",
+							Description: "DevsyHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -8799,7 +8799,7 @@ func schema_pkg_apis_management_v1_ConfigStatus(ref common.ReferenceCallback) co
 					},
 					"devPodSubDomain": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPodSubDomain holds a subdomain in the following form *.workspace.my-domain.com",
+							Description: "DevsySubDomain holds a subdomain in the following form *.workspace.my-domain.com",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -9460,11 +9460,11 @@ func schema_pkg_apis_management_v1_DatabaseConnectorStatus(ref common.ReferenceC
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodEnvironmentTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyEnvironmentTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodEnvironmentTemplate holds the DevPodEnvironmentTemplate information",
+				Description: "DevsyEnvironmentTemplate holds the DevsyEnvironmentTemplate information",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -9490,24 +9490,24 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplate(ref common.Referenc
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9540,7 +9540,7 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate"),
 									},
 								},
 							},
@@ -9551,15 +9551,15 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplate", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodEnvironmentTemplateSpec holds the specification",
+				Description: "DevsyEnvironmentTemplateSpec holds the specification",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -9584,7 +9584,7 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref common.Refe
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -9598,8 +9598,8 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref common.Refe
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template is the inline template to use for DevPod environments",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition"),
+							Description: "Template is the inline template to use for Devsy environments",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition"),
 						},
 					},
 					"versions": {
@@ -9610,7 +9610,7 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateVersion"),
 									},
 								},
 							},
@@ -9620,26 +9620,26 @@ func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateSpec(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodEnvironmentTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodEnvironmentTemplateStatus holds the status",
+				Description: "DevsyEnvironmentTemplateStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceInstance holds the DevPodWorkspaceInstance information",
+				Description: "DevsyWorkspaceInstance holds the DevsyWorkspaceInstance information",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -9665,24 +9665,24 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstance(ref common.ReferenceC
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancel(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancel(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9723,7 +9723,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancel(ref common.Refe
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancelList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9756,7 +9756,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancelList(ref common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancel"),
 									},
 								},
 							},
@@ -9767,11 +9767,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceCancelList(ref common.
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancel", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownload(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownload(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9805,7 +9805,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownload(ref common.Re
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownloadList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9838,7 +9838,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadList(ref commo
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceDownload"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceDownload"),
 									},
 								},
 							},
@@ -9849,11 +9849,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadList(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceDownload", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceDownload", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceDownloadOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9886,7 +9886,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceDownloadOptions(ref co
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9919,7 +9919,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstance"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance"),
 									},
 								},
 							},
@@ -9930,11 +9930,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstance", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLog(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLog(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -9968,7 +9968,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLog(ref common.Referen
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLogList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10001,7 +10001,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogList(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceLog"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceLog"),
 									},
 								},
 							},
@@ -10012,11 +10012,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogList(ref common.Ref
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceLog", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceLog", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceLogOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10056,11 +10056,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceLogOptions(ref common.
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceInstanceSpec holds the specification",
+				Description: "DevsyWorkspaceInstanceSpec holds the specification",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -10072,7 +10072,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref common.Refere
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Description describes a DevPod machine instance",
+							Description: "Description describes a Devsy machine instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -10085,26 +10085,26 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref common.Refere
 					},
 					"presetRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "PresetRef holds the DevPodWorkspacePreset template reference",
+							Description: "PresetRef holds the DevsyWorkspacePreset template reference",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef"),
 						},
 					},
 					"templateRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "TemplateRef holds the DevPod machine template reference",
+							Description: "TemplateRef holds the Devsy machine template reference",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"environmentRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "EnvironmentRef is the reference to DevPodEnvironmentTemplate that should be used",
+							Description: "EnvironmentRef is the reference to DevsyEnvironmentTemplate that should be used",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef"),
 						},
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template is the inline template to use for DevPod machine creation. This is mutually exclusive with templateRef.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Description: "Template is the inline template to use for Devsy machine creation. This is mutually exclusive with templateRef.",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"target": {
@@ -10130,7 +10130,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref common.Refere
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -10153,15 +10153,15 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceSpec(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef", "github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef", "github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget"},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceInstanceStatus holds the status",
+				Description: "DevsyWorkspaceInstanceStatus holds the status",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"resolvedTarget": {
@@ -10180,7 +10180,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 					},
 					"phase": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Phase describes the current phase the DevPod machine instance is in",
+							Description: "Phase describes the current phase the Devsy machine instance is in",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -10194,14 +10194,14 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 					},
 					"message": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Message describes the reason in human-readable form why the DevPod machine is in the current phase",
+							Description: "Message describes the reason in human-readable form why the Devsy machine is in the current phase",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Conditions holds several conditions the DevPod machine might be in",
+							Description: "Conditions holds several conditions the Devsy machine might be in",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -10216,7 +10216,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 					"instance": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Instance is the template rendered with all the parameters",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"ignoreReconciliation": {
@@ -10229,7 +10229,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 					"kubernetes": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Kubernetes is the status of the workspace on kubernetes",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus"),
 						},
 					},
 					"sleepModeConfig": {
@@ -10242,11 +10242,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStatus(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStop(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStop(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10275,24 +10275,24 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStop(ref common.Refere
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStopStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStopStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10325,7 +10325,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopList(ref common.Re
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStop"),
 									},
 								},
 							},
@@ -10336,11 +10336,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopList(ref common.Re
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceStop", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10359,7 +10359,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopSpec(ref common.Re
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStopStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10378,7 +10378,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceStopStatus(ref common.
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTask(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTask(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10433,7 +10433,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTask(ref common.Refere
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasks(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasks(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10466,7 +10466,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasks(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTask"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTask"),
 									},
 								},
 							},
@@ -10476,11 +10476,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasks(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTask", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTask", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasksList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10513,7 +10513,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksList(ref common.R
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTasks"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTasks"),
 									},
 								},
 							},
@@ -10524,11 +10524,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksList(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTasks", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTasks", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTasksOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10561,7 +10561,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTasksOptions(ref commo
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshoot(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTroubleshoot(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10597,13 +10597,13 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshoot(ref commo
 					"workspace": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Workspace holds the workspace's instance object data",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstance"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance"),
 						},
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Template holds the workspace instance's template used to create it. This is the raw template, not the rendered one.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplate"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplate"),
 						},
 					},
 					"pods": {
@@ -10668,11 +10668,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshoot(ref commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstance", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplate", corev1.PersistentVolumeClaim{}.OpenAPIModelName(), corev1.Pod{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplate", corev1.PersistentVolumeClaim{}.OpenAPIModelName(), corev1.Pod{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshootList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTroubleshootList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10705,7 +10705,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshootList(ref c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshoot"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTroubleshoot"),
 									},
 								},
 							},
@@ -10716,11 +10716,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceTroubleshootList(ref c
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshoot", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceTroubleshoot", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUp(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUp(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10749,24 +10749,24 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUp(ref common.Referenc
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUpStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUpStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10799,7 +10799,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpList(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUp"),
 									},
 								},
 							},
@@ -10810,11 +10810,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpList(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceUp", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10840,7 +10840,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpSpec(ref common.Refe
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceUpStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10859,11 +10859,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceInstanceUpStatus(ref common.Re
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspacePreset(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspacePreset(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePreset",
+				Description: "DevsyWorkspacePreset",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -10889,24 +10889,24 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePreset(ref common.ReferenceCal
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePresetStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePresetStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspacePresetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspacePresetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -10939,7 +10939,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetList(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePreset"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePreset"),
 									},
 								},
 							},
@@ -10950,15 +10950,15 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetList(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePreset", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePreset", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspacePresetSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspacePresetSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePresetSource",
+				Description: "DevsyWorkspacePresetSource",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"git": {
@@ -10981,11 +10981,11 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetSource(ref common.Refere
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspacePresetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePresetSpec holds the specification",
+				Description: "DevsyWorkspacePresetSpec holds the specification",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -10998,18 +10998,18 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref common.Referenc
 					"source": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Source stores inline path of project source",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource"),
 						},
 					},
 					"infrastructureRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "InfrastructureRef stores reference to DevPodWorkspaceTemplate to use",
+							Description: "InfrastructureRef stores reference to DevsyWorkspaceTemplate to use",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"environmentRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "EnvironmentRef stores reference to DevPodEnvironmentTemplate",
+							Description: "EnvironmentRef stores reference to DevsyEnvironmentTemplate",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef"),
 						},
 					},
@@ -11028,7 +11028,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref common.Referenc
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -11048,7 +11048,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetVersion"),
 									},
 								},
 							},
@@ -11059,26 +11059,26 @@ func schema_pkg_apis_management_v1_DevPodWorkspacePresetSpec(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspacePresetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspacePresetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePresetStatus holds the status",
+				Description: "DevsyWorkspacePresetStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplate holds the information",
+				Description: "DevsyWorkspaceTemplate holds the information",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -11104,24 +11104,24 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplate(ref common.ReferenceC
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -11154,7 +11154,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplate"),
 									},
 								},
 							},
@@ -11165,15 +11165,15 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplate", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplate", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplateSpec holds the specification",
+				Description: "DevsyWorkspaceTemplateSpec holds the specification",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -11212,9 +11212,9 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateSpec(ref common.Refere
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template holds the DevPod workspace template",
+							Description: "Template holds the Devsy workspace template",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"versions": {
@@ -11225,7 +11225,7 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateSpec(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion"),
 									},
 								},
 							},
@@ -11249,15 +11249,15 @@ func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateSpec(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_management_v1_DevPodWorkspaceTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplateStatus holds the status",
+				Description: "DevsyWorkspaceTemplateStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
@@ -16294,7 +16294,7 @@ func schema_pkg_apis_management_v1_ProjectSpec(ref common.ReferenceCallback) com
 					},
 					"allowedRunners": {
 						SchemaProps: spec.SchemaProps{
-							Description: "AllowedRunners are target runners that are allowed to target with DevPod environments.",
+							Description: "AllowedRunners are target runners that are allowed to target with Devsy environments.",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -16388,15 +16388,15 @@ func schema_pkg_apis_management_v1_ProjectSpec(ref common.ReferenceCallback) com
 					},
 					"devPod": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPod holds DevPod specific configuration for project",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProjectSpec"),
+							Description: "Devsy holds Devsy specific configuration for project",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProjectSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProjectSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.Member", "github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern", "github.com/devsy-org/api/pkg/apis/storage/v1.Quotas", "github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset", "github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProjectSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.Member", "github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern", "github.com/devsy-org/api/pkg/apis/storage/v1.Quotas", "github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset", "github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec"},
 	}
 }
 
@@ -16503,22 +16503,22 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 							},
 						},
 					},
-					"defaultDevPodWorkspaceTemplate": {
+					"defaultDevsyWorkspaceTemplate": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DefaultDevPodWorkspaceTemplate",
+							Description: "DefaultDevsyWorkspaceTemplate",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
 					"devPodWorkspaceTemplates": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPodWorkspaceTemplates holds all the allowed space templates",
+							Description: "DevsyWorkspaceTemplates holds all the allowed space templates",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplate"),
 									},
 								},
 							},
@@ -16526,13 +16526,13 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 					},
 					"devPodEnvironmentTemplates": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPodEnvironmentTemplates holds all the allowed environment templates",
+							Description: "DevsyEnvironmentTemplates holds all the allowed environment templates",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate"),
 									},
 								},
 							},
@@ -16540,21 +16540,21 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 					},
 					"devPodWorkspacePresets": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPodWorkspacePresets holds all the allowed workspace presets",
+							Description: "DevsyWorkspacePresets holds all the allowed workspace presets",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePreset"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePreset"),
 									},
 								},
 							},
 						},
 					},
-					"defaultDevPodEnvironmentTemplate": {
+					"defaultDevsyEnvironmentTemplate": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DefaultDevPodEnvironmentTemplate",
+							Description: "DefaultDevsyEnvironmentTemplate",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -16563,7 +16563,7 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevPodEnvironmentTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspacePreset", "github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplate", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspacePreset", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplate", "github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplate", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
@@ -17394,7 +17394,7 @@ func schema_pkg_apis_management_v1_SelfStatus(ref common.ReferenceCallback) comm
 					},
 					"loftHost": {
 						SchemaProps: spec.SchemaProps{
-							Description: "LoftHost is the host of the devsy instance",
+							Description: "DevsyHost is the host of the devsy instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -23101,7 +23101,7 @@ func schema_pkg_apis_storage_v1_AccessKeyScope(ref common.ReferenceCallback) com
 					},
 					"allowLoftCli": {
 						SchemaProps: spec.SchemaProps{
-							Description: "AllowLoftCLI allows certain read-only management requests to make sure devsy cli works correctly with this specific access key.\n\nDeprecated: Use the `roles` field instead\n ```yaml\n # Example:\n roles:\n   - role: loftCLI\n ```",
+							Description: "AllowDevsyCLI allows certain read-only management requests to make sure devsy cli works correctly with this specific access key.\n\nDeprecated: Use the `roles` field instead\n ```yaml\n # Example:\n roles:\n   - role: loftCLI\n ```",
 							Type:        []string{"boolean"},
 							Format:      "",
 						},
@@ -23612,7 +23612,7 @@ func schema_pkg_apis_storage_v1_AllowedTemplate(ref common.ReferenceCallback) co
 				Properties: map[string]spec.Schema{
 					"kind": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Kind of the template that is allowed. Currently only supports DevPodWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate",
+							Description: "Kind of the template that is allowed. Currently only supports DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -25480,7 +25480,7 @@ func schema_pkg_apis_storage_v1_CredentialForwarding(ref common.ReferenceCallbac
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodCommandDeleteOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyCommandDeleteOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25510,7 +25510,7 @@ func schema_pkg_apis_storage_v1_DevPodCommandDeleteOptions(ref common.ReferenceC
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodCommandStatusOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyCommandStatusOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25528,7 +25528,7 @@ func schema_pkg_apis_storage_v1_DevPodCommandStatusOptions(ref common.ReferenceC
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodCommandStopOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyCommandStopOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25538,7 +25538,7 @@ func schema_pkg_apis_storage_v1_DevPodCommandStopOptions(ref common.ReferenceCal
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodCommandUpOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyCommandUpOptions(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25681,11 +25681,11 @@ func schema_pkg_apis_storage_v1_DevPodCommandUpOptions(ref common.ReferenceCallb
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceEnvironmentSource",
+				Description: "DevsyWorkspaceEnvironmentSource",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -25711,24 +25711,24 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplate(ref common.ReferenceCa
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25770,11 +25770,11 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateDefinition(ref common.R
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodEnvironmentTemplateList contains a list of DevPodEnvironmentTemplate objects",
+				Description: "DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -25804,7 +25804,7 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateList(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplate"),
 									},
 								},
 							},
@@ -25815,11 +25815,11 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateList(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplate", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplate", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25847,7 +25847,7 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref common.Referen
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -25861,8 +25861,8 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref common.Referen
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template is the inline template to use for DevPod environments",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition"),
+							Description: "Template is the inline template to use for Devsy environments",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition"),
 						},
 					},
 					"versions": {
@@ -25873,7 +25873,7 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref common.Referen
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateVersion"),
 									},
 								},
 							},
@@ -25883,22 +25883,22 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodEnvironmentTemplateStatus holds the status",
+				Description: "DevsyEnvironmentTemplateStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25908,7 +25908,7 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateVersion(ref common.Refe
 						SchemaProps: spec.SchemaProps{
 							Description: "Template holds the environment template definition",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition"),
 						},
 					},
 					"version": {
@@ -25922,11 +25922,11 @@ func schema_pkg_apis_storage_v1_DevPodEnvironmentTemplateVersion(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodEnvironmentTemplateDefinition"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyEnvironmentTemplateDefinition"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodProjectSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyProjectSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25960,7 +25960,7 @@ func schema_pkg_apis_storage_v1_DevPodProjectSpec(ref common.ReferenceCallback) 
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodProviderOption(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyProviderOption(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -25976,18 +25976,18 @@ func schema_pkg_apis_storage_v1_DevPodProviderOption(ref common.ReferenceCallbac
 					"valueFrom": {
 						SchemaProps: spec.SchemaProps{
 							Description: "ValueFrom specifies a secret where this value should be taken from.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOptionFrom"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOptionFrom"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOptionFrom"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOptionFrom"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodProviderOptionFrom(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyProviderOptionFrom(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26013,7 +26013,7 @@ func schema_pkg_apis_storage_v1_DevPodProviderOptionFrom(ref common.ReferenceCal
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodProviderSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyProviderSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26046,11 +26046,11 @@ func schema_pkg_apis_storage_v1_DevPodProviderSource(ref common.ReferenceCallbac
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceContainer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceContainer(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "// DevPodWorkspacePodResourceRequirements is a less restrictive corev1.Container.",
+				Description: "// DevsyWorkspacePodResourceRequirements is a less restrictive corev1.Container.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"name": {
@@ -26165,7 +26165,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceContainer(ref common.ReferenceCal
 						SchemaProps: spec.SchemaProps{
 							Description: "Compute Resources required by this container.",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements"),
 						},
 					},
 					"resizePolicy": {
@@ -26301,15 +26301,15 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceContainer(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements", corev1.ContainerPort{}.OpenAPIModelName(), corev1.ContainerResizePolicy{}.OpenAPIModelName(), corev1.EnvFromSource{}.OpenAPIModelName(), corev1.EnvVar{}.OpenAPIModelName(), corev1.Lifecycle{}.OpenAPIModelName(), corev1.Probe{}.OpenAPIModelName(), corev1.SecurityContext{}.OpenAPIModelName(), corev1.VolumeDevice{}.OpenAPIModelName(), corev1.VolumeMount{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements", corev1.ContainerPort{}.OpenAPIModelName(), corev1.ContainerResizePolicy{}.OpenAPIModelName(), corev1.EnvFromSource{}.OpenAPIModelName(), corev1.EnvVar{}.OpenAPIModelName(), corev1.Lifecycle{}.OpenAPIModelName(), corev1.Probe{}.OpenAPIModelName(), corev1.SecurityContext{}.OpenAPIModelName(), corev1.VolumeDevice{}.OpenAPIModelName(), corev1.VolumeMount{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceInstance",
+				Description: "DevsyWorkspaceInstance",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -26335,24 +26335,24 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstance(ref common.ReferenceCall
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceContainerResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceContainerResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26380,7 +26380,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceContainerResource(ref com
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceEvent(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceEvent(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26421,7 +26421,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceEvent(ref common.Referenc
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceKubernetesStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceKubernetesStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26436,13 +26436,13 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceKubernetesStatus(ref comm
 					"podStatus": {
 						SchemaProps: spec.SchemaProps{
 							Description: "PodStatus is the status of the pod that is running the workspace",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePodStatus"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePodStatus"),
 						},
 					},
 					"persistentVolumeClaimStatus": {
 						SchemaProps: spec.SchemaProps{
 							Description: "PersistentVolumeClaimStatus is the pvc that is used to store the workspace",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePersistentVolumeClaimStatus"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePersistentVolumeClaimStatus"),
 						},
 					},
 				},
@@ -26450,15 +26450,15 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceKubernetesStatus(ref comm
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePersistentVolumeClaimStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstancePodStatus", metav1.Time{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePersistentVolumeClaimStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePodStatus", metav1.Time{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceInstanceList contains a list of DevPodWorkspaceInstance objects",
+				Description: "DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -26488,7 +26488,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceList(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstance"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstance"),
 									},
 								},
 							},
@@ -26499,11 +26499,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceList(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstance", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstance", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePersistentVolumeClaimStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePersistentVolumeClaimStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26563,7 +26563,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePersistentVolumeClaimStat
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceEvent"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent"),
 									},
 								},
 							},
@@ -26573,11 +26573,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePersistentVolumeClaimStat
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceEvent", corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent", corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePodStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePodStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26682,7 +26682,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePodStatus(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceEvent"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent"),
 									},
 								},
 							},
@@ -26696,7 +26696,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePodStatus(ref common.Refe
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceContainerResource"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceContainerResource"),
 									},
 								},
 							},
@@ -26720,11 +26720,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstancePodStatus(ref common.Refe
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceContainerResource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceEvent", corev1.ContainerStatus{}.OpenAPIModelName(), corev1.PodCondition{}.OpenAPIModelName(), "k8s.io/metrics/pkg/apis/metrics/v1beta1.ContainerMetrics"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceContainerResource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent", corev1.ContainerStatus{}.OpenAPIModelName(), corev1.PodCondition{}.OpenAPIModelName(), "k8s.io/metrics/pkg/apis/metrics/v1beta1.ContainerMetrics"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26739,7 +26739,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref common.Reference
 					},
 					"description": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Description describes a DevPod machine instance",
+							Description: "Description describes a Devsy machine instance",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -26752,26 +26752,26 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref common.Reference
 					},
 					"presetRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "PresetRef holds the DevPodWorkspacePreset template reference",
+							Description: "PresetRef holds the DevsyWorkspacePreset template reference",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef"),
 						},
 					},
 					"templateRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "TemplateRef holds the DevPod machine template reference",
+							Description: "TemplateRef holds the Devsy machine template reference",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"environmentRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "EnvironmentRef is the reference to DevPodEnvironmentTemplate that should be used",
+							Description: "EnvironmentRef is the reference to DevsyEnvironmentTemplate that should be used",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef"),
 						},
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template is the inline template to use for DevPod machine creation. This is mutually exclusive with templateRef.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Description: "Template is the inline template to use for Devsy machine creation. This is mutually exclusive with templateRef.",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"target": {
@@ -26797,7 +26797,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref common.Reference
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -26820,11 +26820,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceSpec(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef", "github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef", "github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26846,7 +26846,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 					},
 					"phase": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Phase describes the current phase the DevPod machine instance is in",
+							Description: "Phase describes the current phase the Devsy machine instance is in",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -26860,14 +26860,14 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 					},
 					"message": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Message describes the reason in human-readable form why the DevPod machine is in the current phase",
+							Description: "Message describes the reason in human-readable form why the Devsy machine is in the current phase",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
 					"conditions": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Conditions holds several conditions the DevPod machine might be in",
+							Description: "Conditions holds several conditions the Devsy machine might be in",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -26882,7 +26882,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 					"instance": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Instance is the template rendered with all the parameters",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"ignoreReconciliation": {
@@ -26895,18 +26895,18 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceStatus(ref common.Referen
 					"kubernetes": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Kubernetes is the status of the workspace on kubernetes",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26927,7 +26927,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceInstanceTemplateDefinition(ref co
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceKubernetesSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceKubernetesSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -26936,13 +26936,13 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceKubernetesSpec(ref common.Referen
 					"pod": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Pod holds the definition for workspace pod.\n\nDefaults will be applied for fields that aren't specified.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplate"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplate"),
 						},
 					},
 					"volumeClaim": {
 						SchemaProps: spec.SchemaProps{
 							Description: "VolumeClaim holds the definition for the main workspace persistent volume. This volume is guaranteed to exist for the lifespan of the workspace.\n\nDefaults will be applied for fields that aren't specified.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimTemplate"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimTemplate"),
 						},
 					},
 					"podTimeout": {
@@ -26961,25 +26961,25 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceKubernetesSpec(ref common.Referen
 					},
 					"spaceTemplateRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "SpaceTemplateRef is a reference to the space that should get created for this DevPod. If this is specified, the kubernetes provider will be selected automatically.",
+							Description: "SpaceTemplateRef is a reference to the space that should get created for this Devsy. If this is specified, the kubernetes provider will be selected automatically.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"spaceTemplate": {
 						SchemaProps: spec.SchemaProps{
-							Description: "SpaceTemplate is the inline template for a space that should get created for this DevPod. If this is specified, the kubernetes provider will be selected automatically.",
+							Description: "SpaceTemplate is the inline template for a space that should get created for this Devsy. If this is specified, the kubernetes provider will be selected automatically.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition"),
 						},
 					},
 					"virtualClusterTemplateRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "VirtualClusterTemplateRef is a reference to the virtual cluster that should get created for this DevPod. If this is specified, the kubernetes provider will be selected automatically.",
+							Description: "VirtualClusterTemplateRef is a reference to the virtual cluster that should get created for this Devsy. If this is specified, the kubernetes provider will be selected automatically.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"virtualClusterTemplate": {
 						SchemaProps: spec.SchemaProps{
-							Description: "VirtualClusterTemplate is the inline template for a virtual cluster that should get created for this DevPod. If this is specified, the kubernetes provider will be selected automatically.",
+							Description: "VirtualClusterTemplate is the inline template for a virtual cluster that should get created for this Devsy. If this is specified, the kubernetes provider will be selected automatically.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"),
 						},
 					},
@@ -26987,15 +26987,15 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceKubernetesSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePodTemplate is a less restrictive PodTemplate",
+				Description: "DevsyWorkspacePodTemplate is a less restrictive PodTemplate",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"metadata": {
@@ -27008,22 +27008,22 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplate(ref common.ReferenceC
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplateSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplateSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePodTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePodTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePodTemplateSpec is a less restrictive PodSpec",
+				Description: "DevsyWorkspacePodTemplateSpec is a less restrictive PodSpec",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"volumes": {
@@ -27048,7 +27048,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplateSpec(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceContainer"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer"),
 									},
 								},
 							},
@@ -27062,7 +27062,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplateSpec(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceContainer"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer"),
 									},
 								},
 							},
@@ -27372,22 +27372,22 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePodTemplateSpec(ref common.Refere
 					"resources": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Resources is the total amount of CPU and Memory resources required by all containers in the pod. It supports specifying Requests and Limits for \"cpu\" and \"memory\" resource names only. ResourceClaims are not supported.",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements", corev1.Affinity{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements", corev1.Affinity{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePreset(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePreset(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePreset",
+				Description: "DevsyWorkspacePreset",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27413,28 +27413,28 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePreset(ref common.ReferenceCallba
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePresetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePresetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePresetList contains a list of DevPodWorkspacePreset objects",
+				Description: "DevsyWorkspacePresetList contains a list of DevsyWorkspacePreset objects",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27464,7 +27464,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetList(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePreset"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePreset"),
 									},
 								},
 							},
@@ -27475,11 +27475,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetList(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePreset", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePreset", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePresetSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -27505,7 +27505,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSource(ref common.Reference
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePresetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -27521,18 +27521,18 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCa
 					"source": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Source stores inline path of project source",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource"),
 						},
 					},
 					"infrastructureRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "InfrastructureRef stores reference to DevPodWorkspaceTemplate to use",
+							Description: "InfrastructureRef stores reference to DevsyWorkspaceTemplate to use",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"environmentRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "EnvironmentRef stores reference to DevPodEnvironmentTemplate",
+							Description: "EnvironmentRef stores reference to DevsyEnvironmentTemplate",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef"),
 						},
 					},
@@ -27551,7 +27551,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCa
 					},
 					"access": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Access to the DevPod machine instance object itself",
+							Description: "Access to the Devsy machine instance object itself",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -27571,7 +27571,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCa
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetVersion"),
 									},
 								},
 							},
@@ -27582,22 +27582,22 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetSpec(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePresetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePresetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePresetStatus holds the status",
+				Description: "DevsyWorkspacePresetStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspacePresetVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspacePresetVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -27613,18 +27613,18 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetVersion(ref common.Referenc
 					"source": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Source stores inline path of project source",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource"),
 						},
 					},
 					"infrastructureRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "InfrastructureRef stores reference to DevPodWorkspaceTemplate to use",
+							Description: "InfrastructureRef stores reference to DevsyWorkspaceTemplate to use",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"),
 						},
 					},
 					"environmentRef": {
 						SchemaProps: spec.SchemaProps{
-							Description: "EnvironmentRef stores reference to DevPodEnvironmentTemplate",
+							Description: "EnvironmentRef stores reference to DevsyEnvironmentTemplate",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef"),
 						},
 					},
@@ -27632,11 +27632,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspacePresetVersion(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspacePresetSource", "github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceProvider(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -27658,7 +27658,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceProvider(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption"),
 									},
 								},
 							},
@@ -27673,7 +27673,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceProvider(ref common.ReferenceCall
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption"),
 									},
 								},
 							},
@@ -27683,15 +27683,15 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceProvider(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceResourceRequirements(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceResourceRequirements(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspacePodResourceRequirements are less restrictive corev1.ResourceRequirements.",
+				Description: "DevsyWorkspacePodResourceRequirements are less restrictive corev1.ResourceRequirements.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"limits": {
@@ -27748,11 +27748,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceResourceRequirements(ref common.R
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplate holds the DevPodWorkspaceTemplate information",
+				Description: "DevsyWorkspaceTemplate holds the DevsyWorkspaceTemplate information",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27778,24 +27778,24 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplate(ref common.ReferenceCall
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateSpec"),
 						},
 					},
 					"status": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateStatus"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateStatus"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateDefinition(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -27804,7 +27804,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref common.Ref
 					"kubernetes": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Kubernetes holds the definition for kubernetes based workspaces",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceKubernetesSpec"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceKubernetesSpec"),
 						},
 					},
 					"workspaceEnv": {
@@ -27816,7 +27816,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref common.Ref
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption"),
 									},
 								},
 							},
@@ -27826,7 +27826,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref common.Ref
 						SchemaProps: spec.SchemaProps{
 							Description: "InstanceTemplate holds the workspace instance template",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceTemplateDefinition"),
 						},
 					},
 					"credentialForwarding": {
@@ -27838,22 +27838,22 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateDefinition(ref common.Ref
 					"provider": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Provider holds the legacy VM provider configuration",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceProvider"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceProvider"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.CredentialForwarding", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProviderOption", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceInstanceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceKubernetesSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceProvider"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.CredentialForwarding", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProviderOption", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceKubernetesSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceProvider"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplateList contains a list of DevPodWorkspaceTemplate",
+				Description: "DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -27883,7 +27883,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateList(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplate"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplate"),
 									},
 								},
 							},
@@ -27894,15 +27894,15 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateList(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplate", metav1.ListMeta{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplate", metav1.ListMeta{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplateSpec holds the specification",
+				Description: "DevsyWorkspaceTemplateSpec holds the specification",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"displayName": {
@@ -27941,9 +27941,9 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateSpec(ref common.Reference
 					},
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template holds the DevPod workspace template",
+							Description: "Template holds the Devsy workspace template",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"versions": {
@@ -27954,7 +27954,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateSpec(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateVersion"),
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion"),
 									},
 								},
 							},
@@ -27978,22 +27978,22 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateSpec(ref common.Reference
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevPodWorkspaceTemplateStatus holds the status",
+				Description: "DevsyWorkspaceTemplateStatus holds the status",
 				Type:        []string{"object"},
 			},
 		},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -28001,9 +28001,9 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateVersion(ref common.Refere
 				Properties: map[string]spec.Schema{
 					"template": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Template holds the DevPod template",
+							Description: "Template holds the Devsy template",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"),
 						},
 					},
 					"parameters": {
@@ -28031,11 +28031,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceTemplateVersion(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceTemplateDefinition"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition"},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -28072,7 +28072,7 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimSpec(ref common.Refere
 						SchemaProps: spec.SchemaProps{
 							Description: "resources represents the minimum resources the volume should have.",
 							Default:     map[string]interface{}{},
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements"),
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements"),
 						},
 					},
 					"volumeName": {
@@ -28120,11 +28120,11 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimSpec(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceResourceRequirements", corev1.TypedLocalObjectReference{}.OpenAPIModelName(), corev1.TypedObjectReference{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements", corev1.TypedLocalObjectReference{}.OpenAPIModelName(), corev1.TypedObjectReference{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimTemplate(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -28140,14 +28140,14 @@ func schema_pkg_apis_storage_v1_DevPodWorkspaceVolumeClaimTemplate(ref common.Re
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimSpec"),
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevPodWorkspaceVolumeClaimSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata"},
 	}
 }
 
@@ -28232,7 +28232,7 @@ func schema_pkg_apis_storage_v1_EnvironmentRef(ref common.ReferenceCallback) com
 				Properties: map[string]spec.Schema{
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of DevPodEnvironmentTemplate this references",
+							Description: "Name is the name of DevsyEnvironmentTemplate this references",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -28240,7 +28240,7 @@ func schema_pkg_apis_storage_v1_EnvironmentRef(ref common.ReferenceCallback) com
 					},
 					"version": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Version is the version of DevPodEnvironmentTemplate this references",
+							Description: "Version is the version of DevsyEnvironmentTemplate this references",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -29416,7 +29416,7 @@ func schema_pkg_apis_storage_v1_NamespacePattern(ref common.ReferenceCallback) c
 					},
 					"devPodWorkspace": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPodWorkspace holds the namespace pattern to use for DevPod workspaces",
+							Description: "DevsyWorkspace holds the namespace pattern to use for Devsy workspaces",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -30845,7 +30845,7 @@ func schema_pkg_apis_storage_v1_PresetRef(ref common.ReferenceCallback) common.O
 				Properties: map[string]spec.Schema{
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of DevPodWorkspacePreset",
+							Description: "Name is the name of DevsyWorkspacePreset",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -31010,7 +31010,7 @@ func schema_pkg_apis_storage_v1_ProjectSpec(ref common.ReferenceCallback) common
 					},
 					"allowedRunners": {
 						SchemaProps: spec.SchemaProps{
-							Description: "AllowedRunners are target runners that are allowed to target with DevPod environments.",
+							Description: "AllowedRunners are target runners that are allowed to target with Devsy environments.",
 							Type:        []string{"array"},
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
@@ -31104,15 +31104,15 @@ func schema_pkg_apis_storage_v1_ProjectSpec(ref common.ReferenceCallback) common
 					},
 					"devPod": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DevPod holds DevPod specific configuration for project",
-							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProjectSpec"),
+							Description: "Devsy holds Devsy specific configuration for project",
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProjectSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevPodProjectSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.Member", "github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern", "github.com/devsy-org/api/pkg/apis/storage/v1.Quotas", "github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset", "github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner", "github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyProjectSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.Member", "github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern", "github.com/devsy-org/api/pkg/apis/storage/v1.Quotas", "github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec", "github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset", "github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam", "github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec"},
 	}
 }
 
@@ -35046,7 +35046,7 @@ func schema_pkg_apis_storage_v1_WorkspaceRef(ref common.ReferenceCallback) commo
 				Properties: map[string]spec.Schema{
 					"name": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of DevPodWorkspaceTemplate this references",
+							Description: "Name is the name of DevsyWorkspaceTemplate this references",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",

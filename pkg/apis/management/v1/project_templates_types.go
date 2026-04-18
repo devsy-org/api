@@ -23,18 +23,18 @@ type ProjectTemplates struct {
 	// SpaceTemplates holds all the allowed space templates
 	SpaceTemplates []SpaceTemplate `json:"spaceTemplates,omitempty"`
 
-	// DefaultDevPodWorkspaceTemplate
-	DefaultDevPodWorkspaceTemplate string `json:"defaultDevPodWorkspaceTemplate,omitempty"`
+	// DefaultDevsyWorkspaceTemplate
+	DefaultDevsyWorkspaceTemplate string `json:"defaultDevPodWorkspaceTemplate,omitempty"`
 
-	// DevPodWorkspaceTemplates holds all the allowed space templates
-	DevPodWorkspaceTemplates []DevPodWorkspaceTemplate `json:"devPodWorkspaceTemplates,omitempty"`
+	// DevsyWorkspaceTemplates holds all the allowed space templates
+	DevsyWorkspaceTemplates []DevsyWorkspaceTemplate `json:"devPodWorkspaceTemplates,omitempty"`
 
-	// DevPodEnvironmentTemplates holds all the allowed environment templates
-	DevPodEnvironmentTemplates []DevPodEnvironmentTemplate `json:"devPodEnvironmentTemplates,omitempty"`
+	// DevsyEnvironmentTemplates holds all the allowed environment templates
+	DevsyEnvironmentTemplates []DevsyEnvironmentTemplate `json:"devPodEnvironmentTemplates,omitempty"`
 
-	// DevPodWorkspacePresets holds all the allowed workspace presets
-	DevPodWorkspacePresets []DevPodWorkspacePreset `json:"devPodWorkspacePresets,omitempty"`
+	// DevsyWorkspacePresets holds all the allowed workspace presets
+	DevsyWorkspacePresets []DevsyWorkspacePreset `json:"devPodWorkspacePresets,omitempty"`
 
-	// DefaultDevPodEnvironmentTemplate
-	DefaultDevPodEnvironmentTemplate string `json:"defaultDevPodEnvironmentTemplate,omitempty"`
+	// DefaultDevsyEnvironmentTemplate
+	DefaultDevsyEnvironmentTemplate string `json:"defaultDevPodEnvironmentTemplate,omitempty"`
 }

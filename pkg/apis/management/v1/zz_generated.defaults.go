@@ -14,31 +14,31 @@ import (
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstance{}, func(obj interface{}) { SetObjectDefaults_DevPodWorkspaceInstance(obj.(*DevPodWorkspaceInstance)) })
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstanceList{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceInstanceList(obj.(*DevPodWorkspaceInstanceList))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstance{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceInstance(obj.(*DevsyWorkspaceInstance)) })
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceList{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceInstanceList(obj.(*DevsyWorkspaceInstanceList))
 	})
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstanceTroubleshoot{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceInstanceTroubleshoot(obj.(*DevPodWorkspaceInstanceTroubleshoot))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceTroubleshoot{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(obj.(*DevsyWorkspaceInstanceTroubleshoot))
 	})
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstanceTroubleshootList{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceInstanceTroubleshootList(obj.(*DevPodWorkspaceInstanceTroubleshootList))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceTroubleshootList{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceInstanceTroubleshootList(obj.(*DevsyWorkspaceInstanceTroubleshootList))
 	})
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceTemplate{}, func(obj interface{}) { SetObjectDefaults_DevPodWorkspaceTemplate(obj.(*DevPodWorkspaceTemplate)) })
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceTemplateList{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceTemplateList(obj.(*DevPodWorkspaceTemplateList))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplate{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceTemplate(obj.(*DevsyWorkspaceTemplate)) })
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplateList{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceTemplateList(obj.(*DevsyWorkspaceTemplateList))
 	})
 	scheme.AddTypeDefaultingFunc(&ProjectTemplates{}, func(obj interface{}) { SetObjectDefaults_ProjectTemplates(obj.(*ProjectTemplates)) })
 	scheme.AddTypeDefaultingFunc(&ProjectTemplatesList{}, func(obj interface{}) { SetObjectDefaults_ProjectTemplatesList(obj.(*ProjectTemplatesList)) })
 	return nil
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
-	if in.Spec.DevPodWorkspaceInstanceSpec.Template != nil {
-		if in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes != nil {
-			if in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod != nil {
-				for i := range in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Volumes {
-					a := &in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Volumes[i]
+func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
+	if in.Spec.DevsyWorkspaceInstanceSpec.Template != nil {
+		if in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes != nil {
+			if in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod != nil {
+				for i := range in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Volumes {
+					a := &in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Volumes[i]
 					if a.VolumeSource.ISCSI != nil {
 						if a.VolumeSource.ISCSI.ISCSIInterface == "" {
 							a.VolumeSource.ISCSI.ISCSIInterface = "default"
@@ -82,8 +82,8 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 						}
 					}
 				}
-				for i := range in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.InitContainers {
-					a := &in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.InitContainers[i]
+				for i := range in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.InitContainers {
+					a := &in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.InitContainers[i]
 					for j := range a.Ports {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
@@ -115,8 +115,8 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 						}
 					}
 				}
-				for i := range in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Containers {
-					a := &in.Spec.DevPodWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Containers[i]
+				for i := range in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Containers {
+					a := &in.Spec.DevsyWorkspaceInstanceSpec.Template.Kubernetes.Pod.Spec.Containers[i]
 					for j := range a.Ports {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
@@ -151,11 +151,11 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 			}
 		}
 	}
-	if in.Status.DevPodWorkspaceInstanceStatus.Instance != nil {
-		if in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes != nil {
-			if in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod != nil {
-				for i := range in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Volumes {
-					a := &in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Volumes[i]
+	if in.Status.DevsyWorkspaceInstanceStatus.Instance != nil {
+		if in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes != nil {
+			if in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod != nil {
+				for i := range in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Volumes {
+					a := &in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Volumes[i]
 					if a.VolumeSource.ISCSI != nil {
 						if a.VolumeSource.ISCSI.ISCSIInterface == "" {
 							a.VolumeSource.ISCSI.ISCSIInterface = "default"
@@ -199,8 +199,8 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 						}
 					}
 				}
-				for i := range in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.InitContainers {
-					a := &in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.InitContainers[i]
+				for i := range in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.InitContainers {
+					a := &in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.InitContainers[i]
 					for j := range a.Ports {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
@@ -232,8 +232,8 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 						}
 					}
 				}
-				for i := range in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Containers {
-					a := &in.Status.DevPodWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Containers[i]
+				for i := range in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Containers {
+					a := &in.Status.DevsyWorkspaceInstanceStatus.Instance.Kubernetes.Pod.Spec.Containers[i]
 					for j := range a.Ports {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
@@ -270,16 +270,16 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstanceList(in *DevPodWorkspaceInstanceList) {
+func SetObjectDefaults_DevsyWorkspaceInstanceList(in *DevsyWorkspaceInstanceList) {
 	for i := range in.Items {
 		a := &in.Items[i]
-		SetObjectDefaults_DevPodWorkspaceInstance(a)
+		SetObjectDefaults_DevsyWorkspaceInstance(a)
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstanceTroubleshoot(in *DevPodWorkspaceInstanceTroubleshoot) {
+func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInstanceTroubleshoot) {
 	if in.Workspace != nil {
-		SetObjectDefaults_DevPodWorkspaceInstance(in.Workspace)
+		SetObjectDefaults_DevsyWorkspaceInstance(in.Workspace)
 	}
 	if in.Template != nil {
 		if in.Template.Spec.Template.Kubernetes != nil {
@@ -665,18 +665,18 @@ func SetObjectDefaults_DevPodWorkspaceInstanceTroubleshoot(in *DevPodWorkspaceIn
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstanceTroubleshootList(in *DevPodWorkspaceInstanceTroubleshootList) {
+func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshootList(in *DevsyWorkspaceInstanceTroubleshootList) {
 	for i := range in.Items {
 		a := &in.Items[i]
-		SetObjectDefaults_DevPodWorkspaceInstanceTroubleshoot(a)
+		SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(a)
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
-	if in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes != nil {
-		if in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod != nil {
-			for i := range in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Volumes {
-				a := &in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Volumes[i]
+func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
+	if in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes != nil {
+		if in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod != nil {
+			for i := range in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Volumes {
+				a := &in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Volumes[i]
 				if a.VolumeSource.ISCSI != nil {
 					if a.VolumeSource.ISCSI.ISCSIInterface == "" {
 						a.VolumeSource.ISCSI.ISCSIInterface = "default"
@@ -720,8 +720,8 @@ func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
 					}
 				}
 			}
-			for i := range in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.InitContainers {
-				a := &in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.InitContainers[i]
+			for i := range in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.InitContainers {
+				a := &in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.InitContainers[i]
 				for j := range a.Ports {
 					b := &a.Ports[j]
 					if b.Protocol == "" {
@@ -753,8 +753,8 @@ func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
 					}
 				}
 			}
-			for i := range in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Containers {
-				a := &in.Spec.DevPodWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Containers[i]
+			for i := range in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Containers {
+				a := &in.Spec.DevsyWorkspaceTemplateSpec.Template.Kubernetes.Pod.Spec.Containers[i]
 				for j := range a.Ports {
 					b := &a.Ports[j]
 					if b.Protocol == "" {
@@ -788,8 +788,8 @@ func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
 			}
 		}
 	}
-	for i := range in.Spec.DevPodWorkspaceTemplateSpec.Versions {
-		a := &in.Spec.DevPodWorkspaceTemplateSpec.Versions[i]
+	for i := range in.Spec.DevsyWorkspaceTemplateSpec.Versions {
+		a := &in.Spec.DevsyWorkspaceTemplateSpec.Versions[i]
 		if a.Template.Kubernetes != nil {
 			if a.Template.Kubernetes.Pod != nil {
 				for j := range a.Template.Kubernetes.Pod.Spec.Volumes {
@@ -908,17 +908,17 @@ func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceTemplateList(in *DevPodWorkspaceTemplateList) {
+func SetObjectDefaults_DevsyWorkspaceTemplateList(in *DevsyWorkspaceTemplateList) {
 	for i := range in.Items {
 		a := &in.Items[i]
-		SetObjectDefaults_DevPodWorkspaceTemplate(a)
+		SetObjectDefaults_DevsyWorkspaceTemplate(a)
 	}
 }
 
 func SetObjectDefaults_ProjectTemplates(in *ProjectTemplates) {
-	for i := range in.DevPodWorkspaceTemplates {
-		a := &in.DevPodWorkspaceTemplates[i]
-		SetObjectDefaults_DevPodWorkspaceTemplate(a)
+	for i := range in.DevsyWorkspaceTemplates {
+		a := &in.DevsyWorkspaceTemplates[i]
+		SetObjectDefaults_DevsyWorkspaceTemplate(a)
 	}
 }
 

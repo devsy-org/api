@@ -5,9 +5,9 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 type ProductName string
 
 const (
-	ProductNameDevsy     ProductName = "Devsy"
-	ProductNameDevsyPro  ProductName = "vCluster Platform"
-	ProductNameDevPodPro ProductName = "DevPod.Pro"
+	ProductNameDevsy            ProductName = "Devsy"
+	ProductNameDevsyPro         ProductName = "vCluster Platform"
+	ProductNameDevsyWorkspaces  ProductName = "Devsy.Pro"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,15 +45,15 @@ type UISettingsSpec struct {
 	// +optional
 	AvailableDevsyVersions []DevsyVersion `json:"availableDevsyVersions,omitempty"`
 
-	// LoftHosted indicates whether the vCluster Platform instance
+	// DevsyHosted indicates whether the vCluster Platform instance
 	// is hosted and operated by Devsy Labs Inc.
-	LoftHosted bool `json:"loftHosted,omitempty"`
+	DevsyHosted bool `json:"loftHosted,omitempty"`
 }
 
 type UISettingsConfig struct {
-	// LoftVersion holds the current devsy version
+	// DevsyVersion holds the current devsy version
 	// +optional
-	LoftVersion string `json:"loftVersion,omitempty"`
+	DevsyVersion string `json:"loftVersion,omitempty"`
 	// LogoURL is url pointing to the logo to use in the Devsy UI. This path must be accessible for clients accessing
 	// the Devsy UI!
 	// +optional

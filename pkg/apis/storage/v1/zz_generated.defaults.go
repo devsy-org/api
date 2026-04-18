@@ -14,18 +14,18 @@ import (
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstance{}, func(obj interface{}) { SetObjectDefaults_DevPodWorkspaceInstance(obj.(*DevPodWorkspaceInstance)) })
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceInstanceList{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceInstanceList(obj.(*DevPodWorkspaceInstanceList))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstance{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceInstance(obj.(*DevsyWorkspaceInstance)) })
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceList{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceInstanceList(obj.(*DevsyWorkspaceInstanceList))
 	})
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceTemplate{}, func(obj interface{}) { SetObjectDefaults_DevPodWorkspaceTemplate(obj.(*DevPodWorkspaceTemplate)) })
-	scheme.AddTypeDefaultingFunc(&DevPodWorkspaceTemplateList{}, func(obj interface{}) {
-		SetObjectDefaults_DevPodWorkspaceTemplateList(obj.(*DevPodWorkspaceTemplateList))
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplate{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceTemplate(obj.(*DevsyWorkspaceTemplate)) })
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplateList{}, func(obj interface{}) {
+		SetObjectDefaults_DevsyWorkspaceTemplateList(obj.(*DevsyWorkspaceTemplateList))
 	})
 	return nil
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
+func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
 	if in.Spec.Template != nil {
 		if in.Spec.Template.Kubernetes != nil {
 			if in.Spec.Template.Kubernetes.Pod != nil {
@@ -262,14 +262,14 @@ func SetObjectDefaults_DevPodWorkspaceInstance(in *DevPodWorkspaceInstance) {
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceInstanceList(in *DevPodWorkspaceInstanceList) {
+func SetObjectDefaults_DevsyWorkspaceInstanceList(in *DevsyWorkspaceInstanceList) {
 	for i := range in.Items {
 		a := &in.Items[i]
-		SetObjectDefaults_DevPodWorkspaceInstance(a)
+		SetObjectDefaults_DevsyWorkspaceInstance(a)
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
+func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
 	if in.Spec.Template.Kubernetes != nil {
 		if in.Spec.Template.Kubernetes.Pod != nil {
 			for i := range in.Spec.Template.Kubernetes.Pod.Spec.Volumes {
@@ -505,9 +505,9 @@ func SetObjectDefaults_DevPodWorkspaceTemplate(in *DevPodWorkspaceTemplate) {
 	}
 }
 
-func SetObjectDefaults_DevPodWorkspaceTemplateList(in *DevPodWorkspaceTemplateList) {
+func SetObjectDefaults_DevsyWorkspaceTemplateList(in *DevsyWorkspaceTemplateList) {
 	for i := range in.Items {
 		a := &in.Items[i]
-		SetObjectDefaults_DevPodWorkspaceTemplate(a)
+		SetObjectDefaults_DevsyWorkspaceTemplate(a)
 	}
 }

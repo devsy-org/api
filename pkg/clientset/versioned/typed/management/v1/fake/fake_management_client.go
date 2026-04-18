@@ -52,20 +52,20 @@ func (c *FakeManagementV1) DatabaseConnectors() v1.DatabaseConnectorInterface {
 	return newFakeDatabaseConnectors(c)
 }
 
-func (c *FakeManagementV1) DevPodEnvironmentTemplates() v1.DevPodEnvironmentTemplateInterface {
-	return newFakeDevPodEnvironmentTemplates(c)
+func (c *FakeManagementV1) DevsyEnvironmentTemplates() v1.DevsyEnvironmentTemplateInterface {
+	return newFakeDevsyEnvironmentTemplates(c)
 }
 
-func (c *FakeManagementV1) DevPodWorkspaceInstances(namespace string) v1.DevPodWorkspaceInstanceInterface {
-	return newFakeDevPodWorkspaceInstances(c, namespace)
+func (c *FakeManagementV1) DevsyWorkspaceInstances(namespace string) v1.DevsyWorkspaceInstanceInterface {
+	return newFakeDevsyWorkspaceInstances(c, namespace)
 }
 
-func (c *FakeManagementV1) DevPodWorkspacePresets() v1.DevPodWorkspacePresetInterface {
-	return newFakeDevPodWorkspacePresets(c)
+func (c *FakeManagementV1) DevsyWorkspacePresets() v1.DevsyWorkspacePresetInterface {
+	return newFakeDevsyWorkspacePresets(c)
 }
 
-func (c *FakeManagementV1) DevPodWorkspaceTemplates() v1.DevPodWorkspaceTemplateInterface {
-	return newFakeDevPodWorkspaceTemplates(c)
+func (c *FakeManagementV1) DevsyWorkspaceTemplates() v1.DevsyWorkspaceTemplateInterface {
+	return newFakeDevsyWorkspaceTemplates(c)
 }
 
 func (c *FakeManagementV1) DirectClusterEndpointTokens() v1.DirectClusterEndpointTokenInterface {

@@ -48,17 +48,17 @@ type ConfigStatus struct {
 	// +optional
 	Audit *Audit `json:"audit,omitempty"`
 
-	// LoftHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com
+	// DevsyHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com
 	// +optional
-	LoftHost string `json:"loftHost,omitempty"`
+	DevsyHost string `json:"loftHost,omitempty"`
 
 	// ProjectNamespacePrefix holds the prefix for devsy project namespaces. Omitted defaults to "p-"
 	// +optional
 	ProjectNamespacePrefix *string `json:"projectNamespacePrefix,omitempty"`
 
-	// DevPodSubDomain holds a subdomain in the following form *.workspace.my-domain.com
+	// DevsySubDomain holds a subdomain in the following form *.workspace.my-domain.com
 	// +optional
-	DevPodSubDomain string `json:"devPodSubDomain,omitempty"`
+	DevsySubDomain string `json:"devPodSubDomain,omitempty"`
 
 	// UISettings holds the settings for modifying the Devsy user interface
 	// +optional
@@ -663,9 +663,9 @@ type AuthenticationOIDC struct {
 	// +optional
 	PreferredUsernameClaim string `json:"preferredUsername,omitempty"`
 
-	// LoftUsernameClaim is the JWT field to use as the user's username.
+	// DevsyUsernameClaim is the JWT field to use as the user's username.
 	// +optional
-	LoftUsernameClaim string `json:"loftUsernameClaim,omitempty"`
+	DevsyUsernameClaim string `json:"loftUsernameClaim,omitempty"`
 
 	// UsernameClaim is the JWT field to use as the user's id.
 	// +optional
