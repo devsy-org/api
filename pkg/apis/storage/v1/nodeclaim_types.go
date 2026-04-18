@@ -117,7 +117,7 @@ type NodeClaimStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// NodeClaimList contains a list of NodeClaim
+// NodeClaimList contains a list of NodeClaim.
 type NodeClaimList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

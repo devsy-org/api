@@ -22,11 +22,11 @@ import (
 func Replace(content string) string {
 	switch Name() {
 	case licenseapi.DevsyPro:
-		content = strings.Replace(content, "devsy.sh", "devsy.pro", -1)
-		content = strings.Replace(content, "devsy.host", "devsy.host", -1)
+		content = strings.ReplaceAll(content, "devsy.sh", "devsy.pro")
+		content = strings.ReplaceAll(content, "devsy.host", "devsy.pro")
 
-		content = strings.Replace(content, "devsy", "devsy platform", -1)
-		content = strings.Replace(content, "Devsy", "vCluster Platform", -1)
+		content = strings.ReplaceAll(content, "devsy", "devsy platform")
+		content = strings.ReplaceAll(content, "Devsy", "Devsy Platform")
 	case licenseapi.DevsyOrg:
 	}
 

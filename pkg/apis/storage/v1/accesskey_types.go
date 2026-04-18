@@ -8,7 +8,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AccessKey holds the session information
+// AccessKey holds the session information.
 // +k8s:openapi-gen=true
 type AccessKey struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -130,7 +130,7 @@ type AccessKeyScope struct {
 	// +optional
 	Rules []AccessKeyScopeRule `json:"rules,omitempty"`
 
-	// AllowLoftCLI allows certain read-only management requests to
+	// AllowDevsyCLI allows certain read-only management requests to
 	// make sure devsy cli works correctly with this specific access key.
 	//
 	// Deprecated: Use the `roles` field instead
@@ -140,11 +140,11 @@ type AccessKeyScope struct {
 	//    - role: loftCLI
 	//  ```
 	// +optional
-	AllowLoftCLI bool `json:"allowLoftCli,omitempty"`
+	AllowDevsyCLI bool `json:"allowLoftCli,omitempty"`
 }
 
 func (a AccessKeyScope) ContainsRole(val AccessKeyScopeRoleName) bool {
-	if a.AllowLoftCLI && val == AccessKeyScopeRoleLoftCLI {
+	if a.AllowDevsyCLI && val == AccessKeyScopeRoleDevsyCLI {
 		return true
 	}
 
@@ -161,7 +161,7 @@ func (a AccessKeyScope) ContainsRole(val AccessKeyScopeRoleName) bool {
 			// (ThomasK33): Adding this so that the exhaustive linter is happy
 			case AccessKeyScopeRoleNetworkPeer:
 				return true
-			case AccessKeyScopeRoleLoftCLI:
+			case AccessKeyScopeRoleDevsyCLI:
 				return false
 			}
 		}
@@ -208,7 +208,7 @@ const (
 	AccessKeyScopeRoleAgent       AccessKeyScopeRoleName = "agent"
 	AccessKeyScopeRoleDevsy       AccessKeyScopeRoleName = "devsy"
 	AccessKeyScopeRoleNetworkPeer AccessKeyScopeRoleName = "network-peer"
-	AccessKeyScopeRoleLoftCLI     AccessKeyScopeRoleName = "devsy-cli"
+	AccessKeyScopeRoleDevsyCLI    AccessKeyScopeRoleName = "devsy-cli"
 	AccessKeyScopeRoleRunner      AccessKeyScopeRoleName = "runner"
 	AccessKeyScopeRoleWorkspace   AccessKeyScopeRoleName = "workspace"
 )
@@ -446,7 +446,7 @@ type AccessKeyStatus struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AccessKeyList contains a list of AccessKey
+// AccessKeyList contains a list of AccessKey.
 type AccessKeyList struct {
 	metav1.TypeMeta `            json:",inline"`
 	metav1.ListMeta `            json:"metadata,omitempty"`

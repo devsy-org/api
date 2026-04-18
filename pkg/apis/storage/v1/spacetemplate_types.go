@@ -48,7 +48,7 @@ func (a *SpaceTemplate) SetAccess(access []Access) {
 	a.Spec.Access = access
 }
 
-// SpaceTemplateSpec holds the specification
+// SpaceTemplateSpec holds the specification.
 type SpaceTemplateSpec struct {
 	// DisplayName is the name that is shown in the UI
 	// +optional
@@ -128,12 +128,12 @@ type SpaceInstanceTemplateDefinition struct {
 	TemplateMetadata `json:"metadata,omitempty"`
 }
 
-// SpaceTemplateStatus holds the status
+// SpaceTemplateStatus holds the status.
 type SpaceTemplateStatus struct{}
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// SpaceTemplateList contains a list of SpaceTemplate
+// SpaceTemplateList contains a list of SpaceTemplate.
 type SpaceTemplateList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

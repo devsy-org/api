@@ -16,9 +16,9 @@ type ClusterAccessKey struct {
 	// +optional
 	AccessKey string `json:"accessKey,omitempty"`
 
-	// LoftHost is the devsy host used by the agent
+	// DevsyHost is the devsy host used by the agent
 	// +optional
-	LoftHost string `json:"loftHost,omitempty"`
+	DevsyHost string `json:"loftHost,omitempty"`
 
 	// Insecure signals if the devsy host is insecure
 	// +optional

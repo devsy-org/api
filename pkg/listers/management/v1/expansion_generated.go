@@ -42,25 +42,29 @@ type ConvertVirtualClusterConfigListerExpansion interface{}
 // DatabaseConnectorLister.
 type DatabaseConnectorListerExpansion interface{}
 
-// DevPodEnvironmentTemplateListerExpansion allows custom methods to be added to
-// DevPodEnvironmentTemplateLister.
-type DevPodEnvironmentTemplateListerExpansion interface{}
+// DevsyEnvironmentTemplateListerExpansion allows custom methods to be added to
+// DevsyEnvironmentTemplateLister.
+type DevsyEnvironmentTemplateListerExpansion interface{}
 
-// DevPodWorkspaceInstanceListerExpansion allows custom methods to be added to
-// DevPodWorkspaceInstanceLister.
-type DevPodWorkspaceInstanceListerExpansion interface{}
+// DevsyUpgradeListerExpansion allows custom methods to be added to
+// DevsyUpgradeLister.
+type DevsyUpgradeListerExpansion interface{}
 
-// DevPodWorkspaceInstanceNamespaceListerExpansion allows custom methods to be added to
-// DevPodWorkspaceInstanceNamespaceLister.
-type DevPodWorkspaceInstanceNamespaceListerExpansion interface{}
+// DevsyWorkspaceInstanceListerExpansion allows custom methods to be added to
+// DevsyWorkspaceInstanceLister.
+type DevsyWorkspaceInstanceListerExpansion interface{}
 
-// DevPodWorkspacePresetListerExpansion allows custom methods to be added to
-// DevPodWorkspacePresetLister.
-type DevPodWorkspacePresetListerExpansion interface{}
+// DevsyWorkspaceInstanceNamespaceListerExpansion allows custom methods to be added to
+// DevsyWorkspaceInstanceNamespaceLister.
+type DevsyWorkspaceInstanceNamespaceListerExpansion interface{}
 
-// DevPodWorkspaceTemplateListerExpansion allows custom methods to be added to
-// DevPodWorkspaceTemplateLister.
-type DevPodWorkspaceTemplateListerExpansion interface{}
+// DevsyWorkspacePresetListerExpansion allows custom methods to be added to
+// DevsyWorkspacePresetLister.
+type DevsyWorkspacePresetListerExpansion interface{}
+
+// DevsyWorkspaceTemplateListerExpansion allows custom methods to be added to
+// DevsyWorkspaceTemplateLister.
+type DevsyWorkspaceTemplateListerExpansion interface{}
 
 // DirectClusterEndpointTokenListerExpansion allows custom methods to be added to
 // DirectClusterEndpointTokenLister.
@@ -85,10 +89,6 @@ type LicenseListerExpansion interface{}
 // LicenseTokenListerExpansion allows custom methods to be added to
 // LicenseTokenLister.
 type LicenseTokenListerExpansion interface{}
-
-// DevsyUpgradeListerExpansion allows custom methods to be added to
-// DevsyUpgradeLister.
-type DevsyUpgradeListerExpansion interface{}
 
 // NodeClaimListerExpansion allows custom methods to be added to
 // NodeClaimLister.

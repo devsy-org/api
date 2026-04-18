@@ -7,7 +7,7 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials //nolint:lll
+// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // App holds the information
@@ -22,12 +22,12 @@ type App struct {
 	Status AppStatus `json:"status,omitempty"`
 }
 
-// AppSpec holds the specification
+// AppSpec holds the specification.
 type AppSpec struct {
 	storagev1.AppSpec `json:",inline"`
 }
 
-// AppStatus holds the status
+// AppStatus holds the status.
 type AppStatus struct {
 	storagev1.AppStatus `json:",inline"`
 }

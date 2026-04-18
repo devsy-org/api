@@ -67,9 +67,9 @@ type SelfStatus struct {
 	// +optional
 	InstanceID string `json:"instanceID,omitempty"`
 
-	// LoftHost is the host of the devsy instance
+	// DevsyHost is the host of the devsy instance
 	// +optional
-	LoftHost string `json:"loftHost,omitempty"`
+	DevsyHost string `json:"loftHost,omitempty"`
 
 	// ProjectNamespacePrefix is the prefix used to name project namespaces after defaulting has been applied
 	// +optional

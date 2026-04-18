@@ -7,13 +7,13 @@ import (
 )
 
 const (
-	LoftProjectSecret                           = "devsy.sh/project-secret"
-	LoftProjectSecretNameLabel                  = "devsy.sh/project-secret-name"
-	LoftProjectSecretDescription                = "devsy.sh/project-secret-description"
-	LoftProjectSecretDisplayName                = "devsy.sh/project-secret-displayname"
-	LoftProjectSecretOwner                      = "devsy.sh/project-secret-owner"
-	LoftProjectSecretAccess                     = "devsy.sh/project-secret-access"
-	LoftProjectSecretStatusConditionsAnnotation = "devsy.sh/project-secret-status-conditions"
+	DevsyProjectSecret                           = "devsy.sh/project-secret"                   //nolint:gosec
+	DevsyProjectSecretNameLabel                  = "devsy.sh/project-secret-name"              //nolint:gosec
+	DevsyProjectSecretDescription                = "devsy.sh/project-secret-description"       //nolint:gosec
+	DevsyProjectSecretDisplayName                = "devsy.sh/project-secret-displayname"       //nolint:gosec
+	DevsyProjectSecretOwner                      = "devsy.sh/project-secret-owner"             //nolint:gosec
+	DevsyProjectSecretAccess                     = "devsy.sh/project-secret-access"            //nolint:gosec
+	DevsyProjectSecretStatusConditionsAnnotation = "devsy.sh/project-secret-status-conditions" //nolint:gosec
 )
 
 // +genclient
@@ -47,7 +47,7 @@ func (a *ProjectSecret) SetAccess(access []storagev1.Access) {
 	a.Spec.Access = access
 }
 
-// ProjectSecretSpec holds the specification
+// ProjectSecretSpec holds the specification.
 type ProjectSecretSpec struct {
 	// DisplayName is the name that should be displayed in the UI
 	// +optional
@@ -73,7 +73,7 @@ type ProjectSecretSpec struct {
 	Access []storagev1.Access `json:"access,omitempty"`
 }
 
-// ProjectSecretStatus holds the status
+// ProjectSecretStatus holds the status.
 type ProjectSecretStatus struct {
 	// Conditions holds several conditions the project might be in
 	// +optional

@@ -22,13 +22,15 @@ type ConvertVirtualClusterConfigExpansion interface{}
 
 type DatabaseConnectorExpansion interface{}
 
-type DevPodEnvironmentTemplateExpansion interface{}
+type DevsyEnvironmentTemplateExpansion interface{}
 
-type DevPodWorkspaceInstanceExpansion interface{}
+type DevsyUpgradeExpansion interface{}
 
-type DevPodWorkspacePresetExpansion interface{}
+type DevsyWorkspaceInstanceExpansion interface{}
 
-type DevPodWorkspaceTemplateExpansion interface{}
+type DevsyWorkspacePresetExpansion interface{}
+
+type DevsyWorkspaceTemplateExpansion interface{}
 
 type DirectClusterEndpointTokenExpansion interface{}
 
@@ -41,8 +43,6 @@ type IngressAuthTokenExpansion interface{}
 type LicenseExpansion interface{}
 
 type LicenseTokenExpansion interface{}
-
-type DevsyUpgradeExpansion interface{}
 
 type NodeClaimExpansion interface{}
 

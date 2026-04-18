@@ -25,7 +25,9 @@ func newFakeDevsyUpgrades(fake *FakeManagementV1) managementv1.DevsyUpgradeInter
 			func() *v1.DevsyUpgradeList { return &v1.DevsyUpgradeList{} },
 			func(dst, src *v1.DevsyUpgradeList) { dst.ListMeta = src.ListMeta },
 			func(list *v1.DevsyUpgradeList) []*v1.DevsyUpgrade { return gentype.ToPointerSlice(list.Items) },
-			func(list *v1.DevsyUpgradeList, items []*v1.DevsyUpgrade) { list.Items = gentype.FromPointerSlice(items) },
+			func(list *v1.DevsyUpgradeList, items []*v1.DevsyUpgrade) {
+				list.Items = gentype.FromPointerSlice(items)
+			},
 		),
 		fake,
 	}

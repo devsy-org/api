@@ -7,10 +7,10 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=LicenseRequest,verb=create,subresource=request,input=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest,result=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest //nolint:lll
+// +genclient:method=LicenseRequest,verb=create,subresource=request,input=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest,result=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// License holds the license information
+// License holds the license information.
 // +k8s:openapi-gen=true
 // +resource:path=licenses,rest=LicenseREST
 // +subresource:request=LicenseRequest,path=request,kind=LicenseRequest,rest=LicenseRequestREST

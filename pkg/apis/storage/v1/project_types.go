@@ -93,7 +93,7 @@ type ProjectSpec struct {
 	AllowedClusters []AllowedCluster `json:"allowedClusters,omitempty"`
 
 	// AllowedRunners are target runners that are allowed to target with
-	// DevPod environments.
+	// Devsy environments.
 	// +optional
 	AllowedRunners []AllowedRunner `json:"allowedRunners,omitempty"`
 
@@ -134,9 +134,9 @@ type ProjectSpec struct {
 	// +optional
 	RancherIntegration *RancherIntegrationSpec `json:"rancher,omitempty"`
 
-	// DevPod holds DevPod specific configuration for project
+	// Devsy holds Devsy specific configuration for project
 	// +optional
-	DevPod *DevPodProjectSpec `json:"devPod,omitempty"`
+	Devsy *DevsyProjectSpec `json:"devPod,omitempty"`
 }
 
 type RequireTemplate struct {
@@ -162,9 +162,9 @@ type NamespacePattern struct {
 	// +optional
 	VirtualCluster string `json:"virtualCluster,omitempty"`
 
-	// DevPodWorkspace holds the namespace pattern to use for DevPod workspaces
+	// DevsyWorkspace holds the namespace pattern to use for Devsy workspaces
 	// +optional
-	DevPodWorkspace string `json:"devPodWorkspace,omitempty"`
+	DevsyWorkspace string `json:"devPodWorkspace,omitempty"`
 }
 
 type Quotas struct {
@@ -177,14 +177,15 @@ type Quotas struct {
 }
 
 var (
-	SpaceTemplateKind           = "SpaceTemplate"
-	VirtualClusterTemplateKind  = "VirtualClusterTemplate"
-	DevPodWorkspaceTemplateKind = "DevPodWorkspaceTemplate"
-	DevPodWorkspacePresetKind   = "DevPodWorkspacePreset"
+	SpaceTemplateKind          = "SpaceTemplate"
+	VirtualClusterTemplateKind = "VirtualClusterTemplate"
+	DevsyWorkspaceTemplateKind = "DevsyWorkspaceTemplate"
+	DevsyWorkspacePresetKind   = "DevsyWorkspacePreset"
 )
 
 type AllowedTemplate struct {
-	// Kind of the template that is allowed. Currently only supports DevPodWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate
+	// Kind of the template that is allowed. Currently only supports
+	// DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate.
 	// +optional
 	Kind string `json:"kind,omitempty"`
 
@@ -231,7 +232,7 @@ type AllowedCluster struct {
 }
 
 type ProjectStatus struct {
-	// Quotas holds the quota status
+	// Quotas holds the quota status.
 	// +optional
 	Quotas *QuotaStatus `json:"quotas,omitempty"`
 
@@ -371,7 +372,7 @@ type ArgoSSOSpec struct {
 
 type ArgoProjectSpec struct {
 	// Enabled indicates if the ArgoCD Project Integration is enabled for this project. Enabling
-	// this will cause Devsy to create an appProject in ArgoCD that is associated with the Loft
+	// this will cause Devsy to create an appProject in ArgoCD that is associated with the Devsy
 	// Project. When Project integration is enabled Devsy will override the default assigned role
 	// set in the SSO integration spec.
 	// +optional
@@ -515,7 +516,7 @@ type SyncMembersSpec struct {
 	RoleMapping map[string]string `json:"roleMapping,omitempty"`
 }
 
-type DevPodProjectSpec struct {
+type DevsyProjectSpec struct {
 	// Git defines additional git related settings like credentials
 	// +optional
 	Git *GitProjectSpec `json:"git,omitempty"`
@@ -556,7 +557,7 @@ type GitProjectCredentials struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ProjectList contains a list of Project objects
+// ProjectList contains a list of Project objects.
 type ProjectList struct {
 	metav1.TypeMeta `          json:",inline"`
 	metav1.ListMeta `          json:"metadata,omitempty"`

@@ -20,12 +20,12 @@ type AgentAuditEvent struct {
 	Status AgentAuditEventStatus `json:"status,omitempty"`
 }
 
-// AgentAuditEventSpec holds the specification
+// AgentAuditEventSpec holds the specification.
 type AgentAuditEventSpec struct {
 	// Events are the events the agent has recorded
 	// +optional
 	Events []*auditv1.Event `json:"events,omitempty"`
 }
 
-// AgentAuditEventStatus holds the status
+// AgentAuditEventStatus holds the status.
 type AgentAuditEventStatus struct{}

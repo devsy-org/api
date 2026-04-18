@@ -12,7 +12,7 @@ import (
 // +genclient:nonNamespaced
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// Config holds the devsy configuration
+// Config holds the devsy configuration.
 // +k8s:openapi-gen=true
 // +resource:path=configs,rest=ConfigREST
 type Config struct {
@@ -23,9 +23,9 @@ type Config struct {
 	Status ConfigStatus `json:"status,omitempty"`
 }
 
-// ConfigSpec holds the specification
+// ConfigSpec holds the specification.
 type ConfigSpec struct {
-	// Raw holds the raw config
+	// Raw holds the raw config.
 	// +optional
 	Raw []byte `json:"raw,omitempty"`
 }
@@ -36,7 +36,9 @@ type ConfigStatus struct {
 	// +optional
 	Authentication Authentication `json:"auth,omitempty"`
 
-	// DEPRECATED: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, vCluster Platform as an OIDC Provider is enabled but does not function without OIDC clients.
+	// Deprecated: Configure the OIDC clients using either the OIDC Client UI
+	// or a secret. By default, Devsy Platform as an OIDC Provider is enabled
+	// but does not function without OIDC clients.
 	// +optional
 	OIDC *OIDC `json:"oidc,omitempty"`
 
@@ -48,17 +50,18 @@ type ConfigStatus struct {
 	// +optional
 	Audit *Audit `json:"audit,omitempty"`
 
-	// LoftHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com
+	// DevsyHost holds the domain where the devsy instance is hosted.
+	// This should not include https or http. E.g. devsy.my-domain.com
 	// +optional
-	LoftHost string `json:"loftHost,omitempty"`
+	DevsyHost string `json:"loftHost,omitempty"`
 
 	// ProjectNamespacePrefix holds the prefix for devsy project namespaces. Omitted defaults to "p-"
 	// +optional
 	ProjectNamespacePrefix *string `json:"projectNamespacePrefix,omitempty"`
 
-	// DevPodSubDomain holds a subdomain in the following form *.workspace.my-domain.com
+	// DevsySubDomain holds a subdomain in the following form *.workspace.my-domain.com
 	// +optional
-	DevPodSubDomain string `json:"devPodSubDomain,omitempty"`
+	DevsySubDomain string `json:"devPodSubDomain,omitempty"`
 
 	// UISettings holds the settings for modifying the Devsy user interface
 	// +optional
@@ -663,9 +666,9 @@ type AuthenticationOIDC struct {
 	// +optional
 	PreferredUsernameClaim string `json:"preferredUsername,omitempty"`
 
-	// LoftUsernameClaim is the JWT field to use as the user's username.
+	// DevsyUsernameClaim is the JWT field to use as the user's username.
 	// +optional
-	LoftUsernameClaim string `json:"loftUsernameClaim,omitempty"`
+	DevsyUsernameClaim string `json:"loftUsernameClaim,omitempty"`
 
 	// UsernameClaim is the JWT field to use as the user's id.
 	// +optional

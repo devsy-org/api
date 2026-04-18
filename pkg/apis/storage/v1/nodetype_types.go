@@ -132,7 +132,7 @@ type NodeTypeCapacity struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// NodeTypeList contains a list of NodeType
+// NodeTypeList contains a list of NodeType.
 type NodeTypeList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`

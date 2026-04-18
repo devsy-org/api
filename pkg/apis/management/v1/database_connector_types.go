@@ -20,12 +20,12 @@ type DatabaseConnector struct {
 	Status DatabaseConnectorStatus `json:"status,omitempty"`
 }
 
-// DatabaseConnectorSpec holds the specification
+// DatabaseConnectorSpec holds the specification.
 type DatabaseConnectorSpec struct {
 	// The client id of the client
 	Type        string `json:"type,omitempty"`
 	DisplayName string `json:"displayName,omitempty"`
 }
 
-// DatabaseConnectorStatus holds the status
+// DatabaseConnectorStatus holds the status.
 type DatabaseConnectorStatus struct{}

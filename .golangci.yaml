@@ -15,6 +15,9 @@ linters:
   exclusions:
     paths:
       - example
+    rules:
+      - linters: [lll]
+        source: "// \\+(genclient:method|subresource:)"
   enable:
     - cyclop
     - decorder

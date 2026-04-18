@@ -21,10 +21,10 @@ type DevsyUpgradesGetter interface {
 
 // DevsyUpgradeInterface has methods to work with DevsyUpgrade resources.
 type DevsyUpgradeInterface interface {
-	Create(ctx context.Context, loftUpgrade *managementv1.DevsyUpgrade, opts metav1.CreateOptions) (*managementv1.DevsyUpgrade, error)
-	Update(ctx context.Context, loftUpgrade *managementv1.DevsyUpgrade, opts metav1.UpdateOptions) (*managementv1.DevsyUpgrade, error)
+	Create(ctx context.Context, devsyUpgrade *managementv1.DevsyUpgrade, opts metav1.CreateOptions) (*managementv1.DevsyUpgrade, error)
+	Update(ctx context.Context, devsyUpgrade *managementv1.DevsyUpgrade, opts metav1.UpdateOptions) (*managementv1.DevsyUpgrade, error)
 	// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-	UpdateStatus(ctx context.Context, loftUpgrade *managementv1.DevsyUpgrade, opts metav1.UpdateOptions) (*managementv1.DevsyUpgrade, error)
+	UpdateStatus(ctx context.Context, devsyUpgrade *managementv1.DevsyUpgrade, opts metav1.UpdateOptions) (*managementv1.DevsyUpgrade, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*managementv1.DevsyUpgrade, error)
@@ -34,14 +34,14 @@ type DevsyUpgradeInterface interface {
 	DevsyUpgradeExpansion
 }
 
-// loftUpgrades implements DevsyUpgradeInterface
-type loftUpgrades struct {
+// devsyUpgrades implements DevsyUpgradeInterface
+type devsyUpgrades struct {
 	*gentype.ClientWithList[*managementv1.DevsyUpgrade, *managementv1.DevsyUpgradeList]
 }
 
 // newDevsyUpgrades returns a DevsyUpgrades
-func newDevsyUpgrades(c *ManagementV1Client) *loftUpgrades {
-	return &loftUpgrades{
+func newDevsyUpgrades(c *ManagementV1Client) *devsyUpgrades {
+	return &devsyUpgrades{
 		gentype.NewClientWithList[*managementv1.DevsyUpgrade, *managementv1.DevsyUpgradeList](
 			"devsyupgrades",
 			c.RESTClient(),

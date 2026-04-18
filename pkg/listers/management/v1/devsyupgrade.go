@@ -21,12 +21,12 @@ type DevsyUpgradeLister interface {
 	DevsyUpgradeListerExpansion
 }
 
-// loftUpgradeLister implements the DevsyUpgradeLister interface.
-type loftUpgradeLister struct {
+// devsyUpgradeLister implements the DevsyUpgradeLister interface.
+type devsyUpgradeLister struct {
 	listers.ResourceIndexer[*managementv1.DevsyUpgrade]
 }
 
 // NewDevsyUpgradeLister returns a new DevsyUpgradeLister.
 func NewDevsyUpgradeLister(indexer cache.Indexer) DevsyUpgradeLister {
-	return &loftUpgradeLister{listers.New[*managementv1.DevsyUpgrade](indexer, managementv1.Resource("devsyupgrade"))}
+	return &devsyUpgradeLister{listers.New[*managementv1.DevsyUpgrade](indexer, managementv1.Resource("devsyupgrade"))}
 }

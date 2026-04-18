@@ -59,14 +59,16 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().ConvertVirtualClusterConfigs().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("databaseconnectors"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DatabaseConnectors().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("devpodenvironmenttemplates"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevPodEnvironmentTemplates().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("devpodworkspaceinstances"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevPodWorkspaceInstances().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("devpodworkspacepresets"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevPodWorkspacePresets().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("devpodworkspacetemplates"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevPodWorkspaceTemplates().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyenvironmenttemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyEnvironmentTemplates().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyupgrades"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyUpgrades().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyworkspaceinstances"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyWorkspaceInstances().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyworkspacepresets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyWorkspacePresets().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("devsyworkspacetemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyWorkspaceTemplates().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("directclusterendpointtokens"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DirectClusterEndpointTokens().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("events"):
@@ -79,8 +81,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().Licenses().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("licensetokens"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().LicenseTokens().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("devsyupgrades"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().DevsyUpgrades().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nodeclaims"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Management().V1().NodeClaims().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("nodeenvironments"):
@@ -143,14 +143,14 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().ClusterAccesses().Informer()}, nil
 	case storagev1.SchemeGroupVersion.WithResource("clusterroletemplates"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().ClusterRoleTemplates().Informer()}, nil
-	case storagev1.SchemeGroupVersion.WithResource("devpodenvironmenttemplates"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevPodEnvironmentTemplates().Informer()}, nil
-	case storagev1.SchemeGroupVersion.WithResource("devpodworkspaceinstances"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevPodWorkspaceInstances().Informer()}, nil
-	case storagev1.SchemeGroupVersion.WithResource("devpodworkspacepresets"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevPodWorkspacePresets().Informer()}, nil
-	case storagev1.SchemeGroupVersion.WithResource("devpodworkspacetemplates"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevPodWorkspaceTemplates().Informer()}, nil
+	case storagev1.SchemeGroupVersion.WithResource("devsyenvironmenttemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevsyEnvironmentTemplates().Informer()}, nil
+	case storagev1.SchemeGroupVersion.WithResource("devsyworkspaceinstances"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevsyWorkspaceInstances().Informer()}, nil
+	case storagev1.SchemeGroupVersion.WithResource("devsyworkspacepresets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevsyWorkspacePresets().Informer()}, nil
+	case storagev1.SchemeGroupVersion.WithResource("devsyworkspacetemplates"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().DevsyWorkspaceTemplates().Informer()}, nil
 	case storagev1.SchemeGroupVersion.WithResource("networkpeers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Storage().V1().NetworkPeers().Informer()}, nil
 	case storagev1.SchemeGroupVersion.WithResource("nodeclaims"):

@@ -131,7 +131,7 @@ type UserQuotasOptions struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceLogOptions struct {
+type DevsyWorkspaceInstanceLogOptions struct {
 	metav1.TypeMeta `json:",inline"`
 
 	// TaskID is the id of the task that is running
@@ -145,7 +145,7 @@ type DevPodWorkspaceInstanceLogOptions struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceTasksOptions struct {
+type DevsyWorkspaceInstanceTasksOptions struct {
 	metav1.TypeMeta `json:",inline"`
 
 	// TaskID is the id of the task that is running
@@ -155,7 +155,7 @@ type DevPodWorkspaceInstanceTasksOptions struct {
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-type DevPodWorkspaceInstanceDownloadOptions struct {
+type DevsyWorkspaceInstanceDownloadOptions struct {
 	metav1.TypeMeta `json:",inline"`
 
 	// Path is the path to download

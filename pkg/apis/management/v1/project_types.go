@@ -7,12 +7,12 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=ListMembers,verb=get,subresource=members,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembers //nolint:lll
-// +genclient:method=ListTemplates,verb=get,subresource=templates,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplates //nolint:lll
-// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectClusters //nolint:lll
-// +genclient:method=MigrateVirtualClusterInstance,verb=create,subresource=migratevirtualclusterinstance,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance //nolint:lll
-// +genclient:method=ImportSpace,verb=create,subresource=importspace,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace //nolint:lll
-// +genclient:method=MigrateSpaceInstance,verb=create,subresource=migratespaceinstance,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance //nolint:lll
+// +genclient:method=ListMembers,verb=get,subresource=members,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembers
+// +genclient:method=ListTemplates,verb=get,subresource=templates,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplates
+// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectClusters
+// +genclient:method=MigrateVirtualClusterInstance,verb=create,subresource=migratevirtualclusterinstance,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance
+// +genclient:method=ImportSpace,verb=create,subresource=importspace,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace
+// +genclient:method=MigrateSpaceInstance,verb=create,subresource=migratespaceinstance,input=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance,result=github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // Project holds the Project information
@@ -35,12 +35,12 @@ type Project struct {
 	Status ProjectStatus `json:"status,omitempty"`
 }
 
-// ProjectSpec holds the specification
+// ProjectSpec holds the specification.
 type ProjectSpec struct {
 	storagev1.ProjectSpec `json:",inline"`
 }
 
-// ProjectStatus holds the status
+// ProjectStatus holds the status.
 type ProjectStatus struct {
 	storagev1.ProjectStatus `json:",inline"`
 }

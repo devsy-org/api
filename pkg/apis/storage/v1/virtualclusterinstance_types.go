@@ -444,7 +444,7 @@ const (
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// VirtualClusterInstanceList contains a list of VirtualClusterInstance objects
+// VirtualClusterInstanceList contains a list of VirtualClusterInstance objects.
 type VirtualClusterInstanceList struct {
 	metav1.TypeMeta `                         json:",inline"`
 	metav1.ListMeta `                         json:"metadata,omitempty"`

@@ -22,12 +22,12 @@ type SpaceInstance struct {
 	Status SpaceInstanceStatus `json:"status,omitempty"`
 }
 
-// SpaceInstanceSpec holds the specification
+// SpaceInstanceSpec holds the specification.
 type SpaceInstanceSpec struct {
 	storagev1.SpaceInstanceSpec `json:",inline"`
 }
 
-// SpaceInstanceStatus holds the status
+// SpaceInstanceStatus holds the status.
 type SpaceInstanceStatus struct {
 	storagev1.SpaceInstanceStatus `json:",inline"`
 

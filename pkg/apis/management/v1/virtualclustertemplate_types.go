@@ -20,12 +20,12 @@ type VirtualClusterTemplate struct {
 	Status VirtualClusterTemplateStatus `json:"status,omitempty"`
 }
 
-// VirtualClusterTemplateSpec holds the specification
+// VirtualClusterTemplateSpec holds the specification.
 type VirtualClusterTemplateSpec struct {
 	storagev1.VirtualClusterTemplateSpec `json:",inline"`
 }
 
-// VirtualClusterTemplateStatus holds the status
+// VirtualClusterTemplateStatus holds the status.
 type VirtualClusterTemplateStatus struct {
 	storagev1.VirtualClusterTemplateStatus `json:",inline"`
 
