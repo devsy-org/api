@@ -139,8 +139,8 @@ const (
 
 // DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects
 type DevsyEnvironmentTemplateList struct {
-	metav1.TypeMeta `                            json:",inline"`
-	metav1.ListMeta `                            json:"metadata,omitempty"`
+	metav1.TypeMeta `                           json:",inline"`
+	metav1.ListMeta `                           json:"metadata,omitempty"`
 	Items           []DevsyEnvironmentTemplate `json:"items"`
 }
 

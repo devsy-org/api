@@ -177,8 +177,8 @@ type Quotas struct {
 }
 
 var (
-	SpaceTemplateKind           = "SpaceTemplate"
-	VirtualClusterTemplateKind  = "VirtualClusterTemplate"
+	SpaceTemplateKind          = "SpaceTemplate"
+	VirtualClusterTemplateKind = "VirtualClusterTemplate"
 	DevsyWorkspaceTemplateKind = "DevsyWorkspaceTemplate"
 	DevsyWorkspacePresetKind   = "DevsyWorkspacePreset"
 )

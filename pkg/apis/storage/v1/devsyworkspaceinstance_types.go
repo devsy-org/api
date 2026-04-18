@@ -440,8 +440,8 @@ type DevsyCommandUpOptions struct {
 
 // DevsyWorkspaceInstanceList contains a list of DevsyWorkspaceInstance objects
 type DevsyWorkspaceInstanceList struct {
-	metav1.TypeMeta `                          json:",inline"`
-	metav1.ListMeta `                          json:"metadata,omitempty"`
+	metav1.TypeMeta `                         json:",inline"`
+	metav1.ListMeta `                         json:"metadata,omitempty"`
 	Items           []DevsyWorkspaceInstance `json:"items"`
 }
 

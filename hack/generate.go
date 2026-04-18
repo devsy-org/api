@@ -115,7 +115,13 @@ func main() {
 				Name:  "deepcopy",
 				Usage: "Generate DeepCopy methods (zz_generated.deepcopy.go)",
 				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
+					runGenerator(
+						"deepcopy-gen",
+						"--go-header-file",
+						boilerplate,
+						"--output-file",
+						"zz_generated.deepcopy.go",
+					)
 					return nil
 				},
 			},
@@ -123,7 +129,13 @@ func main() {
 				Name:  "defaults",
 				Usage: "Generate Defaulter functions (zz_generated.defaults.go)",
 				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
+					runGenerator(
+						"defaulter-gen",
+						"--go-header-file",
+						boilerplate,
+						"--output-file",
+						"zz_generated.defaults.go",
+					)
 					return nil
 				},
 			},
@@ -162,8 +174,20 @@ func main() {
 func runAll() error {
 	installTools()
 	runRegister()
-	runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
-	runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
+	runGenerator(
+		"deepcopy-gen",
+		"--go-header-file",
+		boilerplate,
+		"--output-file",
+		"zz_generated.deepcopy.go",
+	)
+	runGenerator(
+		"defaulter-gen",
+		"--go-header-file",
+		boilerplate,
+		"--output-file",
+		"zz_generated.defaults.go",
+	)
 	runConversion()
 	runOpenAPI()
 	runClients()
@@ -249,7 +273,7 @@ func patchRegisterFiles() {
 				1)
 		}
 
-		if err := os.WriteFile(path, []byte(content), 0644); err != nil {
+		if err := os.WriteFile(path, []byte(content), 0o644); err != nil {
 			klog.Fatalf("failed to write patched %s: %v", path, err)
 		}
 

@@ -551,8 +551,8 @@ type DevsyWorkspaceTemplateStatus struct{}
 
 // DevsyWorkspaceTemplateList contains a list of DevsyWorkspaceTemplate
 type DevsyWorkspaceTemplateList struct {
-	metav1.TypeMeta `                          json:",inline"`
-	metav1.ListMeta `                          json:"metadata,omitempty"`
+	metav1.TypeMeta `                         json:",inline"`
+	metav1.ListMeta `                         json:"metadata,omitempty"`
 	Items           []DevsyWorkspaceTemplate `json:"items"`
 }
 

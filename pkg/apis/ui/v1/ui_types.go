@@ -5,9 +5,9 @@ import metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 type ProductName string
 
 const (
-	ProductNameDevsy            ProductName = "Devsy"
-	ProductNameDevsyPro         ProductName = "vCluster Platform"
-	ProductNameDevsyWorkspaces  ProductName = "Devsy.Pro"
+	ProductNameDevsy           ProductName = "Devsy"
+	ProductNameDevsyPro        ProductName = "vCluster Platform"
+	ProductNameDevsyWorkspaces ProductName = "Devsy.Pro"
 )
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
