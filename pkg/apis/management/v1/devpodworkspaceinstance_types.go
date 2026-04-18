@@ -9,10 +9,10 @@ import (
 
 // +genclient
 // +genclient:noStatus
-// +genclient:method=Up,verb=create,subresource=up,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp
-// +genclient:method=Stop,verb=create,subresource=stop,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop
-// +genclient:method=Troubleshoot,verb=get,subresource=troubleshoot,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshoot
-// +genclient:method=Cancel,verb=create,subresource=cancel,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel
+// +genclient:method=Up,verb=create,subresource=up,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceUp //nolint:lll
+// +genclient:method=Stop,verb=create,subresource=stop,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceStop //nolint:lll
+// +genclient:method=Troubleshoot,verb=get,subresource=troubleshoot,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceTroubleshoot //nolint:lll
+// +genclient:method=Cancel,verb=create,subresource=cancel,input=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel,result=github.com/devsy-org/api/pkg/apis/management/v1.DevPodWorkspaceInstanceCancel //nolint:lll
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // DevPodWorkspaceInstance holds the DevPodWorkspaceInstance information

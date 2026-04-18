@@ -7,10 +7,10 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=GetProfile,verb=get,subresource=profile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile
-// +genclient:method=UpdateProfile,verb=create,subresource=profile,input=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile
-// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.UserClusters
-// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys
+// +genclient:method=GetProfile,verb=get,subresource=profile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile //nolint:lll
+// +genclient:method=UpdateProfile,verb=create,subresource=profile,input=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile //nolint:lll
+// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.UserClusters //nolint:lll
+// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys //nolint:lll
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // User holds the user information
