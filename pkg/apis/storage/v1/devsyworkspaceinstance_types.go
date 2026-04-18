@@ -19,8 +19,8 @@ var (
 	// DevsyWorkspaceUIDLabel holds the actual workspace uid of the devsy workspace
 	DevsyWorkspaceUIDLabel = "devsy.sh/workspace-uid"
 
-	// DevsyKubernetesProviderWorkspaceUIDLabel holds the actual workspace uid of the devsy workspace on resources
-	// created by the Devsy Kubernetes provider.
+	// DevsyKubernetesProviderWorkspaceUIDLabel holds the actual workspace uid of the
+	// devsy workspace on resources created by the Devsy Kubernetes provider.
 	DevsyKubernetesProviderWorkspaceUIDLabel = "devpod.sh/workspace-uid"
 
 	// DevsyWorkspacePictureAnnotation holds the workspace picture url of the devsy workspace
@@ -249,9 +249,9 @@ type DevsyWorkspaceInstanceKubernetesStatus struct {
 	// +optional
 	PodStatus *DevsyWorkspaceInstancePodStatus `json:"podStatus,omitempty"`
 
-	// PersistentVolumeClaimStatus is the pvc that is used to store the workspace
+	// PersistentVolumeClaimStatus is the pvc that is used to store the workspace.
 	// +optional
-	PersistentVolumeClaimStatus *DevsyWorkspaceInstancePersistentVolumeClaimStatus `json:"persistentVolumeClaimStatus,omitempty"`
+	PersistentVolumeClaimStatus *DevsyWorkspaceInstancePersistentVolumeClaimStatus `json:"persistentVolumeClaimStatus,omitempty"` //nolint:lll
 }
 
 type DevsyWorkspaceInstancePodStatus struct {

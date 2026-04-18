@@ -6,7 +6,7 @@ import (
 )
 
 type PrivateClaims struct {
-	Devsy Devsy `json:"devsy.sh,omitempty"`
+	Devsy Devsy `json:"devsy.sh,omitzero"`
 }
 
 const DevsyAdminKind = "DevsyAdmin"

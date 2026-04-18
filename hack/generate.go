@@ -9,7 +9,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -78,7 +77,9 @@ func main() {
 	if len(os.Getenv("GOMAXPROCS")) == 0 {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 	}
-	os.Chdir(repoRoot())
+	if err := os.Chdir(repoRoot()); err != nil {
+		klog.Fatalf("chdir failed: %v", err)
+	}
 
 	app := &cli.Command{
 		Name:  "generate",
@@ -86,87 +87,91 @@ func main() {
 		Action: func(ctx context.Context, cmd *cli.Command) error {
 			return runAll()
 		},
-		Commands: []*cli.Command{
-			{
-				Name:  "all",
-				Usage: "Run all generators (default)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					return runAll()
-				},
-			},
-			{
-				Name:  "install",
-				Usage: "Install code-generator tool binaries",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					installTools()
-					return nil
-				},
-			},
-			{
-				Name:  "register",
-				Usage: "Generate API registration (zz_generated.api.register.go)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runRegister()
-					return nil
-				},
-			},
-			{
-				Name:  "deepcopy",
-				Usage: "Generate DeepCopy methods (zz_generated.deepcopy.go)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runGenerator(
-						"deepcopy-gen",
-						"--go-header-file",
-						boilerplate,
-						"--output-file",
-						"zz_generated.deepcopy.go",
-					)
-					return nil
-				},
-			},
-			{
-				Name:  "defaults",
-				Usage: "Generate Defaulter functions (zz_generated.defaults.go)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runGenerator(
-						"defaulter-gen",
-						"--go-header-file",
-						boilerplate,
-						"--output-file",
-						"zz_generated.defaults.go",
-					)
-					return nil
-				},
-			},
-			{
-				Name:  "conversion",
-				Usage: "Generate Conversion functions (zz_generated.conversion.go)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runConversion()
-					return nil
-				},
-			},
-			{
-				Name:  "openapi",
-				Usage: "Generate OpenAPI definitions (zz_generated.openapi.go)",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runOpenAPI()
-					return nil
-				},
-			},
-			{
-				Name:  "clients",
-				Usage: "Generate clientset, listers, and informers",
-				Action: func(ctx context.Context, cmd *cli.Command) error {
-					runClients()
-					return nil
-				},
-			},
-		},
+		Commands: buildCommands(),
 	}
 
 	if err := app.Run(context.Background(), os.Args); err != nil {
 		klog.Fatalf("Error: %v", err)
+	}
+}
+
+func buildCommands() []*cli.Command {
+	return []*cli.Command{
+		{
+			Name:  "all",
+			Usage: "Run all generators (default)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				return runAll()
+			},
+		},
+		{
+			Name:  "install",
+			Usage: "Install code-generator tool binaries",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				installTools()
+				return nil
+			},
+		},
+		{
+			Name:  "register",
+			Usage: "Generate API registration (zz_generated.api.register.go)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runRegister()
+				return nil
+			},
+		},
+		{
+			Name:  "deepcopy",
+			Usage: "Generate DeepCopy methods (zz_generated.deepcopy.go)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runGenerator(
+					"deepcopy-gen",
+					"--go-header-file",
+					boilerplate,
+					"--output-file",
+					"zz_generated.deepcopy.go",
+				)
+				return nil
+			},
+		},
+		{
+			Name:  "defaults",
+			Usage: "Generate Defaulter functions (zz_generated.defaults.go)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runGenerator(
+					"defaulter-gen",
+					"--go-header-file",
+					boilerplate,
+					"--output-file",
+					"zz_generated.defaults.go",
+				)
+				return nil
+			},
+		},
+		{
+			Name:  "conversion",
+			Usage: "Generate Conversion functions (zz_generated.conversion.go)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runConversion()
+				return nil
+			},
+		},
+		{
+			Name:  "openapi",
+			Usage: "Generate OpenAPI definitions (zz_generated.openapi.go)",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runOpenAPI()
+				return nil
+			},
+		},
+		{
+			Name:  "clients",
+			Usage: "Generate clientset, listers, and informers",
+			Action: func(ctx context.Context, cmd *cli.Command) error {
+				runClients()
+				return nil
+			},
+		},
 	}
 }
 
@@ -190,13 +195,13 @@ func runAll() error {
 	runConversion()
 	runOpenAPI()
 	runClients()
-	fmt.Println("==> Done.")
+	klog.Info("==> Done.")
 	return nil
 }
 
 // installTools installs the k8s.io/code-generator binaries.
 func installTools() {
-	fmt.Println("==> Installing code-generator tools...")
+	klog.Info("==> Installing code-generator tools...")
 	tools := []string{
 		"k8s.io/code-generator/cmd/deepcopy-gen",
 		"k8s.io/code-generator/cmd/defaulter-gen",
@@ -212,7 +217,7 @@ func installTools() {
 }
 
 func runRegister() {
-	fmt.Println("==> Generating API register...")
+	klog.Info("==> Generating API register...")
 
 	g := generate.Gen{}
 	if err := g.Execute("zz_generated.api.register.go", module+"/pkg/apis/..."); err != nil {
@@ -221,13 +226,14 @@ func runRegister() {
 }
 
 func runGenerator(tool string, baseArgs ...string) {
-	fmt.Printf("==> Generating %s...\n", tool)
-	args := append(baseArgs, apiPackages...)
+	klog.Infof("==> Generating %s...", tool)
+	args := append([]string{}, baseArgs...)
+	args = append(args, apiPackages...)
 	run(tool, args...)
 }
 
 func runConversion() {
-	fmt.Println("==> Generating conversion...")
+	klog.Info("==> Generating conversion...")
 	args := []string{
 		"--go-header-file", boilerplate,
 		"--output-file", "zz_generated.conversion.go",
@@ -237,7 +243,7 @@ func runConversion() {
 }
 
 func runOpenAPI() {
-	fmt.Println("==> Generating openapi...")
+	klog.Info("==> Generating openapi...")
 	allPkgs := append(append([]string{}, apiPackages...), openapiExtra...)
 	args := []string{
 		"--go-header-file", boilerplate,
@@ -251,7 +257,7 @@ func runOpenAPI() {
 }
 
 func runClients() {
-	fmt.Println("==> Generating clientset...")
+	klog.Info("==> Generating clientset...")
 	run("client-gen",
 		"--go-header-file", boilerplate,
 		"--input-base", module+"/pkg/apis",
@@ -261,7 +267,7 @@ func runClients() {
 		"--output-dir", "pkg/clientset",
 	)
 
-	fmt.Println("==> Generating listers...")
+	klog.Info("==> Generating listers...")
 	args := []string{
 		"--go-header-file", boilerplate,
 		"--output-pkg", module + "/pkg/listers",
@@ -270,7 +276,7 @@ func runClients() {
 	args = append(args, versionedPackages...)
 	run("lister-gen", args...)
 
-	fmt.Println("==> Generating informers...")
+	klog.Info("==> Generating informers...")
 	args = []string{
 		"--go-header-file", boilerplate,
 		"--output-pkg", module + "/pkg/informers",
@@ -298,7 +304,7 @@ func run(name string, args ...string) {
 	if p := filepath.Join(gobin(), name); fileExists(p) {
 		bin = p
 	}
-	cmd := exec.Command(bin, args...)
+	cmd := exec.Command(bin, args...) //nolint:gosec // G204: binary is resolved from GOBIN or PATH, not user input
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	if err := cmd.Run(); err != nil {

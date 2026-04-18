@@ -19,7 +19,7 @@ type DevsyEnvironmentTemplate struct {
 	Status DevsyEnvironmentTemplateStatus `json:"status,omitempty"`
 }
 
-// DevsyEnvironmentTemplateStatus holds the status
+// DevsyEnvironmentTemplateStatus holds the status.
 type DevsyEnvironmentTemplateStatus struct{}
 
 func (a *DevsyEnvironmentTemplate) GetVersions() []VersionAccessor {
@@ -137,7 +137,7 @@ const (
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects
+// DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects.
 type DevsyEnvironmentTemplateList struct {
 	metav1.TypeMeta `                           json:",inline"`
 	metav1.ListMeta `                           json:"metadata,omitempty"`

@@ -5350,7 +5350,7 @@ func schema_pkg_apis_management_v1_ConfigStatus(ref common.ReferenceCallback) co
 					},
 					"oidc": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DEPRECATED: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, Devsy Platform as an OIDC Provider is enabled but does not function without OIDC clients.",
+							Description: "Deprecated: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, Devsy Platform as an OIDC Provider is enabled but does not function without OIDC clients.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/management/v1.OIDC"),
 						},
 					},
@@ -20195,7 +20195,7 @@ func schema_pkg_apis_storage_v1_AllowedTemplate(ref common.ReferenceCallback) co
 				Properties: map[string]spec.Schema{
 					"kind": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Kind of the template that is allowed. Currently only supports DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate",
+							Description: "Kind of the template that is allowed. Currently only supports DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate.",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -22357,7 +22357,7 @@ func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateList(ref common.Referenc
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects",
+				Description: "DevsyEnvironmentTemplateList contains a list of DevsyEnvironmentTemplate objects.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -22474,7 +22474,7 @@ func schema_pkg_apis_storage_v1_DevsyEnvironmentTemplateStatus(ref common.Refere
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "DevsyEnvironmentTemplateStatus holds the status",
+				Description: "DevsyEnvironmentTemplateStatus holds the status.",
 				Type:        []string{"object"},
 			},
 		},
@@ -23024,7 +23024,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceKubernetesStatus(ref commo
 					},
 					"persistentVolumeClaimStatus": {
 						SchemaProps: spec.SchemaProps{
-							Description: "PersistentVolumeClaimStatus is the pvc that is used to store the workspace",
+							Description: "PersistentVolumeClaimStatus is the pvc that is used to store the workspace.",
 							Ref:         ref("github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstancePersistentVolumeClaimStatus"),
 						},
 					},

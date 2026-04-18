@@ -184,7 +184,8 @@ var (
 )
 
 type AllowedTemplate struct {
-	// Kind of the template that is allowed. Currently only supports DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate
+	// Kind of the template that is allowed. Currently only supports
+	// DevsyWorkspaceTemplate, VirtualClusterTemplate & SpaceTemplate.
 	// +optional
 	Kind string `json:"kind,omitempty"`
 

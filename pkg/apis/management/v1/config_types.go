@@ -36,7 +36,9 @@ type ConfigStatus struct {
 	// +optional
 	Authentication Authentication `json:"auth,omitempty"`
 
-	// DEPRECATED: Configure the OIDC clients using either the OIDC Client UI or a secret. By default, Devsy Platform as an OIDC Provider is enabled but does not function without OIDC clients.
+	// Deprecated: Configure the OIDC clients using either the OIDC Client UI
+	// or a secret. By default, Devsy Platform as an OIDC Provider is enabled
+	// but does not function without OIDC clients.
 	// +optional
 	OIDC *OIDC `json:"oidc,omitempty"`
 
@@ -48,7 +50,8 @@ type ConfigStatus struct {
 	// +optional
 	Audit *Audit `json:"audit,omitempty"`
 
-	// DevsyHost holds the domain where the devsy instance is hosted. This should not include https or http. E.g. devsy.my-domain.com
+	// DevsyHost holds the domain where the devsy instance is hosted.
+	// This should not include https or http. E.g. devsy.my-domain.com
 	// +optional
 	DevsyHost string `json:"loftHost,omitempty"`
 

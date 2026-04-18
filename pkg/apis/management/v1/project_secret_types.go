@@ -7,9 +7,9 @@ import (
 )
 
 const (
-	DevsyProjectSecret                           = "devsy.sh/project-secret"
-	DevsyProjectSecretNameLabel                  = "devsy.sh/project-secret-name"
-	DevsyProjectSecretDescription                = "devsy.sh/project-secret-description"
+	DevsyProjectSecret            = "devsy.sh/project-secret"              //nolint:gosec
+	DevsyProjectSecretNameLabel   = "devsy.sh/project-secret-name"         //nolint:gosec
+	DevsyProjectSecretDescription = "devsy.sh/project-secret-description"  //nolint:gosec
 	DevsyProjectSecretDisplayName                = "devsy.sh/project-secret-displayname"
 	DevsyProjectSecretOwner                      = "devsy.sh/project-secret-owner"
 	DevsyProjectSecretAccess                     = "devsy.sh/project-secret-access"

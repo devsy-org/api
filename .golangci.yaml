@@ -37,6 +37,9 @@ linters:
     - unparam
     - unused
     - whitespace
+    rules:
+      - linters: [lll]
+        source: "// \\+(genclient:method|subresource:)"
   settings:
     cyclop:
       max-complexity: 8
