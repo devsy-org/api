@@ -5,7 +5,7 @@ go 1.25.0
 require (
 	github.com/devsy-org/admin-apis v1.0.0
 	github.com/devsy-org/agentapi v1.0.1
-	github.com/devsy-org/apiserver v1.2.1-0.20260418221832-0adfff4957ac
+	github.com/devsy-org/apiserver v1.5.0
 	github.com/ghodss/yaml v1.0.0
 	github.com/urfave/cli/v3 v3.8.0
 	google.golang.org/grpc v1.78.0
