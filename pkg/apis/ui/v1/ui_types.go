@@ -6,7 +6,7 @@ type ProductName string
 
 const (
 	ProductNameDevsy           ProductName = "Devsy"
-	ProductNameDevsyPro        ProductName = "vCluster Platform"
+	ProductNameDevsyPro        ProductName = "Devsy Platform"
 	ProductNameDevsyWorkspaces ProductName = "Devsy.Pro"
 )
 
@@ -34,7 +34,7 @@ type UISettingsSpec struct {
 	// +optional
 	Offline bool `json:"offline,omitempty"`
 
-	// HasHelmRelease indicates whether the vCluster Platform instance
+	// HasHelmRelease indicates whether the Devsy Platform instance
 	// has been installed via Helm
 	HasHelmRelease bool `json:"hasHelmRelease,omitempty"`
 
@@ -45,7 +45,7 @@ type UISettingsSpec struct {
 	// +optional
 	AvailableDevsyVersions []DevsyVersion `json:"availableDevsyVersions,omitempty"`
 
-	// DevsyHosted indicates whether the vCluster Platform instance
+	// DevsyHosted indicates whether the Devsy Platform instance
 	// is hosted and operated by Devsy Labs Inc.
 	DevsyHosted bool `json:"loftHosted,omitempty"`
 }

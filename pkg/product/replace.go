@@ -26,7 +26,7 @@ func Replace(content string) string {
 		content = strings.Replace(content, "devsy.host", "devsy.host", -1)
 
 		content = strings.Replace(content, "devsy", "devsy platform", -1)
-		content = strings.Replace(content, "Devsy", "vCluster Platform", -1)
+		content = strings.Replace(content, "Devsy", "Devsy Platform", -1)
 	case licenseapi.DevsyOrg:
 	}
 
