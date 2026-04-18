@@ -1,9 +1,9 @@
 package v1
 
 import (
-	clusterv1 "github.com/skevetter/agentapi/pkg/apis/devsy/cluster/v1"
-	agentstoragev1 "github.com/skevetter/agentapi/pkg/apis/devsy/storage/v1"
-	uiv1 "github.com/skevetter/api/pkg/apis/ui/v1"
+	clusterv1 "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1"
+	agentstoragev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
+	uiv1 "github.com/devsy-org/api/pkg/apis/ui/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

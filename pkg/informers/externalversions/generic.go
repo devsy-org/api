@@ -5,9 +5,9 @@ package externalversions
 import (
 	fmt "fmt"
 
-	v1 "github.com/skevetter/api/pkg/apis/management/v1"
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
-	virtualclusterv1 "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
+	v1 "github.com/devsy-org/api/pkg/apis/management/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"github.com/skevetter/admin-apis/pkg/licenseapi"
+	"github.com/devsy-org/admin-apis/pkg/licenseapi"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

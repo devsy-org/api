@@ -3,13 +3,13 @@
 package fake
 
 import (
-	clientset "github.com/skevetter/api/pkg/clientset/versioned"
-	managementv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/management/v1"
-	fakemanagementv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/management/v1/fake"
-	storagev1 "github.com/skevetter/api/pkg/clientset/versioned/typed/storage/v1"
-	fakestoragev1 "github.com/skevetter/api/pkg/clientset/versioned/typed/storage/v1/fake"
-	virtualclusterv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/virtualcluster/v1"
-	fakevirtualclusterv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/virtualcluster/v1/fake"
+	clientset "github.com/devsy-org/api/pkg/clientset/versioned"
+	managementv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/management/v1"
+	fakemanagementv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/management/v1/fake"
+	storagev1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/storage/v1"
+	fakestoragev1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/storage/v1/fake"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/virtualcluster/v1"
+	fakevirtualclusterv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/virtualcluster/v1/fake"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"

@@ -1,16 +1,16 @@
 package v1
 
 import (
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=GetProfile,verb=get,subresource=profile,result=github.com/skevetter/api/pkg/apis/management/v1.UserProfile
-// +genclient:method=UpdateProfile,verb=create,subresource=profile,input=github.com/skevetter/api/pkg/apis/management/v1.UserProfile,result=github.com/skevetter/api/pkg/apis/management/v1.UserProfile
-// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/skevetter/api/pkg/apis/management/v1.UserClusters
-// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/skevetter/api/pkg/apis/management/v1.UserAccessKeys
+// +genclient:method=GetProfile,verb=get,subresource=profile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile
+// +genclient:method=UpdateProfile,verb=create,subresource=profile,input=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile,result=github.com/devsy-org/api/pkg/apis/management/v1.UserProfile
+// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.UserClusters
+// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // User holds the user information

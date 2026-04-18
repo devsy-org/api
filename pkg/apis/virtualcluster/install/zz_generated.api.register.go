@@ -3,9 +3,9 @@
 package install
 
 import (
-	"github.com/skevetter/api/pkg/apis/virtualcluster"
-	"github.com/skevetter/api/pkg/apis/virtualcluster/v1"
-	"github.com/skevetter/apiserver/pkg/builders"
+	"github.com/devsy-org/api/pkg/apis/virtualcluster"
+	"github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
+	"github.com/devsy-org/apiserver/pkg/builders"
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 )

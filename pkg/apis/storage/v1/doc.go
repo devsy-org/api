@@ -10,4 +10,4 @@
 // +k8s:deepcopy-gen=package
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=storage.devsy.sh
-package v1 // import "github.com/skevetter/api/apis/storage/v1"
+package v1 // import "github.com/devsy-org/api/apis/storage/v1"

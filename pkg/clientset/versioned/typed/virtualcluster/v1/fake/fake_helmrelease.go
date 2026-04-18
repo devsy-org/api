@@ -3,8 +3,8 @@
 package fake
 
 import (
-	v1 "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
-	virtualclusterv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/virtualcluster/v1"
+	v1 "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/virtualcluster/v1"
 	gentype "k8s.io/client-go/gentype"
 )
 

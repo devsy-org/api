@@ -3,9 +3,9 @@
 package fake
 
 import (
-	managementv1 "github.com/skevetter/api/pkg/apis/management/v1"
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
-	virtualclusterv1 "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
+	managementv1 "github.com/devsy-org/api/pkg/apis/management/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

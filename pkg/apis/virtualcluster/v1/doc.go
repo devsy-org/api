@@ -4,7 +4,7 @@
 
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package,register
-// +k8s:conversion-gen=github.com/skevetter/api/pkg/apis/virtualcluster
+// +k8s:conversion-gen=github.com/devsy-org/api/pkg/apis/virtualcluster
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=virtualcluster.devsy.sh
-package v1 // import "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
+package v1 // import "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"

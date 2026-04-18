@@ -1,7 +1,7 @@
 package v1
 
 import (
-	auditv1 "github.com/skevetter/api/pkg/apis/audit/v1"
+	auditv1 "github.com/devsy-org/api/pkg/apis/audit/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

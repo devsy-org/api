@@ -3,7 +3,7 @@
 package fake
 
 import (
-	v1 "github.com/skevetter/api/pkg/clientset/versioned/typed/storage/v1"
+	v1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/storage/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
