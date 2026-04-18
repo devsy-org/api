@@ -21,8 +21,8 @@ type DevsyEnvironmentTemplatesGetter interface {
 
 // DevsyEnvironmentTemplateInterface has methods to work with DevsyEnvironmentTemplate resources.
 type DevsyEnvironmentTemplateInterface interface {
-	Create(ctx context.Context, devPodEnvironmentTemplate *storagev1.DevsyEnvironmentTemplate, opts metav1.CreateOptions) (*storagev1.DevsyEnvironmentTemplate, error)
-	Update(ctx context.Context, devPodEnvironmentTemplate *storagev1.DevsyEnvironmentTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyEnvironmentTemplate, error)
+	Create(ctx context.Context, devsyEnvironmentTemplate *storagev1.DevsyEnvironmentTemplate, opts metav1.CreateOptions) (*storagev1.DevsyEnvironmentTemplate, error)
+	Update(ctx context.Context, devsyEnvironmentTemplate *storagev1.DevsyEnvironmentTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyEnvironmentTemplate, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*storagev1.DevsyEnvironmentTemplate, error)
@@ -32,16 +32,16 @@ type DevsyEnvironmentTemplateInterface interface {
 	DevsyEnvironmentTemplateExpansion
 }
 
-// devPodEnvironmentTemplates implements DevsyEnvironmentTemplateInterface
-type devPodEnvironmentTemplates struct {
+// devsyEnvironmentTemplates implements DevsyEnvironmentTemplateInterface
+type devsyEnvironmentTemplates struct {
 	*gentype.ClientWithList[*storagev1.DevsyEnvironmentTemplate, *storagev1.DevsyEnvironmentTemplateList]
 }
 
 // newDevsyEnvironmentTemplates returns a DevsyEnvironmentTemplates
-func newDevsyEnvironmentTemplates(c *StorageV1Client) *devPodEnvironmentTemplates {
-	return &devPodEnvironmentTemplates{
+func newDevsyEnvironmentTemplates(c *StorageV1Client) *devsyEnvironmentTemplates {
+	return &devsyEnvironmentTemplates{
 		gentype.NewClientWithList[*storagev1.DevsyEnvironmentTemplate, *storagev1.DevsyEnvironmentTemplateList](
-			"devpodenvironmenttemplates",
+			"devsyenvironmenttemplates",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",

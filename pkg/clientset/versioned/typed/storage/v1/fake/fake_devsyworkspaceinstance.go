@@ -19,7 +19,7 @@ func newFakeDevsyWorkspaceInstances(fake *FakeStorageV1, namespace string) stora
 		gentype.NewFakeClientWithList[*v1.DevsyWorkspaceInstance, *v1.DevsyWorkspaceInstanceList](
 			fake.Fake,
 			namespace,
-			v1.SchemeGroupVersion.WithResource("devpodworkspaceinstances"),
+			v1.SchemeGroupVersion.WithResource("devsyworkspaceinstances"),
 			v1.SchemeGroupVersion.WithKind("DevsyWorkspaceInstance"),
 			func() *v1.DevsyWorkspaceInstance { return &v1.DevsyWorkspaceInstance{} },
 			func() *v1.DevsyWorkspaceInstanceList { return &v1.DevsyWorkspaceInstanceList{} },

@@ -21,32 +21,32 @@ type DevsyWorkspaceInstancesGetter interface {
 
 // DevsyWorkspaceInstanceInterface has methods to work with DevsyWorkspaceInstance resources.
 type DevsyWorkspaceInstanceInterface interface {
-	Create(ctx context.Context, devPodWorkspaceInstance *managementv1.DevsyWorkspaceInstance, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstance, error)
-	Update(ctx context.Context, devPodWorkspaceInstance *managementv1.DevsyWorkspaceInstance, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspaceInstance, error)
+	Create(ctx context.Context, devsyWorkspaceInstance *managementv1.DevsyWorkspaceInstance, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstance, error)
+	Update(ctx context.Context, devsyWorkspaceInstance *managementv1.DevsyWorkspaceInstance, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspaceInstance, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*managementv1.DevsyWorkspaceInstance, error)
 	List(ctx context.Context, opts metav1.ListOptions) (*managementv1.DevsyWorkspaceInstanceList, error)
 	Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error)
 	Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *managementv1.DevsyWorkspaceInstance, err error)
-	Up(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceUp *managementv1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceUp, error)
-	Stop(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceStop *managementv1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceStop, error)
-	Troubleshoot(ctx context.Context, devPodWorkspaceInstanceName string, options metav1.GetOptions) (*managementv1.DevsyWorkspaceInstanceTroubleshoot, error)
-	Cancel(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceCancel *managementv1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceCancel, error)
+	Up(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceUp *managementv1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceUp, error)
+	Stop(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceStop *managementv1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceStop, error)
+	Troubleshoot(ctx context.Context, devsyWorkspaceInstanceName string, options metav1.GetOptions) (*managementv1.DevsyWorkspaceInstanceTroubleshoot, error)
+	Cancel(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceCancel *managementv1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (*managementv1.DevsyWorkspaceInstanceCancel, error)
 
 	DevsyWorkspaceInstanceExpansion
 }
 
-// devPodWorkspaceInstances implements DevsyWorkspaceInstanceInterface
-type devPodWorkspaceInstances struct {
+// devsyWorkspaceInstances implements DevsyWorkspaceInstanceInterface
+type devsyWorkspaceInstances struct {
 	*gentype.ClientWithList[*managementv1.DevsyWorkspaceInstance, *managementv1.DevsyWorkspaceInstanceList]
 }
 
 // newDevsyWorkspaceInstances returns a DevsyWorkspaceInstances
-func newDevsyWorkspaceInstances(c *ManagementV1Client, namespace string) *devPodWorkspaceInstances {
-	return &devPodWorkspaceInstances{
+func newDevsyWorkspaceInstances(c *ManagementV1Client, namespace string) *devsyWorkspaceInstances {
+	return &devsyWorkspaceInstances{
 		gentype.NewClientWithList[*managementv1.DevsyWorkspaceInstance, *managementv1.DevsyWorkspaceInstanceList](
-			"devpodworkspaceinstances",
+			"devsyworkspaceinstances",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			namespace,
@@ -56,43 +56,43 @@ func newDevsyWorkspaceInstances(c *ManagementV1Client, namespace string) *devPod
 	}
 }
 
-// Up takes the representation of a devPodWorkspaceInstanceUp and creates it.  Returns the server's representation of the devPodWorkspaceInstanceUp, and an error, if there is any.
-func (c *devPodWorkspaceInstances) Up(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceUp *managementv1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceUp, err error) {
+// Up takes the representation of a devsyWorkspaceInstanceUp and creates it.  Returns the server's representation of the devsyWorkspaceInstanceUp, and an error, if there is any.
+func (c *devsyWorkspaceInstances) Up(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceUp *managementv1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceUp, err error) {
 	result = &managementv1.DevsyWorkspaceInstanceUp{}
 	err = c.GetClient().Post().
 		Namespace(c.GetNamespace()).
-		Resource("devpodworkspaceinstances").
-		Name(devPodWorkspaceInstanceName).
+		Resource("devsyworkspaceinstances").
+		Name(devsyWorkspaceInstanceName).
 		SubResource("up").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(devPodWorkspaceInstanceUp).
+		Body(devsyWorkspaceInstanceUp).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Stop takes the representation of a devPodWorkspaceInstanceStop and creates it.  Returns the server's representation of the devPodWorkspaceInstanceStop, and an error, if there is any.
-func (c *devPodWorkspaceInstances) Stop(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceStop *managementv1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceStop, err error) {
+// Stop takes the representation of a devsyWorkspaceInstanceStop and creates it.  Returns the server's representation of the devsyWorkspaceInstanceStop, and an error, if there is any.
+func (c *devsyWorkspaceInstances) Stop(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceStop *managementv1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceStop, err error) {
 	result = &managementv1.DevsyWorkspaceInstanceStop{}
 	err = c.GetClient().Post().
 		Namespace(c.GetNamespace()).
-		Resource("devpodworkspaceinstances").
-		Name(devPodWorkspaceInstanceName).
+		Resource("devsyworkspaceinstances").
+		Name(devsyWorkspaceInstanceName).
 		SubResource("stop").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(devPodWorkspaceInstanceStop).
+		Body(devsyWorkspaceInstanceStop).
 		Do(ctx).
 		Into(result)
 	return
 }
 
-// Troubleshoot takes name of the devPodWorkspaceInstance, and returns the corresponding managementv1.DevsyWorkspaceInstanceTroubleshoot object, and an error if there is any.
-func (c *devPodWorkspaceInstances) Troubleshoot(ctx context.Context, devPodWorkspaceInstanceName string, options metav1.GetOptions) (result *managementv1.DevsyWorkspaceInstanceTroubleshoot, err error) {
+// Troubleshoot takes name of the devsyWorkspaceInstance, and returns the corresponding managementv1.DevsyWorkspaceInstanceTroubleshoot object, and an error if there is any.
+func (c *devsyWorkspaceInstances) Troubleshoot(ctx context.Context, devsyWorkspaceInstanceName string, options metav1.GetOptions) (result *managementv1.DevsyWorkspaceInstanceTroubleshoot, err error) {
 	result = &managementv1.DevsyWorkspaceInstanceTroubleshoot{}
 	err = c.GetClient().Get().
 		Namespace(c.GetNamespace()).
-		Resource("devpodworkspaceinstances").
-		Name(devPodWorkspaceInstanceName).
+		Resource("devsyworkspaceinstances").
+		Name(devsyWorkspaceInstanceName).
 		SubResource("troubleshoot").
 		VersionedParams(&options, scheme.ParameterCodec).
 		Do(ctx).
@@ -100,16 +100,16 @@ func (c *devPodWorkspaceInstances) Troubleshoot(ctx context.Context, devPodWorks
 	return
 }
 
-// Cancel takes the representation of a devPodWorkspaceInstanceCancel and creates it.  Returns the server's representation of the devPodWorkspaceInstanceCancel, and an error, if there is any.
-func (c *devPodWorkspaceInstances) Cancel(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceCancel *managementv1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceCancel, err error) {
+// Cancel takes the representation of a devsyWorkspaceInstanceCancel and creates it.  Returns the server's representation of the devsyWorkspaceInstanceCancel, and an error, if there is any.
+func (c *devsyWorkspaceInstances) Cancel(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceCancel *managementv1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (result *managementv1.DevsyWorkspaceInstanceCancel, err error) {
 	result = &managementv1.DevsyWorkspaceInstanceCancel{}
 	err = c.GetClient().Post().
 		Namespace(c.GetNamespace()).
-		Resource("devpodworkspaceinstances").
-		Name(devPodWorkspaceInstanceName).
+		Resource("devsyworkspaceinstances").
+		Name(devsyWorkspaceInstanceName).
 		SubResource("cancel").
 		VersionedParams(&opts, scheme.ParameterCodec).
-		Body(devPodWorkspaceInstanceCancel).
+		Body(devsyWorkspaceInstanceCancel).
 		Do(ctx).
 		Into(result)
 	return

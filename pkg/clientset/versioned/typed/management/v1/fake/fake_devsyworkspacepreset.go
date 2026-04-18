@@ -19,7 +19,7 @@ func newFakeDevsyWorkspacePresets(fake *FakeManagementV1) managementv1.DevsyWork
 		gentype.NewFakeClientWithList[*v1.DevsyWorkspacePreset, *v1.DevsyWorkspacePresetList](
 			fake.Fake,
 			"",
-			v1.SchemeGroupVersion.WithResource("devpodworkspacepresets"),
+			v1.SchemeGroupVersion.WithResource("devsyworkspacepresets"),
 			v1.SchemeGroupVersion.WithKind("DevsyWorkspacePreset"),
 			func() *v1.DevsyWorkspacePreset { return &v1.DevsyWorkspacePreset{} },
 			func() *v1.DevsyWorkspacePresetList { return &v1.DevsyWorkspacePresetList{} },

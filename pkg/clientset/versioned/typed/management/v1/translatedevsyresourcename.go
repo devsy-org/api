@@ -47,9 +47,7 @@ func newTranslateDevsyResourceNames(c *ManagementV1Client) *translateDevsyResour
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",
-			func() *managementv1.TranslateDevsyResourceName {
-				return &managementv1.TranslateDevsyResourceName{}
-			},
+			func() *managementv1.TranslateDevsyResourceName { return &managementv1.TranslateDevsyResourceName{} },
 			func() *managementv1.TranslateDevsyResourceNameList {
 				return &managementv1.TranslateDevsyResourceNameList{}
 			},

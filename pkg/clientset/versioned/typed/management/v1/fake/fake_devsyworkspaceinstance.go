@@ -23,7 +23,7 @@ func newFakeDevsyWorkspaceInstances(fake *FakeManagementV1, namespace string) ma
 		gentype.NewFakeClientWithList[*v1.DevsyWorkspaceInstance, *v1.DevsyWorkspaceInstanceList](
 			fake.Fake,
 			namespace,
-			v1.SchemeGroupVersion.WithResource("devpodworkspaceinstances"),
+			v1.SchemeGroupVersion.WithResource("devsyworkspaceinstances"),
 			v1.SchemeGroupVersion.WithKind("DevsyWorkspaceInstance"),
 			func() *v1.DevsyWorkspaceInstance { return &v1.DevsyWorkspaceInstance{} },
 			func() *v1.DevsyWorkspaceInstanceList { return &v1.DevsyWorkspaceInstanceList{} },
@@ -39,11 +39,11 @@ func newFakeDevsyWorkspaceInstances(fake *FakeManagementV1, namespace string) ma
 	}
 }
 
-// Up takes the representation of a devPodWorkspaceInstanceUp and creates it.  Returns the server's representation of the devPodWorkspaceInstanceUp, and an error, if there is any.
-func (c *fakeDevsyWorkspaceInstances) Up(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceUp *v1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceUp, err error) {
+// Up takes the representation of a devsyWorkspaceInstanceUp and creates it.  Returns the server's representation of the devsyWorkspaceInstanceUp, and an error, if there is any.
+func (c *fakeDevsyWorkspaceInstances) Up(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceUp *v1.DevsyWorkspaceInstanceUp, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceUp, err error) {
 	emptyResult := &v1.DevsyWorkspaceInstanceUp{}
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devPodWorkspaceInstanceName, "up", c.Namespace(), devPodWorkspaceInstanceUp, opts), emptyResult)
+		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devsyWorkspaceInstanceName, "up", c.Namespace(), devsyWorkspaceInstanceUp, opts), emptyResult)
 
 	if obj == nil {
 		return emptyResult, err
@@ -51,11 +51,11 @@ func (c *fakeDevsyWorkspaceInstances) Up(ctx context.Context, devPodWorkspaceIns
 	return obj.(*v1.DevsyWorkspaceInstanceUp), err
 }
 
-// Stop takes the representation of a devPodWorkspaceInstanceStop and creates it.  Returns the server's representation of the devPodWorkspaceInstanceStop, and an error, if there is any.
-func (c *fakeDevsyWorkspaceInstances) Stop(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceStop *v1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceStop, err error) {
+// Stop takes the representation of a devsyWorkspaceInstanceStop and creates it.  Returns the server's representation of the devsyWorkspaceInstanceStop, and an error, if there is any.
+func (c *fakeDevsyWorkspaceInstances) Stop(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceStop *v1.DevsyWorkspaceInstanceStop, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceStop, err error) {
 	emptyResult := &v1.DevsyWorkspaceInstanceStop{}
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devPodWorkspaceInstanceName, "stop", c.Namespace(), devPodWorkspaceInstanceStop, opts), emptyResult)
+		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devsyWorkspaceInstanceName, "stop", c.Namespace(), devsyWorkspaceInstanceStop, opts), emptyResult)
 
 	if obj == nil {
 		return emptyResult, err
@@ -63,11 +63,11 @@ func (c *fakeDevsyWorkspaceInstances) Stop(ctx context.Context, devPodWorkspaceI
 	return obj.(*v1.DevsyWorkspaceInstanceStop), err
 }
 
-// Troubleshoot takes name of the devPodWorkspaceInstance, and returns the corresponding devPodWorkspaceInstanceTroubleshoot object, and an error if there is any.
-func (c *fakeDevsyWorkspaceInstances) Troubleshoot(ctx context.Context, devPodWorkspaceInstanceName string, options metav1.GetOptions) (result *v1.DevsyWorkspaceInstanceTroubleshoot, err error) {
+// Troubleshoot takes name of the devsyWorkspaceInstance, and returns the corresponding devsyWorkspaceInstanceTroubleshoot object, and an error if there is any.
+func (c *fakeDevsyWorkspaceInstances) Troubleshoot(ctx context.Context, devsyWorkspaceInstanceName string, options metav1.GetOptions) (result *v1.DevsyWorkspaceInstanceTroubleshoot, err error) {
 	emptyResult := &v1.DevsyWorkspaceInstanceTroubleshoot{}
 	obj, err := c.Fake.
-		Invokes(testing.NewGetSubresourceActionWithOptions(c.Resource(), c.Namespace(), "troubleshoot", devPodWorkspaceInstanceName, options), emptyResult)
+		Invokes(testing.NewGetSubresourceActionWithOptions(c.Resource(), c.Namespace(), "troubleshoot", devsyWorkspaceInstanceName, options), emptyResult)
 
 	if obj == nil {
 		return emptyResult, err
@@ -75,11 +75,11 @@ func (c *fakeDevsyWorkspaceInstances) Troubleshoot(ctx context.Context, devPodWo
 	return obj.(*v1.DevsyWorkspaceInstanceTroubleshoot), err
 }
 
-// Cancel takes the representation of a devPodWorkspaceInstanceCancel and creates it.  Returns the server's representation of the devPodWorkspaceInstanceCancel, and an error, if there is any.
-func (c *fakeDevsyWorkspaceInstances) Cancel(ctx context.Context, devPodWorkspaceInstanceName string, devPodWorkspaceInstanceCancel *v1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceCancel, err error) {
+// Cancel takes the representation of a devsyWorkspaceInstanceCancel and creates it.  Returns the server's representation of the devsyWorkspaceInstanceCancel, and an error, if there is any.
+func (c *fakeDevsyWorkspaceInstances) Cancel(ctx context.Context, devsyWorkspaceInstanceName string, devsyWorkspaceInstanceCancel *v1.DevsyWorkspaceInstanceCancel, opts metav1.CreateOptions) (result *v1.DevsyWorkspaceInstanceCancel, err error) {
 	emptyResult := &v1.DevsyWorkspaceInstanceCancel{}
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devPodWorkspaceInstanceName, "cancel", c.Namespace(), devPodWorkspaceInstanceCancel, opts), emptyResult)
+		Invokes(testing.NewCreateSubresourceActionWithOptions(c.Resource(), devsyWorkspaceInstanceName, "cancel", c.Namespace(), devsyWorkspaceInstanceCancel, opts), emptyResult)
 
 	if obj == nil {
 		return emptyResult, err

@@ -21,12 +21,12 @@ type DevsyWorkspacePresetLister interface {
 	DevsyWorkspacePresetListerExpansion
 }
 
-// devPodWorkspacePresetLister implements the DevsyWorkspacePresetLister interface.
-type devPodWorkspacePresetLister struct {
+// devsyWorkspacePresetLister implements the DevsyWorkspacePresetLister interface.
+type devsyWorkspacePresetLister struct {
 	listers.ResourceIndexer[*managementv1.DevsyWorkspacePreset]
 }
 
 // NewDevsyWorkspacePresetLister returns a new DevsyWorkspacePresetLister.
 func NewDevsyWorkspacePresetLister(indexer cache.Indexer) DevsyWorkspacePresetLister {
-	return &devPodWorkspacePresetLister{listers.New[*managementv1.DevsyWorkspacePreset](indexer, managementv1.Resource("devpodworkspacepreset"))}
+	return &devsyWorkspacePresetLister{listers.New[*managementv1.DevsyWorkspacePreset](indexer, managementv1.Resource("devsyworkspacepreset"))}
 }

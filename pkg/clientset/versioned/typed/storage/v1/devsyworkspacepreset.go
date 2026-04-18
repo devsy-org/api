@@ -21,8 +21,8 @@ type DevsyWorkspacePresetsGetter interface {
 
 // DevsyWorkspacePresetInterface has methods to work with DevsyWorkspacePreset resources.
 type DevsyWorkspacePresetInterface interface {
-	Create(ctx context.Context, devPodWorkspacePreset *storagev1.DevsyWorkspacePreset, opts metav1.CreateOptions) (*storagev1.DevsyWorkspacePreset, error)
-	Update(ctx context.Context, devPodWorkspacePreset *storagev1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspacePreset, error)
+	Create(ctx context.Context, devsyWorkspacePreset *storagev1.DevsyWorkspacePreset, opts metav1.CreateOptions) (*storagev1.DevsyWorkspacePreset, error)
+	Update(ctx context.Context, devsyWorkspacePreset *storagev1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspacePreset, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*storagev1.DevsyWorkspacePreset, error)
@@ -32,16 +32,16 @@ type DevsyWorkspacePresetInterface interface {
 	DevsyWorkspacePresetExpansion
 }
 
-// devPodWorkspacePresets implements DevsyWorkspacePresetInterface
-type devPodWorkspacePresets struct {
+// devsyWorkspacePresets implements DevsyWorkspacePresetInterface
+type devsyWorkspacePresets struct {
 	*gentype.ClientWithList[*storagev1.DevsyWorkspacePreset, *storagev1.DevsyWorkspacePresetList]
 }
 
 // newDevsyWorkspacePresets returns a DevsyWorkspacePresets
-func newDevsyWorkspacePresets(c *StorageV1Client) *devPodWorkspacePresets {
-	return &devPodWorkspacePresets{
+func newDevsyWorkspacePresets(c *StorageV1Client) *devsyWorkspacePresets {
+	return &devsyWorkspacePresets{
 		gentype.NewClientWithList[*storagev1.DevsyWorkspacePreset, *storagev1.DevsyWorkspacePresetList](
-			"devpodworkspacepresets",
+			"devsyworkspacepresets",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",

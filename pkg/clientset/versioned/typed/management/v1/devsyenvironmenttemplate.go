@@ -21,8 +21,8 @@ type DevsyEnvironmentTemplatesGetter interface {
 
 // DevsyEnvironmentTemplateInterface has methods to work with DevsyEnvironmentTemplate resources.
 type DevsyEnvironmentTemplateInterface interface {
-	Create(ctx context.Context, devPodEnvironmentTemplate *managementv1.DevsyEnvironmentTemplate, opts metav1.CreateOptions) (*managementv1.DevsyEnvironmentTemplate, error)
-	Update(ctx context.Context, devPodEnvironmentTemplate *managementv1.DevsyEnvironmentTemplate, opts metav1.UpdateOptions) (*managementv1.DevsyEnvironmentTemplate, error)
+	Create(ctx context.Context, devsyEnvironmentTemplate *managementv1.DevsyEnvironmentTemplate, opts metav1.CreateOptions) (*managementv1.DevsyEnvironmentTemplate, error)
+	Update(ctx context.Context, devsyEnvironmentTemplate *managementv1.DevsyEnvironmentTemplate, opts metav1.UpdateOptions) (*managementv1.DevsyEnvironmentTemplate, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*managementv1.DevsyEnvironmentTemplate, error)
@@ -32,23 +32,21 @@ type DevsyEnvironmentTemplateInterface interface {
 	DevsyEnvironmentTemplateExpansion
 }
 
-// devPodEnvironmentTemplates implements DevsyEnvironmentTemplateInterface
-type devPodEnvironmentTemplates struct {
+// devsyEnvironmentTemplates implements DevsyEnvironmentTemplateInterface
+type devsyEnvironmentTemplates struct {
 	*gentype.ClientWithList[*managementv1.DevsyEnvironmentTemplate, *managementv1.DevsyEnvironmentTemplateList]
 }
 
 // newDevsyEnvironmentTemplates returns a DevsyEnvironmentTemplates
-func newDevsyEnvironmentTemplates(c *ManagementV1Client) *devPodEnvironmentTemplates {
-	return &devPodEnvironmentTemplates{
+func newDevsyEnvironmentTemplates(c *ManagementV1Client) *devsyEnvironmentTemplates {
+	return &devsyEnvironmentTemplates{
 		gentype.NewClientWithList[*managementv1.DevsyEnvironmentTemplate, *managementv1.DevsyEnvironmentTemplateList](
-			"devpodenvironmenttemplates",
+			"devsyenvironmenttemplates",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",
 			func() *managementv1.DevsyEnvironmentTemplate { return &managementv1.DevsyEnvironmentTemplate{} },
-			func() *managementv1.DevsyEnvironmentTemplateList {
-				return &managementv1.DevsyEnvironmentTemplateList{}
-			},
+			func() *managementv1.DevsyEnvironmentTemplateList { return &managementv1.DevsyEnvironmentTemplateList{} },
 		),
 	}
 }

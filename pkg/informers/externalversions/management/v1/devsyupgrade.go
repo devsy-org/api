@@ -23,7 +23,7 @@ type DevsyUpgradeInformer interface {
 	Lister() managementv1.DevsyUpgradeLister
 }
 
-type loftUpgradeInformer struct {
+type devsyUpgradeInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
@@ -40,7 +40,7 @@ func NewDevsyUpgradeInformer(client versioned.Interface, resyncPeriod time.Durat
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredDevsyUpgradeInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
-		&cache.ListWatch{
+		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
@@ -65,21 +65,21 @@ func NewFilteredDevsyUpgradeInformer(client versioned.Interface, resyncPeriod ti
 				}
 				return client.ManagementV1().DevsyUpgrades().Watch(ctx, options)
 			},
-		},
+		}, client),
 		&apismanagementv1.DevsyUpgrade{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *loftUpgradeInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+func (f *devsyUpgradeInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
 	return NewFilteredDevsyUpgradeInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *loftUpgradeInformer) Informer() cache.SharedIndexInformer {
+func (f *devsyUpgradeInformer) Informer() cache.SharedIndexInformer {
 	return f.factory.InformerFor(&apismanagementv1.DevsyUpgrade{}, f.defaultInformer)
 }
 
-func (f *loftUpgradeInformer) Lister() managementv1.DevsyUpgradeLister {
+func (f *devsyUpgradeInformer) Lister() managementv1.DevsyUpgradeLister {
 	return managementv1.NewDevsyUpgradeLister(f.Informer().GetIndexer())
 }

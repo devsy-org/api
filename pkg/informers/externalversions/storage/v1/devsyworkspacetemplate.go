@@ -23,7 +23,7 @@ type DevsyWorkspaceTemplateInformer interface {
 	Lister() storagev1.DevsyWorkspaceTemplateLister
 }
 
-type devPodWorkspaceTemplateInformer struct {
+type devsyWorkspaceTemplateInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
@@ -40,7 +40,7 @@ func NewDevsyWorkspaceTemplateInformer(client versioned.Interface, resyncPeriod 
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredDevsyWorkspaceTemplateInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
-		&cache.ListWatch{
+		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
@@ -65,21 +65,21 @@ func NewFilteredDevsyWorkspaceTemplateInformer(client versioned.Interface, resyn
 				}
 				return client.StorageV1().DevsyWorkspaceTemplates().Watch(ctx, options)
 			},
-		},
+		}, client),
 		&apisstoragev1.DevsyWorkspaceTemplate{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *devPodWorkspaceTemplateInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+func (f *devsyWorkspaceTemplateInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
 	return NewFilteredDevsyWorkspaceTemplateInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *devPodWorkspaceTemplateInformer) Informer() cache.SharedIndexInformer {
+func (f *devsyWorkspaceTemplateInformer) Informer() cache.SharedIndexInformer {
 	return f.factory.InformerFor(&apisstoragev1.DevsyWorkspaceTemplate{}, f.defaultInformer)
 }
 
-func (f *devPodWorkspaceTemplateInformer) Lister() storagev1.DevsyWorkspaceTemplateLister {
+func (f *devsyWorkspaceTemplateInformer) Lister() storagev1.DevsyWorkspaceTemplateLister {
 	return storagev1.NewDevsyWorkspaceTemplateLister(f.Informer().GetIndexer())
 }

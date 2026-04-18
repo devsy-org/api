@@ -46,6 +46,10 @@ type DatabaseConnectorListerExpansion interface{}
 // DevsyEnvironmentTemplateLister.
 type DevsyEnvironmentTemplateListerExpansion interface{}
 
+// DevsyUpgradeListerExpansion allows custom methods to be added to
+// DevsyUpgradeLister.
+type DevsyUpgradeListerExpansion interface{}
+
 // DevsyWorkspaceInstanceListerExpansion allows custom methods to be added to
 // DevsyWorkspaceInstanceLister.
 type DevsyWorkspaceInstanceListerExpansion interface{}
@@ -85,10 +89,6 @@ type LicenseListerExpansion interface{}
 // LicenseTokenListerExpansion allows custom methods to be added to
 // LicenseTokenLister.
 type LicenseTokenListerExpansion interface{}
-
-// DevsyUpgradeListerExpansion allows custom methods to be added to
-// DevsyUpgradeLister.
-type DevsyUpgradeListerExpansion interface{}
 
 // NodeClaimListerExpansion allows custom methods to be added to
 // NodeClaimLister.

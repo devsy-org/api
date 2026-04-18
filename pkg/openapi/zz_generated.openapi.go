@@ -6,186 +6,125 @@
 package openapi
 
 import (
-	licenseapi "github.com/devsy-org/admin-apis/pkg/licenseapi"
-	v1 "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1"
-	storagev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
+	v1 "k8s.io/api/apps/v1"
+	batchv1 "k8s.io/api/batch/v1"
 	corev1 "k8s.io/api/core/v1"
+	networkingv1 "k8s.io/api/networking/v1"
+	rbacv1 "k8s.io/api/rbac/v1"
+	storagev1 "k8s.io/api/storage/v1"
+	resource "k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	runtime "k8s.io/apimachinery/pkg/runtime"
+	intstr "k8s.io/apimachinery/pkg/util/intstr"
+	version "k8s.io/apimachinery/pkg/version"
 	common "k8s.io/kube-openapi/pkg/common"
 	spec "k8s.io/kube-openapi/pkg/validation/spec"
 )
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
-		licenseapi.Analytics{}.OpenAPIModelName():                                                         schema_devsy_org_admin_apis_pkg_licenseapi_Analytics(ref),
-		licenseapi.Announcement{}.OpenAPIModelName():                                                      schema_devsy_org_admin_apis_pkg_licenseapi_Announcement(ref),
-		licenseapi.BlockRequest{}.OpenAPIModelName():                                                      schema_devsy_org_admin_apis_pkg_licenseapi_BlockRequest(ref),
-		licenseapi.Button{}.OpenAPIModelName():                                                            schema_devsy_org_admin_apis_pkg_licenseapi_Button(ref),
-		licenseapi.ChatAuthCreateInput{}.OpenAPIModelName():                                               schema_devsy_org_admin_apis_pkg_licenseapi_ChatAuthCreateInput(ref),
-		licenseapi.ChatAuthCreateOutput{}.OpenAPIModelName():                                              schema_devsy_org_admin_apis_pkg_licenseapi_ChatAuthCreateOutput(ref),
-		licenseapi.DevsyClusterInfo{}.OpenAPIModelName():                                                  schema_devsy_org_admin_apis_pkg_licenseapi_DevsyClusterInfo(ref),
-		licenseapi.DomainToken{}.OpenAPIModelName():                                                       schema_devsy_org_admin_apis_pkg_licenseapi_DomainToken(ref),
-		licenseapi.Feature{}.OpenAPIModelName():                                                           schema_devsy_org_admin_apis_pkg_licenseapi_Feature(ref),
-		licenseapi.FeatureUsage{}.OpenAPIModelName():                                                      schema_devsy_org_admin_apis_pkg_licenseapi_FeatureUsage(ref),
-		licenseapi.GenericRequestInput{}.OpenAPIModelName():                                               schema_devsy_org_admin_apis_pkg_licenseapi_GenericRequestInput(ref),
-		licenseapi.GenericRequestOutput{}.OpenAPIModelName():                                              schema_devsy_org_admin_apis_pkg_licenseapi_GenericRequestOutput(ref),
-		licenseapi.InstanceActivateInstanceInput{}.OpenAPIModelName():                                     schema_devsy_org_admin_apis_pkg_licenseapi_InstanceActivateInstanceInput(ref),
-		licenseapi.InstanceCreateInput{}.OpenAPIModelName():                                               schema_devsy_org_admin_apis_pkg_licenseapi_InstanceCreateInput(ref),
-		licenseapi.InstanceCreateOutput{}.OpenAPIModelName():                                              schema_devsy_org_admin_apis_pkg_licenseapi_InstanceCreateOutput(ref),
-		licenseapi.InstanceSendActivationEmailInput{}.OpenAPIModelName():                                  schema_devsy_org_admin_apis_pkg_licenseapi_InstanceSendActivationEmailInput(ref),
-		licenseapi.InstanceTokenAuth{}.OpenAPIModelName():                                                 schema_devsy_org_admin_apis_pkg_licenseapi_InstanceTokenAuth(ref),
-		licenseapi.InstanceTokenClaims{}.OpenAPIModelName():                                               schema_devsy_org_admin_apis_pkg_licenseapi_InstanceTokenClaims(ref),
-		licenseapi.InstanceUsageInput{}.OpenAPIModelName():                                                schema_devsy_org_admin_apis_pkg_licenseapi_InstanceUsageInput(ref),
-		licenseapi.Invoice{}.OpenAPIModelName():                                                           schema_devsy_org_admin_apis_pkg_licenseapi_Invoice(ref),
-		licenseapi.License{}.OpenAPIModelName():                                                           schema_devsy_org_admin_apis_pkg_licenseapi_License(ref),
-		licenseapi.LicenseAPIRoute{}.OpenAPIModelName():                                                   schema_devsy_org_admin_apis_pkg_licenseapi_LicenseAPIRoute(ref),
-		licenseapi.LicenseAPIRoutes{}.OpenAPIModelName():                                                  schema_devsy_org_admin_apis_pkg_licenseapi_LicenseAPIRoutes(ref),
-		licenseapi.Limit{}.OpenAPIModelName():                                                             schema_devsy_org_admin_apis_pkg_licenseapi_Limit(ref),
-		licenseapi.Module{}.OpenAPIModelName():                                                            schema_devsy_org_admin_apis_pkg_licenseapi_Module(ref),
-		licenseapi.NodeInfo{}.OpenAPIModelName():                                                          schema_devsy_org_admin_apis_pkg_licenseapi_NodeInfo(ref),
-		licenseapi.OfflineLicenseKeyClaims{}.OpenAPIModelName():                                           schema_devsy_org_admin_apis_pkg_licenseapi_OfflineLicenseKeyClaims(ref),
-		licenseapi.Plan{}.OpenAPIModelName():                                                              schema_devsy_org_admin_apis_pkg_licenseapi_Plan(ref),
-		licenseapi.PlanExpiration{}.OpenAPIModelName():                                                    schema_devsy_org_admin_apis_pkg_licenseapi_PlanExpiration(ref),
-		licenseapi.PlanPeriod{}.OpenAPIModelName():                                                        schema_devsy_org_admin_apis_pkg_licenseapi_PlanPeriod(ref),
-		licenseapi.PlanPrice{}.OpenAPIModelName():                                                         schema_devsy_org_admin_apis_pkg_licenseapi_PlanPrice(ref),
-		licenseapi.PlatformDatabase{}.OpenAPIModelName():                                                  schema_devsy_org_admin_apis_pkg_licenseapi_PlatformDatabase(ref),
-		licenseapi.PriceTier{}.OpenAPIModelName():                                                         schema_devsy_org_admin_apis_pkg_licenseapi_PriceTier(ref),
-		licenseapi.Request{}.OpenAPIModelName():                                                           schema_devsy_org_admin_apis_pkg_licenseapi_Request(ref),
-		licenseapi.ResourceCount{}.OpenAPIModelName():                                                     schema_devsy_org_admin_apis_pkg_licenseapi_ResourceCount(ref),
-		licenseapi.TierResource{}.OpenAPIModelName():                                                      schema_devsy_org_admin_apis_pkg_licenseapi_TierResource(ref),
-		licenseapi.Trial{}.OpenAPIModelName():                                                             schema_devsy_org_admin_apis_pkg_licenseapi_Trial(ref),
-		licenseapi.UsageData{}.OpenAPIModelName():                                                         schema_devsy_org_admin_apis_pkg_licenseapi_UsageData(ref),
-		licenseapi.UsageDataDetails{}.OpenAPIModelName():                                                  schema_devsy_org_admin_apis_pkg_licenseapi_UsageDataDetails(ref),
-		v1.Bash{}.OpenAPIModelName():                                                                      schema_apis_devsy_cluster_v1_Bash(ref),
-		v1.Chart{}.OpenAPIModelName():                                                                     schema_apis_devsy_cluster_v1_Chart(ref),
-		v1.ChartInfo{}.OpenAPIModelName():                                                                 schema_apis_devsy_cluster_v1_ChartInfo(ref),
-		v1.ChartInfoList{}.OpenAPIModelName():                                                             schema_apis_devsy_cluster_v1_ChartInfoList(ref),
-		v1.ChartInfoSpec{}.OpenAPIModelName():                                                             schema_apis_devsy_cluster_v1_ChartInfoSpec(ref),
-		v1.ChartInfoStatus{}.OpenAPIModelName():                                                           schema_apis_devsy_cluster_v1_ChartInfoStatus(ref),
-		v1.ChartSecretRef{}.OpenAPIModelName():                                                            schema_apis_devsy_cluster_v1_ChartSecretRef(ref),
-		v1.EpochInfo{}.OpenAPIModelName():                                                                 schema_apis_devsy_cluster_v1_EpochInfo(ref),
-		v1.Feature{}.OpenAPIModelName():                                                                   schema_apis_devsy_cluster_v1_Feature(ref),
-		v1.FeatureList{}.OpenAPIModelName():                                                               schema_apis_devsy_cluster_v1_FeatureList(ref),
-		v1.FeatureSpec{}.OpenAPIModelName():                                                               schema_apis_devsy_cluster_v1_FeatureSpec(ref),
-		v1.FeatureStatus{}.OpenAPIModelName():                                                             schema_apis_devsy_cluster_v1_FeatureStatus(ref),
-		v1.HelmRelease{}.OpenAPIModelName():                                                               schema_apis_devsy_cluster_v1_HelmRelease(ref),
-		v1.HelmReleaseApp{}.OpenAPIModelName():                                                            schema_apis_devsy_cluster_v1_HelmReleaseApp(ref),
-		v1.HelmReleaseConfig{}.OpenAPIModelName():                                                         schema_apis_devsy_cluster_v1_HelmReleaseConfig(ref),
-		v1.HelmReleaseList{}.OpenAPIModelName():                                                           schema_apis_devsy_cluster_v1_HelmReleaseList(ref),
-		v1.HelmReleaseSpec{}.OpenAPIModelName():                                                           schema_apis_devsy_cluster_v1_HelmReleaseSpec(ref),
-		v1.HelmReleaseStatus{}.OpenAPIModelName():                                                         schema_apis_devsy_cluster_v1_HelmReleaseStatus(ref),
-		v1.Info{}.OpenAPIModelName():                                                                      schema_apis_devsy_cluster_v1_Info(ref),
-		v1.LastActivityInfo{}.OpenAPIModelName():                                                          schema_apis_devsy_cluster_v1_LastActivityInfo(ref),
-		v1.Maintainer{}.OpenAPIModelName():                                                                schema_apis_devsy_cluster_v1_Maintainer(ref),
-		v1.Metadata{}.OpenAPIModelName():                                                                  schema_apis_devsy_cluster_v1_Metadata(ref),
-		v1.ProjectSecretRef{}.OpenAPIModelName():                                                          schema_apis_devsy_cluster_v1_ProjectSecretRef(ref),
-		v1.SleepModeConfig{}.OpenAPIModelName():                                                           schema_apis_devsy_cluster_v1_SleepModeConfig(ref),
-		v1.SleepModeConfigSpec{}.OpenAPIModelName():                                                       schema_apis_devsy_cluster_v1_SleepModeConfigSpec(ref),
-		v1.SleepModeConfigStatus{}.OpenAPIModelName():                                                     schema_apis_devsy_cluster_v1_SleepModeConfigStatus(ref),
-		storagev1.ClusterQuota{}.OpenAPIModelName():                                                       schema_apis_devsy_storage_v1_ClusterQuota(ref),
-		storagev1.ClusterQuotaList{}.OpenAPIModelName():                                                   schema_apis_devsy_storage_v1_ClusterQuotaList(ref),
-		storagev1.ClusterQuotaSpec{}.OpenAPIModelName():                                                   schema_apis_devsy_storage_v1_ClusterQuotaSpec(ref),
-		storagev1.ClusterQuotaStatus{}.OpenAPIModelName():                                                 schema_apis_devsy_storage_v1_ClusterQuotaStatus(ref),
-		storagev1.ClusterQuotaStatusByNamespace{}.OpenAPIModelName():                                      schema_apis_devsy_storage_v1_ClusterQuotaStatusByNamespace(ref),
-		storagev1.Condition{}.OpenAPIModelName():                                                          schema_apis_devsy_storage_v1_Condition(ref),
-		"github.com/devsy-org/api/pkg/apis/audit/v1.Event":                                                schema_pkg_apis_audit_v1_Event(ref),
-		"github.com/devsy-org/api/pkg/apis/audit/v1.EventList":                                            schema_pkg_apis_audit_v1_EventList(ref),
-		"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference":                                      schema_pkg_apis_audit_v1_ObjectReference(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAnalyticsSpec":                              schema_pkg_apis_management_v1_AgentAnalyticsSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditConfig":                                schema_pkg_apis_management_v1_AgentAuditConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEvent":                                 schema_pkg_apis_management_v1_AgentAuditEvent(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventList":                             schema_pkg_apis_management_v1_AgentAuditEventList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventSpec":                             schema_pkg_apis_management_v1_AgentAuditEventSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventStatus":                           schema_pkg_apis_management_v1_AgentAuditEventStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AgentCostControlConfig":                          schema_pkg_apis_management_v1_AgentCostControlConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Announcement":                                    schema_pkg_apis_management_v1_Announcement(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementList":                                schema_pkg_apis_management_v1_AnnouncementList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementSpec":                                schema_pkg_apis_management_v1_AnnouncementSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementStatus":                              schema_pkg_apis_management_v1_AnnouncementStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.App":                                             schema_pkg_apis_management_v1_App(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials":                                  schema_pkg_apis_management_v1_AppCredentials(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AppCredentialsList":                              schema_pkg_apis_management_v1_AppCredentialsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AppList":                                         schema_pkg_apis_management_v1_AppList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AppSpec":                                         schema_pkg_apis_management_v1_AppSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AppStatus":                                       schema_pkg_apis_management_v1_AppStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Apps":                                            schema_pkg_apis_management_v1_Apps(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AssignedVia":                                     schema_pkg_apis_management_v1_AssignedVia(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Audit":                                           schema_pkg_apis_management_v1_Audit(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuditPolicy":                                     schema_pkg_apis_management_v1_AuditPolicy(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuditPolicyRule":                                 schema_pkg_apis_management_v1_AuditPolicyRule(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Authentication":                                  schema_pkg_apis_management_v1_Authentication(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGithub":                            schema_pkg_apis_management_v1_AuthenticationGithub(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGithubOrg":                         schema_pkg_apis_management_v1_AuthenticationGithubOrg(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGitlab":                            schema_pkg_apis_management_v1_AuthenticationGitlab(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGoogle":                            schema_pkg_apis_management_v1_AuthenticationGoogle(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationMicrosoft":                         schema_pkg_apis_management_v1_AuthenticationMicrosoft(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationOIDC":                              schema_pkg_apis_management_v1_AuthenticationOIDC(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationPassword":                          schema_pkg_apis_management_v1_AuthenticationPassword(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationRancher":                           schema_pkg_apis_management_v1_AuthenticationRancher(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationSAML":                              schema_pkg_apis_management_v1_AuthenticationSAML(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Backup":                                          schema_pkg_apis_management_v1_Backup(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApply":                                     schema_pkg_apis_management_v1_BackupApply(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplyList":                                 schema_pkg_apis_management_v1_BackupApplyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplyOptions":                              schema_pkg_apis_management_v1_BackupApplyOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplySpec":                                 schema_pkg_apis_management_v1_BackupApplySpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupList":                                      schema_pkg_apis_management_v1_BackupList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupSpec":                                      schema_pkg_apis_management_v1_BackupSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.BackupStatus":                                    schema_pkg_apis_management_v1_BackupStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Cloud":                                           schema_pkg_apis_management_v1_Cloud(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Cluster":                                         schema_pkg_apis_management_v1_Cluster(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccess":                                   schema_pkg_apis_management_v1_ClusterAccess(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKey":                                schema_pkg_apis_management_v1_ClusterAccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKeyList":                            schema_pkg_apis_management_v1_ClusterAccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessList":                               schema_pkg_apis_management_v1_ClusterAccessList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessRole":                               schema_pkg_apis_management_v1_ClusterAccessRole(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessSpec":                               schema_pkg_apis_management_v1_ClusterAccessSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessStatus":                             schema_pkg_apis_management_v1_ClusterAccessStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccounts":                                 schema_pkg_apis_management_v1_ClusterAccounts(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfig":                              schema_pkg_apis_management_v1_ClusterAgentConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfigCommon":                        schema_pkg_apis_management_v1_ClusterAgentConfigCommon(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfigList":                          schema_pkg_apis_management_v1_ClusterAgentConfigList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterCharts":                                   schema_pkg_apis_management_v1_ClusterCharts(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterChartsList":                               schema_pkg_apis_management_v1_ClusterChartsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterDomain":                                   schema_pkg_apis_management_v1_ClusterDomain(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterDomainList":                               schema_pkg_apis_management_v1_ClusterDomainList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterList":                                     schema_pkg_apis_management_v1_ClusterList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMember":                                   schema_pkg_apis_management_v1_ClusterMember(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccess":                             schema_pkg_apis_management_v1_ClusterMemberAccess(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccessList":                         schema_pkg_apis_management_v1_ClusterMemberAccessList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembers":                                  schema_pkg_apis_management_v1_ClusterMembers(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembersList":                              schema_pkg_apis_management_v1_ClusterMembersList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterReset":                                    schema_pkg_apis_management_v1_ClusterReset(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterResetList":                                schema_pkg_apis_management_v1_ClusterResetList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplate":                             schema_pkg_apis_management_v1_ClusterRoleTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateList":                         schema_pkg_apis_management_v1_ClusterRoleTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateSpec":                         schema_pkg_apis_management_v1_ClusterRoleTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateStatus":                       schema_pkg_apis_management_v1_ClusterRoleTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterSpec":                                     schema_pkg_apis_management_v1_ClusterSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterStatus":                                   schema_pkg_apis_management_v1_ClusterStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Config":                                          schema_pkg_apis_management_v1_Config(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigList":                                      schema_pkg_apis_management_v1_ConfigList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigSpec":                                      schema_pkg_apis_management_v1_ConfigSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigStatus":                                    schema_pkg_apis_management_v1_ConfigStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Connector":                                       schema_pkg_apis_management_v1_Connector(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConnectorWithName":                               schema_pkg_apis_management_v1_ConnectorWithName(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfig":                     schema_pkg_apis_management_v1_ConvertVirtualClusterConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigList":                 schema_pkg_apis_management_v1_ConvertVirtualClusterConfigList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigSpec":                 schema_pkg_apis_management_v1_ConvertVirtualClusterConfigSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigStatus":               schema_pkg_apis_management_v1_ConvertVirtualClusterConfigStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControl":                                     schema_pkg_apis_management_v1_CostControl(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlClusterConfig":                        schema_pkg_apis_management_v1_CostControlClusterConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlGPUSettings":                          schema_pkg_apis_management_v1_CostControlGPUSettings(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlGlobalConfig":                         schema_pkg_apis_management_v1_CostControlGlobalConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlResourcePrice":                        schema_pkg_apis_management_v1_CostControlResourcePrice(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlSettings":                             schema_pkg_apis_management_v1_CostControlSettings(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnector":                               schema_pkg_apis_management_v1_DatabaseConnector(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorList":                           schema_pkg_apis_management_v1_DatabaseConnectorList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorSpec":                           schema_pkg_apis_management_v1_DatabaseConnectorSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorStatus":                         schema_pkg_apis_management_v1_DatabaseConnectorStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/audit/v1.Event":                                               schema_pkg_apis_audit_v1_Event(ref),
+		"github.com/devsy-org/api/pkg/apis/audit/v1.EventList":                                           schema_pkg_apis_audit_v1_EventList(ref),
+		"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference":                                     schema_pkg_apis_audit_v1_ObjectReference(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAnalyticsSpec":                             schema_pkg_apis_management_v1_AgentAnalyticsSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditConfig":                               schema_pkg_apis_management_v1_AgentAuditConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEvent":                                schema_pkg_apis_management_v1_AgentAuditEvent(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventList":                            schema_pkg_apis_management_v1_AgentAuditEventList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventSpec":                            schema_pkg_apis_management_v1_AgentAuditEventSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentAuditEventStatus":                          schema_pkg_apis_management_v1_AgentAuditEventStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AgentCostControlConfig":                         schema_pkg_apis_management_v1_AgentCostControlConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Announcement":                                   schema_pkg_apis_management_v1_Announcement(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementList":                               schema_pkg_apis_management_v1_AnnouncementList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementSpec":                               schema_pkg_apis_management_v1_AnnouncementSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AnnouncementStatus":                             schema_pkg_apis_management_v1_AnnouncementStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.App":                                            schema_pkg_apis_management_v1_App(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials":                                 schema_pkg_apis_management_v1_AppCredentials(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AppCredentialsList":                             schema_pkg_apis_management_v1_AppCredentialsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AppList":                                        schema_pkg_apis_management_v1_AppList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AppSpec":                                        schema_pkg_apis_management_v1_AppSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AppStatus":                                      schema_pkg_apis_management_v1_AppStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Apps":                                           schema_pkg_apis_management_v1_Apps(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AssignedVia":                                    schema_pkg_apis_management_v1_AssignedVia(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Audit":                                          schema_pkg_apis_management_v1_Audit(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuditPolicy":                                    schema_pkg_apis_management_v1_AuditPolicy(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuditPolicyRule":                                schema_pkg_apis_management_v1_AuditPolicyRule(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Authentication":                                 schema_pkg_apis_management_v1_Authentication(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGithub":                           schema_pkg_apis_management_v1_AuthenticationGithub(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGithubOrg":                        schema_pkg_apis_management_v1_AuthenticationGithubOrg(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGitlab":                           schema_pkg_apis_management_v1_AuthenticationGitlab(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationGoogle":                           schema_pkg_apis_management_v1_AuthenticationGoogle(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationMicrosoft":                        schema_pkg_apis_management_v1_AuthenticationMicrosoft(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationOIDC":                             schema_pkg_apis_management_v1_AuthenticationOIDC(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationPassword":                         schema_pkg_apis_management_v1_AuthenticationPassword(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationRancher":                          schema_pkg_apis_management_v1_AuthenticationRancher(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.AuthenticationSAML":                             schema_pkg_apis_management_v1_AuthenticationSAML(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Backup":                                         schema_pkg_apis_management_v1_Backup(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApply":                                    schema_pkg_apis_management_v1_BackupApply(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplyList":                                schema_pkg_apis_management_v1_BackupApplyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplyOptions":                             schema_pkg_apis_management_v1_BackupApplyOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupApplySpec":                                schema_pkg_apis_management_v1_BackupApplySpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupList":                                     schema_pkg_apis_management_v1_BackupList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupSpec":                                     schema_pkg_apis_management_v1_BackupSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.BackupStatus":                                   schema_pkg_apis_management_v1_BackupStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Cloud":                                          schema_pkg_apis_management_v1_Cloud(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Cluster":                                        schema_pkg_apis_management_v1_Cluster(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccess":                                  schema_pkg_apis_management_v1_ClusterAccess(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKey":                               schema_pkg_apis_management_v1_ClusterAccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKeyList":                           schema_pkg_apis_management_v1_ClusterAccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessList":                              schema_pkg_apis_management_v1_ClusterAccessList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessRole":                              schema_pkg_apis_management_v1_ClusterAccessRole(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessSpec":                              schema_pkg_apis_management_v1_ClusterAccessSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessStatus":                            schema_pkg_apis_management_v1_ClusterAccessStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccounts":                                schema_pkg_apis_management_v1_ClusterAccounts(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfig":                             schema_pkg_apis_management_v1_ClusterAgentConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfigCommon":                       schema_pkg_apis_management_v1_ClusterAgentConfigCommon(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfigList":                         schema_pkg_apis_management_v1_ClusterAgentConfigList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterCharts":                                  schema_pkg_apis_management_v1_ClusterCharts(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterChartsList":                              schema_pkg_apis_management_v1_ClusterChartsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterDomain":                                  schema_pkg_apis_management_v1_ClusterDomain(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterDomainList":                              schema_pkg_apis_management_v1_ClusterDomainList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterList":                                    schema_pkg_apis_management_v1_ClusterList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMember":                                  schema_pkg_apis_management_v1_ClusterMember(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccess":                            schema_pkg_apis_management_v1_ClusterMemberAccess(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccessList":                        schema_pkg_apis_management_v1_ClusterMemberAccessList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembers":                                 schema_pkg_apis_management_v1_ClusterMembers(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembersList":                             schema_pkg_apis_management_v1_ClusterMembersList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterReset":                                   schema_pkg_apis_management_v1_ClusterReset(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterResetList":                               schema_pkg_apis_management_v1_ClusterResetList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplate":                            schema_pkg_apis_management_v1_ClusterRoleTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateList":                        schema_pkg_apis_management_v1_ClusterRoleTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateSpec":                        schema_pkg_apis_management_v1_ClusterRoleTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterRoleTemplateStatus":                      schema_pkg_apis_management_v1_ClusterRoleTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterSpec":                                    schema_pkg_apis_management_v1_ClusterSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ClusterStatus":                                  schema_pkg_apis_management_v1_ClusterStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Config":                                         schema_pkg_apis_management_v1_Config(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigList":                                     schema_pkg_apis_management_v1_ConfigList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigSpec":                                     schema_pkg_apis_management_v1_ConfigSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConfigStatus":                                   schema_pkg_apis_management_v1_ConfigStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Connector":                                      schema_pkg_apis_management_v1_Connector(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConnectorWithName":                              schema_pkg_apis_management_v1_ConnectorWithName(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfig":                    schema_pkg_apis_management_v1_ConvertVirtualClusterConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigList":                schema_pkg_apis_management_v1_ConvertVirtualClusterConfigList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigSpec":                schema_pkg_apis_management_v1_ConvertVirtualClusterConfigSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ConvertVirtualClusterConfigStatus":              schema_pkg_apis_management_v1_ConvertVirtualClusterConfigStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControl":                                    schema_pkg_apis_management_v1_CostControl(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlClusterConfig":                       schema_pkg_apis_management_v1_CostControlClusterConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlGPUSettings":                         schema_pkg_apis_management_v1_CostControlGPUSettings(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlGlobalConfig":                        schema_pkg_apis_management_v1_CostControlGlobalConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlResourcePrice":                       schema_pkg_apis_management_v1_CostControlResourcePrice(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.CostControlSettings":                            schema_pkg_apis_management_v1_CostControlSettings(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnector":                              schema_pkg_apis_management_v1_DatabaseConnector(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorList":                          schema_pkg_apis_management_v1_DatabaseConnectorList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorSpec":                          schema_pkg_apis_management_v1_DatabaseConnectorSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DatabaseConnectorStatus":                        schema_pkg_apis_management_v1_DatabaseConnectorStatus(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplate":                       schema_pkg_apis_management_v1_DevsyEnvironmentTemplate(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateList":                   schema_pkg_apis_management_v1_DevsyEnvironmentTemplateList(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateSpec":                   schema_pkg_apis_management_v1_DevsyEnvironmentTemplateSpec(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyEnvironmentTemplateStatus":                 schema_pkg_apis_management_v1_DevsyEnvironmentTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade":                                   schema_pkg_apis_management_v1_DevsyUpgrade(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeList":                               schema_pkg_apis_management_v1_DevsyUpgradeList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec":                               schema_pkg_apis_management_v1_DevsyUpgradeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus":                             schema_pkg_apis_management_v1_DevsyUpgradeStatus(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstance":                         schema_pkg_apis_management_v1_DevsyWorkspaceInstance(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancel":                   schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancel(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceInstanceCancelList":               schema_pkg_apis_management_v1_DevsyWorkspaceInstanceCancelList(ref),
@@ -221,302 +160,298 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateList":                     schema_pkg_apis_management_v1_DevsyWorkspaceTemplateList(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateSpec":                     schema_pkg_apis_management_v1_DevsyWorkspaceTemplateSpec(ref),
 		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyWorkspaceTemplateStatus":                   schema_pkg_apis_management_v1_DevsyWorkspaceTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade":                                    schema_pkg_apis_management_v1_DevsyUpgrade(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeList":                                schema_pkg_apis_management_v1_DevsyUpgradeList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec":                                schema_pkg_apis_management_v1_DevsyUpgradeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus":                              schema_pkg_apis_management_v1_DevsyUpgradeStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointToken":                      schema_pkg_apis_management_v1_DirectClusterEndpointToken(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenList":                  schema_pkg_apis_management_v1_DirectClusterEndpointTokenList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenSpec":                  schema_pkg_apis_management_v1_DirectClusterEndpointTokenSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenStatus":                schema_pkg_apis_management_v1_DirectClusterEndpointTokenStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Event":                                           schema_pkg_apis_management_v1_Event(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.EventList":                                       schema_pkg_apis_management_v1_EventList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.EventSpec":                                       schema_pkg_apis_management_v1_EventSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.EventStatus":                                     schema_pkg_apis_management_v1_EventStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Feature":                                         schema_pkg_apis_management_v1_Feature(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureList":                                     schema_pkg_apis_management_v1_FeatureList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureSpec":                                     schema_pkg_apis_management_v1_FeatureSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureStatus":                                   schema_pkg_apis_management_v1_FeatureStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.GroupResources":                                  schema_pkg_apis_management_v1_GroupResources(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ImageBuilder":                                    schema_pkg_apis_management_v1_ImageBuilder(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthToken":                                schema_pkg_apis_management_v1_IngressAuthToken(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenList":                            schema_pkg_apis_management_v1_IngressAuthTokenList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenSpec":                            schema_pkg_apis_management_v1_IngressAuthTokenSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenStatus":                          schema_pkg_apis_management_v1_IngressAuthTokenStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Kiosk":                                           schema_pkg_apis_management_v1_Kiosk(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.KioskList":                                       schema_pkg_apis_management_v1_KioskList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.KioskSpec":                                       schema_pkg_apis_management_v1_KioskSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.KioskStatus":                                     schema_pkg_apis_management_v1_KioskStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.License":                                         schema_pkg_apis_management_v1_License(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseList":                                     schema_pkg_apis_management_v1_LicenseList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest":                                  schema_pkg_apis_management_v1_LicenseRequest(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestList":                              schema_pkg_apis_management_v1_LicenseRequestList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestSpec":                              schema_pkg_apis_management_v1_LicenseRequestSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestStatus":                            schema_pkg_apis_management_v1_LicenseRequestStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseSpec":                                     schema_pkg_apis_management_v1_LicenseSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseStatus":                                   schema_pkg_apis_management_v1_LicenseStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseToken":                                    schema_pkg_apis_management_v1_LicenseToken(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenList":                                schema_pkg_apis_management_v1_LicenseTokenList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenSpec":                                schema_pkg_apis_management_v1_LicenseTokenSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenStatus":                              schema_pkg_apis_management_v1_LicenseTokenStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.MaintenanceWindow":                               schema_pkg_apis_management_v1_MaintenanceWindow(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ManagementRole":                                  schema_pkg_apis_management_v1_ManagementRole(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NamespacedNameArgs":                              schema_pkg_apis_management_v1_NamespacedNameArgs(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaim":                                       schema_pkg_apis_management_v1_NodeClaim(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimData":                                   schema_pkg_apis_management_v1_NodeClaimData(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimList":                                   schema_pkg_apis_management_v1_NodeClaimList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimSpec":                                   schema_pkg_apis_management_v1_NodeClaimSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimStatus":                                 schema_pkg_apis_management_v1_NodeClaimStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironment":                                 schema_pkg_apis_management_v1_NodeEnvironment(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentData":                             schema_pkg_apis_management_v1_NodeEnvironmentData(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentList":                             schema_pkg_apis_management_v1_NodeEnvironmentList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentSpec":                             schema_pkg_apis_management_v1_NodeEnvironmentSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentStatus":                           schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProvider":                                    schema_pkg_apis_management_v1_NodeProvider(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult":               schema_pkg_apis_management_v1_NodeProviderBCMGetResourcesResult(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeGroup":                        schema_pkg_apis_management_v1_NodeProviderBCMNodeGroup(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources":                schema_pkg_apis_management_v1_NodeProviderBCMNodeWithResources(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult":             schema_pkg_apis_management_v1_NodeProviderBCMTestConnectionResult(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderCalculateCostResult":                 schema_pkg_apis_management_v1_NodeProviderCalculateCostResult(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExec":                                schema_pkg_apis_management_v1_NodeProviderExec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecList":                            schema_pkg_apis_management_v1_NodeProviderExecList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecResult":                          schema_pkg_apis_management_v1_NodeProviderExecResult(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecSpec":                            schema_pkg_apis_management_v1_NodeProviderExecSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecStatus":                          schema_pkg_apis_management_v1_NodeProviderExecStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderList":                                schema_pkg_apis_management_v1_NodeProviderList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderSpec":                                schema_pkg_apis_management_v1_NodeProviderSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderStatus":                              schema_pkg_apis_management_v1_NodeProviderStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult":             schema_pkg_apis_management_v1_NodeProviderTerraformValidateResult(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeType":                                        schema_pkg_apis_management_v1_NodeType(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeList":                                    schema_pkg_apis_management_v1_NodeTypeList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeSpec":                                    schema_pkg_apis_management_v1_NodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeStatus":                                  schema_pkg_apis_management_v1_NodeTypeStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OIDC":                                            schema_pkg_apis_management_v1_OIDC(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClient":                                      schema_pkg_apis_management_v1_OIDCClient(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientList":                                  schema_pkg_apis_management_v1_OIDCClientList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientSpec":                                  schema_pkg_apis_management_v1_OIDCClientSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientStatus":                                schema_pkg_apis_management_v1_OIDCClientStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ObjectName":                                      schema_pkg_apis_management_v1_ObjectName(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ObjectPermission":                                schema_pkg_apis_management_v1_ObjectPermission(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Operation":                                       schema_pkg_apis_management_v1_Operation(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKey":                                  schema_pkg_apis_management_v1_OwnedAccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeyList":                              schema_pkg_apis_management_v1_OwnedAccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeySpec":                              schema_pkg_apis_management_v1_OwnedAccessKeySpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeyStatus":                            schema_pkg_apis_management_v1_OwnedAccessKeyStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.PlatformDB":                                      schema_pkg_apis_management_v1_PlatformDB(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.PredefinedApp":                                   schema_pkg_apis_management_v1_PredefinedApp(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Project":                                         schema_pkg_apis_management_v1_Project(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfo":                                schema_pkg_apis_management_v1_ProjectChartInfo(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoList":                            schema_pkg_apis_management_v1_ProjectChartInfoList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoSpec":                            schema_pkg_apis_management_v1_ProjectChartInfoSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoStatus":                          schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectCharts":                                   schema_pkg_apis_management_v1_ProjectCharts(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartsList":                               schema_pkg_apis_management_v1_ProjectChartsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectClusters":                                 schema_pkg_apis_management_v1_ProjectClusters(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectClustersList":                             schema_pkg_apis_management_v1_ProjectClustersList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace":                              schema_pkg_apis_management_v1_ProjectImportSpace(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpaceList":                          schema_pkg_apis_management_v1_ProjectImportSpaceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpaceSource":                        schema_pkg_apis_management_v1_ProjectImportSpaceSource(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectList":                                     schema_pkg_apis_management_v1_ProjectList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMember":                                   schema_pkg_apis_management_v1_ProjectMember(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembers":                                  schema_pkg_apis_management_v1_ProjectMembers(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembersList":                              schema_pkg_apis_management_v1_ProjectMembersList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembership":                               schema_pkg_apis_management_v1_ProjectMembership(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance":                     schema_pkg_apis_management_v1_ProjectMigrateSpaceInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstanceList":                 schema_pkg_apis_management_v1_ProjectMigrateSpaceInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstanceSource":               schema_pkg_apis_management_v1_ProjectMigrateSpaceInstanceSource(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance":            schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstanceList":        schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstanceSource":      schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstanceSource(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectNodeTypes":                                schema_pkg_apis_management_v1_ProjectNodeTypes(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectNodeTypesList":                            schema_pkg_apis_management_v1_ProjectNodeTypesList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectRole":                                     schema_pkg_apis_management_v1_ProjectRole(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecret":                                   schema_pkg_apis_management_v1_ProjectSecret(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretList":                               schema_pkg_apis_management_v1_ProjectSecretList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretSpec":                               schema_pkg_apis_management_v1_ProjectSecretSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretStatus":                             schema_pkg_apis_management_v1_ProjectSecretStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSpec":                                     schema_pkg_apis_management_v1_ProjectSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectStatus":                                   schema_pkg_apis_management_v1_ProjectStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplates":                                schema_pkg_apis_management_v1_ProjectTemplates(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplatesList":                            schema_pkg_apis_management_v1_ProjectTemplatesList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectToken":                                   schema_pkg_apis_management_v1_RedirectToken(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenClaims":                             schema_pkg_apis_management_v1_RedirectTokenClaims(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenList":                               schema_pkg_apis_management_v1_RedirectTokenList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenSpec":                               schema_pkg_apis_management_v1_RedirectTokenSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenStatus":                             schema_pkg_apis_management_v1_RedirectTokenStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualCluster":                          schema_pkg_apis_management_v1_RegisterVirtualCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterList":                      schema_pkg_apis_management_v1_RegisterVirtualClusterList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterSpec":                      schema_pkg_apis_management_v1_RegisterVirtualClusterSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterStatus":                    schema_pkg_apis_management_v1_RegisterVirtualClusterStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKey":                                  schema_pkg_apis_management_v1_ResetAccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeyList":                              schema_pkg_apis_management_v1_ResetAccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeySpec":                              schema_pkg_apis_management_v1_ResetAccessKeySpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeyStatus":                            schema_pkg_apis_management_v1_ResetAccessKeyStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Self":                                            schema_pkg_apis_management_v1_Self(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfList":                                        schema_pkg_apis_management_v1_SelfList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSpec":                                        schema_pkg_apis_management_v1_SelfSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfStatus":                                      schema_pkg_apis_management_v1_SelfStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReview":                         schema_pkg_apis_management_v1_SelfSubjectAccessReview(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewList":                     schema_pkg_apis_management_v1_SelfSubjectAccessReviewList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewSpec":                     schema_pkg_apis_management_v1_SelfSubjectAccessReviewSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewStatus":                   schema_pkg_apis_management_v1_SelfSubjectAccessReviewStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecret":                                    schema_pkg_apis_management_v1_SharedSecret(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretList":                                schema_pkg_apis_management_v1_SharedSecretList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretSpec":                                schema_pkg_apis_management_v1_SharedSecretSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretStatus":                              schema_pkg_apis_management_v1_SharedSecretStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SnapshotTaken":                                   schema_pkg_apis_management_v1_SnapshotTaken(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstance":                                   schema_pkg_apis_management_v1_SpaceInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceList":                               schema_pkg_apis_management_v1_SpaceInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceSpec":                               schema_pkg_apis_management_v1_SpaceInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceStatus":                             schema_pkg_apis_management_v1_SpaceInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplate":                                   schema_pkg_apis_management_v1_SpaceTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateList":                               schema_pkg_apis_management_v1_SpaceTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateSpec":                               schema_pkg_apis_management_v1_SpaceTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateStatus":                             schema_pkg_apis_management_v1_SpaceTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.StandaloneEtcdPeer":                              schema_pkg_apis_management_v1_StandaloneEtcdPeer(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.StandaloneEtcdPeerCoordinator":                   schema_pkg_apis_management_v1_StandaloneEtcdPeerCoordinator(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.StandalonePKI":                                   schema_pkg_apis_management_v1_StandalonePKI(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReview":                             schema_pkg_apis_management_v1_SubjectAccessReview(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewList":                         schema_pkg_apis_management_v1_SubjectAccessReviewList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewSpec":                         schema_pkg_apis_management_v1_SubjectAccessReviewSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewStatus":                       schema_pkg_apis_management_v1_SubjectAccessReviewStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Task":                                            schema_pkg_apis_management_v1_Task(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskList":                                        schema_pkg_apis_management_v1_TaskList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLog":                                         schema_pkg_apis_management_v1_TaskLog(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLogList":                                     schema_pkg_apis_management_v1_TaskLogList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLogOptions":                                  schema_pkg_apis_management_v1_TaskLogOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskSpec":                                        schema_pkg_apis_management_v1_TaskSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TaskStatus":                                      schema_pkg_apis_management_v1_TaskStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.Team":                                            schema_pkg_apis_management_v1_Team(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeys":                                  schema_pkg_apis_management_v1_TeamAccessKeys(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeysList":                              schema_pkg_apis_management_v1_TeamAccessKeysList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamClusters":                                    schema_pkg_apis_management_v1_TeamClusters(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamClustersList":                                schema_pkg_apis_management_v1_TeamClustersList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamList":                                        schema_pkg_apis_management_v1_TeamList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamObjectPermissions":                           schema_pkg_apis_management_v1_TeamObjectPermissions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamObjectPermissionsList":                       schema_pkg_apis_management_v1_TeamObjectPermissionsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamPermissions":                                 schema_pkg_apis_management_v1_TeamPermissions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamPermissionsList":                             schema_pkg_apis_management_v1_TeamPermissionsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamSpec":                                        schema_pkg_apis_management_v1_TeamSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TeamStatus":                                      schema_pkg_apis_management_v1_TeamStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceName":                      schema_pkg_apis_management_v1_TranslateDevsyResourceName(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameList":                  schema_pkg_apis_management_v1_TranslateDevsyResourceNameList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameSpec":                  schema_pkg_apis_management_v1_TranslateDevsyResourceNameSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameStatus":                schema_pkg_apis_management_v1_TranslateDevsyResourceNameStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownload":                                   schema_pkg_apis_management_v1_UsageDownload(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadList":                               schema_pkg_apis_management_v1_UsageDownloadList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadSpec":                               schema_pkg_apis_management_v1_UsageDownloadSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadStatus":                             schema_pkg_apis_management_v1_UsageDownloadStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.User":                                            schema_pkg_apis_management_v1_User(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys":                                  schema_pkg_apis_management_v1_UserAccessKeys(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeysList":                              schema_pkg_apis_management_v1_UserAccessKeysList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserClusters":                                    schema_pkg_apis_management_v1_UserClusters(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserClustersList":                                schema_pkg_apis_management_v1_UserClustersList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserInfo":                                        schema_pkg_apis_management_v1_UserInfo(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserList":                                        schema_pkg_apis_management_v1_UserList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserObjectPermissions":                           schema_pkg_apis_management_v1_UserObjectPermissions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserObjectPermissionsList":                       schema_pkg_apis_management_v1_UserObjectPermissionsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissions":                                 schema_pkg_apis_management_v1_UserPermissions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissionsList":                             schema_pkg_apis_management_v1_UserPermissionsList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissionsRole":                             schema_pkg_apis_management_v1_UserPermissionsRole(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfile":                                     schema_pkg_apis_management_v1_UserProfile(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfileList":                                 schema_pkg_apis_management_v1_UserProfileList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfileSecret":                               schema_pkg_apis_management_v1_UserProfileSecret(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserQuotasOptions":                               schema_pkg_apis_management_v1_UserQuotasOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserSpacesOptions":                               schema_pkg_apis_management_v1_UserSpacesOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserSpec":                                        schema_pkg_apis_management_v1_UserSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserStatus":                                      schema_pkg_apis_management_v1_UserStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.UserVirtualClustersOptions":                      schema_pkg_apis_management_v1_UserVirtualClustersOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKey":                         schema_pkg_apis_management_v1_VirtualClusterAccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKeyList":                     schema_pkg_apis_management_v1_VirtualClusterAccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase":                  schema_pkg_apis_management_v1_VirtualClusterExternalDatabase(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseList":              schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseSpec":              schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseStatus":            schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstance":                          schema_pkg_apis_management_v1_VirtualClusterInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig":                schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigList":            schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigSpec":            schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigStatus":          schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceList":                      schema_pkg_apis_management_v1_VirtualClusterInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLog":                       schema_pkg_apis_management_v1_VirtualClusterInstanceLog(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLogList":                   schema_pkg_apis_management_v1_VirtualClusterInstanceLogList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLogOptions":                schema_pkg_apis_management_v1_VirtualClusterInstanceLogOptions(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshot":                  schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshot(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshotList":              schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshotList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshotStatus":            schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshotStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSpec":                      schema_pkg_apis_management_v1_VirtualClusterInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceStatus":                    schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey":                     schema_pkg_apis_management_v1_VirtualClusterNodeAccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeyList":                 schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeySpec":                 schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeySpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeyStatus":               schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeyStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterRole":                              schema_pkg_apis_management_v1_VirtualClusterRole(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchema":                            schema_pkg_apis_management_v1_VirtualClusterSchema(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaList":                        schema_pkg_apis_management_v1_VirtualClusterSchemaList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaSpec":                        schema_pkg_apis_management_v1_VirtualClusterSchemaSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaStatus":                      schema_pkg_apis_management_v1_VirtualClusterSchemaStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone":                        schema_pkg_apis_management_v1_VirtualClusterStandalone(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneList":                    schema_pkg_apis_management_v1_VirtualClusterStandaloneList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneSpec":                    schema_pkg_apis_management_v1_VirtualClusterStandaloneSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneStatus":                  schema_pkg_apis_management_v1_VirtualClusterStandaloneStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplate":                          schema_pkg_apis_management_v1_VirtualClusterTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateList":                      schema_pkg_apis_management_v1_VirtualClusterTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateSpec":                      schema_pkg_apis_management_v1_VirtualClusterTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateStatus":                    schema_pkg_apis_management_v1_VirtualClusterTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Access":                                             schema_pkg_apis_storage_v1_Access(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKey":                                          schema_pkg_apis_storage_v1_AccessKey(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyList":                                      schema_pkg_apis_storage_v1_AccessKeyList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyOIDC":                                      schema_pkg_apis_storage_v1_AccessKeyOIDC(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyOIDCProvider":                              schema_pkg_apis_storage_v1_AccessKeyOIDCProvider(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScope":                                     schema_pkg_apis_storage_v1_AccessKeyScope(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeCluster":                              schema_pkg_apis_storage_v1_AccessKeyScopeCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeProject":                              schema_pkg_apis_storage_v1_AccessKeyScopeProject(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeRole":                                 schema_pkg_apis_storage_v1_AccessKeyScopeRole(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeRule":                                 schema_pkg_apis_storage_v1_AccessKeyScopeRule(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeSpace":                                schema_pkg_apis_storage_v1_AccessKeyScopeSpace(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeVirtualCluster":                       schema_pkg_apis_storage_v1_AccessKeyScopeVirtualCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeySpec":                                      schema_pkg_apis_storage_v1_AccessKeySpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyStatus":                                    schema_pkg_apis_storage_v1_AccessKeyStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyVirtualCluster":                            schema_pkg_apis_storage_v1_AccessKeyVirtualCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster":                                     schema_pkg_apis_storage_v1_AllowedCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedClusterAccountTemplate":                      schema_pkg_apis_storage_v1_AllowedClusterAccountTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner":                                      schema_pkg_apis_storage_v1_AllowedRunner(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate":                                    schema_pkg_apis_storage_v1_AllowedTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.App":                                                schema_pkg_apis_storage_v1_App(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppConfig":                                          schema_pkg_apis_storage_v1_AppConfig(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppList":                                            schema_pkg_apis_storage_v1_AppList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter":                                       schema_pkg_apis_storage_v1_AppParameter(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppReference":                                       schema_pkg_apis_storage_v1_AppReference(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppSpec":                                            schema_pkg_apis_storage_v1_AppSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppStatus":                                          schema_pkg_apis_storage_v1_AppStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppTask":                                            schema_pkg_apis_storage_v1_AppTask(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion":                                         schema_pkg_apis_storage_v1_AppVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec":                                schema_pkg_apis_storage_v1_ArgoIntegrationSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectPolicyRule":                              schema_pkg_apis_storage_v1_ArgoProjectPolicyRule(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectRole":                                    schema_pkg_apis_storage_v1_ArgoProjectRole(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectSpec":                                    schema_pkg_apis_storage_v1_ArgoProjectSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectSpecMetadata":                            schema_pkg_apis_storage_v1_ArgoProjectSpecMetadata(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoSSOSpec":                                        schema_pkg_apis_storage_v1_ArgoSSOSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.BCMNodeTypeSpec":                                    schema_pkg_apis_storage_v1_BCMNodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Chart":                                              schema_pkg_apis_storage_v1_Chart(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ChartStatus":                                        schema_pkg_apis_storage_v1_ChartStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Cluster":                                            schema_pkg_apis_storage_v1_Cluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccess":                                      schema_pkg_apis_storage_v1_ClusterAccess(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessList":                                  schema_pkg_apis_storage_v1_ClusterAccessList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessSpec":                                  schema_pkg_apis_storage_v1_ClusterAccessSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessStatus":                                schema_pkg_apis_storage_v1_ClusterAccessStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterList":                                        schema_pkg_apis_storage_v1_ClusterList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRef":                                         schema_pkg_apis_storage_v1_ClusterRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleRef":                                     schema_pkg_apis_storage_v1_ClusterRoleRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplate":                                schema_pkg_apis_storage_v1_ClusterRoleTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateList":                            schema_pkg_apis_storage_v1_ClusterRoleTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateSpec":                            schema_pkg_apis_storage_v1_ClusterRoleTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateStatus":                          schema_pkg_apis_storage_v1_ClusterRoleTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateTemplate":                        schema_pkg_apis_storage_v1_ClusterRoleTemplateTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterSpec":                                        schema_pkg_apis_storage_v1_ClusterSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterStatus":                                      schema_pkg_apis_storage_v1_ClusterStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.CredentialForwarding":                               schema_pkg_apis_storage_v1_CredentialForwarding(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointToken":                     schema_pkg_apis_management_v1_DirectClusterEndpointToken(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenList":                 schema_pkg_apis_management_v1_DirectClusterEndpointTokenList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenSpec":                 schema_pkg_apis_management_v1_DirectClusterEndpointTokenSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.DirectClusterEndpointTokenStatus":               schema_pkg_apis_management_v1_DirectClusterEndpointTokenStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Event":                                          schema_pkg_apis_management_v1_Event(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.EventList":                                      schema_pkg_apis_management_v1_EventList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.EventSpec":                                      schema_pkg_apis_management_v1_EventSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.EventStatus":                                    schema_pkg_apis_management_v1_EventStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Feature":                                        schema_pkg_apis_management_v1_Feature(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureList":                                    schema_pkg_apis_management_v1_FeatureList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureSpec":                                    schema_pkg_apis_management_v1_FeatureSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.FeatureStatus":                                  schema_pkg_apis_management_v1_FeatureStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.GroupResources":                                 schema_pkg_apis_management_v1_GroupResources(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ImageBuilder":                                   schema_pkg_apis_management_v1_ImageBuilder(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthToken":                               schema_pkg_apis_management_v1_IngressAuthToken(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenList":                           schema_pkg_apis_management_v1_IngressAuthTokenList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenSpec":                           schema_pkg_apis_management_v1_IngressAuthTokenSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.IngressAuthTokenStatus":                         schema_pkg_apis_management_v1_IngressAuthTokenStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Kiosk":                                          schema_pkg_apis_management_v1_Kiosk(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.KioskList":                                      schema_pkg_apis_management_v1_KioskList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.KioskSpec":                                      schema_pkg_apis_management_v1_KioskSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.KioskStatus":                                    schema_pkg_apis_management_v1_KioskStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.License":                                        schema_pkg_apis_management_v1_License(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseList":                                    schema_pkg_apis_management_v1_LicenseList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest":                                 schema_pkg_apis_management_v1_LicenseRequest(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestList":                             schema_pkg_apis_management_v1_LicenseRequestList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestSpec":                             schema_pkg_apis_management_v1_LicenseRequestSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequestStatus":                           schema_pkg_apis_management_v1_LicenseRequestStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseSpec":                                    schema_pkg_apis_management_v1_LicenseSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseStatus":                                  schema_pkg_apis_management_v1_LicenseStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseToken":                                   schema_pkg_apis_management_v1_LicenseToken(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenList":                               schema_pkg_apis_management_v1_LicenseTokenList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenSpec":                               schema_pkg_apis_management_v1_LicenseTokenSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.LicenseTokenStatus":                             schema_pkg_apis_management_v1_LicenseTokenStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.MaintenanceWindow":                              schema_pkg_apis_management_v1_MaintenanceWindow(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ManagementRole":                                 schema_pkg_apis_management_v1_ManagementRole(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NamespacedNameArgs":                             schema_pkg_apis_management_v1_NamespacedNameArgs(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaim":                                      schema_pkg_apis_management_v1_NodeClaim(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimData":                                  schema_pkg_apis_management_v1_NodeClaimData(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimList":                                  schema_pkg_apis_management_v1_NodeClaimList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimSpec":                                  schema_pkg_apis_management_v1_NodeClaimSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimStatus":                                schema_pkg_apis_management_v1_NodeClaimStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironment":                                schema_pkg_apis_management_v1_NodeEnvironment(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentData":                            schema_pkg_apis_management_v1_NodeEnvironmentData(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentList":                            schema_pkg_apis_management_v1_NodeEnvironmentList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentSpec":                            schema_pkg_apis_management_v1_NodeEnvironmentSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentStatus":                          schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProvider":                                   schema_pkg_apis_management_v1_NodeProvider(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult":              schema_pkg_apis_management_v1_NodeProviderBCMGetResourcesResult(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeGroup":                       schema_pkg_apis_management_v1_NodeProviderBCMNodeGroup(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources":               schema_pkg_apis_management_v1_NodeProviderBCMNodeWithResources(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult":            schema_pkg_apis_management_v1_NodeProviderBCMTestConnectionResult(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderCalculateCostResult":                schema_pkg_apis_management_v1_NodeProviderCalculateCostResult(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExec":                               schema_pkg_apis_management_v1_NodeProviderExec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecList":                           schema_pkg_apis_management_v1_NodeProviderExecList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecResult":                         schema_pkg_apis_management_v1_NodeProviderExecResult(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecSpec":                           schema_pkg_apis_management_v1_NodeProviderExecSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecStatus":                         schema_pkg_apis_management_v1_NodeProviderExecStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderList":                               schema_pkg_apis_management_v1_NodeProviderList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderSpec":                               schema_pkg_apis_management_v1_NodeProviderSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderStatus":                             schema_pkg_apis_management_v1_NodeProviderStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult":            schema_pkg_apis_management_v1_NodeProviderTerraformValidateResult(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeType":                                       schema_pkg_apis_management_v1_NodeType(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeList":                                   schema_pkg_apis_management_v1_NodeTypeList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeSpec":                                   schema_pkg_apis_management_v1_NodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.NodeTypeStatus":                                 schema_pkg_apis_management_v1_NodeTypeStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OIDC":                                           schema_pkg_apis_management_v1_OIDC(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClient":                                     schema_pkg_apis_management_v1_OIDCClient(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientList":                                 schema_pkg_apis_management_v1_OIDCClientList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientSpec":                                 schema_pkg_apis_management_v1_OIDCClientSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OIDCClientStatus":                               schema_pkg_apis_management_v1_OIDCClientStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ObjectName":                                     schema_pkg_apis_management_v1_ObjectName(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ObjectPermission":                               schema_pkg_apis_management_v1_ObjectPermission(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Operation":                                      schema_pkg_apis_management_v1_Operation(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKey":                                 schema_pkg_apis_management_v1_OwnedAccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeyList":                             schema_pkg_apis_management_v1_OwnedAccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeySpec":                             schema_pkg_apis_management_v1_OwnedAccessKeySpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.OwnedAccessKeyStatus":                           schema_pkg_apis_management_v1_OwnedAccessKeyStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.PlatformDB":                                     schema_pkg_apis_management_v1_PlatformDB(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.PredefinedApp":                                  schema_pkg_apis_management_v1_PredefinedApp(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Project":                                        schema_pkg_apis_management_v1_Project(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfo":                               schema_pkg_apis_management_v1_ProjectChartInfo(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoList":                           schema_pkg_apis_management_v1_ProjectChartInfoList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoSpec":                           schema_pkg_apis_management_v1_ProjectChartInfoSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartInfoStatus":                         schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectCharts":                                  schema_pkg_apis_management_v1_ProjectCharts(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectChartsList":                              schema_pkg_apis_management_v1_ProjectChartsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectClusters":                                schema_pkg_apis_management_v1_ProjectClusters(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectClustersList":                            schema_pkg_apis_management_v1_ProjectClustersList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpace":                             schema_pkg_apis_management_v1_ProjectImportSpace(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpaceList":                         schema_pkg_apis_management_v1_ProjectImportSpaceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectImportSpaceSource":                       schema_pkg_apis_management_v1_ProjectImportSpaceSource(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectList":                                    schema_pkg_apis_management_v1_ProjectList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMember":                                  schema_pkg_apis_management_v1_ProjectMember(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembers":                                 schema_pkg_apis_management_v1_ProjectMembers(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembersList":                             schema_pkg_apis_management_v1_ProjectMembersList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMembership":                              schema_pkg_apis_management_v1_ProjectMembership(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstance":                    schema_pkg_apis_management_v1_ProjectMigrateSpaceInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstanceList":                schema_pkg_apis_management_v1_ProjectMigrateSpaceInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateSpaceInstanceSource":              schema_pkg_apis_management_v1_ProjectMigrateSpaceInstanceSource(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstance":           schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstanceList":       schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectMigrateVirtualClusterInstanceSource":     schema_pkg_apis_management_v1_ProjectMigrateVirtualClusterInstanceSource(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectNodeTypes":                               schema_pkg_apis_management_v1_ProjectNodeTypes(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectNodeTypesList":                           schema_pkg_apis_management_v1_ProjectNodeTypesList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectRole":                                    schema_pkg_apis_management_v1_ProjectRole(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecret":                                  schema_pkg_apis_management_v1_ProjectSecret(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretList":                              schema_pkg_apis_management_v1_ProjectSecretList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretSpec":                              schema_pkg_apis_management_v1_ProjectSecretSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSecretStatus":                            schema_pkg_apis_management_v1_ProjectSecretStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectSpec":                                    schema_pkg_apis_management_v1_ProjectSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectStatus":                                  schema_pkg_apis_management_v1_ProjectStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplates":                               schema_pkg_apis_management_v1_ProjectTemplates(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ProjectTemplatesList":                           schema_pkg_apis_management_v1_ProjectTemplatesList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectToken":                                  schema_pkg_apis_management_v1_RedirectToken(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenClaims":                            schema_pkg_apis_management_v1_RedirectTokenClaims(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenList":                              schema_pkg_apis_management_v1_RedirectTokenList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenSpec":                              schema_pkg_apis_management_v1_RedirectTokenSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RedirectTokenStatus":                            schema_pkg_apis_management_v1_RedirectTokenStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualCluster":                         schema_pkg_apis_management_v1_RegisterVirtualCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterList":                     schema_pkg_apis_management_v1_RegisterVirtualClusterList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterSpec":                     schema_pkg_apis_management_v1_RegisterVirtualClusterSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.RegisterVirtualClusterStatus":                   schema_pkg_apis_management_v1_RegisterVirtualClusterStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKey":                                 schema_pkg_apis_management_v1_ResetAccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeyList":                             schema_pkg_apis_management_v1_ResetAccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeySpec":                             schema_pkg_apis_management_v1_ResetAccessKeySpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.ResetAccessKeyStatus":                           schema_pkg_apis_management_v1_ResetAccessKeyStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Self":                                           schema_pkg_apis_management_v1_Self(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfList":                                       schema_pkg_apis_management_v1_SelfList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSpec":                                       schema_pkg_apis_management_v1_SelfSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfStatus":                                     schema_pkg_apis_management_v1_SelfStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReview":                        schema_pkg_apis_management_v1_SelfSubjectAccessReview(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewList":                    schema_pkg_apis_management_v1_SelfSubjectAccessReviewList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewSpec":                    schema_pkg_apis_management_v1_SelfSubjectAccessReviewSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SelfSubjectAccessReviewStatus":                  schema_pkg_apis_management_v1_SelfSubjectAccessReviewStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecret":                                   schema_pkg_apis_management_v1_SharedSecret(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretList":                               schema_pkg_apis_management_v1_SharedSecretList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretSpec":                               schema_pkg_apis_management_v1_SharedSecretSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SharedSecretStatus":                             schema_pkg_apis_management_v1_SharedSecretStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SnapshotTaken":                                  schema_pkg_apis_management_v1_SnapshotTaken(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstance":                                  schema_pkg_apis_management_v1_SpaceInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceList":                              schema_pkg_apis_management_v1_SpaceInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceSpec":                              schema_pkg_apis_management_v1_SpaceInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceInstanceStatus":                            schema_pkg_apis_management_v1_SpaceInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplate":                                  schema_pkg_apis_management_v1_SpaceTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateList":                              schema_pkg_apis_management_v1_SpaceTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateSpec":                              schema_pkg_apis_management_v1_SpaceTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SpaceTemplateStatus":                            schema_pkg_apis_management_v1_SpaceTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.StandaloneEtcdPeer":                             schema_pkg_apis_management_v1_StandaloneEtcdPeer(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.StandaloneEtcdPeerCoordinator":                  schema_pkg_apis_management_v1_StandaloneEtcdPeerCoordinator(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.StandalonePKI":                                  schema_pkg_apis_management_v1_StandalonePKI(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReview":                            schema_pkg_apis_management_v1_SubjectAccessReview(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewList":                        schema_pkg_apis_management_v1_SubjectAccessReviewList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewSpec":                        schema_pkg_apis_management_v1_SubjectAccessReviewSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.SubjectAccessReviewStatus":                      schema_pkg_apis_management_v1_SubjectAccessReviewStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Task":                                           schema_pkg_apis_management_v1_Task(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskList":                                       schema_pkg_apis_management_v1_TaskList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLog":                                        schema_pkg_apis_management_v1_TaskLog(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLogList":                                    schema_pkg_apis_management_v1_TaskLogList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskLogOptions":                                 schema_pkg_apis_management_v1_TaskLogOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskSpec":                                       schema_pkg_apis_management_v1_TaskSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TaskStatus":                                     schema_pkg_apis_management_v1_TaskStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.Team":                                           schema_pkg_apis_management_v1_Team(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeys":                                 schema_pkg_apis_management_v1_TeamAccessKeys(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeysList":                             schema_pkg_apis_management_v1_TeamAccessKeysList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamClusters":                                   schema_pkg_apis_management_v1_TeamClusters(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamClustersList":                               schema_pkg_apis_management_v1_TeamClustersList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamList":                                       schema_pkg_apis_management_v1_TeamList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamObjectPermissions":                          schema_pkg_apis_management_v1_TeamObjectPermissions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamObjectPermissionsList":                      schema_pkg_apis_management_v1_TeamObjectPermissionsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamPermissions":                                schema_pkg_apis_management_v1_TeamPermissions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamPermissionsList":                            schema_pkg_apis_management_v1_TeamPermissionsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamSpec":                                       schema_pkg_apis_management_v1_TeamSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TeamStatus":                                     schema_pkg_apis_management_v1_TeamStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceName":                     schema_pkg_apis_management_v1_TranslateDevsyResourceName(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameList":                 schema_pkg_apis_management_v1_TranslateDevsyResourceNameList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameSpec":                 schema_pkg_apis_management_v1_TranslateDevsyResourceNameSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.TranslateDevsyResourceNameStatus":               schema_pkg_apis_management_v1_TranslateDevsyResourceNameStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownload":                                  schema_pkg_apis_management_v1_UsageDownload(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadList":                              schema_pkg_apis_management_v1_UsageDownloadList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadSpec":                              schema_pkg_apis_management_v1_UsageDownloadSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UsageDownloadStatus":                            schema_pkg_apis_management_v1_UsageDownloadStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.User":                                           schema_pkg_apis_management_v1_User(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeys":                                 schema_pkg_apis_management_v1_UserAccessKeys(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserAccessKeysList":                             schema_pkg_apis_management_v1_UserAccessKeysList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserClusters":                                   schema_pkg_apis_management_v1_UserClusters(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserClustersList":                               schema_pkg_apis_management_v1_UserClustersList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserInfo":                                       schema_pkg_apis_management_v1_UserInfo(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserList":                                       schema_pkg_apis_management_v1_UserList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserObjectPermissions":                          schema_pkg_apis_management_v1_UserObjectPermissions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserObjectPermissionsList":                      schema_pkg_apis_management_v1_UserObjectPermissionsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissions":                                schema_pkg_apis_management_v1_UserPermissions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissionsList":                            schema_pkg_apis_management_v1_UserPermissionsList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserPermissionsRole":                            schema_pkg_apis_management_v1_UserPermissionsRole(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfile":                                    schema_pkg_apis_management_v1_UserProfile(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfileList":                                schema_pkg_apis_management_v1_UserProfileList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserProfileSecret":                              schema_pkg_apis_management_v1_UserProfileSecret(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserQuotasOptions":                              schema_pkg_apis_management_v1_UserQuotasOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserSpacesOptions":                              schema_pkg_apis_management_v1_UserSpacesOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserSpec":                                       schema_pkg_apis_management_v1_UserSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserStatus":                                     schema_pkg_apis_management_v1_UserStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.UserVirtualClustersOptions":                     schema_pkg_apis_management_v1_UserVirtualClustersOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKey":                        schema_pkg_apis_management_v1_VirtualClusterAccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKeyList":                    schema_pkg_apis_management_v1_VirtualClusterAccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase":                 schema_pkg_apis_management_v1_VirtualClusterExternalDatabase(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseList":             schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseSpec":             schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabaseStatus":           schema_pkg_apis_management_v1_VirtualClusterExternalDatabaseStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstance":                         schema_pkg_apis_management_v1_VirtualClusterInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig":               schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigList":           schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigSpec":           schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfigStatus":         schema_pkg_apis_management_v1_VirtualClusterInstanceKubeConfigStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceList":                     schema_pkg_apis_management_v1_VirtualClusterInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLog":                      schema_pkg_apis_management_v1_VirtualClusterInstanceLog(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLogList":                  schema_pkg_apis_management_v1_VirtualClusterInstanceLogList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceLogOptions":               schema_pkg_apis_management_v1_VirtualClusterInstanceLogOptions(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshot":                 schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshot(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshotList":             schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshotList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSnapshotStatus":           schema_pkg_apis_management_v1_VirtualClusterInstanceSnapshotStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceSpec":                     schema_pkg_apis_management_v1_VirtualClusterInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceStatus":                   schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey":                    schema_pkg_apis_management_v1_VirtualClusterNodeAccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeyList":                schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeySpec":                schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeySpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKeyStatus":              schema_pkg_apis_management_v1_VirtualClusterNodeAccessKeyStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterRole":                             schema_pkg_apis_management_v1_VirtualClusterRole(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchema":                           schema_pkg_apis_management_v1_VirtualClusterSchema(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaList":                       schema_pkg_apis_management_v1_VirtualClusterSchemaList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaSpec":                       schema_pkg_apis_management_v1_VirtualClusterSchemaSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterSchemaStatus":                     schema_pkg_apis_management_v1_VirtualClusterSchemaStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone":                       schema_pkg_apis_management_v1_VirtualClusterStandalone(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneList":                   schema_pkg_apis_management_v1_VirtualClusterStandaloneList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneSpec":                   schema_pkg_apis_management_v1_VirtualClusterStandaloneSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandaloneStatus":                 schema_pkg_apis_management_v1_VirtualClusterStandaloneStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplate":                         schema_pkg_apis_management_v1_VirtualClusterTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateList":                     schema_pkg_apis_management_v1_VirtualClusterTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateSpec":                     schema_pkg_apis_management_v1_VirtualClusterTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterTemplateStatus":                   schema_pkg_apis_management_v1_VirtualClusterTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Access":                                            schema_pkg_apis_storage_v1_Access(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKey":                                         schema_pkg_apis_storage_v1_AccessKey(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyList":                                     schema_pkg_apis_storage_v1_AccessKeyList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyOIDC":                                     schema_pkg_apis_storage_v1_AccessKeyOIDC(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyOIDCProvider":                             schema_pkg_apis_storage_v1_AccessKeyOIDCProvider(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScope":                                    schema_pkg_apis_storage_v1_AccessKeyScope(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeCluster":                             schema_pkg_apis_storage_v1_AccessKeyScopeCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeProject":                             schema_pkg_apis_storage_v1_AccessKeyScopeProject(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeRole":                                schema_pkg_apis_storage_v1_AccessKeyScopeRole(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeRule":                                schema_pkg_apis_storage_v1_AccessKeyScopeRule(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeSpace":                               schema_pkg_apis_storage_v1_AccessKeyScopeSpace(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyScopeVirtualCluster":                      schema_pkg_apis_storage_v1_AccessKeyScopeVirtualCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeySpec":                                     schema_pkg_apis_storage_v1_AccessKeySpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyStatus":                                   schema_pkg_apis_storage_v1_AccessKeyStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AccessKeyVirtualCluster":                           schema_pkg_apis_storage_v1_AccessKeyVirtualCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedCluster":                                    schema_pkg_apis_storage_v1_AllowedCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedClusterAccountTemplate":                     schema_pkg_apis_storage_v1_AllowedClusterAccountTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedRunner":                                     schema_pkg_apis_storage_v1_AllowedRunner(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AllowedTemplate":                                   schema_pkg_apis_storage_v1_AllowedTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.App":                                               schema_pkg_apis_storage_v1_App(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppConfig":                                         schema_pkg_apis_storage_v1_AppConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppList":                                           schema_pkg_apis_storage_v1_AppList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter":                                      schema_pkg_apis_storage_v1_AppParameter(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppReference":                                      schema_pkg_apis_storage_v1_AppReference(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppSpec":                                           schema_pkg_apis_storage_v1_AppSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppStatus":                                         schema_pkg_apis_storage_v1_AppStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppTask":                                           schema_pkg_apis_storage_v1_AppTask(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion":                                        schema_pkg_apis_storage_v1_AppVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoIntegrationSpec":                               schema_pkg_apis_storage_v1_ArgoIntegrationSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectPolicyRule":                             schema_pkg_apis_storage_v1_ArgoProjectPolicyRule(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectRole":                                   schema_pkg_apis_storage_v1_ArgoProjectRole(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectSpec":                                   schema_pkg_apis_storage_v1_ArgoProjectSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoProjectSpecMetadata":                           schema_pkg_apis_storage_v1_ArgoProjectSpecMetadata(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ArgoSSOSpec":                                       schema_pkg_apis_storage_v1_ArgoSSOSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.BCMNodeTypeSpec":                                   schema_pkg_apis_storage_v1_BCMNodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Chart":                                             schema_pkg_apis_storage_v1_Chart(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ChartStatus":                                       schema_pkg_apis_storage_v1_ChartStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Cluster":                                           schema_pkg_apis_storage_v1_Cluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccess":                                     schema_pkg_apis_storage_v1_ClusterAccess(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessList":                                 schema_pkg_apis_storage_v1_ClusterAccessList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessSpec":                                 schema_pkg_apis_storage_v1_ClusterAccessSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterAccessStatus":                               schema_pkg_apis_storage_v1_ClusterAccessStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterList":                                       schema_pkg_apis_storage_v1_ClusterList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRef":                                        schema_pkg_apis_storage_v1_ClusterRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleRef":                                    schema_pkg_apis_storage_v1_ClusterRoleRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplate":                               schema_pkg_apis_storage_v1_ClusterRoleTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateList":                           schema_pkg_apis_storage_v1_ClusterRoleTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateSpec":                           schema_pkg_apis_storage_v1_ClusterRoleTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateStatus":                         schema_pkg_apis_storage_v1_ClusterRoleTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterRoleTemplateTemplate":                       schema_pkg_apis_storage_v1_ClusterRoleTemplateTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterSpec":                                       schema_pkg_apis_storage_v1_ClusterSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ClusterStatus":                                     schema_pkg_apis_storage_v1_ClusterStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.CredentialForwarding":                              schema_pkg_apis_storage_v1_CredentialForwarding(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandDeleteOptions":                         schema_pkg_apis_storage_v1_DevsyCommandDeleteOptions(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandStatusOptions":                         schema_pkg_apis_storage_v1_DevsyCommandStatusOptions(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyCommandStopOptions":                           schema_pkg_apis_storage_v1_DevsyCommandStopOptions(ref),
@@ -561,3926 +496,574 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateVersion":                     schema_pkg_apis_storage_v1_DevsyWorkspaceTemplateVersion(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimSpec":                     schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimSpec(ref),
 		"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceVolumeClaimTemplate":                 schema_pkg_apis_storage_v1_DevsyWorkspaceVolumeClaimTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.DockerCredentialForwarding":                         schema_pkg_apis_storage_v1_DockerCredentialForwarding(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.EntityInfo":                                         schema_pkg_apis_storage_v1_EntityInfo(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef":                                     schema_pkg_apis_storage_v1_EnvironmentRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.GitCredentialForwarding":                            schema_pkg_apis_storage_v1_GitCredentialForwarding(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.GitEnvironmentTemplate":                             schema_pkg_apis_storage_v1_GitEnvironmentTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.GitProjectCredentials":                              schema_pkg_apis_storage_v1_GitProjectCredentials(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.GitProjectSpec":                                     schema_pkg_apis_storage_v1_GitProjectSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.GroupResources":                                     schema_pkg_apis_storage_v1_GroupResources(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmChart":                                          schema_pkg_apis_storage_v1_HelmChart(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmChartRepository":                                schema_pkg_apis_storage_v1_HelmChartRepository(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration":                                  schema_pkg_apis_storage_v1_HelmConfiguration(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmTask":                                           schema_pkg_apis_storage_v1_HelmTask(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmTaskRelease":                                    schema_pkg_apis_storage_v1_HelmTaskRelease(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ImportVirtualClustersSpec":                          schema_pkg_apis_storage_v1_ImportVirtualClustersSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceAccess":                                     schema_pkg_apis_storage_v1_InstanceAccess(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceAccessRule":                                 schema_pkg_apis_storage_v1_InstanceAccessRule(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceDeployedAppStatus":                          schema_pkg_apis_storage_v1_InstanceDeployedAppStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.KindSecretRef":                                      schema_pkg_apis_storage_v1_KindSecretRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtClusterRef":                                 schema_pkg_apis_storage_v1_KubeVirtClusterRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtNodeTypeSpec":                               schema_pkg_apis_storage_v1_KubeVirtNodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterAccessSpec":                             schema_pkg_apis_storage_v1_LocalClusterAccessSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterAccessTemplate":                         schema_pkg_apis_storage_v1_LocalClusterAccessTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterRoleTemplate":                           schema_pkg_apis_storage_v1_LocalClusterRoleTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterRoleTemplateSpec":                       schema_pkg_apis_storage_v1_LocalClusterRoleTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta":                          schema_pkg_apis_storage_v1_ManagedNodeTypeObjectMeta(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Member":                                             schema_pkg_apis_storage_v1_Member(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Metrics":                                            schema_pkg_apis_storage_v1_Metrics(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NamedNodeTypeSpec":                                  schema_pkg_apis_storage_v1_NamedNodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern":                                   schema_pkg_apis_storage_v1_NamespacePattern(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NamespacedRef":                                      schema_pkg_apis_storage_v1_NamespacedRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeer":                                        schema_pkg_apis_storage_v1_NetworkPeer(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerList":                                    schema_pkg_apis_storage_v1_NetworkPeerList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerSpec":                                    schema_pkg_apis_storage_v1_NetworkPeerSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerStatus":                                  schema_pkg_apis_storage_v1_NetworkPeerStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaim":                                          schema_pkg_apis_storage_v1_NodeClaim(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimList":                                      schema_pkg_apis_storage_v1_NodeClaimList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimSpec":                                      schema_pkg_apis_storage_v1_NodeClaimSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimStatus":                                    schema_pkg_apis_storage_v1_NodeClaimStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironment":                                    schema_pkg_apis_storage_v1_NodeEnvironment(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentList":                                schema_pkg_apis_storage_v1_NodeEnvironmentList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentSpec":                                schema_pkg_apis_storage_v1_NodeEnvironmentSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentStatus":                              schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProvider":                                       schema_pkg_apis_storage_v1_NodeProvider(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderBCM":                                    schema_pkg_apis_storage_v1_NodeProviderBCM(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderKubeVirt":                               schema_pkg_apis_storage_v1_NodeProviderKubeVirt(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderList":                                   schema_pkg_apis_storage_v1_NodeProviderList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderSpec":                                   schema_pkg_apis_storage_v1_NodeProviderSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderStatus":                                 schema_pkg_apis_storage_v1_NodeProviderStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderTerraform":                              schema_pkg_apis_storage_v1_NodeProviderTerraform(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeType":                                           schema_pkg_apis_storage_v1_NodeType(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity":                                   schema_pkg_apis_storage_v1_NodeTypeCapacity(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeList":                                       schema_pkg_apis_storage_v1_NodeTypeList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead":                                   schema_pkg_apis_storage_v1_NodeTypeOverhead(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeSpec":                                       schema_pkg_apis_storage_v1_NodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeStatus":                                     schema_pkg_apis_storage_v1_NodeTypeStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus":                                      schema_pkg_apis_storage_v1_ObjectsStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.OpenCost":                                           schema_pkg_apis_storage_v1_OpenCost(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.PodSelector":                                        schema_pkg_apis_storage_v1_PodSelector(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef":                                          schema_pkg_apis_storage_v1_PresetRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Project":                                            schema_pkg_apis_storage_v1_Project(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectList":                                        schema_pkg_apis_storage_v1_ProjectList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectSpec":                                        schema_pkg_apis_storage_v1_ProjectSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectStatus":                                      schema_pkg_apis_storage_v1_ProjectStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus":                                        schema_pkg_apis_storage_v1_QuotaStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusProject":                                 schema_pkg_apis_storage_v1_QuotaStatusProject(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusProjectCluster":                          schema_pkg_apis_storage_v1_QuotaStatusProjectCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusUser":                                    schema_pkg_apis_storage_v1_QuotaStatusUser(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusUserUsed":                                schema_pkg_apis_storage_v1_QuotaStatusUserUsed(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Quotas":                                             schema_pkg_apis_storage_v1_Quotas(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec":                             schema_pkg_apis_storage_v1_RancherIntegrationSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.RancherProjectRef":                                  schema_pkg_apis_storage_v1_RancherProjectRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset":                                      schema_pkg_apis_storage_v1_RequirePreset(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate":                                    schema_pkg_apis_storage_v1_RequireTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef":                                          schema_pkg_apis_storage_v1_RunnerRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SSOIdentity":                                        schema_pkg_apis_storage_v1_SSOIdentity(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SecretRef":                                          schema_pkg_apis_storage_v1_SecretRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecret":                                       schema_pkg_apis_storage_v1_SharedSecret(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretList":                                   schema_pkg_apis_storage_v1_SharedSecretList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretSpec":                                   schema_pkg_apis_storage_v1_SharedSecretSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretStatus":                                 schema_pkg_apis_storage_v1_SharedSecretStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstance":                                      schema_pkg_apis_storage_v1_SpaceInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceList":                                  schema_pkg_apis_storage_v1_SpaceInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceSpec":                                  schema_pkg_apis_storage_v1_SpaceInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceStatus":                                schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceTemplateDefinition":                    schema_pkg_apis_storage_v1_SpaceInstanceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplate":                                      schema_pkg_apis_storage_v1_SpaceTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition":                            schema_pkg_apis_storage_v1_SpaceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateList":                                  schema_pkg_apis_storage_v1_SpaceTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateSpec":                                  schema_pkg_apis_storage_v1_SpaceTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateStatus":                                schema_pkg_apis_storage_v1_SpaceTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateVersion":                               schema_pkg_apis_storage_v1_SpaceTemplateVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Storage":                                            schema_pkg_apis_storage_v1_Storage(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer":                                    schema_pkg_apis_storage_v1_StreamContainer(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.SyncMembersSpec":                                    schema_pkg_apis_storage_v1_SyncMembersSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Target":                                             schema_pkg_apis_storage_v1_Target(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetCluster":                                      schema_pkg_apis_storage_v1_TargetCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetInstance":                                     schema_pkg_apis_storage_v1_TargetInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetVirtualCluster":                               schema_pkg_apis_storage_v1_TargetVirtualCluster(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Task":                                               schema_pkg_apis_storage_v1_Task(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskDefinition":                                     schema_pkg_apis_storage_v1_TaskDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskList":                                           schema_pkg_apis_storage_v1_TaskList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskSpec":                                           schema_pkg_apis_storage_v1_TaskSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskStatus":                                         schema_pkg_apis_storage_v1_TaskStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.Team":                                               schema_pkg_apis_storage_v1_Team(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamList":                                           schema_pkg_apis_storage_v1_TeamList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamSpec":                                           schema_pkg_apis_storage_v1_TeamSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamStatus":                                         schema_pkg_apis_storage_v1_TeamStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateHelmChart":                                  schema_pkg_apis_storage_v1_TemplateHelmChart(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata":                                   schema_pkg_apis_storage_v1_TemplateMetadata(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef":                                        schema_pkg_apis_storage_v1_TemplateRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformNodeTypeSpec":                              schema_pkg_apis_storage_v1_TerraformNodeTypeSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplate":                                  schema_pkg_apis_storage_v1_TerraformTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplateSourceGit":                         schema_pkg_apis_storage_v1_TerraformTemplateSourceGit(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.User":                                               schema_pkg_apis_storage_v1_User(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.UserList":                                           schema_pkg_apis_storage_v1_UserList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam":                                         schema_pkg_apis_storage_v1_UserOrTeam(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeamEntity":                                   schema_pkg_apis_storage_v1_UserOrTeamEntity(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.UserSpec":                                           schema_pkg_apis_storage_v1_UserSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.UserStatus":                                         schema_pkg_apis_storage_v1_UserStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VaultAuthSpec":                                      schema_pkg_apis_storage_v1_VaultAuthSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec":                               schema_pkg_apis_storage_v1_VaultIntegrationSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterAccessPoint":                          schema_pkg_apis_storage_v1_VirtualClusterAccessPoint(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterAccessPointIngressSpec":               schema_pkg_apis_storage_v1_VirtualClusterAccessPointIngressSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterClusterRef":                           schema_pkg_apis_storage_v1_VirtualClusterClusterRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterCommonSpec":                           schema_pkg_apis_storage_v1_VirtualClusterCommonSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmChart":                            schema_pkg_apis_storage_v1_VirtualClusterHelmChart(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmRelease":                          schema_pkg_apis_storage_v1_VirtualClusterHelmRelease(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus":                    schema_pkg_apis_storage_v1_VirtualClusterHelmReleaseStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstance":                             schema_pkg_apis_storage_v1_VirtualClusterInstance(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceList":                         schema_pkg_apis_storage_v1_VirtualClusterInstanceList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceSpec":                         schema_pkg_apis_storage_v1_VirtualClusterInstanceSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceStatus":                       schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceTemplateDefinition":           schema_pkg_apis_storage_v1_VirtualClusterInstanceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterProSpec":                              schema_pkg_apis_storage_v1_VirtualClusterProSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterSpaceTemplateDefinition":              schema_pkg_apis_storage_v1_VirtualClusterSpaceTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterStatus":                               schema_pkg_apis_storage_v1_VirtualClusterStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplate":                             schema_pkg_apis_storage_v1_VirtualClusterTemplate(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition":                   schema_pkg_apis_storage_v1_VirtualClusterTemplateDefinition(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateList":                         schema_pkg_apis_storage_v1_VirtualClusterTemplateList(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateSpaceTemplateRef":             schema_pkg_apis_storage_v1_VirtualClusterTemplateSpaceTemplateRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateSpec":                         schema_pkg_apis_storage_v1_VirtualClusterTemplateSpec(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateStatus":                       schema_pkg_apis_storage_v1_VirtualClusterTemplateStatus(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateVersion":                      schema_pkg_apis_storage_v1_VirtualClusterTemplateVersion(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceRef":                                       schema_pkg_apis_storage_v1_WorkspaceRef(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget":                            schema_pkg_apis_storage_v1_WorkspaceResolvedTarget(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceStatusResult":                              schema_pkg_apis_storage_v1_WorkspaceStatusResult(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget":                                    schema_pkg_apis_storage_v1_WorkspaceTarget(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTargetName":                                schema_pkg_apis_storage_v1_WorkspaceTargetName(ref),
-		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTargetNamespace":                           schema_pkg_apis_storage_v1_WorkspaceTargetNamespace(ref),
-		corev1.AWSElasticBlockStoreVolumeSource{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_AWSElasticBlockStoreVolumeSource(ref),
-		corev1.Affinity{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_Affinity(ref),
-		corev1.AppArmorProfile{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_AppArmorProfile(ref),
-		corev1.AttachedVolume{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_AttachedVolume(ref),
-		corev1.AvoidPods{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_AvoidPods(ref),
-		corev1.AzureDiskVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_AzureDiskVolumeSource(ref),
-		corev1.AzureFilePersistentVolumeSource{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_AzureFilePersistentVolumeSource(ref),
-		corev1.AzureFileVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_AzureFileVolumeSource(ref),
-		corev1.Binding{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_Binding(ref),
-		corev1.CSIPersistentVolumeSource{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_CSIPersistentVolumeSource(ref),
-		corev1.CSIVolumeSource{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_CSIVolumeSource(ref),
-		corev1.Capabilities{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_Capabilities(ref),
-		corev1.CephFSPersistentVolumeSource{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_CephFSPersistentVolumeSource(ref),
-		corev1.CephFSVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_CephFSVolumeSource(ref),
-		corev1.CinderPersistentVolumeSource{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_CinderPersistentVolumeSource(ref),
-		corev1.CinderVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_CinderVolumeSource(ref),
-		corev1.ClientIPConfig{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ClientIPConfig(ref),
-		corev1.ClusterTrustBundleProjection{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_ClusterTrustBundleProjection(ref),
-		corev1.ComponentCondition{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ComponentCondition(ref),
-		corev1.ComponentStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ComponentStatus(ref),
-		corev1.ComponentStatusList{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ComponentStatusList(ref),
-		corev1.ConfigMap{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_ConfigMap(ref),
-		corev1.ConfigMapEnvSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ConfigMapEnvSource(ref),
-		corev1.ConfigMapKeySelector{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ConfigMapKeySelector(ref),
-		corev1.ConfigMapList{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ConfigMapList(ref),
-		corev1.ConfigMapNodeConfigSource{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_ConfigMapNodeConfigSource(ref),
-		corev1.ConfigMapProjection{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ConfigMapProjection(ref),
-		corev1.ConfigMapVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ConfigMapVolumeSource(ref),
-		corev1.Container{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_Container(ref),
-		corev1.ContainerExtendedResourceRequest{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_ContainerExtendedResourceRequest(ref),
-		corev1.ContainerImage{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ContainerImage(ref),
-		corev1.ContainerPort{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ContainerPort(ref),
-		corev1.ContainerResizePolicy{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ContainerResizePolicy(ref),
-		corev1.ContainerRestartRule{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ContainerRestartRule(ref),
-		corev1.ContainerRestartRuleOnExitCodes{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_ContainerRestartRuleOnExitCodes(ref),
-		corev1.ContainerState{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ContainerState(ref),
-		corev1.ContainerStateRunning{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ContainerStateRunning(ref),
-		corev1.ContainerStateTerminated{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_ContainerStateTerminated(ref),
-		corev1.ContainerStateWaiting{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ContainerStateWaiting(ref),
-		corev1.ContainerStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ContainerStatus(ref),
-		corev1.ContainerUser{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ContainerUser(ref),
-		corev1.DaemonEndpoint{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_DaemonEndpoint(ref),
-		corev1.DownwardAPIProjection{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_DownwardAPIProjection(ref),
-		corev1.DownwardAPIVolumeFile{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_DownwardAPIVolumeFile(ref),
-		corev1.DownwardAPIVolumeSource{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_DownwardAPIVolumeSource(ref),
-		corev1.EmptyDirVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_EmptyDirVolumeSource(ref),
-		corev1.EndpointAddress{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_EndpointAddress(ref),
-		corev1.EndpointPort{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_EndpointPort(ref),
-		corev1.EndpointSubset{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_EndpointSubset(ref),
-		corev1.Endpoints{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_Endpoints(ref),
-		corev1.EndpointsList{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_EndpointsList(ref),
-		corev1.EnvFromSource{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_EnvFromSource(ref),
-		corev1.EnvVar{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_EnvVar(ref),
-		corev1.EnvVarSource{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_EnvVarSource(ref),
-		corev1.EphemeralContainer{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_EphemeralContainer(ref),
-		corev1.EphemeralContainerCommon{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_EphemeralContainerCommon(ref),
-		corev1.EphemeralVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_EphemeralVolumeSource(ref),
-		corev1.Event{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_Event(ref),
-		corev1.EventList{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_EventList(ref),
-		corev1.EventSeries{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_EventSeries(ref),
-		corev1.EventSource{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_EventSource(ref),
-		corev1.ExecAction{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_ExecAction(ref),
-		corev1.FCVolumeSource{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_FCVolumeSource(ref),
-		corev1.FileKeySelector{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_FileKeySelector(ref),
-		corev1.FlexPersistentVolumeSource{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_FlexPersistentVolumeSource(ref),
-		corev1.FlexVolumeSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_FlexVolumeSource(ref),
-		corev1.FlockerVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_FlockerVolumeSource(ref),
-		corev1.GCEPersistentDiskVolumeSource{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_GCEPersistentDiskVolumeSource(ref),
-		corev1.GRPCAction{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_GRPCAction(ref),
-		corev1.GitRepoVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_GitRepoVolumeSource(ref),
-		corev1.GlusterfsPersistentVolumeSource{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_GlusterfsPersistentVolumeSource(ref),
-		corev1.GlusterfsVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_GlusterfsVolumeSource(ref),
-		corev1.HTTPGetAction{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_HTTPGetAction(ref),
-		corev1.HTTPHeader{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_HTTPHeader(ref),
-		corev1.HostAlias{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_HostAlias(ref),
-		corev1.HostIP{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_HostIP(ref),
-		corev1.HostPathVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_HostPathVolumeSource(ref),
-		corev1.ISCSIPersistentVolumeSource{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_ISCSIPersistentVolumeSource(ref),
-		corev1.ISCSIVolumeSource{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_ISCSIVolumeSource(ref),
-		corev1.ImageVolumeSource{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_ImageVolumeSource(ref),
-		corev1.KeyToPath{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_KeyToPath(ref),
-		corev1.Lifecycle{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_Lifecycle(ref),
-		corev1.LifecycleHandler{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_LifecycleHandler(ref),
-		corev1.LimitRange{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_LimitRange(ref),
-		corev1.LimitRangeItem{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_LimitRangeItem(ref),
-		corev1.LimitRangeList{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_LimitRangeList(ref),
-		corev1.LimitRangeSpec{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_LimitRangeSpec(ref),
-		corev1.LinuxContainerUser{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_LinuxContainerUser(ref),
-		corev1.List{}.OpenAPIModelName():                                                                  schema_k8sio_api_core_v1_List(ref),
-		corev1.LoadBalancerIngress{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_LoadBalancerIngress(ref),
-		corev1.LoadBalancerStatus{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_LoadBalancerStatus(ref),
-		corev1.LocalObjectReference{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_LocalObjectReference(ref),
-		corev1.LocalVolumeSource{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_LocalVolumeSource(ref),
-		corev1.ModifyVolumeStatus{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ModifyVolumeStatus(ref),
-		corev1.NFSVolumeSource{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_NFSVolumeSource(ref),
-		corev1.Namespace{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_Namespace(ref),
-		corev1.NamespaceCondition{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_NamespaceCondition(ref),
-		corev1.NamespaceList{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NamespaceList(ref),
-		corev1.NamespaceSpec{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NamespaceSpec(ref),
-		corev1.NamespaceStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_NamespaceStatus(ref),
-		corev1.Node{}.OpenAPIModelName():                                                                  schema_k8sio_api_core_v1_Node(ref),
-		corev1.NodeAddress{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_NodeAddress(ref),
-		corev1.NodeAffinity{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_NodeAffinity(ref),
-		corev1.NodeCondition{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NodeCondition(ref),
-		corev1.NodeConfigSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NodeConfigSource(ref),
-		corev1.NodeConfigStatus{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NodeConfigStatus(ref),
-		corev1.NodeDaemonEndpoints{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_NodeDaemonEndpoints(ref),
-		corev1.NodeFeatures{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_NodeFeatures(ref),
-		corev1.NodeList{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_NodeList(ref),
-		corev1.NodeProxyOptions{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NodeProxyOptions(ref),
-		corev1.NodeRuntimeHandler{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_NodeRuntimeHandler(ref),
-		corev1.NodeRuntimeHandlerFeatures{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_NodeRuntimeHandlerFeatures(ref),
-		corev1.NodeSelector{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_NodeSelector(ref),
-		corev1.NodeSelectorRequirement{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_NodeSelectorRequirement(ref),
-		corev1.NodeSelectorTerm{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NodeSelectorTerm(ref),
-		corev1.NodeSpec{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_NodeSpec(ref),
-		corev1.NodeStatus{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_NodeStatus(ref),
-		corev1.NodeSwapStatus{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_NodeSwapStatus(ref),
-		corev1.NodeSystemInfo{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_NodeSystemInfo(ref),
-		corev1.ObjectFieldSelector{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ObjectFieldSelector(ref),
-		corev1.ObjectReference{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ObjectReference(ref),
-		corev1.PersistentVolume{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PersistentVolume(ref),
-		corev1.PersistentVolumeClaim{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PersistentVolumeClaim(ref),
-		corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_PersistentVolumeClaimCondition(ref),
-		corev1.PersistentVolumeClaimList{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_PersistentVolumeClaimList(ref),
-		corev1.PersistentVolumeClaimSpec{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_PersistentVolumeClaimSpec(ref),
-		corev1.PersistentVolumeClaimStatus{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_PersistentVolumeClaimStatus(ref),
-		corev1.PersistentVolumeClaimTemplate{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_PersistentVolumeClaimTemplate(ref),
-		corev1.PersistentVolumeClaimVolumeSource{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_PersistentVolumeClaimVolumeSource(ref),
-		corev1.PersistentVolumeList{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_PersistentVolumeList(ref),
-		corev1.PersistentVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_PersistentVolumeSource(ref),
-		corev1.PersistentVolumeSpec{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_PersistentVolumeSpec(ref),
-		corev1.PersistentVolumeStatus{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_PersistentVolumeStatus(ref),
-		corev1.PhotonPersistentDiskVolumeSource{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_PhotonPersistentDiskVolumeSource(ref),
-		corev1.Pod{}.OpenAPIModelName():                                                                   schema_k8sio_api_core_v1_Pod(ref),
-		corev1.PodAffinity{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_PodAffinity(ref),
-		corev1.PodAffinityTerm{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodAffinityTerm(ref),
-		corev1.PodAntiAffinity{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodAntiAffinity(ref),
-		corev1.PodAttachOptions{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodAttachOptions(ref),
-		corev1.PodCertificateProjection{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_PodCertificateProjection(ref),
-		corev1.PodCondition{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_PodCondition(ref),
-		corev1.PodDNSConfig{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_PodDNSConfig(ref),
-		corev1.PodDNSConfigOption{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_PodDNSConfigOption(ref),
-		corev1.PodExecOptions{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_PodExecOptions(ref),
-		corev1.PodExtendedResourceClaimStatus{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_PodExtendedResourceClaimStatus(ref),
-		corev1.PodIP{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_PodIP(ref),
-		corev1.PodList{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_PodList(ref),
-		corev1.PodLogOptions{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_PodLogOptions(ref),
-		corev1.PodOS{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_PodOS(ref),
-		corev1.PodPortForwardOptions{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PodPortForwardOptions(ref),
-		corev1.PodProxyOptions{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodProxyOptions(ref),
-		corev1.PodReadinessGate{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodReadinessGate(ref),
-		corev1.PodResourceClaim{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodResourceClaim(ref),
-		corev1.PodResourceClaimStatus{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_PodResourceClaimStatus(ref),
-		corev1.PodSchedulingGate{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_PodSchedulingGate(ref),
-		corev1.PodSecurityContext{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_PodSecurityContext(ref),
-		corev1.PodSignature{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_PodSignature(ref),
-		corev1.PodSpec{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_PodSpec(ref),
-		corev1.PodStatus{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_PodStatus(ref),
-		corev1.PodStatusResult{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodStatusResult(ref),
-		corev1.PodTemplate{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_PodTemplate(ref),
-		corev1.PodTemplateList{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodTemplateList(ref),
-		corev1.PodTemplateSpec{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodTemplateSpec(ref),
-		corev1.PortStatus{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_PortStatus(ref),
-		corev1.PortworxVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_PortworxVolumeSource(ref),
-		corev1.PreferAvoidPodsEntry{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_PreferAvoidPodsEntry(ref),
-		corev1.PreferredSchedulingTerm{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_PreferredSchedulingTerm(ref),
-		corev1.Probe{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_Probe(ref),
-		corev1.ProbeHandler{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_ProbeHandler(ref),
-		corev1.ProjectedVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ProjectedVolumeSource(ref),
-		corev1.QuobyteVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_QuobyteVolumeSource(ref),
-		corev1.RBDPersistentVolumeSource{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_RBDPersistentVolumeSource(ref),
-		corev1.RBDVolumeSource{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_RBDVolumeSource(ref),
-		corev1.RangeAllocation{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_RangeAllocation(ref),
-		corev1.ReplicationController{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ReplicationController(ref),
-		corev1.ReplicationControllerCondition{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_ReplicationControllerCondition(ref),
-		corev1.ReplicationControllerList{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_ReplicationControllerList(ref),
-		corev1.ReplicationControllerSpec{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_ReplicationControllerSpec(ref),
-		corev1.ReplicationControllerStatus{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_ReplicationControllerStatus(ref),
-		corev1.ResourceClaim{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ResourceClaim(ref),
-		corev1.ResourceFieldSelector{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ResourceFieldSelector(ref),
-		corev1.ResourceHealth{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ResourceHealth(ref),
-		corev1.ResourceQuota{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ResourceQuota(ref),
-		corev1.ResourceQuotaList{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_ResourceQuotaList(ref),
-		corev1.ResourceQuotaSpec{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_ResourceQuotaSpec(ref),
-		corev1.ResourceQuotaStatus{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ResourceQuotaStatus(ref),
-		corev1.ResourceRequirements{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ResourceRequirements(ref),
-		corev1.ResourceStatus{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ResourceStatus(ref),
-		corev1.SELinuxOptions{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_SELinuxOptions(ref),
-		corev1.ScaleIOPersistentVolumeSource{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_ScaleIOPersistentVolumeSource(ref),
-		corev1.ScaleIOVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ScaleIOVolumeSource(ref),
-		corev1.ScopeSelector{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ScopeSelector(ref),
-		corev1.ScopedResourceSelectorRequirement{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_ScopedResourceSelectorRequirement(ref),
-		corev1.SeccompProfile{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_SeccompProfile(ref),
-		corev1.Secret{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Secret(ref),
-		corev1.SecretEnvSource{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_SecretEnvSource(ref),
-		corev1.SecretKeySelector{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_SecretKeySelector(ref),
-		corev1.SecretList{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_SecretList(ref),
-		corev1.SecretProjection{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_SecretProjection(ref),
-		corev1.SecretReference{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_SecretReference(ref),
-		corev1.SecretVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_SecretVolumeSource(ref),
-		corev1.SecurityContext{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_SecurityContext(ref),
-		corev1.SerializedReference{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_SerializedReference(ref),
-		corev1.Service{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_Service(ref),
-		corev1.ServiceAccount{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ServiceAccount(ref),
-		corev1.ServiceAccountList{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ServiceAccountList(ref),
-		corev1.ServiceAccountTokenProjection{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_ServiceAccountTokenProjection(ref),
-		corev1.ServiceList{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_ServiceList(ref),
-		corev1.ServicePort{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_ServicePort(ref),
-		corev1.ServiceProxyOptions{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ServiceProxyOptions(ref),
-		corev1.ServiceSpec{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_ServiceSpec(ref),
-		corev1.ServiceStatus{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ServiceStatus(ref),
-		corev1.SessionAffinityConfig{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_SessionAffinityConfig(ref),
-		corev1.SleepAction{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_SleepAction(ref),
-		corev1.StorageOSPersistentVolumeSource{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_StorageOSPersistentVolumeSource(ref),
-		corev1.StorageOSVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_StorageOSVolumeSource(ref),
-		corev1.Sysctl{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Sysctl(ref),
-		corev1.TCPSocketAction{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_TCPSocketAction(ref),
-		corev1.Taint{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_Taint(ref),
-		corev1.Toleration{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_Toleration(ref),
-		corev1.TopologySelectorLabelRequirement{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_TopologySelectorLabelRequirement(ref),
-		corev1.TopologySelectorTerm{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_TopologySelectorTerm(ref),
-		corev1.TopologySpreadConstraint{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_TopologySpreadConstraint(ref),
-		corev1.TypedLocalObjectReference{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_TypedLocalObjectReference(ref),
-		corev1.TypedObjectReference{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_TypedObjectReference(ref),
-		corev1.Volume{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Volume(ref),
-		corev1.VolumeDevice{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_VolumeDevice(ref),
-		corev1.VolumeMount{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_VolumeMount(ref),
-		corev1.VolumeMountStatus{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_VolumeMountStatus(ref),
-		corev1.VolumeNodeAffinity{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_VolumeNodeAffinity(ref),
-		corev1.VolumeProjection{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_VolumeProjection(ref),
-		corev1.VolumeResourceRequirements{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_VolumeResourceRequirements(ref),
-		corev1.VolumeSource{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_VolumeSource(ref),
-		corev1.VsphereVirtualDiskVolumeSource{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_VsphereVirtualDiskVolumeSource(ref),
-		corev1.WeightedPodAffinityTerm{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_WeightedPodAffinityTerm(ref),
-		corev1.WindowsSecurityContextOptions{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_WindowsSecurityContextOptions(ref),
-		corev1.WorkloadReference{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_WorkloadReference(ref),
-		metav1.APIGroup{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_APIGroup(ref),
-		metav1.APIGroupList{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_APIGroupList(ref),
-		metav1.APIResource{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_APIResource(ref),
-		metav1.APIResourceList{}.OpenAPIModelName():                                                       schema_pkg_apis_meta_v1_APIResourceList(ref),
-		metav1.APIVersions{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_APIVersions(ref),
-		metav1.ApplyOptions{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_ApplyOptions(ref),
-		metav1.Condition{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_Condition(ref),
-		metav1.CreateOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_CreateOptions(ref),
-		metav1.DeleteOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_DeleteOptions(ref),
-		metav1.Duration{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_Duration(ref),
-		metav1.FieldSelectorRequirement{}.OpenAPIModelName():                                              schema_pkg_apis_meta_v1_FieldSelectorRequirement(ref),
-		metav1.FieldsV1{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_FieldsV1(ref),
-		metav1.GetOptions{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_GetOptions(ref),
-		metav1.GroupKind{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_GroupKind(ref),
-		metav1.GroupResource{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_GroupResource(ref),
-		metav1.GroupVersion{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_GroupVersion(ref),
-		metav1.GroupVersionForDiscovery{}.OpenAPIModelName():                                              schema_pkg_apis_meta_v1_GroupVersionForDiscovery(ref),
-		metav1.GroupVersionKind{}.OpenAPIModelName():                                                      schema_pkg_apis_meta_v1_GroupVersionKind(ref),
-		metav1.GroupVersionResource{}.OpenAPIModelName():                                                  schema_pkg_apis_meta_v1_GroupVersionResource(ref),
-		metav1.InternalEvent{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_InternalEvent(ref),
-		metav1.LabelSelector{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_LabelSelector(ref),
-		metav1.LabelSelectorRequirement{}.OpenAPIModelName():                                              schema_pkg_apis_meta_v1_LabelSelectorRequirement(ref),
-		metav1.List{}.OpenAPIModelName():                                                                  schema_pkg_apis_meta_v1_List(ref),
-		metav1.ListMeta{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_ListMeta(ref),
-		metav1.ListOptions{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_ListOptions(ref),
-		metav1.ManagedFieldsEntry{}.OpenAPIModelName():                                                    schema_pkg_apis_meta_v1_ManagedFieldsEntry(ref),
-		metav1.MicroTime{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_MicroTime(ref),
-		metav1.ObjectMeta{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_ObjectMeta(ref),
-		metav1.OwnerReference{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_OwnerReference(ref),
-		metav1.PartialObjectMetadata{}.OpenAPIModelName():                                                 schema_pkg_apis_meta_v1_PartialObjectMetadata(ref),
-		metav1.PartialObjectMetadataList{}.OpenAPIModelName():                                             schema_pkg_apis_meta_v1_PartialObjectMetadataList(ref),
-		metav1.Patch{}.OpenAPIModelName():                                                                 schema_pkg_apis_meta_v1_Patch(ref),
-		metav1.PatchOptions{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_PatchOptions(ref),
-		metav1.Preconditions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_Preconditions(ref),
-		metav1.RootPaths{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_RootPaths(ref),
-		metav1.ServerAddressByClientCIDR{}.OpenAPIModelName():                                             schema_pkg_apis_meta_v1_ServerAddressByClientCIDR(ref),
-		metav1.Status{}.OpenAPIModelName():                                                                schema_pkg_apis_meta_v1_Status(ref),
-		metav1.StatusCause{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_StatusCause(ref),
-		metav1.StatusDetails{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_StatusDetails(ref),
-		metav1.Table{}.OpenAPIModelName():                                                                 schema_pkg_apis_meta_v1_Table(ref),
-		metav1.TableColumnDefinition{}.OpenAPIModelName():                                                 schema_pkg_apis_meta_v1_TableColumnDefinition(ref),
-		metav1.TableOptions{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_TableOptions(ref),
-		metav1.TableRow{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_TableRow(ref),
-		metav1.TableRowCondition{}.OpenAPIModelName():                                                     schema_pkg_apis_meta_v1_TableRowCondition(ref),
-		metav1.Time{}.OpenAPIModelName():                                                                  schema_pkg_apis_meta_v1_Time(ref),
-		metav1.Timestamp{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_Timestamp(ref),
-		metav1.TypeMeta{}.OpenAPIModelName():                                                              schema_pkg_apis_meta_v1_TypeMeta(ref),
-		metav1.UpdateOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_UpdateOptions(ref),
-		metav1.WatchEvent{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_WatchEvent(ref),
-		"k8s.io/metrics/pkg/apis/metrics/v1beta1.ContainerMetrics":                                        schema_pkg_apis_metrics_v1beta1_ContainerMetrics(ref),
-		"k8s.io/metrics/pkg/apis/metrics/v1beta1.NodeMetrics":                                             schema_pkg_apis_metrics_v1beta1_NodeMetrics(ref),
-		"k8s.io/metrics/pkg/apis/metrics/v1beta1.NodeMetricsList":                                         schema_pkg_apis_metrics_v1beta1_NodeMetricsList(ref),
-		"k8s.io/metrics/pkg/apis/metrics/v1beta1.PodMetrics":                                              schema_pkg_apis_metrics_v1beta1_PodMetrics(ref),
-		"k8s.io/metrics/pkg/apis/metrics/v1beta1.PodMetricsList":                                          schema_pkg_apis_metrics_v1beta1_PodMetricsList(ref),
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Analytics(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Analytics is a struct that represents the analytics server and the requests that should be sent to it. This information is sent to Devsy instances when they check in with the license server.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"endpoint": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Endpoint is the endpoint for the analytics server.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"requests": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Requests is a slice of requested resources to return analytics for.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.Request{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Request{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Announcement(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Announcement contains an announcement that should be shown within the Devsy instance. This information is sent to Devsy instances when they check in with the license server.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name contains the resource name of the announcement",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"title": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Title contains the title of the announcement in HTML format.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"body": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Body contains the main message of the announcement in HTML format.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"buttons": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Buttons to show alongside the announcement",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Button{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Button{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_BlockRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "BlockRequest tells the instance to block certain requests due to overages (limit exceeded) the license server.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"group": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Group is the api group.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"resource": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource is the resource name for the request.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"verbs": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Verbs is the list of verbs for the request.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"overage": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref(licenseapi.ResourceCount{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.ResourceCount{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Button(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Button is an object that represents a button in the Devsy UI that links to some external service for handling operations for licensing for example.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the button (ButtonName). Optional.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Description: "URL is the link at the other end of the button.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayText": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DisplayText is the text to display on the button. If display text is unset the button will never be shown in the Devsy UI.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"direct": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Direct indicates if the Devsy front end should directly hit this endpoint. If false, it means that the Devsy front end will be hitting the license server first to generate a one time token for the operation; this also means that there will be a redirect URL in the response to the request for this and that link should be followed by the front end.",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"url"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_ChatAuthCreateInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ChatAuthCreateInput is the required input data for generating a hash for a user for in-product chat",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"token": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Token is the jwt token identifying the Devsy instance.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Certificate is the signing certificate for the token.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"provider": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"email": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-				Required: []string{"token", "certificate"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_ChatAuthCreateOutput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ChatAuthCreateOutput is the struct holding all information for chat auth generate user hash\" requests.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"hash": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_DevsyClusterInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "DevsyClusterInfo holds information about a single virtual cluster",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"uid": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"namespace": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"creation_timestamp": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"is_available": {
-						SchemaProps: spec.SchemaProps{
-							Default: false,
-							Type:    []string{"boolean"},
-							Format:  "",
-						},
-					},
-					"node_machine_ids": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"uid", "name", "namespace", "creation_timestamp", "is_available", "node_machine_ids"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_DomainToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-				},
-				Required: []string{"url"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Feature(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Feature contains information regarding to a feature",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the feature (FeatureName) This cannot be FeatureName because it needs to be downward compatible e.g. older Devsy version doesn't know a newer feature but it will still be received and still needs to be rendered in the license view",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"preview": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Preview represents whether the feature can be previewed if a user's license does not allow the feature",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"allowBefore": {
-						SchemaProps: spec.SchemaProps{
-							Description: "AllowBefore is an optional timestamp. If set, licenses issued before this time are allowed to use the feature even if it's not included in the license.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status shows the status of the feature (see type FeatureStatus)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"module": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the module that this feature belongs to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"name"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_FeatureUsage(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "FeatureUsage holds information about whether a feature is used and its status",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"used": {
-						SchemaProps: spec.SchemaProps{
-							Default: false,
-							Type:    []string{"boolean"},
-							Format:  "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-				},
-				Required: []string{"used", "status"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_GenericRequestInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "GenericRequestInput defines the payload that needs to be sent to a button's action URL",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"token": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Token is the jwt token identifying the Devsy instance.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Certificate is the signing certificate for the token.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"payload": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Payload provides the json encoded payload",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"returnURL": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ReturnURL is the url from which the request is initiated",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"token", "certificate"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_GenericRequestOutput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "GenericRequestOutput specifies the response",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"redirectURL": {
-						SchemaProps: spec.SchemaProps{
-							Description: "RedirectURL to redirect the user to.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"html": {
-						SchemaProps: spec.SchemaProps{
-							Description: "HTML to display to the user.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"buttons": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Buttons to be shown to the user alongside other content (e.g. HTML).",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.Button{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Button{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceActivateInstanceInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"activationCode": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-				},
-				Required: []string{"activationCode"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceCreateInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "InstanceCreateInput is the required input data for \"instance create\" operations, that is, the primary endpoint that Devsy instances will hit to register to the license server as well as get information about the instance's current license.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"token": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Token is the jwt token identifying the Devsy instance.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Certificate is the signing certificate for the token.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"product": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Product is the product that is being used. Can be empty, devsy or devsy-pro. This should NOT be a ProductName but a string to allow for downward compatibility",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"staticToken": {
-						SchemaProps: spec.SchemaProps{
-							Description: "StaticToken is a token for the instance. This is used for testing purposes or for instances that use a static token.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"email": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Email is the admin email. Can be empty if no email is specified.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"kubeVersion": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"kubeSystemNamespace": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"resources": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ResourceUsage contains information about the number of resources used",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.ResourceCount{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"features": {
-						SchemaProps: spec.SchemaProps{
-							Description: "FeatureUse contains information about what features are used",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: false,
-										Type:    []string{"boolean"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"debugInstanceID": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DebugInstanceID is the ID of the instance. This is only used for testing purposes. Should never be sent from production instances. Requires authentication via an access key.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"platformDatabase": {
-						SchemaProps: spec.SchemaProps{
-							Description: "PlatformDatabase reports details about the platform database to the license service",
-							Ref:         ref(licenseapi.PlatformDatabase{}.OpenAPIModelName()),
-						},
-					},
-				},
-				Required: []string{"token", "certificate", "version", "kubeVersion", "kubeSystemNamespace"},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.PlatformDatabase{}.OpenAPIModelName(), licenseapi.ResourceCount{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceCreateOutput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "InstanceCreateOutput is the struct holding all information returned from \"instance create\" requests.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"license": {
-						SchemaProps: spec.SchemaProps{
-							Description: "License is the license data for the requested Devsy instance.",
-							Ref:         ref(licenseapi.License{}.OpenAPIModelName()),
-						},
-					},
-					"currentTime": {
-						SchemaProps: spec.SchemaProps{
-							Default: 0,
-							Type:    []string{"integer"},
-							Format:  "int64",
-						},
-					},
-				},
-				Required: []string{"currentTime"},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.License{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceSendActivationEmailInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"email": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-				},
-				Required: []string{"email"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceTokenAuth(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"token": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Token is the jwt token identifying the Devsy instance.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"certificate": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Certificate is the signing certificate for the token.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"token", "certificate"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceTokenClaims(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Description: "URLHash is the hash of the url to be signed with this token",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"payload": {
-						SchemaProps: spec.SchemaProps{
-							Description: "PayloadHash is the hash of the payload to be signed with this token",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"url", "payload"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_InstanceUsageInput(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kubeSystemNamespace": {
-						SchemaProps: spec.SchemaProps{
-							Description: "KubeSystemNamespaceUID is the UID of the kube system namespace.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Type is the type of usage data to be sent to the license service.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"data": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Data is the data to be sent to the license service.",
-							Type:        []string{"string"},
-							Format:      "byte",
-						},
-					},
-				},
-				Required: []string{"kubeSystemNamespace", "type", "data"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Invoice(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Invoice provides details about an invoice",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"date": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Date contains the unix timestamp marking the date this invoices was or will be created",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"total": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Total is the total of the invoice",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"currency": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Currency specifies the currency of Total in 3-character ISO 4217 code Default is: \"\" (representing USD)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_License(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "License is a struct representing the license data sent to a Devsy instance after checking in with the license server.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"instance": {
-						SchemaProps: spec.SchemaProps{
-							Description: "InstanceID contains the instance id of the Devsy instance",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"entity": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Entity holds a name for an organization, person or entity this product is licensed for. This will be displayed to the user.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Annotations contains additional metadata about the license.",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"analytics": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Analytics indicates the analytics endpoints and which requests should be sent to the analytics server.",
-							Ref:         ref(licenseapi.Analytics{}.OpenAPIModelName()),
-						},
-					},
-					"domainToken": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DomainToken holds the JWT with the URL that the Devsy instance is publicly available on. (via Devsy router)",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"buttons": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Buttons is a slice of license server endpoints (buttons) that the Devsy instance may need to hit. Each Button contains the display text and link for the front end to work with.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Button{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"announcement": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Announcements is a map string/string such that we can easily add any additional data without needing to change types. For now, we will use the keys \"name\" and \"content\".",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Announcement{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"modules": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Modules is a list of modules.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Module{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"block": {
-						SchemaProps: spec.SchemaProps{
-							Description: "BlockRequests specifies which requests the product should block when a limit is exceeded.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.BlockRequest{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"isOffline": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IsOffline indicates if the license is an offline license or not.",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"routes": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoutes{}.OpenAPIModelName()),
-						},
-					},
-					"plans": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Plans contains a list of plans",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.Plan{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"usageData": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Usage data contains  resource usage information for a platform deployment",
-							Default:     map[string]interface{}{},
-							Ref:         ref(licenseapi.UsageData{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Analytics{}.OpenAPIModelName(), licenseapi.Announcement{}.OpenAPIModelName(), licenseapi.BlockRequest{}.OpenAPIModelName(), licenseapi.Button{}.OpenAPIModelName(), licenseapi.LicenseAPIRoutes{}.OpenAPIModelName(), licenseapi.Module{}.OpenAPIModelName(), licenseapi.Plan{}.OpenAPIModelName(), licenseapi.UsageData{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_LicenseAPIRoute(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "LicenseAPIRoute is a single route of the license api",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"method": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"direct": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Tells the frontend whether to make a direct request or to make it via the backend (via generic license api request)",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_LicenseAPIRoutes(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "LicenseAPIRoutes contains all key routes of the license api",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"chatAuth": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"featureDetails": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"featureSetup": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"featurePreview": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"moduleActivation": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"modulePreview": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"checkout": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-					"portal": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(licenseapi.LicenseAPIRoute{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.LicenseAPIRoute{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Limit(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Limit defines a limit set in the license",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the resource (ResourceName)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DisplayName is for display purposes.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"quantity": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Limit specifies the limit for this resource.",
-							Ref:         ref(licenseapi.ResourceCount{}.OpenAPIModelName()),
-						},
-					},
-					"module": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the module that this limit belongs to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.ResourceCount{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Module(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Module is a struct representing a module of the product",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the module (ModuleName)",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"limits": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Limit{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"features": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(licenseapi.Feature{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"name"},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Feature{}.OpenAPIModelName(), licenseapi.Limit{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_NodeInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "NodeInfo holds information about a single node",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"machine_id": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"creation_timestamp": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"capacity": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"machine_id", "creation_timestamp", "capacity"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_OfflineLicenseKeyClaims(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"license": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref(licenseapi.License{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.License{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Plan(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Plan definition",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ID of the plan",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DisplayName is the display name of the plan",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status is the status of the plan There should only be 1 active plan at the top-level (not including AddOns) The respective price in Prices will have the active status as well",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"period": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Period provides information about the plan's current period This is nil unless this is the active plan",
-							Ref:         ref(licenseapi.PlanPeriod{}.OpenAPIModelName()),
-						},
-					},
-					"trial": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Trial provides details about a planned, ongoing or expired trial",
-							Ref:         ref(licenseapi.Trial{}.OpenAPIModelName()),
-						},
-					},
-					"invoice": {
-						SchemaProps: spec.SchemaProps{
-							Description: "UpcomingInvoice provides a preview of the next invoice that will be created for this Plan",
-							Ref:         ref(licenseapi.Invoice{}.OpenAPIModelName()),
-						},
-					},
-					"features": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Features is a list of features included in the plan",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"limits": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Limits is a list of resources included in the plan and their limits",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.Limit{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"prices": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Prices provides details about the available prices (depending on the interval, for example)",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.PlanPrice{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"addons": {
-						SchemaProps: spec.SchemaProps{
-							Description: "AddOns are plans that can be added to this plan",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.Plan{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.Invoice{}.OpenAPIModelName(), licenseapi.Limit{}.OpenAPIModelName(), licenseapi.Plan{}.OpenAPIModelName(), licenseapi.PlanPeriod{}.OpenAPIModelName(), licenseapi.PlanPrice{}.OpenAPIModelName(), licenseapi.Trial{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_PlanExpiration(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PlanExpiration provides details about the expiration of a plan",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"expiresAt": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ExpiresAt is the unix timestamp of when the plan expires",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"upgradesTo": {
-						SchemaProps: spec.SchemaProps{
-							Description: "UpgradesTo states the name of the plan that is replacing the current one upon its expiration If this is nil, then this plan just expires (i.e. the subscription may be canceled, paused, etc.)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_PlanPeriod(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PlanPeriod provides details about the period of the plan",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"start": {
-						SchemaProps: spec.SchemaProps{
-							Description: "CurrentPeriodStart contains the unix timestamp marking the start of the current period",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"end": {
-						SchemaProps: spec.SchemaProps{
-							Description: "CurrentPeriodEnd contains the unix timestamp marking the end of the current period",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_PlanPrice(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PlanPrice defines a price for the plan",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ID of the price",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status is the status of the price (PlanStatus) If the plan is active, one of its prices must be active as well",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"interval": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Interval contains the time span of each period (e.g. month, year)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"intervalCount": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IntervalCount specifies if the number of intervals (e.g. 3 [months])",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"exp": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Expiration provides information about when this plan expires",
-							Ref:         ref(licenseapi.PlanExpiration{}.OpenAPIModelName()),
-						},
-					},
-					"quantity": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Quantity sets the quantity the TierResource is supposed to be at If this is the active price, then this is the subscription quantity (currently purchased quantity)",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"resource": {
-						SchemaProps: spec.SchemaProps{
-							Description: "TierResource provides details about the main resource the tier quantity relates to This may be nil for plans that don't have their quantity tied to a resource",
-							Ref:         ref(licenseapi.TierResource{}.OpenAPIModelName()),
-						},
-					},
-					"tierMode": {
-						SchemaProps: spec.SchemaProps{
-							Description: "TierMode defines how tiers should be used",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"tiers": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Tiers is a list of tiers in this plan",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.PriceTier{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.PlanExpiration{}.OpenAPIModelName(), licenseapi.PriceTier{}.OpenAPIModelName(), licenseapi.TierResource{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_PlatformDatabase(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PlatformDatabase contains information about the local platform database installation",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"isReady": {
-						SchemaProps: spec.SchemaProps{
-							Default: false,
-							Type:    []string{"boolean"},
-							Format:  "",
-						},
-					},
-					"creationTimestamp": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-					"latestUpdateTimestamp": {
-						SchemaProps: spec.SchemaProps{
-							Default: "",
-							Type:    []string{"string"},
-							Format:  "",
-						},
-					},
-				},
-				Required: []string{"isReady", "creationTimestamp", "latestUpdateTimestamp"},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_PriceTier(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PriceTier defines a tier within a plan",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"min": {
-						SchemaProps: spec.SchemaProps{
-							Description: "MinQuantity is the quantity included in this plan",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"max": {
-						SchemaProps: spec.SchemaProps{
-							Description: "MaxQuantity is the max quantity that can be purchased",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"unitPrice": {
-						SchemaProps: spec.SchemaProps{
-							Description: "UnitPrice is the price per unit in this tier",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"flatFee": {
-						SchemaProps: spec.SchemaProps{
-							Description: "FlatFee is the flat fee for this tier",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"currency": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Currency specifies the currency of UnitPrice and FlatFee in 3-character ISO 4217 code Default is: \"\" (representing USD)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Request(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Request represents a request analytics information for an apigroup/resource and a list of verb actions for that resource.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"group": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Group is the api group.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"resource": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource is the resource name for the request.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"verbs": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Verbs is the list of verbs for the request.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_ResourceCount(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ResourceCount stores the number of existing, active and total number of resources created.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"active": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Active specifies the number of currently active resource (non-sleeping).",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"total": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Total specifies the number of currently existing resources.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"created": {
-						SchemaProps: spec.SchemaProps{
-							Description: "TotalCreated is a continuous counter of the amount of resources ever created.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"committed": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Committed specifies the amount of resource consumption customers have committed to for a given billing period. It can be exceeded and will then be charged with overage fees.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_TierResource(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "TierResource provides details about the main resource the tier quantity relates to",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the resource (ResourceName)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status defines which resources will be counted towards the limit (e.g. active, total, total created etc.)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_Trial(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Trial represents a trial",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"id": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ID is the unique id of this trial",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DisplayName is a display name for the trial",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"start": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Start is the unix timestamp stating when the trial was started",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"end": {
-						SchemaProps: spec.SchemaProps{
-							Description: "End is the unix timestamp stating when the trial will end or ended",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status is the status of this trial (TrialStatus)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"downgradesTo": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DowngradesTo states the name of the plan that is replacing the current one once the trial expires If this is nil, then this plan just expires (i.e. the subscription may be canceled, paused, etc.)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_UsageData(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "UsageData holds information for an instance deployment of Devsy Platform",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"featureUsage": {
-						SchemaProps: spec.SchemaProps{
-							Description: "FeatureUsage contains the usage of features",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.FeatureUsage{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"resourceUsage": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ResourceUsage contains the usage of resources",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.ResourceCount{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"details": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Details contains the details of the usage data",
-							Default:     map[string]interface{}{},
-							Ref:         ref(licenseapi.UsageDataDetails{}.OpenAPIModelName()),
-						},
-					},
-				},
-				Required: []string{"featureUsage", "resourceUsage", "details"},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.FeatureUsage{}.OpenAPIModelName(), licenseapi.ResourceCount{}.OpenAPIModelName(), licenseapi.UsageDataDetails{}.OpenAPIModelName()},
-	}
-}
-
-func schema_devsy_org_admin_apis_pkg_licenseapi_UsageDataDetails(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "UsageDataDetails holds detailed information about the nodes and virtual cluster for an instance deployment of Devsy Platform",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"nodes": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Nodes contains the details of the nodes",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.NodeInfo{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"vClusters": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DevsyClusters contains the details of the virtual clusters",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.DevsyClusterInfo{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"nodes", "vClusters"},
-			},
-		},
-		Dependencies: []string{
-			licenseapi.DevsyClusterInfo{}.OpenAPIModelName(), licenseapi.NodeInfo{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Bash(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"script": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Script is the script to execute.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"image": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Image is the image to use for this app",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"clusterRole": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ClusterRole is the cluster role to use for this job",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"podSecurityContext": {
-						SchemaProps: spec.SchemaProps{
-							Description: "PodSecurityContext for the bash pod.",
-							Ref:         ref(corev1.PodSecurityContext{}.OpenAPIModelName()),
-						},
-					},
-					"securityContext": {
-						SchemaProps: spec.SchemaProps{
-							Description: "SecurityContext for the bash container.",
-							Ref:         ref(corev1.SecurityContext{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.SecurityContext{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Chart(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Chart describes a chart",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the chart name in the repository",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Version is the chart version in the repository",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"repoURL": {
-						SchemaProps: spec.SchemaProps{
-							Description: "RepoURL is the repo url where the chart can be found",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"username": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The username that is required for this repository",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"usernameRef": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The username that is required for this repository",
-							Ref:         ref(v1.ChartSecretRef{}.OpenAPIModelName()),
-						},
-					},
-					"password": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The password that is required for this repository",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"passwordRef": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The password that is required for this repository",
-							Ref:         ref(v1.ChartSecretRef{}.OpenAPIModelName()),
-						},
-					},
-					"insecureSkipTlsVerify": {
-						SchemaProps: spec.SchemaProps{
-							Description: "If tls certificate checks for the chart download should be skipped",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.ChartSecretRef{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ChartInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.ChartInfoSpec{}.OpenAPIModelName()),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.ChartInfoStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.ChartInfoSpec{}.OpenAPIModelName(), v1.ChartInfoStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ChartInfoList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(v1.ChartInfo{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			v1.ChartInfo{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ChartInfoSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"chart": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Chart holds information about a chart that should get deployed",
-							Default:     map[string]interface{}{},
-							Ref:         ref(v1.Chart{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Chart{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ChartInfoStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Metadata provides information about a chart",
-							Ref:         ref(v1.Metadata{}.OpenAPIModelName()),
-						},
-					},
-					"readme": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Readme is the readme of the chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"values": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Values are the default values of the chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Metadata{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ChartSecretRef(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"projectSecretRef": {
-						SchemaProps: spec.SchemaProps{
-							Description: "ProjectSecretRef holds the reference to a project secret",
-							Ref:         ref(v1.ProjectSecretRef{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.ProjectSecretRef{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_EpochInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "EpochInfo holds information about how long the space was sleeping in the epoch",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"start": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Timestamp when the epoch has started",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"slept": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Amount of milliseconds the space has slept in the epoch",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Feature(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Feature holds the feature information",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.FeatureSpec{}.OpenAPIModelName()),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.FeatureStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.FeatureSpec{}.OpenAPIModelName(), v1.FeatureStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_FeatureList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(v1.Feature{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			v1.Feature{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_FeatureSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "FeatureSpec holds the specification",
-				Type:        []string{"object"},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_FeatureStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "FeatureStatus holds the status",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the feature (FeatureName) This cannot be FeatureName because it needs to be downward compatible e.g. older Devsy version doesn't know a newer feature but it will still be received and still needs to be rendered in the license view",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"displayName": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-					"preview": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Preview represents whether the feature can be previewed if a user's license does not allow the feature",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"allowBefore": {
-						SchemaProps: spec.SchemaProps{
-							Description: "AllowBefore is an optional timestamp. If set, licenses issued before this time are allowed to use the feature even if it's not included in the license.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status shows the status of the feature (see type FeatureStatus)",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"module": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the module that this feature belongs to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"internal": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Internal marks internal features that should not be shown on the license view",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"used": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Used marks features that are currently used in the product",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"name"},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmRelease(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.HelmReleaseSpec{}.OpenAPIModelName()),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.HelmReleaseStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.HelmReleaseSpec{}.OpenAPIModelName(), v1.HelmReleaseStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmReleaseApp(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the app this release refers to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Revision is the revision of the app this release refers to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmReleaseConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"chart": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Chart holds information about a chart that should get deployed",
-							Default:     map[string]interface{}{},
-							Ref:         ref(v1.Chart{}.OpenAPIModelName()),
-						},
-					},
-					"manifests": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Manifests holds kube manifests that will be deployed as a chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"bash": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Bash holds the bash script to execute in a container in the target",
-							Ref:         ref(v1.Bash{}.OpenAPIModelName()),
-						},
-					},
-					"values": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Values is the set of extra Values added to the chart. These values merge with the default values inside of the chart. You can use golang templating in here with values from parameters.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"parameters": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Parameters are additional helm chart values that will get merged with config and are then used to deploy the helm chart.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Annotations are extra annotations for this helm release",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Bash{}.OpenAPIModelName(), v1.Chart{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmReleaseList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(v1.HelmRelease{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			v1.HelmRelease{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmReleaseSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"chart": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Chart holds information about a chart that should get deployed",
-							Default:     map[string]interface{}{},
-							Ref:         ref(v1.Chart{}.OpenAPIModelName()),
-						},
-					},
-					"manifests": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Manifests holds kube manifests that will be deployed as a chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"bash": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Bash holds the bash script to execute in a container in the target",
-							Ref:         ref(v1.Bash{}.OpenAPIModelName()),
-						},
-					},
-					"values": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Values is the set of extra Values added to the chart. These values merge with the default values inside of the chart. You can use golang templating in here with values from parameters.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"parameters": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Parameters are additional helm chart values that will get merged with config and are then used to deploy the helm chart.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Annotations are extra annotations for this helm release",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Bash{}.OpenAPIModelName(), v1.Chart{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_HelmReleaseStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Revision is an int which represents the revision of the release.",
-							Type:        []string{"integer"},
-							Format:      "int32",
-						},
-					},
-					"info": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Info provides information about a release",
-							Ref:         ref(v1.Info{}.OpenAPIModelName()),
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Metadata provides information about a chart",
-							Ref:         ref(v1.Metadata{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Info{}.OpenAPIModelName(), v1.Metadata{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Info(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Info describes release information.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"first_deployed": {
-						SchemaProps: spec.SchemaProps{
-							Description: "FirstDeployed is when the release was first deployed.",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"last_deployed": {
-						SchemaProps: spec.SchemaProps{
-							Description: "LastDeployed is when the release was last deployed.",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"deleted": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Deleted tracks when this object was deleted.",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Description is human-friendly \"log entry\" about this release.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status is the current state of the release",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"notes": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Contains the rendered templates/NOTES.txt if available",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			metav1.Time{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_LastActivityInfo(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "LastActivityInfo holds information about the last activity",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"subject": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Subject is the user or team where this activity was recorded",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"host": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Host is the host where this activity was recorded",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"verb": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Verb is the verb that was used for the request",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiGroup": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIGroup is the api group that was used for the request",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"resource": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Resource is the resource of the request",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"subresource": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Subresource is the subresource of the request",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is the name of the resource",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"devsyCluster": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DevsyCluster is the devsy cluster this activity happened in",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metricsRefreshInterval": {
-						SchemaProps: spec.SchemaProps{
-							Description: "MetricsRefreshInterval is the activity refresh interval. This is used to prevent sleeping instances if the last activity metrics have not been refreshed within the interval. Useful for metrics based activty tracking.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Maintainer(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Maintainer describes a Chart maintainer.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name is a user name or organization name",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"email": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Email is an optional email address to contact the named maintainer",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"url": {
-						SchemaProps: spec.SchemaProps{
-							Description: "URL is an optional URL to an address for the named maintainer",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_Metadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Metadata for a Chart file. This models the structure of a Chart.yaml file.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The name of the chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"home": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The URL to a relevant project page, git repo, or contact person",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"sources": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Source is the URL to the source code of this chart",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Description: "A SemVer 2 conformant version string of the chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"description": {
-						SchemaProps: spec.SchemaProps{
-							Description: "A one-sentence description of the chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"keywords": {
-						SchemaProps: spec.SchemaProps{
-							Description: "A list of string keywords",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"maintainers": {
-						SchemaProps: spec.SchemaProps{
-							Description: "A list of name and URL/email address combinations for the maintainer(s)",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref(v1.Maintainer{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-					"icon": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The URL to an icon file.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The API Version of this chart.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"condition": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The condition to check to enable chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"tags": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The tags to check to enable chart",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"appVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The version of the application enclosed inside of this chart.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"deprecated": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Whether or not this chart is deprecated",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"annotations": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Annotations are additional mappings uninterpreted by Helm, made available for inspection by other applications.",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-					"kubeVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "KubeVersion is a SemVer constraint specifying the version of Kubernetes required.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Specifies the chart type: application or library",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"urls": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Urls where to find the chart contents",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: "",
-										Type:    []string{"string"},
-										Format:  "",
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.Maintainer{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_ProjectSecretRef(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"project": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Project is the project name where the secret is located in.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"name": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Name of the project secret to use.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"key": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Key of the project secret to use.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_SleepModeConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "SleepModeConfig holds the sleepmode information",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.SleepModeConfigSpec{}.OpenAPIModelName()),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(v1.SleepModeConfigStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.SleepModeConfigSpec{}.OpenAPIModelName(), v1.SleepModeConfigStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_SleepModeConfigSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"forceSleep": {
-						SchemaProps: spec.SchemaProps{
-							Description: "If force sleep is true the space will sleep",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"forceSleepDuration": {
-						SchemaProps: spec.SchemaProps{
-							Description: "If force sleep duration is set, this will force the space to sleep for the given duration. It also implies that forceSleep is true. During this period devsy will also block certain requests to that space. If this is set to 0, it means the space will sleep until it is manually woken up via the cli or ui.",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"deleteAfter": {
-						SchemaProps: spec.SchemaProps{
-							Description: "DeleteAfter specifies after how many seconds of inactivity the space should be deleted",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"sleepAfter": {
-						SchemaProps: spec.SchemaProps{
-							Description: "SleepAfter specifies after how many seconds of inactivity the space should sleep",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"sleepSchedule": {
-						SchemaProps: spec.SchemaProps{
-							Description: "SleepSchedule specifies scheduled space sleep in Cron format, see https://en.wikipedia.org/wiki/Cron. Note: timezone defined in the schedule string will be ignored. Use \".Spec.Timezone\" field instead.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"wakeupSchedule": {
-						SchemaProps: spec.SchemaProps{
-							Description: "WakeupSchedule specifies scheduled wakeup from sleep in Cron format, see https://en.wikipedia.org/wiki/Cron. Note: timezone defined in the schedule string will be ignored. Use \".Spec.Timezone\" field instead.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"timezone": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Timezone specifies time zone used for scheduled space operations. Defaults to UTC. Accepts the same format as time.LoadLocation() in Go (https://pkg.go.dev/time#LoadLocation). The value should be a location name corresponding to a file in the IANA Time Zone database, such as \"America/New_York\". See also: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreActiveConnections": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreActiveConnections ignores active connections on the namespace",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"ignoreAll": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreAll ignores all requests",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"ignoreIngresses": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreIngresses ignores all ingresses",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"ignoreDevsys": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreDevsys ignores devsy requests",
-							Type:        []string{"boolean"},
-							Format:      "",
-						},
-					},
-					"ignoreGroups": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreGroups are ignored user groups",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreVerbs": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreVerbs are ignored request verbs",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreResources": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreResources are ignored request resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreResourceVerbs": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreResourceVerbs are ignored resource verbs",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreResourceNames": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreResourceNames are ignored resources and names",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"ignoreUserAgents": {
-						SchemaProps: spec.SchemaProps{
-							Description: "IgnoreUseragents are ignored user agents with trailing wildcards '*' allowed. comma separated",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_apis_devsy_cluster_v1_SleepModeConfigStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"lastActivity": {
-						SchemaProps: spec.SchemaProps{
-							Description: "LastActivity indicates the last activity in the namespace",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"lastActivityInfo": {
-						SchemaProps: spec.SchemaProps{
-							Description: "LastActivityInfo holds information about the last activity within this space",
-							Ref:         ref(v1.LastActivityInfo{}.OpenAPIModelName()),
-						},
-					},
-					"sleepingSince": {
-						SchemaProps: spec.SchemaProps{
-							Description: "SleepingSince specifies since when the space is sleeping (if this is not specified, devsy assumes the space is not sleeping)",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"currentEpoch": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Optional info that indicates how long the space was sleeping in the current epoch",
-							Ref:         ref(v1.EpochInfo{}.OpenAPIModelName()),
-						},
-					},
-					"lastEpoch": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Optional info that indicates how long the space was sleeping in the current epoch",
-							Ref:         ref(v1.EpochInfo{}.OpenAPIModelName()),
-						},
-					},
-					"sleptLastThirtyDays": {
-						SchemaProps: spec.SchemaProps{
-							Description: "This is a calculated field that will be returned but not saved and describes the percentage since the space was created or the last 30 days the space has slept",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"sleptLastSevenDays": {
-						SchemaProps: spec.SchemaProps{
-							Description: "This is a calculated field that will be returned but not saved and describes the percentage since the space was created or the last 7 days the space has slept",
-							Type:        []string{"number"},
-							Format:      "double",
-						},
-					},
-					"scheduledSleep": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Indicates time of the next scheduled sleep based on .Spec.SleepSchedule and .Spec.ScheduleTimeZone The time is a Unix time, the number of seconds elapsed since January 1, 1970 UTC",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"scheduledWakeup": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Indicates time of the next scheduled wakeup based on .Spec.WakeupSchedule and .Spec.ScheduleTimeZone The time is a Unix time, the number of seconds elapsed since January 1, 1970 UTC",
-							Type:        []string{"integer"},
-							Format:      "int64",
-						},
-					},
-					"sleepType": {
-						SchemaProps: spec.SchemaProps{
-							Description: "SleepType specifies a type of sleep, which has effect on which actions will cause the space to wake up.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			v1.EpochInfo{}.OpenAPIModelName(), v1.LastActivityInfo{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_ClusterQuota(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ClusterQuota is the Schema for the cluster quotas api",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(storagev1.ClusterQuotaSpec{}.OpenAPIModelName()),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(storagev1.ClusterQuotaStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			storagev1.ClusterQuotaSpec{}.OpenAPIModelName(), storagev1.ClusterQuotaStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_ClusterQuotaList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ClusterQuotaList contains a list of ClusterQuota",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.ClusterQuota{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			storagev1.ClusterQuota{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_ClusterQuotaSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ClusterQuotaSpec defines the desired state of ClusterQuota",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"user": {
-						SchemaProps: spec.SchemaProps{
-							Description: "User is the name of the user this quota should apply to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"team": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Team is the name of the team this quota should apply to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"project": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Project is the project that this cluster quota should apply to",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"quota": {
-						SchemaProps: spec.SchemaProps{
-							Description: "quota is the quota definition with all the limits and selectors",
-							Default:     map[string]interface{}{},
-							Ref:         ref(corev1.ResourceQuotaSpec{}.OpenAPIModelName()),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			corev1.ResourceQuotaSpec{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_ClusterQuotaStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ClusterQuotaStatus defines the observed state of ClusterQuota",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"total": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Total defines the actual enforced quota and its current usage across all projects",
-							Default:     map[string]interface{}{},
-							Ref:         ref(corev1.ResourceQuotaStatus{}.OpenAPIModelName()),
-						},
-					},
-					"namespaces": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Namespaces slices the usage by project.  This division allows for quick resolution of deletion reconciliation inside of a single project without requiring a recalculation across all projects.  This can be used to pull the deltas for a given project.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.ClusterQuotaStatusByNamespace{}.OpenAPIModelName()),
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			storagev1.ClusterQuotaStatusByNamespace{}.OpenAPIModelName(), corev1.ResourceQuotaStatus{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_ClusterQuotaStatusByNamespace(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "ClusterQuotaStatusByNamespace holds the status of a specific namespace",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"namespace": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Namespace of the account this account quota applies to",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status indicates how many resources have been consumed by this project",
-							Default:     map[string]interface{}{},
-							Ref:         ref(corev1.ResourceQuotaStatus{}.OpenAPIModelName()),
-						},
-					},
-				},
-				Required: []string{"namespace"},
-			},
-		},
-		Dependencies: []string{
-			corev1.ResourceQuotaStatus{}.OpenAPIModelName()},
-	}
-}
-
-func schema_apis_devsy_storage_v1_Condition(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "Condition defines an observation of a Cluster API resource operational state.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"type": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Status of the condition, one of True, False, Unknown.",
-							Default:     "",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"severity": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"lastTransitionTime": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Last time the condition transitioned from one status to another. This should be when the underlying condition changed. If that is not known, then using the time when the API field changed is acceptable.",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"reason": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The reason for the condition's last transition in CamelCase. The specific API may choose whether this field is considered a guaranteed API. This field may not be empty.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"message": {
-						SchemaProps: spec.SchemaProps{
-							Description: "A human readable message indicating details about the transition. This field may be empty.",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-				},
-				Required: []string{"type", "status", "lastTransitionTime"},
-			},
-		},
-		Dependencies: []string{
-			metav1.Time{}.OpenAPIModelName()},
+		"github.com/devsy-org/api/pkg/apis/storage/v1.DockerCredentialForwarding":                        schema_pkg_apis_storage_v1_DockerCredentialForwarding(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.EntityInfo":                                        schema_pkg_apis_storage_v1_EntityInfo(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.EnvironmentRef":                                    schema_pkg_apis_storage_v1_EnvironmentRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.GitCredentialForwarding":                           schema_pkg_apis_storage_v1_GitCredentialForwarding(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.GitEnvironmentTemplate":                            schema_pkg_apis_storage_v1_GitEnvironmentTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.GitProjectCredentials":                             schema_pkg_apis_storage_v1_GitProjectCredentials(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.GitProjectSpec":                                    schema_pkg_apis_storage_v1_GitProjectSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.GroupResources":                                    schema_pkg_apis_storage_v1_GroupResources(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmChart":                                         schema_pkg_apis_storage_v1_HelmChart(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmChartRepository":                               schema_pkg_apis_storage_v1_HelmChartRepository(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration":                                 schema_pkg_apis_storage_v1_HelmConfiguration(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmTask":                                          schema_pkg_apis_storage_v1_HelmTask(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.HelmTaskRelease":                                   schema_pkg_apis_storage_v1_HelmTaskRelease(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ImportVirtualClustersSpec":                         schema_pkg_apis_storage_v1_ImportVirtualClustersSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceAccess":                                    schema_pkg_apis_storage_v1_InstanceAccess(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceAccessRule":                                schema_pkg_apis_storage_v1_InstanceAccessRule(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.InstanceDeployedAppStatus":                         schema_pkg_apis_storage_v1_InstanceDeployedAppStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.KindSecretRef":                                     schema_pkg_apis_storage_v1_KindSecretRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtClusterRef":                                schema_pkg_apis_storage_v1_KubeVirtClusterRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtNodeTypeSpec":                              schema_pkg_apis_storage_v1_KubeVirtNodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterAccessSpec":                            schema_pkg_apis_storage_v1_LocalClusterAccessSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterAccessTemplate":                        schema_pkg_apis_storage_v1_LocalClusterAccessTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterRoleTemplate":                          schema_pkg_apis_storage_v1_LocalClusterRoleTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.LocalClusterRoleTemplateSpec":                      schema_pkg_apis_storage_v1_LocalClusterRoleTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta":                         schema_pkg_apis_storage_v1_ManagedNodeTypeObjectMeta(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Member":                                            schema_pkg_apis_storage_v1_Member(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Metrics":                                           schema_pkg_apis_storage_v1_Metrics(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NamedNodeTypeSpec":                                 schema_pkg_apis_storage_v1_NamedNodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NamespacePattern":                                  schema_pkg_apis_storage_v1_NamespacePattern(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NamespacedRef":                                     schema_pkg_apis_storage_v1_NamespacedRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeer":                                       schema_pkg_apis_storage_v1_NetworkPeer(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerList":                                   schema_pkg_apis_storage_v1_NetworkPeerList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerSpec":                                   schema_pkg_apis_storage_v1_NetworkPeerSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NetworkPeerStatus":                                 schema_pkg_apis_storage_v1_NetworkPeerStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaim":                                         schema_pkg_apis_storage_v1_NodeClaim(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimList":                                     schema_pkg_apis_storage_v1_NodeClaimList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimSpec":                                     schema_pkg_apis_storage_v1_NodeClaimSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeClaimStatus":                                   schema_pkg_apis_storage_v1_NodeClaimStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironment":                                   schema_pkg_apis_storage_v1_NodeEnvironment(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentList":                               schema_pkg_apis_storage_v1_NodeEnvironmentList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentSpec":                               schema_pkg_apis_storage_v1_NodeEnvironmentSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeEnvironmentStatus":                             schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProvider":                                      schema_pkg_apis_storage_v1_NodeProvider(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderBCM":                                   schema_pkg_apis_storage_v1_NodeProviderBCM(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderKubeVirt":                              schema_pkg_apis_storage_v1_NodeProviderKubeVirt(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderList":                                  schema_pkg_apis_storage_v1_NodeProviderList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderSpec":                                  schema_pkg_apis_storage_v1_NodeProviderSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderStatus":                                schema_pkg_apis_storage_v1_NodeProviderStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeProviderTerraform":                             schema_pkg_apis_storage_v1_NodeProviderTerraform(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeType":                                          schema_pkg_apis_storage_v1_NodeType(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity":                                  schema_pkg_apis_storage_v1_NodeTypeCapacity(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeList":                                      schema_pkg_apis_storage_v1_NodeTypeList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead":                                  schema_pkg_apis_storage_v1_NodeTypeOverhead(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeSpec":                                      schema_pkg_apis_storage_v1_NodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeStatus":                                    schema_pkg_apis_storage_v1_NodeTypeStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus":                                     schema_pkg_apis_storage_v1_ObjectsStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.OpenCost":                                          schema_pkg_apis_storage_v1_OpenCost(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.PodSelector":                                       schema_pkg_apis_storage_v1_PodSelector(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.PresetRef":                                         schema_pkg_apis_storage_v1_PresetRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Project":                                           schema_pkg_apis_storage_v1_Project(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectList":                                       schema_pkg_apis_storage_v1_ProjectList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectSpec":                                       schema_pkg_apis_storage_v1_ProjectSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.ProjectStatus":                                     schema_pkg_apis_storage_v1_ProjectStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus":                                       schema_pkg_apis_storage_v1_QuotaStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusProject":                                schema_pkg_apis_storage_v1_QuotaStatusProject(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusProjectCluster":                         schema_pkg_apis_storage_v1_QuotaStatusProjectCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusUser":                                   schema_pkg_apis_storage_v1_QuotaStatusUser(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatusUserUsed":                               schema_pkg_apis_storage_v1_QuotaStatusUserUsed(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Quotas":                                            schema_pkg_apis_storage_v1_Quotas(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.RancherIntegrationSpec":                            schema_pkg_apis_storage_v1_RancherIntegrationSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.RancherProjectRef":                                 schema_pkg_apis_storage_v1_RancherProjectRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.RequirePreset":                                     schema_pkg_apis_storage_v1_RequirePreset(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.RequireTemplate":                                   schema_pkg_apis_storage_v1_RequireTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.RunnerRef":                                         schema_pkg_apis_storage_v1_RunnerRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SSOIdentity":                                       schema_pkg_apis_storage_v1_SSOIdentity(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SecretRef":                                         schema_pkg_apis_storage_v1_SecretRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecret":                                      schema_pkg_apis_storage_v1_SharedSecret(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretList":                                  schema_pkg_apis_storage_v1_SharedSecretList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretSpec":                                  schema_pkg_apis_storage_v1_SharedSecretSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SharedSecretStatus":                                schema_pkg_apis_storage_v1_SharedSecretStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstance":                                     schema_pkg_apis_storage_v1_SpaceInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceList":                                 schema_pkg_apis_storage_v1_SpaceInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceSpec":                                 schema_pkg_apis_storage_v1_SpaceInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceStatus":                               schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceInstanceTemplateDefinition":                   schema_pkg_apis_storage_v1_SpaceInstanceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplate":                                     schema_pkg_apis_storage_v1_SpaceTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition":                           schema_pkg_apis_storage_v1_SpaceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateList":                                 schema_pkg_apis_storage_v1_SpaceTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateSpec":                                 schema_pkg_apis_storage_v1_SpaceTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateStatus":                               schema_pkg_apis_storage_v1_SpaceTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateVersion":                              schema_pkg_apis_storage_v1_SpaceTemplateVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Storage":                                           schema_pkg_apis_storage_v1_Storage(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer":                                   schema_pkg_apis_storage_v1_StreamContainer(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.SyncMembersSpec":                                   schema_pkg_apis_storage_v1_SyncMembersSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Target":                                            schema_pkg_apis_storage_v1_Target(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetCluster":                                     schema_pkg_apis_storage_v1_TargetCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetInstance":                                    schema_pkg_apis_storage_v1_TargetInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TargetVirtualCluster":                              schema_pkg_apis_storage_v1_TargetVirtualCluster(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Task":                                              schema_pkg_apis_storage_v1_Task(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskDefinition":                                    schema_pkg_apis_storage_v1_TaskDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskList":                                          schema_pkg_apis_storage_v1_TaskList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskSpec":                                          schema_pkg_apis_storage_v1_TaskSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TaskStatus":                                        schema_pkg_apis_storage_v1_TaskStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.Team":                                              schema_pkg_apis_storage_v1_Team(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamList":                                          schema_pkg_apis_storage_v1_TeamList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamSpec":                                          schema_pkg_apis_storage_v1_TeamSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TeamStatus":                                        schema_pkg_apis_storage_v1_TeamStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateHelmChart":                                 schema_pkg_apis_storage_v1_TemplateHelmChart(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateMetadata":                                  schema_pkg_apis_storage_v1_TemplateMetadata(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TemplateRef":                                       schema_pkg_apis_storage_v1_TemplateRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformNodeTypeSpec":                             schema_pkg_apis_storage_v1_TerraformNodeTypeSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplate":                                 schema_pkg_apis_storage_v1_TerraformTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplateSourceGit":                        schema_pkg_apis_storage_v1_TerraformTemplateSourceGit(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.User":                                              schema_pkg_apis_storage_v1_User(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.UserList":                                          schema_pkg_apis_storage_v1_UserList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam":                                        schema_pkg_apis_storage_v1_UserOrTeam(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeamEntity":                                  schema_pkg_apis_storage_v1_UserOrTeamEntity(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.UserSpec":                                          schema_pkg_apis_storage_v1_UserSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.UserStatus":                                        schema_pkg_apis_storage_v1_UserStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VaultAuthSpec":                                     schema_pkg_apis_storage_v1_VaultAuthSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VaultIntegrationSpec":                              schema_pkg_apis_storage_v1_VaultIntegrationSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterAccessPoint":                         schema_pkg_apis_storage_v1_VirtualClusterAccessPoint(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterAccessPointIngressSpec":              schema_pkg_apis_storage_v1_VirtualClusterAccessPointIngressSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterClusterRef":                          schema_pkg_apis_storage_v1_VirtualClusterClusterRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterCommonSpec":                          schema_pkg_apis_storage_v1_VirtualClusterCommonSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmChart":                           schema_pkg_apis_storage_v1_VirtualClusterHelmChart(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmRelease":                         schema_pkg_apis_storage_v1_VirtualClusterHelmRelease(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus":                   schema_pkg_apis_storage_v1_VirtualClusterHelmReleaseStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstance":                            schema_pkg_apis_storage_v1_VirtualClusterInstance(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceList":                        schema_pkg_apis_storage_v1_VirtualClusterInstanceList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceSpec":                        schema_pkg_apis_storage_v1_VirtualClusterInstanceSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceStatus":                      schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterInstanceTemplateDefinition":          schema_pkg_apis_storage_v1_VirtualClusterInstanceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterProSpec":                             schema_pkg_apis_storage_v1_VirtualClusterProSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterSpaceTemplateDefinition":             schema_pkg_apis_storage_v1_VirtualClusterSpaceTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterStatus":                              schema_pkg_apis_storage_v1_VirtualClusterStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplate":                            schema_pkg_apis_storage_v1_VirtualClusterTemplate(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition":                  schema_pkg_apis_storage_v1_VirtualClusterTemplateDefinition(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateList":                        schema_pkg_apis_storage_v1_VirtualClusterTemplateList(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateSpaceTemplateRef":            schema_pkg_apis_storage_v1_VirtualClusterTemplateSpaceTemplateRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateSpec":                        schema_pkg_apis_storage_v1_VirtualClusterTemplateSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateStatus":                      schema_pkg_apis_storage_v1_VirtualClusterTemplateStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateVersion":                     schema_pkg_apis_storage_v1_VirtualClusterTemplateVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceRef":                                      schema_pkg_apis_storage_v1_WorkspaceRef(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget":                           schema_pkg_apis_storage_v1_WorkspaceResolvedTarget(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceStatusResult":                             schema_pkg_apis_storage_v1_WorkspaceStatusResult(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTarget":                                   schema_pkg_apis_storage_v1_WorkspaceTarget(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTargetName":                               schema_pkg_apis_storage_v1_WorkspaceTargetName(ref),
+		"github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceTargetNamespace":                          schema_pkg_apis_storage_v1_WorkspaceTargetNamespace(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.CspPolicy":                                              schema_pkg_apis_ui_v1_CspPolicy(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.DevsyVersion":                                           schema_pkg_apis_ui_v1_DevsyVersion(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.ExternalURLs":                                           schema_pkg_apis_ui_v1_ExternalURLs(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.NavBarButton":                                           schema_pkg_apis_ui_v1_NavBarButton(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.UISettings":                                             schema_pkg_apis_ui_v1_UISettings(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsConfig":                                       schema_pkg_apis_ui_v1_UISettingsConfig(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsSpec":                                         schema_pkg_apis_ui_v1_UISettingsSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsStatus":                                       schema_pkg_apis_ui_v1_UISettingsStatus(ref),
+		"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmRelease":                                schema_pkg_apis_virtualcluster_v1_HelmRelease(ref),
+		"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseList":                            schema_pkg_apis_virtualcluster_v1_HelmReleaseList(ref),
+		"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseSpec":                            schema_pkg_apis_virtualcluster_v1_HelmReleaseSpec(ref),
+		"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseStatus":                          schema_pkg_apis_virtualcluster_v1_HelmReleaseStatus(ref),
+		v1.ControllerRevision{}.OpenAPIModelName():                                                       schema_k8sio_api_apps_v1_ControllerRevision(ref),
+		v1.ControllerRevisionList{}.OpenAPIModelName():                                                   schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
+		v1.DaemonSet{}.OpenAPIModelName():                                                                schema_k8sio_api_apps_v1_DaemonSet(ref),
+		v1.DaemonSetCondition{}.OpenAPIModelName():                                                       schema_k8sio_api_apps_v1_DaemonSetCondition(ref),
+		v1.DaemonSetList{}.OpenAPIModelName():                                                            schema_k8sio_api_apps_v1_DaemonSetList(ref),
+		v1.DaemonSetSpec{}.OpenAPIModelName():                                                            schema_k8sio_api_apps_v1_DaemonSetSpec(ref),
+		v1.DaemonSetStatus{}.OpenAPIModelName():                                                          schema_k8sio_api_apps_v1_DaemonSetStatus(ref),
+		v1.DaemonSetUpdateStrategy{}.OpenAPIModelName():                                                  schema_k8sio_api_apps_v1_DaemonSetUpdateStrategy(ref),
+		v1.Deployment{}.OpenAPIModelName():                                                               schema_k8sio_api_apps_v1_Deployment(ref),
+		v1.DeploymentCondition{}.OpenAPIModelName():                                                      schema_k8sio_api_apps_v1_DeploymentCondition(ref),
+		v1.DeploymentList{}.OpenAPIModelName():                                                           schema_k8sio_api_apps_v1_DeploymentList(ref),
+		v1.DeploymentSpec{}.OpenAPIModelName():                                                           schema_k8sio_api_apps_v1_DeploymentSpec(ref),
+		v1.DeploymentStatus{}.OpenAPIModelName():                                                         schema_k8sio_api_apps_v1_DeploymentStatus(ref),
+		v1.DeploymentStrategy{}.OpenAPIModelName():                                                       schema_k8sio_api_apps_v1_DeploymentStrategy(ref),
+		v1.ReplicaSet{}.OpenAPIModelName():                                                               schema_k8sio_api_apps_v1_ReplicaSet(ref),
+		v1.ReplicaSetCondition{}.OpenAPIModelName():                                                      schema_k8sio_api_apps_v1_ReplicaSetCondition(ref),
+		v1.ReplicaSetList{}.OpenAPIModelName():                                                           schema_k8sio_api_apps_v1_ReplicaSetList(ref),
+		v1.ReplicaSetSpec{}.OpenAPIModelName():                                                           schema_k8sio_api_apps_v1_ReplicaSetSpec(ref),
+		v1.ReplicaSetStatus{}.OpenAPIModelName():                                                         schema_k8sio_api_apps_v1_ReplicaSetStatus(ref),
+		v1.RollingUpdateDaemonSet{}.OpenAPIModelName():                                                   schema_k8sio_api_apps_v1_RollingUpdateDaemonSet(ref),
+		v1.RollingUpdateDeployment{}.OpenAPIModelName():                                                  schema_k8sio_api_apps_v1_RollingUpdateDeployment(ref),
+		v1.RollingUpdateStatefulSetStrategy{}.OpenAPIModelName():                                         schema_k8sio_api_apps_v1_RollingUpdateStatefulSetStrategy(ref),
+		v1.StatefulSet{}.OpenAPIModelName():                                                              schema_k8sio_api_apps_v1_StatefulSet(ref),
+		v1.StatefulSetCondition{}.OpenAPIModelName():                                                     schema_k8sio_api_apps_v1_StatefulSetCondition(ref),
+		v1.StatefulSetList{}.OpenAPIModelName():                                                          schema_k8sio_api_apps_v1_StatefulSetList(ref),
+		v1.StatefulSetOrdinals{}.OpenAPIModelName():                                                      schema_k8sio_api_apps_v1_StatefulSetOrdinals(ref),
+		v1.StatefulSetPersistentVolumeClaimRetentionPolicy{}.OpenAPIModelName():                          schema_k8sio_api_apps_v1_StatefulSetPersistentVolumeClaimRetentionPolicy(ref),
+		v1.StatefulSetSpec{}.OpenAPIModelName():                                                          schema_k8sio_api_apps_v1_StatefulSetSpec(ref),
+		v1.StatefulSetStatus{}.OpenAPIModelName():                                                        schema_k8sio_api_apps_v1_StatefulSetStatus(ref),
+		v1.StatefulSetUpdateStrategy{}.OpenAPIModelName():                                                schema_k8sio_api_apps_v1_StatefulSetUpdateStrategy(ref),
+		batchv1.CronJob{}.OpenAPIModelName():                                                             schema_k8sio_api_batch_v1_CronJob(ref),
+		batchv1.CronJobList{}.OpenAPIModelName():                                                         schema_k8sio_api_batch_v1_CronJobList(ref),
+		batchv1.CronJobSpec{}.OpenAPIModelName():                                                         schema_k8sio_api_batch_v1_CronJobSpec(ref),
+		batchv1.CronJobStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_batch_v1_CronJobStatus(ref),
+		batchv1.Job{}.OpenAPIModelName():                                                                 schema_k8sio_api_batch_v1_Job(ref),
+		batchv1.JobCondition{}.OpenAPIModelName():                                                        schema_k8sio_api_batch_v1_JobCondition(ref),
+		batchv1.JobList{}.OpenAPIModelName():                                                             schema_k8sio_api_batch_v1_JobList(ref),
+		batchv1.JobSpec{}.OpenAPIModelName():                                                             schema_k8sio_api_batch_v1_JobSpec(ref),
+		batchv1.JobStatus{}.OpenAPIModelName():                                                           schema_k8sio_api_batch_v1_JobStatus(ref),
+		batchv1.JobTemplateSpec{}.OpenAPIModelName():                                                     schema_k8sio_api_batch_v1_JobTemplateSpec(ref),
+		batchv1.PodFailurePolicy{}.OpenAPIModelName():                                                    schema_k8sio_api_batch_v1_PodFailurePolicy(ref),
+		batchv1.PodFailurePolicyOnExitCodesRequirement{}.OpenAPIModelName():                              schema_k8sio_api_batch_v1_PodFailurePolicyOnExitCodesRequirement(ref),
+		batchv1.PodFailurePolicyOnPodConditionsPattern{}.OpenAPIModelName():                              schema_k8sio_api_batch_v1_PodFailurePolicyOnPodConditionsPattern(ref),
+		batchv1.PodFailurePolicyRule{}.OpenAPIModelName():                                                schema_k8sio_api_batch_v1_PodFailurePolicyRule(ref),
+		batchv1.SuccessPolicy{}.OpenAPIModelName():                                                       schema_k8sio_api_batch_v1_SuccessPolicy(ref),
+		batchv1.SuccessPolicyRule{}.OpenAPIModelName():                                                   schema_k8sio_api_batch_v1_SuccessPolicyRule(ref),
+		batchv1.UncountedTerminatedPods{}.OpenAPIModelName():                                             schema_k8sio_api_batch_v1_UncountedTerminatedPods(ref),
+		corev1.AWSElasticBlockStoreVolumeSource{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_AWSElasticBlockStoreVolumeSource(ref),
+		corev1.Affinity{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_Affinity(ref),
+		corev1.AppArmorProfile{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_AppArmorProfile(ref),
+		corev1.AttachedVolume{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_AttachedVolume(ref),
+		corev1.AvoidPods{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_AvoidPods(ref),
+		corev1.AzureDiskVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_AzureDiskVolumeSource(ref),
+		corev1.AzureFilePersistentVolumeSource{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_AzureFilePersistentVolumeSource(ref),
+		corev1.AzureFileVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_AzureFileVolumeSource(ref),
+		corev1.Binding{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_Binding(ref),
+		corev1.CSIPersistentVolumeSource{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_CSIPersistentVolumeSource(ref),
+		corev1.CSIVolumeSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_CSIVolumeSource(ref),
+		corev1.Capabilities{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_Capabilities(ref),
+		corev1.CephFSPersistentVolumeSource{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_CephFSPersistentVolumeSource(ref),
+		corev1.CephFSVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_CephFSVolumeSource(ref),
+		corev1.CinderPersistentVolumeSource{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_CinderPersistentVolumeSource(ref),
+		corev1.CinderVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_CinderVolumeSource(ref),
+		corev1.ClientIPConfig{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ClientIPConfig(ref),
+		corev1.ClusterTrustBundleProjection{}.OpenAPIModelName():                                         schema_k8sio_api_core_v1_ClusterTrustBundleProjection(ref),
+		corev1.ComponentCondition{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ComponentCondition(ref),
+		corev1.ComponentStatus{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_ComponentStatus(ref),
+		corev1.ComponentStatusList{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ComponentStatusList(ref),
+		corev1.ConfigMap{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_ConfigMap(ref),
+		corev1.ConfigMapEnvSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ConfigMapEnvSource(ref),
+		corev1.ConfigMapKeySelector{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ConfigMapKeySelector(ref),
+		corev1.ConfigMapList{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ConfigMapList(ref),
+		corev1.ConfigMapNodeConfigSource{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_ConfigMapNodeConfigSource(ref),
+		corev1.ConfigMapProjection{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ConfigMapProjection(ref),
+		corev1.ConfigMapVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ConfigMapVolumeSource(ref),
+		corev1.Container{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_Container(ref),
+		corev1.ContainerExtendedResourceRequest{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_ContainerExtendedResourceRequest(ref),
+		corev1.ContainerImage{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ContainerImage(ref),
+		corev1.ContainerPort{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ContainerPort(ref),
+		corev1.ContainerResizePolicy{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ContainerResizePolicy(ref),
+		corev1.ContainerRestartRule{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ContainerRestartRule(ref),
+		corev1.ContainerRestartRuleOnExitCodes{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_ContainerRestartRuleOnExitCodes(ref),
+		corev1.ContainerState{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ContainerState(ref),
+		corev1.ContainerStateRunning{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ContainerStateRunning(ref),
+		corev1.ContainerStateTerminated{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_ContainerStateTerminated(ref),
+		corev1.ContainerStateWaiting{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ContainerStateWaiting(ref),
+		corev1.ContainerStatus{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_ContainerStatus(ref),
+		corev1.ContainerUser{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ContainerUser(ref),
+		corev1.DaemonEndpoint{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_DaemonEndpoint(ref),
+		corev1.DownwardAPIProjection{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_DownwardAPIProjection(ref),
+		corev1.DownwardAPIVolumeFile{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_DownwardAPIVolumeFile(ref),
+		corev1.DownwardAPIVolumeSource{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_DownwardAPIVolumeSource(ref),
+		corev1.EmptyDirVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_EmptyDirVolumeSource(ref),
+		corev1.EndpointAddress{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_EndpointAddress(ref),
+		corev1.EndpointPort{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_EndpointPort(ref),
+		corev1.EndpointSubset{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_EndpointSubset(ref),
+		corev1.Endpoints{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_Endpoints(ref),
+		corev1.EndpointsList{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_EndpointsList(ref),
+		corev1.EnvFromSource{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_EnvFromSource(ref),
+		corev1.EnvVar{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_EnvVar(ref),
+		corev1.EnvVarSource{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_EnvVarSource(ref),
+		corev1.EphemeralContainer{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_EphemeralContainer(ref),
+		corev1.EphemeralContainerCommon{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_EphemeralContainerCommon(ref),
+		corev1.EphemeralVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_EphemeralVolumeSource(ref),
+		corev1.Event{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Event(ref),
+		corev1.EventList{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_EventList(ref),
+		corev1.EventSeries{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_EventSeries(ref),
+		corev1.EventSource{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_EventSource(ref),
+		corev1.ExecAction{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_ExecAction(ref),
+		corev1.FCVolumeSource{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_FCVolumeSource(ref),
+		corev1.FileKeySelector{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_FileKeySelector(ref),
+		corev1.FlexPersistentVolumeSource{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_FlexPersistentVolumeSource(ref),
+		corev1.FlexVolumeSource{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_FlexVolumeSource(ref),
+		corev1.FlockerVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_FlockerVolumeSource(ref),
+		corev1.GCEPersistentDiskVolumeSource{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_GCEPersistentDiskVolumeSource(ref),
+		corev1.GRPCAction{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_GRPCAction(ref),
+		corev1.GitRepoVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_GitRepoVolumeSource(ref),
+		corev1.GlusterfsPersistentVolumeSource{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_GlusterfsPersistentVolumeSource(ref),
+		corev1.GlusterfsVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_GlusterfsVolumeSource(ref),
+		corev1.HTTPGetAction{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_HTTPGetAction(ref),
+		corev1.HTTPHeader{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_HTTPHeader(ref),
+		corev1.HostAlias{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_HostAlias(ref),
+		corev1.HostIP{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_HostIP(ref),
+		corev1.HostPathVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_HostPathVolumeSource(ref),
+		corev1.ISCSIPersistentVolumeSource{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_ISCSIPersistentVolumeSource(ref),
+		corev1.ISCSIVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ISCSIVolumeSource(ref),
+		corev1.ImageVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ImageVolumeSource(ref),
+		corev1.KeyToPath{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_KeyToPath(ref),
+		corev1.Lifecycle{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_Lifecycle(ref),
+		corev1.LifecycleHandler{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_LifecycleHandler(ref),
+		corev1.LimitRange{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_LimitRange(ref),
+		corev1.LimitRangeItem{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_LimitRangeItem(ref),
+		corev1.LimitRangeList{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_LimitRangeList(ref),
+		corev1.LimitRangeSpec{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_LimitRangeSpec(ref),
+		corev1.LinuxContainerUser{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_LinuxContainerUser(ref),
+		corev1.List{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_List(ref),
+		corev1.LoadBalancerIngress{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_LoadBalancerIngress(ref),
+		corev1.LoadBalancerStatus{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_LoadBalancerStatus(ref),
+		corev1.LocalObjectReference{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_LocalObjectReference(ref),
+		corev1.LocalVolumeSource{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_LocalVolumeSource(ref),
+		corev1.ModifyVolumeStatus{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ModifyVolumeStatus(ref),
+		corev1.NFSVolumeSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NFSVolumeSource(ref),
+		corev1.Namespace{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_Namespace(ref),
+		corev1.NamespaceCondition{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_NamespaceCondition(ref),
+		corev1.NamespaceList{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_NamespaceList(ref),
+		corev1.NamespaceSpec{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_NamespaceSpec(ref),
+		corev1.NamespaceStatus{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_NamespaceStatus(ref),
+		corev1.Node{}.OpenAPIModelName():                                                                 schema_k8sio_api_core_v1_Node(ref),
+		corev1.NodeAddress{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_NodeAddress(ref),
+		corev1.NodeAffinity{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NodeAffinity(ref),
+		corev1.NodeCondition{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_NodeCondition(ref),
+		corev1.NodeConfigSource{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_NodeConfigSource(ref),
+		corev1.NodeConfigStatus{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_NodeConfigStatus(ref),
+		corev1.NodeDaemonEndpoints{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_NodeDaemonEndpoints(ref),
+		corev1.NodeFeatures{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NodeFeatures(ref),
+		corev1.NodeList{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_NodeList(ref),
+		corev1.NodeProxyOptions{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_NodeProxyOptions(ref),
+		corev1.NodeRuntimeHandler{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_NodeRuntimeHandler(ref),
+		corev1.NodeRuntimeHandlerFeatures{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_NodeRuntimeHandlerFeatures(ref),
+		corev1.NodeSelector{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_NodeSelector(ref),
+		corev1.NodeSelectorRequirement{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_NodeSelectorRequirement(ref),
+		corev1.NodeSelectorTerm{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_NodeSelectorTerm(ref),
+		corev1.NodeSpec{}.OpenAPIModelName():                                                             schema_k8sio_api_core_v1_NodeSpec(ref),
+		corev1.NodeStatus{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_NodeStatus(ref),
+		corev1.NodeSwapStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_NodeSwapStatus(ref),
+		corev1.NodeSystemInfo{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_NodeSystemInfo(ref),
+		corev1.ObjectFieldSelector{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ObjectFieldSelector(ref),
+		corev1.ObjectReference{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_ObjectReference(ref),
+		corev1.PersistentVolume{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_PersistentVolume(ref),
+		corev1.PersistentVolumeClaim{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_PersistentVolumeClaim(ref),
+		corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_PersistentVolumeClaimCondition(ref),
+		corev1.PersistentVolumeClaimList{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_PersistentVolumeClaimList(ref),
+		corev1.PersistentVolumeClaimSpec{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_PersistentVolumeClaimSpec(ref),
+		corev1.PersistentVolumeClaimStatus{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_PersistentVolumeClaimStatus(ref),
+		corev1.PersistentVolumeClaimTemplate{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_PersistentVolumeClaimTemplate(ref),
+		corev1.PersistentVolumeClaimVolumeSource{}.OpenAPIModelName():                                    schema_k8sio_api_core_v1_PersistentVolumeClaimVolumeSource(ref),
+		corev1.PersistentVolumeList{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PersistentVolumeList(ref),
+		corev1.PersistentVolumeSource{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_PersistentVolumeSource(ref),
+		corev1.PersistentVolumeSpec{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PersistentVolumeSpec(ref),
+		corev1.PersistentVolumeStatus{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_PersistentVolumeStatus(ref),
+		corev1.PhotonPersistentDiskVolumeSource{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_PhotonPersistentDiskVolumeSource(ref),
+		corev1.Pod{}.OpenAPIModelName():                                                                  schema_k8sio_api_core_v1_Pod(ref),
+		corev1.PodAffinity{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_PodAffinity(ref),
+		corev1.PodAffinityTerm{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodAffinityTerm(ref),
+		corev1.PodAntiAffinity{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodAntiAffinity(ref),
+		corev1.PodAttachOptions{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_PodAttachOptions(ref),
+		corev1.PodCertificateProjection{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_PodCertificateProjection(ref),
+		corev1.PodCondition{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_PodCondition(ref),
+		corev1.PodDNSConfig{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_PodDNSConfig(ref),
+		corev1.PodDNSConfigOption{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_PodDNSConfigOption(ref),
+		corev1.PodExecOptions{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_PodExecOptions(ref),
+		corev1.PodExtendedResourceClaimStatus{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_PodExtendedResourceClaimStatus(ref),
+		corev1.PodIP{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_PodIP(ref),
+		corev1.PodList{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_PodList(ref),
+		corev1.PodLogOptions{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_PodLogOptions(ref),
+		corev1.PodOS{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_PodOS(ref),
+		corev1.PodPortForwardOptions{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_PodPortForwardOptions(ref),
+		corev1.PodProxyOptions{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodProxyOptions(ref),
+		corev1.PodReadinessGate{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_PodReadinessGate(ref),
+		corev1.PodResourceClaim{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_PodResourceClaim(ref),
+		corev1.PodResourceClaimStatus{}.OpenAPIModelName():                                               schema_k8sio_api_core_v1_PodResourceClaimStatus(ref),
+		corev1.PodSchedulingGate{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_PodSchedulingGate(ref),
+		corev1.PodSecurityContext{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_PodSecurityContext(ref),
+		corev1.PodSignature{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_PodSignature(ref),
+		corev1.PodSpec{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_PodSpec(ref),
+		corev1.PodStatus{}.OpenAPIModelName():                                                            schema_k8sio_api_core_v1_PodStatus(ref),
+		corev1.PodStatusResult{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodStatusResult(ref),
+		corev1.PodTemplate{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_PodTemplate(ref),
+		corev1.PodTemplateList{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodTemplateList(ref),
+		corev1.PodTemplateSpec{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_PodTemplateSpec(ref),
+		corev1.PortStatus{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_PortStatus(ref),
+		corev1.PortworxVolumeSource{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PortworxVolumeSource(ref),
+		corev1.PreferAvoidPodsEntry{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_PreferAvoidPodsEntry(ref),
+		corev1.PreferredSchedulingTerm{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_PreferredSchedulingTerm(ref),
+		corev1.Probe{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Probe(ref),
+		corev1.ProbeHandler{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_ProbeHandler(ref),
+		corev1.ProjectedVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ProjectedVolumeSource(ref),
+		corev1.QuobyteVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_QuobyteVolumeSource(ref),
+		corev1.RBDPersistentVolumeSource{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_RBDPersistentVolumeSource(ref),
+		corev1.RBDVolumeSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_RBDVolumeSource(ref),
+		corev1.RangeAllocation{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_RangeAllocation(ref),
+		corev1.ReplicationController{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ReplicationController(ref),
+		corev1.ReplicationControllerCondition{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_ReplicationControllerCondition(ref),
+		corev1.ReplicationControllerList{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_ReplicationControllerList(ref),
+		corev1.ReplicationControllerSpec{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_ReplicationControllerSpec(ref),
+		corev1.ReplicationControllerStatus{}.OpenAPIModelName():                                          schema_k8sio_api_core_v1_ReplicationControllerStatus(ref),
+		corev1.ResourceClaim{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ResourceClaim(ref),
+		corev1.ResourceFieldSelector{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_ResourceFieldSelector(ref),
+		corev1.ResourceHealth{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ResourceHealth(ref),
+		corev1.ResourceQuota{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ResourceQuota(ref),
+		corev1.ResourceQuotaList{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ResourceQuotaList(ref),
+		corev1.ResourceQuotaSpec{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_ResourceQuotaSpec(ref),
+		corev1.ResourceQuotaStatus{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ResourceQuotaStatus(ref),
+		corev1.ResourceRequirements{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_ResourceRequirements(ref),
+		corev1.ResourceStatus{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ResourceStatus(ref),
+		corev1.SELinuxOptions{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_SELinuxOptions(ref),
+		corev1.ScaleIOPersistentVolumeSource{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_ScaleIOPersistentVolumeSource(ref),
+		corev1.ScaleIOVolumeSource{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ScaleIOVolumeSource(ref),
+		corev1.ScopeSelector{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ScopeSelector(ref),
+		corev1.ScopedResourceSelectorRequirement{}.OpenAPIModelName():                                    schema_k8sio_api_core_v1_ScopedResourceSelectorRequirement(ref),
+		corev1.SeccompProfile{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_SeccompProfile(ref),
+		corev1.Secret{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_Secret(ref),
+		corev1.SecretEnvSource{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_SecretEnvSource(ref),
+		corev1.SecretKeySelector{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_SecretKeySelector(ref),
+		corev1.SecretList{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_SecretList(ref),
+		corev1.SecretProjection{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_SecretProjection(ref),
+		corev1.SecretReference{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_SecretReference(ref),
+		corev1.SecretVolumeSource{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_SecretVolumeSource(ref),
+		corev1.SecurityContext{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_SecurityContext(ref),
+		corev1.SerializedReference{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_SerializedReference(ref),
+		corev1.Service{}.OpenAPIModelName():                                                              schema_k8sio_api_core_v1_Service(ref),
+		corev1.ServiceAccount{}.OpenAPIModelName():                                                       schema_k8sio_api_core_v1_ServiceAccount(ref),
+		corev1.ServiceAccountList{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_ServiceAccountList(ref),
+		corev1.ServiceAccountTokenProjection{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_ServiceAccountTokenProjection(ref),
+		corev1.ServiceList{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_ServiceList(ref),
+		corev1.ServicePort{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_ServicePort(ref),
+		corev1.ServiceProxyOptions{}.OpenAPIModelName():                                                  schema_k8sio_api_core_v1_ServiceProxyOptions(ref),
+		corev1.ServiceSpec{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_ServiceSpec(ref),
+		corev1.ServiceStatus{}.OpenAPIModelName():                                                        schema_k8sio_api_core_v1_ServiceStatus(ref),
+		corev1.SessionAffinityConfig{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_SessionAffinityConfig(ref),
+		corev1.SleepAction{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_SleepAction(ref),
+		corev1.StorageOSPersistentVolumeSource{}.OpenAPIModelName():                                      schema_k8sio_api_core_v1_StorageOSPersistentVolumeSource(ref),
+		corev1.StorageOSVolumeSource{}.OpenAPIModelName():                                                schema_k8sio_api_core_v1_StorageOSVolumeSource(ref),
+		corev1.Sysctl{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_Sysctl(ref),
+		corev1.TCPSocketAction{}.OpenAPIModelName():                                                      schema_k8sio_api_core_v1_TCPSocketAction(ref),
+		corev1.Taint{}.OpenAPIModelName():                                                                schema_k8sio_api_core_v1_Taint(ref),
+		corev1.Toleration{}.OpenAPIModelName():                                                           schema_k8sio_api_core_v1_Toleration(ref),
+		corev1.TopologySelectorLabelRequirement{}.OpenAPIModelName():                                     schema_k8sio_api_core_v1_TopologySelectorLabelRequirement(ref),
+		corev1.TopologySelectorTerm{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_TopologySelectorTerm(ref),
+		corev1.TopologySpreadConstraint{}.OpenAPIModelName():                                             schema_k8sio_api_core_v1_TopologySpreadConstraint(ref),
+		corev1.TypedLocalObjectReference{}.OpenAPIModelName():                                            schema_k8sio_api_core_v1_TypedLocalObjectReference(ref),
+		corev1.TypedObjectReference{}.OpenAPIModelName():                                                 schema_k8sio_api_core_v1_TypedObjectReference(ref),
+		corev1.Volume{}.OpenAPIModelName():                                                               schema_k8sio_api_core_v1_Volume(ref),
+		corev1.VolumeDevice{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_VolumeDevice(ref),
+		corev1.VolumeMount{}.OpenAPIModelName():                                                          schema_k8sio_api_core_v1_VolumeMount(ref),
+		corev1.VolumeMountStatus{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_VolumeMountStatus(ref),
+		corev1.VolumeNodeAffinity{}.OpenAPIModelName():                                                   schema_k8sio_api_core_v1_VolumeNodeAffinity(ref),
+		corev1.VolumeProjection{}.OpenAPIModelName():                                                     schema_k8sio_api_core_v1_VolumeProjection(ref),
+		corev1.VolumeResourceRequirements{}.OpenAPIModelName():                                           schema_k8sio_api_core_v1_VolumeResourceRequirements(ref),
+		corev1.VolumeSource{}.OpenAPIModelName():                                                         schema_k8sio_api_core_v1_VolumeSource(ref),
+		corev1.VsphereVirtualDiskVolumeSource{}.OpenAPIModelName():                                       schema_k8sio_api_core_v1_VsphereVirtualDiskVolumeSource(ref),
+		corev1.WeightedPodAffinityTerm{}.OpenAPIModelName():                                              schema_k8sio_api_core_v1_WeightedPodAffinityTerm(ref),
+		corev1.WindowsSecurityContextOptions{}.OpenAPIModelName():                                        schema_k8sio_api_core_v1_WindowsSecurityContextOptions(ref),
+		corev1.WorkloadReference{}.OpenAPIModelName():                                                    schema_k8sio_api_core_v1_WorkloadReference(ref),
+		networkingv1.HTTPIngressPath{}.OpenAPIModelName():                                                schema_k8sio_api_networking_v1_HTTPIngressPath(ref),
+		networkingv1.HTTPIngressRuleValue{}.OpenAPIModelName():                                           schema_k8sio_api_networking_v1_HTTPIngressRuleValue(ref),
+		networkingv1.IPAddress{}.OpenAPIModelName():                                                      schema_k8sio_api_networking_v1_IPAddress(ref),
+		networkingv1.IPAddressList{}.OpenAPIModelName():                                                  schema_k8sio_api_networking_v1_IPAddressList(ref),
+		networkingv1.IPAddressSpec{}.OpenAPIModelName():                                                  schema_k8sio_api_networking_v1_IPAddressSpec(ref),
+		networkingv1.IPBlock{}.OpenAPIModelName():                                                        schema_k8sio_api_networking_v1_IPBlock(ref),
+		networkingv1.Ingress{}.OpenAPIModelName():                                                        schema_k8sio_api_networking_v1_Ingress(ref),
+		networkingv1.IngressBackend{}.OpenAPIModelName():                                                 schema_k8sio_api_networking_v1_IngressBackend(ref),
+		networkingv1.IngressClass{}.OpenAPIModelName():                                                   schema_k8sio_api_networking_v1_IngressClass(ref),
+		networkingv1.IngressClassList{}.OpenAPIModelName():                                               schema_k8sio_api_networking_v1_IngressClassList(ref),
+		networkingv1.IngressClassParametersReference{}.OpenAPIModelName():                                schema_k8sio_api_networking_v1_IngressClassParametersReference(ref),
+		networkingv1.IngressClassSpec{}.OpenAPIModelName():                                               schema_k8sio_api_networking_v1_IngressClassSpec(ref),
+		networkingv1.IngressList{}.OpenAPIModelName():                                                    schema_k8sio_api_networking_v1_IngressList(ref),
+		networkingv1.IngressLoadBalancerIngress{}.OpenAPIModelName():                                     schema_k8sio_api_networking_v1_IngressLoadBalancerIngress(ref),
+		networkingv1.IngressLoadBalancerStatus{}.OpenAPIModelName():                                      schema_k8sio_api_networking_v1_IngressLoadBalancerStatus(ref),
+		networkingv1.IngressPortStatus{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_IngressPortStatus(ref),
+		networkingv1.IngressRule{}.OpenAPIModelName():                                                    schema_k8sio_api_networking_v1_IngressRule(ref),
+		networkingv1.IngressRuleValue{}.OpenAPIModelName():                                               schema_k8sio_api_networking_v1_IngressRuleValue(ref),
+		networkingv1.IngressServiceBackend{}.OpenAPIModelName():                                          schema_k8sio_api_networking_v1_IngressServiceBackend(ref),
+		networkingv1.IngressSpec{}.OpenAPIModelName():                                                    schema_k8sio_api_networking_v1_IngressSpec(ref),
+		networkingv1.IngressStatus{}.OpenAPIModelName():                                                  schema_k8sio_api_networking_v1_IngressStatus(ref),
+		networkingv1.IngressTLS{}.OpenAPIModelName():                                                     schema_k8sio_api_networking_v1_IngressTLS(ref),
+		networkingv1.NetworkPolicy{}.OpenAPIModelName():                                                  schema_k8sio_api_networking_v1_NetworkPolicy(ref),
+		networkingv1.NetworkPolicyEgressRule{}.OpenAPIModelName():                                        schema_k8sio_api_networking_v1_NetworkPolicyEgressRule(ref),
+		networkingv1.NetworkPolicyIngressRule{}.OpenAPIModelName():                                       schema_k8sio_api_networking_v1_NetworkPolicyIngressRule(ref),
+		networkingv1.NetworkPolicyList{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_NetworkPolicyList(ref),
+		networkingv1.NetworkPolicyPeer{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_NetworkPolicyPeer(ref),
+		networkingv1.NetworkPolicyPort{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_NetworkPolicyPort(ref),
+		networkingv1.NetworkPolicySpec{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_NetworkPolicySpec(ref),
+		networkingv1.ParentReference{}.OpenAPIModelName():                                                schema_k8sio_api_networking_v1_ParentReference(ref),
+		networkingv1.ServiceBackendPort{}.OpenAPIModelName():                                             schema_k8sio_api_networking_v1_ServiceBackendPort(ref),
+		networkingv1.ServiceCIDR{}.OpenAPIModelName():                                                    schema_k8sio_api_networking_v1_ServiceCIDR(ref),
+		networkingv1.ServiceCIDRList{}.OpenAPIModelName():                                                schema_k8sio_api_networking_v1_ServiceCIDRList(ref),
+		networkingv1.ServiceCIDRSpec{}.OpenAPIModelName():                                                schema_k8sio_api_networking_v1_ServiceCIDRSpec(ref),
+		networkingv1.ServiceCIDRStatus{}.OpenAPIModelName():                                              schema_k8sio_api_networking_v1_ServiceCIDRStatus(ref),
+		rbacv1.AggregationRule{}.OpenAPIModelName():                                                      schema_k8sio_api_rbac_v1_AggregationRule(ref),
+		rbacv1.ClusterRole{}.OpenAPIModelName():                                                          schema_k8sio_api_rbac_v1_ClusterRole(ref),
+		rbacv1.ClusterRoleBinding{}.OpenAPIModelName():                                                   schema_k8sio_api_rbac_v1_ClusterRoleBinding(ref),
+		rbacv1.ClusterRoleBindingList{}.OpenAPIModelName():                                               schema_k8sio_api_rbac_v1_ClusterRoleBindingList(ref),
+		rbacv1.ClusterRoleList{}.OpenAPIModelName():                                                      schema_k8sio_api_rbac_v1_ClusterRoleList(ref),
+		rbacv1.PolicyRule{}.OpenAPIModelName():                                                           schema_k8sio_api_rbac_v1_PolicyRule(ref),
+		rbacv1.Role{}.OpenAPIModelName():                                                                 schema_k8sio_api_rbac_v1_Role(ref),
+		rbacv1.RoleBinding{}.OpenAPIModelName():                                                          schema_k8sio_api_rbac_v1_RoleBinding(ref),
+		rbacv1.RoleBindingList{}.OpenAPIModelName():                                                      schema_k8sio_api_rbac_v1_RoleBindingList(ref),
+		rbacv1.RoleList{}.OpenAPIModelName():                                                             schema_k8sio_api_rbac_v1_RoleList(ref),
+		rbacv1.RoleRef{}.OpenAPIModelName():                                                              schema_k8sio_api_rbac_v1_RoleRef(ref),
+		rbacv1.Subject{}.OpenAPIModelName():                                                              schema_k8sio_api_rbac_v1_Subject(ref),
+		storagev1.CSIDriver{}.OpenAPIModelName():                                                         schema_k8sio_api_storage_v1_CSIDriver(ref),
+		storagev1.CSIDriverList{}.OpenAPIModelName():                                                     schema_k8sio_api_storage_v1_CSIDriverList(ref),
+		storagev1.CSIDriverSpec{}.OpenAPIModelName():                                                     schema_k8sio_api_storage_v1_CSIDriverSpec(ref),
+		storagev1.CSINode{}.OpenAPIModelName():                                                           schema_k8sio_api_storage_v1_CSINode(ref),
+		storagev1.CSINodeDriver{}.OpenAPIModelName():                                                     schema_k8sio_api_storage_v1_CSINodeDriver(ref),
+		storagev1.CSINodeList{}.OpenAPIModelName():                                                       schema_k8sio_api_storage_v1_CSINodeList(ref),
+		storagev1.CSINodeSpec{}.OpenAPIModelName():                                                       schema_k8sio_api_storage_v1_CSINodeSpec(ref),
+		storagev1.CSIStorageCapacity{}.OpenAPIModelName():                                                schema_k8sio_api_storage_v1_CSIStorageCapacity(ref),
+		storagev1.CSIStorageCapacityList{}.OpenAPIModelName():                                            schema_k8sio_api_storage_v1_CSIStorageCapacityList(ref),
+		storagev1.StorageClass{}.OpenAPIModelName():                                                      schema_k8sio_api_storage_v1_StorageClass(ref),
+		storagev1.StorageClassList{}.OpenAPIModelName():                                                  schema_k8sio_api_storage_v1_StorageClassList(ref),
+		storagev1.TokenRequest{}.OpenAPIModelName():                                                      schema_k8sio_api_storage_v1_TokenRequest(ref),
+		storagev1.VolumeAttachment{}.OpenAPIModelName():                                                  schema_k8sio_api_storage_v1_VolumeAttachment(ref),
+		storagev1.VolumeAttachmentList{}.OpenAPIModelName():                                              schema_k8sio_api_storage_v1_VolumeAttachmentList(ref),
+		storagev1.VolumeAttachmentSource{}.OpenAPIModelName():                                            schema_k8sio_api_storage_v1_VolumeAttachmentSource(ref),
+		storagev1.VolumeAttachmentSpec{}.OpenAPIModelName():                                              schema_k8sio_api_storage_v1_VolumeAttachmentSpec(ref),
+		storagev1.VolumeAttachmentStatus{}.OpenAPIModelName():                                            schema_k8sio_api_storage_v1_VolumeAttachmentStatus(ref),
+		storagev1.VolumeAttributesClass{}.OpenAPIModelName():                                             schema_k8sio_api_storage_v1_VolumeAttributesClass(ref),
+		storagev1.VolumeAttributesClassList{}.OpenAPIModelName():                                         schema_k8sio_api_storage_v1_VolumeAttributesClassList(ref),
+		storagev1.VolumeError{}.OpenAPIModelName():                                                       schema_k8sio_api_storage_v1_VolumeError(ref),
+		storagev1.VolumeNodeResources{}.OpenAPIModelName():                                               schema_k8sio_api_storage_v1_VolumeNodeResources(ref),
+		resource.Quantity{}.OpenAPIModelName():                                                           schema_apimachinery_pkg_api_resource_Quantity(ref),
+		metav1.APIGroup{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_APIGroup(ref),
+		metav1.APIGroupList{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_APIGroupList(ref),
+		metav1.APIResource{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_APIResource(ref),
+		metav1.APIResourceList{}.OpenAPIModelName():                                                      schema_pkg_apis_meta_v1_APIResourceList(ref),
+		metav1.APIVersions{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_APIVersions(ref),
+		metav1.ApplyOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_ApplyOptions(ref),
+		metav1.Condition{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_Condition(ref),
+		metav1.CreateOptions{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_CreateOptions(ref),
+		metav1.DeleteOptions{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_DeleteOptions(ref),
+		metav1.Duration{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_Duration(ref),
+		metav1.FieldSelectorRequirement{}.OpenAPIModelName():                                             schema_pkg_apis_meta_v1_FieldSelectorRequirement(ref),
+		metav1.FieldsV1{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_FieldsV1(ref),
+		metav1.GetOptions{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_GetOptions(ref),
+		metav1.GroupKind{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_GroupKind(ref),
+		metav1.GroupResource{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_GroupResource(ref),
+		metav1.GroupVersion{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_GroupVersion(ref),
+		metav1.GroupVersionForDiscovery{}.OpenAPIModelName():                                             schema_pkg_apis_meta_v1_GroupVersionForDiscovery(ref),
+		metav1.GroupVersionKind{}.OpenAPIModelName():                                                     schema_pkg_apis_meta_v1_GroupVersionKind(ref),
+		metav1.GroupVersionResource{}.OpenAPIModelName():                                                 schema_pkg_apis_meta_v1_GroupVersionResource(ref),
+		metav1.InternalEvent{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_InternalEvent(ref),
+		metav1.LabelSelector{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_LabelSelector(ref),
+		metav1.LabelSelectorRequirement{}.OpenAPIModelName():                                             schema_pkg_apis_meta_v1_LabelSelectorRequirement(ref),
+		metav1.List{}.OpenAPIModelName():                                                                 schema_pkg_apis_meta_v1_List(ref),
+		metav1.ListMeta{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_ListMeta(ref),
+		metav1.ListOptions{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_ListOptions(ref),
+		metav1.ManagedFieldsEntry{}.OpenAPIModelName():                                                   schema_pkg_apis_meta_v1_ManagedFieldsEntry(ref),
+		metav1.MicroTime{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_MicroTime(ref),
+		metav1.ObjectMeta{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_ObjectMeta(ref),
+		metav1.OwnerReference{}.OpenAPIModelName():                                                       schema_pkg_apis_meta_v1_OwnerReference(ref),
+		metav1.PartialObjectMetadata{}.OpenAPIModelName():                                                schema_pkg_apis_meta_v1_PartialObjectMetadata(ref),
+		metav1.PartialObjectMetadataList{}.OpenAPIModelName():                                            schema_pkg_apis_meta_v1_PartialObjectMetadataList(ref),
+		metav1.Patch{}.OpenAPIModelName():                                                                schema_pkg_apis_meta_v1_Patch(ref),
+		metav1.PatchOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_PatchOptions(ref),
+		metav1.Preconditions{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_Preconditions(ref),
+		metav1.RootPaths{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_RootPaths(ref),
+		metav1.ServerAddressByClientCIDR{}.OpenAPIModelName():                                            schema_pkg_apis_meta_v1_ServerAddressByClientCIDR(ref),
+		metav1.Status{}.OpenAPIModelName():                                                               schema_pkg_apis_meta_v1_Status(ref),
+		metav1.StatusCause{}.OpenAPIModelName():                                                          schema_pkg_apis_meta_v1_StatusCause(ref),
+		metav1.StatusDetails{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_StatusDetails(ref),
+		metav1.Table{}.OpenAPIModelName():                                                                schema_pkg_apis_meta_v1_Table(ref),
+		metav1.TableColumnDefinition{}.OpenAPIModelName():                                                schema_pkg_apis_meta_v1_TableColumnDefinition(ref),
+		metav1.TableOptions{}.OpenAPIModelName():                                                         schema_pkg_apis_meta_v1_TableOptions(ref),
+		metav1.TableRow{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_TableRow(ref),
+		metav1.TableRowCondition{}.OpenAPIModelName():                                                    schema_pkg_apis_meta_v1_TableRowCondition(ref),
+		metav1.Time{}.OpenAPIModelName():                                                                 schema_pkg_apis_meta_v1_Time(ref),
+		metav1.Timestamp{}.OpenAPIModelName():                                                            schema_pkg_apis_meta_v1_Timestamp(ref),
+		metav1.TypeMeta{}.OpenAPIModelName():                                                             schema_pkg_apis_meta_v1_TypeMeta(ref),
+		metav1.UpdateOptions{}.OpenAPIModelName():                                                        schema_pkg_apis_meta_v1_UpdateOptions(ref),
+		metav1.WatchEvent{}.OpenAPIModelName():                                                           schema_pkg_apis_meta_v1_WatchEvent(ref),
+		runtime.RawExtension{}.OpenAPIModelName():                                                        schema_k8sio_apimachinery_pkg_runtime_RawExtension(ref),
+		runtime.TypeMeta{}.OpenAPIModelName():                                                            schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref),
+		runtime.Unknown{}.OpenAPIModelName():                                                             schema_k8sio_apimachinery_pkg_runtime_Unknown(ref),
+		intstr.IntOrString{}.OpenAPIModelName():                                                          schema_apimachinery_pkg_util_intstr_IntOrString(ref),
+		version.Info{}.OpenAPIModelName():                                                                schema_k8sio_apimachinery_pkg_version_Info(ref),
 	}
 }
 
@@ -4595,13 +1178,13 @@ func schema_pkg_apis_audit_v1_Event(ref common.ReferenceCallback) common.OpenAPI
 					"requestObject": {
 						SchemaProps: spec.SchemaProps{
 							Description: "API object from the request, in JSON format. The RequestObject is recorded as-is in the request (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or merging. It is an external versioned object type, and may not be a valid object on its own. Omitted for non-resource requests.  Only logged at Request Level and higher.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.Unknown"),
+							Ref:         ref(runtime.Unknown{}.OpenAPIModelName()),
 						},
 					},
 					"responseObject": {
 						SchemaProps: spec.SchemaProps{
 							Description: "API object returned in the response, in JSON. The ResponseObject is recorded after conversion to the external type, and serialized as JSON.  Omitted for non-resource requests.  Only logged at Response Level.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.Unknown"),
+							Ref:         ref(runtime.Unknown{}.OpenAPIModelName()),
 						},
 					},
 					"requestReceivedTimestamp": {
@@ -4637,7 +1220,7 @@ func schema_pkg_apis_audit_v1_Event(ref common.ReferenceCallback) common.OpenAPI
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference", "k8s.io/api/authentication/v1.UserInfo", metav1.MicroTime{}.OpenAPIModelName(), metav1.Status{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/runtime.Unknown"},
+			"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference", "k8s.io/api/authentication/v1.UserInfo", metav1.MicroTime{}.OpenAPIModelName(), metav1.Status{}.OpenAPIModelName(), runtime.Unknown{}.OpenAPIModelName()},
 	}
 }
 
@@ -5131,14 +1714,14 @@ func schema_pkg_apis_management_v1_AnnouncementStatus(ref common.ReferenceCallba
 						SchemaProps: spec.SchemaProps{
 							Description: "Announcement is the html announcement that should be displayed in the frontend",
 							Default:     map[string]interface{}{},
-							Ref:         ref(licenseapi.Announcement{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/admin-apis/pkg/licenseapi.Announcement"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			licenseapi.Announcement{}.OpenAPIModelName()},
+			"github.com/devsy-org/admin-apis/pkg/licenseapi.Announcement"},
 	}
 }
 
@@ -5417,7 +2000,7 @@ func schema_pkg_apis_management_v1_AppSpec(ref common.ReferenceCallback) common.
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmReleaseConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -5499,7 +2082,7 @@ func schema_pkg_apis_management_v1_AppSpec(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			v1.HelmReleaseConfig{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
@@ -8615,7 +5198,7 @@ func schema_pkg_apis_management_v1_ClusterStatus(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -8632,7 +5215,7 @@ func schema_pkg_apis_management_v1_ClusterStatus(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -9635,6 +6218,143 @@ func schema_pkg_apis_management_v1_DevsyEnvironmentTemplateStatus(ref common.Ref
 	}
 }
 
+func schema_pkg_apis_management_v1_DevsyUpgrade(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DevsyUpgrade holds the upgrade information",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_management_v1_DevsyUpgradeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade", metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_management_v1_DevsyUpgradeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"namespace": {
+						SchemaProps: spec.SchemaProps{
+							Description: "If specified, updated the release in the given namespace",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"release": {
+						SchemaProps: spec.SchemaProps{
+							Description: "If specified, uses this as release name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_management_v1_DevsyUpgradeStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+			},
+		},
+	}
+}
+
 func schema_pkg_apis_management_v1_DevsyWorkspaceInstance(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -10207,7 +6927,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStatus(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -10235,14 +6955,14 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceStatus(ref common.Refer
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the workspace. This will only be shown in the front end.",
-							Ref:         ref(v1.SleepModeConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
@@ -10589,7 +7309,7 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceInstanceTroubleshoot(ref common
 					},
 					"state": {
 						SchemaProps: spec.SchemaProps{
-							Description: "State holds the workspaces state as given by 'devpod export'",
+							Description: "State holds the workspaces state as given by 'devsy export'",
 							Type:        []string{"string"},
 							Format:      "",
 						},
@@ -11264,143 +7984,6 @@ func schema_pkg_apis_management_v1_DevsyWorkspaceTemplateStatus(ref common.Refer
 	}
 }
 
-func schema_pkg_apis_management_v1_DevsyUpgrade(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "DevsyUpgrade holds the upgrade information",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"spec": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec"),
-						},
-					},
-					"status": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus"),
-						},
-					},
-				},
-			},
-		},
-		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeSpec", "github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgradeStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_pkg_apis_management_v1_DevsyUpgradeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Default: map[string]interface{}{},
-							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Type: []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref("github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade"),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/management/v1.DevsyUpgrade", metav1.ListMeta{}.OpenAPIModelName()},
-	}
-}
-
-func schema_pkg_apis_management_v1_DevsyUpgradeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-				Properties: map[string]spec.Schema{
-					"namespace": {
-						SchemaProps: spec.SchemaProps{
-							Description: "If specified, updated the release in the given namespace",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"release": {
-						SchemaProps: spec.SchemaProps{
-							Description: "If specified, uses this as release name",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"version": {
-						SchemaProps: spec.SchemaProps{
-							Type:   []string{"string"},
-							Format: "",
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func schema_pkg_apis_management_v1_DevsyUpgradeStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Type: []string{"object"},
-			},
-		},
-	}
-}
-
 func schema_pkg_apis_management_v1_DirectClusterEndpointToken(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -11760,13 +8343,13 @@ func schema_pkg_apis_management_v1_EventStatus(ref common.ReferenceCallback) com
 					"requestObject": {
 						SchemaProps: spec.SchemaProps{
 							Description: "API object from the request, in JSON format. The RequestObject is recorded as-is in the request (possibly re-encoded as JSON), prior to version conversion, defaulting, admission or merging. It is an external versioned object type, and may not be a valid object on its own. Omitted for non-resource requests.  Only logged at Request Level and higher.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.Unknown"),
+							Ref:         ref(runtime.Unknown{}.OpenAPIModelName()),
 						},
 					},
 					"responseObject": {
 						SchemaProps: spec.SchemaProps{
 							Description: "API object returned in the response, in JSON. The ResponseObject is recorded after conversion to the external type, and serialized as JSON.  Omitted for non-resource requests.  Only logged at Response Level.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.Unknown"),
+							Ref:         ref(runtime.Unknown{}.OpenAPIModelName()),
 						},
 					},
 					"requestReceivedTimestamp": {
@@ -11802,7 +8385,7 @@ func schema_pkg_apis_management_v1_EventStatus(ref common.ReferenceCallback) com
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference", "k8s.io/api/authentication/v1.UserInfo", metav1.MicroTime{}.OpenAPIModelName(), metav1.Status{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/runtime.Unknown"},
+			"github.com/devsy-org/api/pkg/apis/audit/v1.ObjectReference", "k8s.io/api/authentication/v1.UserInfo", metav1.MicroTime{}.OpenAPIModelName(), metav1.Status{}.OpenAPIModelName(), runtime.Unknown{}.OpenAPIModelName()},
 	}
 }
 
@@ -12312,26 +8895,26 @@ func schema_pkg_apis_management_v1_KioskSpec(ref common.ReferenceCallback) commo
 						SchemaProps: spec.SchemaProps{
 							Description: "cluster.devsy.sh",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmRelease{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease"),
 						},
 					},
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref(v1.SleepModeConfig{}.OpenAPIModelName()),
+							Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"chartInfo": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref(v1.ChartInfo{}.OpenAPIModelName()),
+							Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo"),
 						},
 					},
 					"storageClusterQuota": {
 						SchemaProps: spec.SchemaProps{
 							Description: "storage.devsy.sh",
 							Default:     map[string]interface{}{},
-							Ref:         ref(storagev1.ClusterQuota{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota"),
 						},
 					},
 					"UISettings": {
@@ -12400,7 +8983,7 @@ func schema_pkg_apis_management_v1_KioskSpec(ref common.ReferenceCallback) commo
 			},
 		},
 		Dependencies: []string{
-			v1.ChartInfo{}.OpenAPIModelName(), v1.HelmRelease{}.OpenAPIModelName(), v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.ClusterQuota{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/management/v1.License", "github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimData", "github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentData", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderCalculateCostResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult", "github.com/devsy-org/api/pkg/apis/ui/v1.UISettings"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.ChartInfo", "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmRelease", "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.ClusterQuota", "github.com/devsy-org/api/pkg/apis/management/v1.License", "github.com/devsy-org/api/pkg/apis/management/v1.NodeClaimData", "github.com/devsy-org/api/pkg/apis/management/v1.NodeEnvironmentData", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMGetResourcesResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMNodeWithResources", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderBCMTestConnectionResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderCalculateCostResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderExecResult", "github.com/devsy-org/api/pkg/apis/management/v1.NodeProviderTerraformValidateResult", "github.com/devsy-org/api/pkg/apis/ui/v1.UISettings"},
 	}
 }
 
@@ -12623,14 +9206,14 @@ func schema_pkg_apis_management_v1_LicenseRequestSpec(ref common.ReferenceCallba
 						SchemaProps: spec.SchemaProps{
 							Description: "Input is the input payload to send to the url.",
 							Default:     map[string]interface{}{},
-							Ref:         ref(licenseapi.GenericRequestInput{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/admin-apis/pkg/licenseapi.GenericRequestInput"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			licenseapi.GenericRequestInput{}.OpenAPIModelName()},
+			"github.com/devsy-org/admin-apis/pkg/licenseapi.GenericRequestInput"},
 	}
 }
 
@@ -12643,14 +9226,14 @@ func schema_pkg_apis_management_v1_LicenseRequestStatus(ref common.ReferenceCall
 					"output": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Output is where the request output is stored.",
-							Ref:         ref(licenseapi.GenericRequestOutput{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/admin-apis/pkg/licenseapi.GenericRequestOutput"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			licenseapi.GenericRequestOutput{}.OpenAPIModelName()},
+			"github.com/devsy-org/admin-apis/pkg/licenseapi.GenericRequestOutput"},
 	}
 }
 
@@ -12673,7 +9256,7 @@ func schema_pkg_apis_management_v1_LicenseStatus(ref common.ReferenceCallback) c
 					"license": {
 						SchemaProps: spec.SchemaProps{
 							Description: "License is the license data received from the license server.",
-							Ref:         ref(licenseapi.License{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/admin-apis/pkg/licenseapi.License"),
 						},
 					},
 					"resourceUsage": {
@@ -12685,7 +9268,7 @@ func schema_pkg_apis_management_v1_LicenseStatus(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(licenseapi.ResourceCount{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/admin-apis/pkg/licenseapi.ResourceCount"),
 									},
 								},
 							},
@@ -12694,14 +9277,14 @@ func schema_pkg_apis_management_v1_LicenseStatus(ref common.ReferenceCallback) c
 					"platformDatabase": {
 						SchemaProps: spec.SchemaProps{
 							Description: "PlatformDatabase shows information about the platform database installation",
-							Ref:         ref(licenseapi.PlatformDatabase{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/admin-apis/pkg/licenseapi.PlatformDatabase"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			licenseapi.License{}.OpenAPIModelName(), licenseapi.PlatformDatabase{}.OpenAPIModelName(), licenseapi.ResourceCount{}.OpenAPIModelName()},
+			"github.com/devsy-org/admin-apis/pkg/licenseapi.License", "github.com/devsy-org/admin-apis/pkg/licenseapi.PlatformDatabase", "github.com/devsy-org/admin-apis/pkg/licenseapi.ResourceCount"},
 	}
 }
 
@@ -12832,14 +9415,14 @@ func schema_pkg_apis_management_v1_LicenseTokenStatus(ref common.ReferenceCallba
 				Properties: map[string]spec.Schema{
 					"token": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref(licenseapi.InstanceTokenAuth{}.OpenAPIModelName()),
+							Ref: ref("github.com/devsy-org/admin-apis/pkg/licenseapi.InstanceTokenAuth"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			licenseapi.InstanceTokenAuth{}.OpenAPIModelName()},
+			"github.com/devsy-org/admin-apis/pkg/licenseapi.InstanceTokenAuth"},
 	}
 }
 
@@ -13134,7 +9717,7 @@ func schema_pkg_apis_management_v1_NodeClaimSpec(ref common.ReferenceCallback) c
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -13188,7 +9771,7 @@ func schema_pkg_apis_management_v1_NodeClaimSpec(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			corev1.NodeSelectorRequirement{}.OpenAPIModelName(), corev1.Taint{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.NodeSelectorRequirement{}.OpenAPIModelName(), corev1.Taint{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -13227,7 +9810,7 @@ func schema_pkg_apis_management_v1_NodeClaimStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13237,7 +9820,7 @@ func schema_pkg_apis_management_v1_NodeClaimStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -13459,7 +10042,7 @@ func schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref common.ReferenceCal
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13469,7 +10052,7 @@ func schema_pkg_apis_management_v1_NodeEnvironmentStatus(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -13615,7 +10198,7 @@ func schema_pkg_apis_management_v1_NodeProviderBCMNodeWithResources(ref common.R
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -13626,7 +10209,7 @@ func schema_pkg_apis_management_v1_NodeProviderBCMNodeWithResources(ref common.R
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -13815,7 +10398,7 @@ func schema_pkg_apis_management_v1_NodeProviderExecSpec(ref common.ReferenceCall
 					},
 					"args": {
 						SchemaProps: spec.SchemaProps{
-							Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref: ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 				},
@@ -13823,7 +10406,7 @@ func schema_pkg_apis_management_v1_NodeProviderExecSpec(ref common.ReferenceCall
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -13836,14 +10419,14 @@ func schema_pkg_apis_management_v1_NodeProviderExecStatus(ref common.ReferenceCa
 					"result": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Result is the output of the executed command.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -13950,7 +10533,7 @@ func schema_pkg_apis_management_v1_NodeProviderStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -13981,7 +10564,7 @@ func schema_pkg_apis_management_v1_NodeProviderStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -14144,7 +10727,7 @@ func schema_pkg_apis_management_v1_NodeTypeSpec(ref common.ReferenceCallback) co
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -14174,7 +10757,7 @@ func schema_pkg_apis_management_v1_NodeTypeSpec(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -14241,7 +10824,7 @@ func schema_pkg_apis_management_v1_NodeTypeStatus(ref common.ReferenceCallback) 
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -14251,7 +10834,7 @@ func schema_pkg_apis_management_v1_NodeTypeStatus(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity", corev1.NodeSelectorRequirement{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity", corev1.NodeSelectorRequirement{}.OpenAPIModelName()},
 	}
 }
 
@@ -15075,14 +11658,14 @@ func schema_pkg_apis_management_v1_ProjectChartInfoSpec(ref common.ReferenceCall
 						SchemaProps: spec.SchemaProps{
 							Description: "Chart holds information about a chart that should get deployed",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.Chart{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			v1.Chart{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
 	}
 }
 
@@ -15095,7 +11678,7 @@ func schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref common.ReferenceCa
 					"metadata": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
-							Ref:         ref(v1.Metadata{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 					"readme": {
@@ -15116,7 +11699,7 @@ func schema_pkg_apis_management_v1_ProjectChartInfoStatus(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			v1.Metadata{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
 	}
 }
 
@@ -16230,7 +12813,7 @@ func schema_pkg_apis_management_v1_ProjectSecretStatus(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -16240,7 +12823,7 @@ func schema_pkg_apis_management_v1_ProjectSecretStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -16421,7 +13004,7 @@ func schema_pkg_apis_management_v1_ProjectStatus(ref common.ReferenceCallback) c
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -16431,7 +13014,7 @@ func schema_pkg_apis_management_v1_ProjectStatus(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"},
 	}
 }
 
@@ -16503,7 +13086,7 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 							},
 						},
 					},
-					"defaultDevsyWorkspaceTemplate": {
+					"defaultDevPodWorkspaceTemplate": {
 						SchemaProps: spec.SchemaProps{
 							Description: "DefaultDevsyWorkspaceTemplate",
 							Type:        []string{"string"},
@@ -16552,7 +13135,7 @@ func schema_pkg_apis_management_v1_ProjectTemplates(ref common.ReferenceCallback
 							},
 						},
 					},
-					"defaultDevsyEnvironmentTemplate": {
+					"defaultDevPodEnvironmentTemplate": {
 						SchemaProps: spec.SchemaProps{
 							Description: "DefaultDevsyEnvironmentTemplate",
 							Type:        []string{"string"},
@@ -17751,7 +14334,7 @@ func schema_pkg_apis_management_v1_SharedSecretStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -17761,7 +14344,7 @@ func schema_pkg_apis_management_v1_SharedSecretStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -18027,7 +14610,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -18055,7 +14638,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the space. This will only be shown in the front end.",
-							Ref:         ref(v1.SleepModeConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"canUse": {
@@ -18076,7 +14659,7 @@ func schema_pkg_apis_management_v1_SpaceInstanceStatus(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
 	}
 }
 
@@ -18944,7 +15527,7 @@ func schema_pkg_apis_management_v1_TaskStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -18985,7 +15568,7 @@ func schema_pkg_apis_management_v1_TaskStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.EntityInfo", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeamEntity", corev1.ContainerStatus{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.EntityInfo", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeamEntity", corev1.ContainerStatus{}.OpenAPIModelName()},
 	}
 }
 
@@ -20575,7 +17158,7 @@ func schema_pkg_apis_management_v1_UserPermissionsRole(ref common.ReferenceCallb
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("k8s.io/api/rbac/v1.PolicyRule"),
+										Ref:     ref(rbacv1.PolicyRule{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -20585,7 +17168,7 @@ func schema_pkg_apis_management_v1_UserPermissionsRole(ref common.ReferenceCallb
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/rbac/v1.PolicyRule"},
+			rbacv1.PolicyRule{}.OpenAPIModelName()},
 	}
 }
 
@@ -21998,7 +18581,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -22032,7 +18615,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 					"sleepModeConfig": {
 						SchemaProps: spec.SchemaProps{
 							Description: "SleepModeConfig is the sleep mode config of the space. This will only be shown in the front end.",
-							Ref:         ref(v1.SleepModeConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig"),
 						},
 					},
 					"canUse": {
@@ -22060,7 +18643,7 @@ func schema_pkg_apis_management_v1_VirtualClusterInstanceStatus(ref common.Refer
 			},
 		},
 		Dependencies: []string{
-			v1.SleepModeConfig{}.OpenAPIModelName(), storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.SleepModeConfig", "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
 	}
 }
 
@@ -23722,7 +20305,7 @@ func schema_pkg_apis_storage_v1_AppConfig(ref common.ReferenceCallback) common.O
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmReleaseConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -23763,7 +20346,7 @@ func schema_pkg_apis_storage_v1_AppConfig(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			v1.HelmReleaseConfig{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer"},
 	}
 }
 
@@ -24056,7 +20639,7 @@ func schema_pkg_apis_storage_v1_AppSpec(ref common.ReferenceCallback) common.Ope
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmReleaseConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -24138,7 +20721,7 @@ func schema_pkg_apis_storage_v1_AppSpec(ref common.ReferenceCallback) common.Ope
 			},
 		},
 		Dependencies: []string{
-			v1.HelmReleaseConfig{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/devsy-org/api/pkg/apis/storage/v1.Access", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.AppVersion", "github.com/devsy-org/api/pkg/apis/storage/v1.HelmConfiguration", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.UserOrTeam"},
 	}
 }
 
@@ -24219,7 +20802,7 @@ func schema_pkg_apis_storage_v1_AppVersion(ref common.ReferenceCallback) common.
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the helm release",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmReleaseConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"wait": {
@@ -24267,7 +20850,7 @@ func schema_pkg_apis_storage_v1_AppVersion(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			v1.HelmReleaseConfig{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig", "github.com/devsy-org/api/pkg/apis/storage/v1.AppParameter", "github.com/devsy-org/api/pkg/apis/storage/v1.StreamContainer"},
 	}
 }
 
@@ -24423,7 +21006,7 @@ func schema_pkg_apis_storage_v1_ArgoProjectSpec(ref common.ReferenceCallback) co
 				Properties: map[string]spec.Schema{
 					"enabled": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Enabled indicates if the ArgoCD Project Integration is enabled for this project. Enabling this will cause Devsy to create an appProject in ArgoCD that is associated with the Loft Project. When Project integration is enabled Devsy will override the default assigned role set in the SSO integration spec.",
+							Description: "Enabled indicates if the ArgoCD Project Integration is enabled for this project. Enabling this will cause Devsy to create an appProject in ArgoCD that is associated with the Devsy Project. When Project integration is enabled Devsy will override the default assigned role set in the SSO integration spec.",
 							Type:        []string{"boolean"},
 							Format:      "",
 						},
@@ -24601,7 +21184,7 @@ func schema_pkg_apis_storage_v1_BCMNodeTypeSpec(ref common.ReferenceCallback) co
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -24677,7 +21260,7 @@ func schema_pkg_apis_storage_v1_BCMNodeTypeSpec(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -25291,7 +21874,7 @@ func schema_pkg_apis_storage_v1_ClusterRoleTemplateTemplate(ref common.Reference
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("k8s.io/api/rbac/v1.PolicyRule"),
+										Ref:     ref(rbacv1.PolicyRule{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -25300,14 +21883,14 @@ func schema_pkg_apis_storage_v1_ClusterRoleTemplateTemplate(ref common.Reference
 					"aggregationRule": {
 						SchemaProps: spec.SchemaProps{
 							Description: "AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
-							Ref:         ref("k8s.io/api/rbac/v1.AggregationRule"),
+							Ref:         ref(rbacv1.AggregationRule{}.OpenAPIModelName()),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/api/rbac/v1.AggregationRule", "k8s.io/api/rbac/v1.PolicyRule", metav1.ObjectMeta{}.OpenAPIModelName()},
+			rbacv1.AggregationRule{}.OpenAPIModelName(), rbacv1.PolicyRule{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
 	}
 }
 
@@ -25440,7 +22023,7 @@ func schema_pkg_apis_storage_v1_ClusterStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -25450,7 +22033,7 @@ func schema_pkg_apis_storage_v1_ClusterStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -26525,7 +23108,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePersistentVolumeClaimStatu
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -26573,7 +23156,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstancePersistentVolumeClaimStatu
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent", corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceEvent", corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -26873,7 +23456,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceStatus(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -26902,7 +23485,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspaceInstanceStatus(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceInstanceKubernetesStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceTemplateDefinition", "github.com/devsy-org/api/pkg/apis/storage/v1.WorkspaceResolvedTarget"},
 	}
 }
 
@@ -27301,7 +23884,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplateSpec(ref common.Referen
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -27379,7 +23962,7 @@ func schema_pkg_apis_storage_v1_DevsyWorkspacePodTemplateSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements", corev1.Affinity{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceContainer", "github.com/devsy-org/api/pkg/apis/storage/v1.DevsyWorkspaceResourceRequirements", corev1.Affinity{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -28427,7 +25010,7 @@ func schema_pkg_apis_storage_v1_HelmChart(ref common.ReferenceCallback) common.O
 						SchemaProps: spec.SchemaProps{
 							Description: "Metadata provides information about a chart",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.Metadata{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
 						},
 					},
 					"versions": {
@@ -28456,7 +25039,7 @@ func schema_pkg_apis_storage_v1_HelmChart(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			v1.Metadata{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.HelmChartRepository"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata", "github.com/devsy-org/api/pkg/apis/storage/v1.HelmChartRepository"},
 	}
 }
 
@@ -28630,7 +25213,7 @@ func schema_pkg_apis_storage_v1_HelmTaskRelease(ref common.ReferenceCallback) co
 						SchemaProps: spec.SchemaProps{
 							Description: "Config is the helm config to use to deploy the release",
 							Default:     map[string]interface{}{},
-							Ref:         ref(v1.HelmReleaseConfig{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"),
 						},
 					},
 					"labels": {
@@ -28653,7 +25236,7 @@ func schema_pkg_apis_storage_v1_HelmTaskRelease(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			v1.HelmReleaseConfig{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.HelmReleaseConfig"},
 	}
 }
 
@@ -28942,7 +25525,7 @@ func schema_pkg_apis_storage_v1_KubeVirtNodeTypeSpec(ref common.ReferenceCallbac
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -28986,13 +25569,13 @@ func schema_pkg_apis_storage_v1_KubeVirtNodeTypeSpec(ref common.ReferenceCallbac
 					"virtualMachineTemplate": {
 						SchemaProps: spec.SchemaProps{
 							Description: "VirtualMachineTemplate is a full KubeVirt VirtualMachine template to use for this NodeType. This is mutually exclusive with MergeVirtualMachineTemplate",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 					"mergeVirtualMachineTemplate": {
 						SchemaProps: spec.SchemaProps{
 							Description: "MergeVirtualMachineTemplate will be merged into base VirtualMachine template for this NodeProvider. This allows overwriting of specific fields from top level template by individual NodeTypes This is mutually exclusive with VirtualMachineTemplate",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 					"maxCapacity": {
@@ -29007,7 +25590,7 @@ func schema_pkg_apis_storage_v1_KubeVirtNodeTypeSpec(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "k8s.io/apimachinery/pkg/api/resource.Quantity", "k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", resource.Quantity{}.OpenAPIModelName(), runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -29344,7 +25927,7 @@ func schema_pkg_apis_storage_v1_NamedNodeTypeSpec(ref common.ReferenceCallback) 
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -29390,7 +25973,7 @@ func schema_pkg_apis_storage_v1_NamedNodeTypeSpec(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -29818,7 +26401,7 @@ func schema_pkg_apis_storage_v1_NodeClaimSpec(ref common.ReferenceCallback) comm
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -29872,7 +26455,7 @@ func schema_pkg_apis_storage_v1_NodeClaimSpec(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			corev1.NodeSelectorRequirement{}.OpenAPIModelName(), corev1.Taint{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.NodeSelectorRequirement{}.OpenAPIModelName(), corev1.Taint{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -29911,7 +26494,7 @@ func schema_pkg_apis_storage_v1_NodeClaimStatus(ref common.ReferenceCallback) co
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -29921,7 +26504,7 @@ func schema_pkg_apis_storage_v1_NodeClaimStatus(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30102,7 +26685,7 @@ func schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref common.ReferenceCallba
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30112,7 +26695,7 @@ func schema_pkg_apis_storage_v1_NodeEnvironmentStatus(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30223,7 +26806,7 @@ func schema_pkg_apis_storage_v1_NodeProviderKubeVirt(ref common.ReferenceCallbac
 					"virtualMachineTemplate": {
 						SchemaProps: spec.SchemaProps{
 							Description: "VirtualMachineTemplate is a KubeVirt VirtualMachine template to use by NodeTypes managed by this NodeProvider",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 					"nodeTypes": {
@@ -30245,7 +26828,7 @@ func schema_pkg_apis_storage_v1_NodeProviderKubeVirt(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtClusterRef", "github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtNodeTypeSpec", "k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtClusterRef", "github.com/devsy-org/api/pkg/apis/storage/v1.KubeVirtNodeTypeSpec", runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -30353,7 +26936,7 @@ func schema_pkg_apis_storage_v1_NodeProviderStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30384,7 +26967,7 @@ func schema_pkg_apis_storage_v1_NodeProviderStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -30570,7 +27153,7 @@ func schema_pkg_apis_storage_v1_NodeTypeOverhead(ref common.ReferenceCallback) c
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -30580,7 +27163,7 @@ func schema_pkg_apis_storage_v1_NodeTypeOverhead(ref common.ReferenceCallback) c
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -30621,7 +27204,7 @@ func schema_pkg_apis_storage_v1_NodeTypeSpec(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -30651,7 +27234,7 @@ func schema_pkg_apis_storage_v1_NodeTypeSpec(ref common.ReferenceCallback) commo
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -30719,7 +27302,7 @@ func schema_pkg_apis_storage_v1_NodeTypeStatus(ref common.ReferenceCallback) com
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -30729,7 +27312,7 @@ func schema_pkg_apis_storage_v1_NodeTypeStatus(ref common.ReferenceCallback) com
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity", corev1.NodeSelectorRequirement{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeCapacity", corev1.NodeSelectorRequirement{}.OpenAPIModelName()},
 	}
 }
 
@@ -31136,7 +27719,7 @@ func schema_pkg_apis_storage_v1_ProjectStatus(ref common.ReferenceCallback) comm
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -31146,7 +27729,7 @@ func schema_pkg_apis_storage_v1_ProjectStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.QuotaStatus"},
 	}
 }
 
@@ -31844,7 +28427,7 @@ func schema_pkg_apis_storage_v1_SharedSecretStatus(ref common.ReferenceCallback)
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -31854,7 +28437,7 @@ func schema_pkg_apis_storage_v1_SharedSecretStatus(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"},
 	}
 }
 
@@ -32077,7 +28660,7 @@ func schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref common.ReferenceCallback
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -32106,7 +28689,7 @@ func schema_pkg_apis_storage_v1_SpaceInstanceStatus(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.SpaceTemplateDefinition"},
 	}
 }
 
@@ -32843,7 +29426,7 @@ func schema_pkg_apis_storage_v1_TaskStatus(ref common.ReferenceCallback) common.
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -32874,7 +29457,7 @@ func schema_pkg_apis_storage_v1_TaskStatus(ref common.ReferenceCallback) common.
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), corev1.ContainerStatus{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", corev1.ContainerStatus{}.OpenAPIModelName()},
 	}
 }
 
@@ -33133,7 +29716,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 					"usernameRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The username that is required for this repository",
-							Ref:         ref(v1.ChartSecretRef{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"password": {
@@ -33146,7 +29729,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 					"passwordRef": {
 						SchemaProps: spec.SchemaProps{
 							Description: "The password that is required for this repository",
-							Ref:         ref(v1.ChartSecretRef{}.OpenAPIModelName()),
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"),
 						},
 					},
 					"insecureSkipTlsVerify": {
@@ -33195,7 +29778,7 @@ func schema_pkg_apis_storage_v1_TemplateHelmChart(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			v1.ChartSecretRef{}.OpenAPIModelName()},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.ChartSecretRef"},
 	}
 }
 
@@ -33313,7 +29896,7 @@ func schema_pkg_apis_storage_v1_TerraformNodeTypeSpec(ref common.ReferenceCallba
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -33372,7 +29955,7 @@ func schema_pkg_apis_storage_v1_TerraformNodeTypeSpec(ref common.ReferenceCallba
 			},
 		},
 		Dependencies: []string{
-			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplate", "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			"github.com/devsy-org/api/pkg/apis/storage/v1.ManagedNodeTypeObjectMeta", "github.com/devsy-org/api/pkg/apis/storage/v1.NodeTypeOverhead", "github.com/devsy-org/api/pkg/apis/storage/v1.TerraformTemplate", resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -34450,7 +31033,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref common.Referenc
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -34485,7 +31068,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterInstanceStatus(ref common.Referenc
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterTemplateDefinition"},
 	}
 }
 
@@ -34629,7 +31212,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterStatus(ref common.ReferenceCallbac
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref(storagev1.Condition{}.OpenAPIModelName()),
+										Ref:     ref("github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition"),
 									},
 								},
 							},
@@ -34672,7 +31255,7 @@ func schema_pkg_apis_storage_v1_VirtualClusterStatus(ref common.ReferenceCallbac
 			},
 		},
 		Dependencies: []string{
-			storagev1.Condition{}.OpenAPIModelName(), "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus"},
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1.Condition", "github.com/devsy-org/api/pkg/apis/storage/v1.ObjectsStatus", "github.com/devsy-org/api/pkg/apis/storage/v1.VirtualClusterHelmReleaseStatus"},
 	}
 }
 
@@ -35197,6 +31780,3233 @@ func schema_pkg_apis_storage_v1_WorkspaceTargetNamespace(ref common.ReferenceCal
 					},
 				},
 				Required: []string{"name"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_ui_v1_CspPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"Script": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"Connect": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"Frame": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"Font": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+				},
+				Required: []string{"Script", "Connect", "Frame", "Font"},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_ui_v1_DevsyVersion(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"tagName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "TagName is the full tag name",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"prerelease": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PreRelease determines if the version is marked as prerelease",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_ui_v1_ExternalURLs(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"block": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Block determines if requests to external URLs from the UI should be blocked",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"allow": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Allow specifies which external URLs can be called. In addition to the predefined modules, - \"devsy\" (license page, feature descriptions, ...) - \"gtm\" (google tag manager) - \"featurebase\" (changelog) any URL can be added to this list. This will allow the UI to make any request to this URL. This is only active when Block is true.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_ui_v1_NavBarButton(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"position": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Position holds the position of the button, can be one of: TopStart, TopEnd, BottomStart, BottomEnd. Defaults to BottomEnd",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"text": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Text holds text for the button",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"link": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Link holds the link of the navbar button",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"icon": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Icon holds the url of the icon to display",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_pkg_apis_ui_v1_UISettings(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "UISettings holds the devsy ui configuration settings",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsSpec", "github.com/devsy-org/api/pkg/apis/ui/v1.UISettingsStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_ui_v1_UISettingsConfig(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"loftVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DevsyVersion holds the current devsy version",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"logoURL": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LogoURL is url pointing to the logo to use in the Devsy UI. This path must be accessible for clients accessing the Devsy UI!",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"smallLogoURL": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SmallLogoURL is url pointing to the small logo to use in the Devsy UI. This path must be accessible for clients accessing the Devsy UI!",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"logoBackgroundColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LogoBackgroundColor is the color value (ex: \"#12345\") to use as the background color for the logo",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"legalTemplate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LegalTemplate is a text (html) string containing the legal template to prompt to users when authenticating to Devsy",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"primaryColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PrimaryColor is the color value (ex: \"#12345\") to use as the primary color",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"sidebarColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SidebarColor is the color value (ex: \"#12345\") to use for the sidebar",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"accentColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AccentColor is the color value (ex: \"#12345\") to use for the accent",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"customCss": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CustomCSS holds URLs with custom css files that should be included when loading the UI",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"customJavaScript": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CustomJavaScript holds URLs with custom js files that should be included when loading the UI",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"navBarButtons": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NavBarButtons holds extra nav bar buttons",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.NavBarButton"),
+									},
+								},
+							},
+						},
+					},
+					"externalURLs": {
+						SchemaProps: spec.SchemaProps{
+							Description: "External URLs that can be called from the UI",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/ui/v1.ExternalURLs"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/ui/v1.ExternalURLs", "github.com/devsy-org/api/pkg/apis/ui/v1.NavBarButton"},
+	}
+}
+
+func schema_pkg_apis_ui_v1_UISettingsSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "UISettingsSpec holds the specification",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"loftVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DevsyVersion holds the current devsy version",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"logoURL": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LogoURL is url pointing to the logo to use in the Devsy UI. This path must be accessible for clients accessing the Devsy UI!",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"smallLogoURL": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SmallLogoURL is url pointing to the small logo to use in the Devsy UI. This path must be accessible for clients accessing the Devsy UI!",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"logoBackgroundColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LogoBackgroundColor is the color value (ex: \"#12345\") to use as the background color for the logo",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"legalTemplate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "LegalTemplate is a text (html) string containing the legal template to prompt to users when authenticating to Devsy",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"primaryColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "PrimaryColor is the color value (ex: \"#12345\") to use as the primary color",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"sidebarColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SidebarColor is the color value (ex: \"#12345\") to use for the sidebar",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"accentColor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AccentColor is the color value (ex: \"#12345\") to use for the accent",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"customCss": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CustomCSS holds URLs with custom css files that should be included when loading the UI",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"customJavaScript": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CustomJavaScript holds URLs with custom js files that should be included when loading the UI",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"navBarButtons": {
+						SchemaProps: spec.SchemaProps{
+							Description: "NavBarButtons holds extra nav bar buttons",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.NavBarButton"),
+									},
+								},
+							},
+						},
+					},
+					"externalURLs": {
+						SchemaProps: spec.SchemaProps{
+							Description: "External URLs that can be called from the UI",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/devsy-org/api/pkg/apis/ui/v1.ExternalURLs"),
+						},
+					},
+					"productName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name is the name of the product",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"offline": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Offline is true if devsy is running in an airgapped environment",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"hasHelmRelease": {
+						SchemaProps: spec.SchemaProps{
+							Description: "HasHelmRelease indicates whether the vCluster Platform instance has been installed via Helm",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"defaultDevsyVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DefaultDevsyVersion is the default version of vClusters",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"availableDevsyVersions": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AvailableDevsyVersions lists all virtual cluster versions available to the platform instance",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.DevsyVersion"),
+									},
+								},
+							},
+						},
+					},
+					"loftHosted": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DevsyHosted indicates whether the vCluster Platform instance is hosted and operated by Devsy Labs Inc.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/ui/v1.DevsyVersion", "github.com/devsy-org/api/pkg/apis/ui/v1.ExternalURLs", "github.com/devsy-org/api/pkg/apis/ui/v1.NavBarButton"},
+	}
+}
+
+func schema_pkg_apis_ui_v1_UISettingsStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "UISettingsStatus holds the status",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"csps": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Csps holds Content Security Policies",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/ui/v1.CspPolicy"),
+									},
+								},
+							},
+						},
+					},
+					"cspConfig": {
+						SchemaProps: spec.SchemaProps{
+							Description: "CspConfig holds the raw csp config from the user",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/ui/v1.CspPolicy"},
+	}
+}
+
+func schema_pkg_apis_virtualcluster_v1_HelmRelease(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseStatus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseSpec", "github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmReleaseStatus", metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_virtualcluster_v1_HelmReleaseList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Type: []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmRelease"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/api/pkg/apis/virtualcluster/v1.HelmRelease", metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_pkg_apis_virtualcluster_v1_HelmReleaseSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"chart": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Chart holds information about a chart that should get deployed",
+							Default:     map[string]interface{}{},
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Chart"),
+						},
+					},
+					"manifests": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Manifests holds kube manifests that will be deployed as a chart",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"bash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Bash holds the bash script to execute in a container in the target",
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Bash"),
+						},
+					},
+					"values": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Values is the set of extra Values added to the chart. These values merge with the default values inside of the chart. You can use golang templating in here with values from parameters.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"parameters": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Parameters are additional helm chart values that will get merged with config and are then used to deploy the helm chart.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"annotations": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Annotations are extra annotations for this helm release",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Bash", "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Chart"},
+	}
+}
+
+func schema_pkg_apis_virtualcluster_v1_HelmReleaseStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"version": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Revision is an int which represents the revision of the release.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"info": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Info provides information about a release",
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Info"),
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Metadata provides information about a chart",
+							Ref:         ref("github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Info", "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1.Metadata"},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ControllerRevision(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ControllerRevision implements an immutable snapshot of state data. Clients are responsible for serializing and deserializing the objects that contain their internal state. Once a ControllerRevision has been successfully created, it can not be updated. The API Server will fail validation of all requests that attempt to mutate the Data field. ControllerRevisions may, however, be deleted. Note that, due to its use by both the DaemonSet and StatefulSet controllers for update and rollback, this object is beta. However, it may be subject to name and representation changes in future releases, and clients should not depend on its stability. It is primarily for internal use by controllers.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"data": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Data is the serialized representation of the state.",
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
+						},
+					},
+					"revision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Revision indicates the revision of the state represented by Data.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
+				Required: []string{"revision"},
+			},
+		},
+		Dependencies: []string{
+			metav1.ObjectMeta{}.OpenAPIModelName(), runtime.RawExtension{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ControllerRevisionList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ControllerRevisionList is a resource containing a list of ControllerRevision objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is the list of ControllerRevisions",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.ControllerRevision{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.ControllerRevision{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSet represents the configuration of a daemon set.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DaemonSetSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DaemonSetStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.DaemonSetSpec{}.OpenAPIModelName(), v1.DaemonSetStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSetCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSetCondition describes the state of a DaemonSet at a certain point.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of DaemonSet condition.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"lastTransitionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Last time the condition transitioned from one status to another.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The reason for the condition's last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A human readable message indicating details about the transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type", "status"},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSetList is a collection of daemon sets.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A list of daemon sets.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.DaemonSet{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.DaemonSet{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSetSpec is the specification of a daemon set.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"selector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A label query over pods that are managed by the daemon set. Must match in order to be controlled. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"template": {
+						SchemaProps: spec.SchemaProps{
+							Description: "An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). The only allowed template.spec.restartPolicy value is \"Always\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template",
+							Default:     map[string]interface{}{},
+							Ref:         ref(corev1.PodTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+					"updateStrategy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "An update strategy to replace existing DaemonSet pods with new pods.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DaemonSetUpdateStrategy{}.OpenAPIModelName()),
+						},
+					},
+					"minReadySeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"revisionHistoryLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"selector", "template"},
+			},
+		},
+		Dependencies: []string{
+			v1.DaemonSetUpdateStrategy{}.OpenAPIModelName(), corev1.PodTemplateSpec{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSetStatus represents the current status of a daemon set.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"currentNumberScheduled": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of nodes that are running at least 1 daemon pod and are supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"numberMisscheduled": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of nodes that are running the daemon pod, but are not supposed to run the daemon pod. More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"desiredNumberScheduled": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The total number of nodes that should be running the daemon pod (including nodes correctly running the daemon pod). More info: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"numberReady": {
+						SchemaProps: spec.SchemaProps{
+							Description: "numberReady is the number of nodes that should be running the daemon pod and have one or more of the daemon pod running with a Ready Condition.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The most recent generation observed by the daemon set controller.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"updatedNumberScheduled": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The total number of nodes that are running updated daemon pod",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"numberAvailable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of nodes that should be running the daemon pod and have one or more of the daemon pod running and available (ready for at least spec.minReadySeconds)",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"numberUnavailable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"collisionCount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"type",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the latest available observations of a DaemonSet's current state.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.DaemonSetCondition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"currentNumberScheduled", "numberMisscheduled", "desiredNumberScheduled", "numberReady"},
+			},
+		},
+		Dependencies: []string{
+			v1.DaemonSetCondition{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DaemonSetUpdateStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of daemon set update. Can be \"RollingUpdate\" or \"OnDelete\". Default is RollingUpdate.\n\nPossible enum values:\n - `\"OnDelete\"` Replace the old daemons only when it's killed\n - `\"RollingUpdate\"` Replace the old daemons by new ones using rolling update i.e replace them on each node one after the other.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"OnDelete", "RollingUpdate"},
+						},
+					},
+					"rollingUpdate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Rolling update config params. Present only if type = \"RollingUpdate\".",
+							Ref:         ref(v1.RollingUpdateDaemonSet{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.RollingUpdateDaemonSet{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_Deployment(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Deployment enables declarative updates for Pods and ReplicaSets.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specification of the desired behavior of the Deployment.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DeploymentSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Most recently observed status of the Deployment.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DeploymentStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.DeploymentSpec{}.OpenAPIModelName(), v1.DeploymentStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DeploymentCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentCondition describes the state of a deployment at a certain point.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of deployment condition.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"lastUpdateTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The last time this condition was updated.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"lastTransitionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Last time the condition transitioned from one status to another.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The reason for the condition's last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A human readable message indicating details about the transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type", "status"},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DeploymentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentList is a list of Deployments.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is the list of Deployments.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.Deployment{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.Deployment{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DeploymentSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentSpec is the specification of the desired behavior of the Deployment.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"selector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template's labels.",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"template": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Template describes the pods that will be created. The only allowed template.spec.restartPolicy value is \"Always\".",
+							Default:     map[string]interface{}{},
+							Ref:         ref(corev1.PodTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+					"strategy": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-patch-strategy": "retainKeys",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "The deployment strategy to use to replace existing pods with new ones.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.DeploymentStrategy{}.OpenAPIModelName()),
+						},
+					},
+					"minReadySeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"revisionHistoryLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"paused": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Indicates that the deployment is paused.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"progressDeadlineSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"selector", "template"},
+			},
+		},
+		Dependencies: []string{
+			v1.DeploymentStrategy{}.OpenAPIModelName(), corev1.PodTemplateSpec{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DeploymentStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentStatus is the most recently observed status of the Deployment.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The generation observed by the deployment controller.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of non-terminating pods targeted by this deployment (their labels match the selector).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"updatedReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of non-terminating pods targeted by this deployment that have the desired template spec.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"readyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of non-terminating pods targeted by this Deployment with a Ready Condition.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"availableReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of available non-terminating pods (ready for at least minReadySeconds) targeted by this deployment.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"unavailableReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"terminatingReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of terminating pods targeted by this deployment. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.\n\nThis is a beta field and requires enabling DeploymentReplicaSetTerminatingReplicas feature (enabled by default).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"type",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the latest available observations of a deployment's current state.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.DeploymentCondition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"collisionCount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.DeploymentCondition{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_DeploymentStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "DeploymentStrategy describes how to replace existing pods with new ones.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of deployment. Can be \"Recreate\" or \"RollingUpdate\". Default is RollingUpdate.\n\nPossible enum values:\n - `\"Recreate\"` Kill all existing pods before creating new ones.\n - `\"RollingUpdate\"` Replace the old ReplicaSets by new one using rolling update i.e gradually scale down the old ReplicaSets and scale up the new one.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Recreate", "RollingUpdate"},
+						},
+					},
+					"rollingUpdate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.",
+							Ref:         ref(v1.RollingUpdateDeployment{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.RollingUpdateDeployment{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ReplicaSet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReplicaSet ensures that a specified number of pod replicas are running at any given time.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.ReplicaSetSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.ReplicaSetStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.ReplicaSetSpec{}.OpenAPIModelName(), v1.ReplicaSetStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ReplicaSetCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReplicaSetCondition describes the state of a replica set at a certain point.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of replica set condition.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"lastTransitionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The last time the condition transitioned from one status to another.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The reason for the condition's last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A human readable message indicating details about the transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type", "status"},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ReplicaSetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReplicaSetList is a collection of ReplicaSets.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "List of ReplicaSets. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.ReplicaSet{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.ReplicaSet{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ReplicaSetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReplicaSetSpec is the specification of a ReplicaSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Replicas is the number of desired pods. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"minReadySeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"selector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Selector is a label query over pods that should match the replica count. Label keys and values that must match in order to be controlled by this replica set. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"template": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/#pod-template",
+							Default:     map[string]interface{}{},
+							Ref:         ref(corev1.PodTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"selector"},
+			},
+		},
+		Dependencies: []string{
+			corev1.PodTemplateSpec{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_ReplicaSetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ReplicaSetStatus represents the current status of a ReplicaSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Replicas is the most recently observed number of non-terminating pods. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"fullyLabeledReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of non-terminating pods that have labels matching the labels of the pod template of the replicaset.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"readyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of non-terminating pods targeted by this ReplicaSet with a Ready Condition.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"availableReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of available non-terminating pods (ready for at least minReadySeconds) for this replica set.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"terminatingReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of terminating pods for this replica set. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.\n\nThis is a beta field and requires enabling DeploymentReplicaSetTerminatingReplicas feature (enabled by default).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ObservedGeneration reflects the generation of the most recently observed ReplicaSet.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"type",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the latest available observations of a replica set's current state.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.ReplicaSetCondition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"replicas"},
+			},
+		},
+		Dependencies: []string{
+			v1.ReplicaSetCondition{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_RollingUpdateDaemonSet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Spec to control the desired behavior of daemon set rolling update.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"maxUnavailable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0 if MaxSurge is 0 Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+					"maxSurge": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum number of nodes with an existing available DaemonSet pod that can have an updated DaemonSet pod during during an update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up to a minimum of 1. Default value is 0. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their a new pod created before the old pod is marked as deleted. The update starts by launching new pods on 30% of nodes. Once an updated pod is available (Ready for at least minReadySeconds) the old DaemonSet pod on that node is marked deleted. If the old pod becomes unavailable for any reason (Ready transitions to false, is evicted, or is drained) an updated pod is immediately created on that node without considering surge limits. Allowing surge implies the possibility that the resources consumed by the daemonset on any given node can double if the readiness check fails, and so resource intensive daemonsets should take into account that they may cause evictions during disruption.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			intstr.IntOrString{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_RollingUpdateDeployment(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Spec to control the desired behavior of rolling update.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"maxUnavailable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding down. This can not be 0 if MaxSurge is 0. Defaults to 25%. Example: when this is set to 30%, the old ReplicaSet can be scaled down to 70% of desired pods immediately when the rolling update starts. Once new pods are ready, old ReplicaSet can be scaled down further, followed by scaling up the new ReplicaSet, ensuring that the total number of pods available at all times during the update is at least 70% of desired pods.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+					"maxSurge": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			intstr.IntOrString{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_RollingUpdateStatefulSetStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"partition": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Partition indicates the ordinal at which the StatefulSet should be partitioned for updates. During a rolling update, all pods from ordinal Replicas-1 to Partition are updated. All pods from ordinal Partition-1 to 0 remain untouched. This is helpful in being able to do a canary based deployment. The default value is 0.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"maxUnavailable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The maximum number of pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). Absolute number is calculated from percentage by rounding up. This can not be 0. Defaults to 1. This field is beta-level and is enabled by default. The field applies to all pods in the range 0 to Replicas-1. That means if there is any unavailable pod in the range 0 to Replicas-1, it will be counted towards MaxUnavailable. This setting might not be effective for the OrderedReady podManagementPolicy. That policy ensures pods are created and become ready one at a time.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			intstr.IntOrString{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSet(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSet represents a set of pods with consistent identities. Identities are defined as:\n  - Network: A single stable DNS and hostname.\n  - Storage: As many VolumeClaims as requested.\n\nThe StatefulSet guarantees that a given network identity will always map to the same storage identity.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Spec defines the desired identities of pods in this set.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.StatefulSetSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.StatefulSetStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.StatefulSetSpec{}.OpenAPIModelName(), v1.StatefulSetStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetCondition describes the state of a statefulset at a certain point.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of statefulset condition.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"lastTransitionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Last time the condition transitioned from one status to another.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The reason for the condition's last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A human readable message indicating details about the transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type", "status"},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetList is a collection of StatefulSets.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is the list of stateful sets.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.StatefulSet{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			v1.StatefulSet{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetOrdinals(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetOrdinals describes the policy used for replica ordinal assignment in this StatefulSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"start": {
+						SchemaProps: spec.SchemaProps{
+							Description: "start is the number representing the first replica's index. It may be used to number replicas from an alternate index (eg: 1-indexed) over the default 0-indexed names, or to orchestrate progressive movement of replicas from one StatefulSet to another. If set, replica indices will be in the range:\n  [.spec.ordinals.start, .spec.ordinals.start + .spec.replicas).\nIf unset, defaults to 0. Replica indices will be in the range:\n  [0, .spec.replicas).",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetPersistentVolumeClaimRetentionPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetPersistentVolumeClaimRetentionPolicy describes the policy used for PVCs created from the StatefulSet VolumeClaimTemplates.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"whenDeleted": {
+						SchemaProps: spec.SchemaProps{
+							Description: "WhenDeleted specifies what happens to PVCs created from StatefulSet VolumeClaimTemplates when the StatefulSet is deleted. The default policy of `Retain` causes PVCs to not be affected by StatefulSet deletion. The `Delete` policy causes those PVCs to be deleted.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"whenScaled": {
+						SchemaProps: spec.SchemaProps{
+							Description: "WhenScaled specifies what happens to PVCs created from StatefulSet VolumeClaimTemplates when the StatefulSet is scaled down. The default policy of `Retain` causes PVCs to not be affected by a scaledown. The `Delete` policy causes the associated PVCs for any excess pods above the replica count to be deleted.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "A StatefulSetSpec is the specification of a StatefulSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "replicas is the desired number of replicas of the given Template. These are replicas in the sense that they are instantiations of the same Template, but individual replicas also have a consistent identity. If unspecified, defaults to 1.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"selector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "selector is a label query over pods that should match the replica count. It must match the pod template's labels. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"template": {
+						SchemaProps: spec.SchemaProps{
+							Description: "template is the object that describes the pod that will be created if insufficient replicas are detected. Each pod stamped out by the StatefulSet will fulfill this Template, but have a unique identity from the rest of the StatefulSet. Each pod will be named with the format <statefulsetname>-<podindex>. For example, a pod in a StatefulSet named \"web\" with index number \"3\" would be named \"web-3\". The only allowed template.spec.restartPolicy value is \"Always\".",
+							Default:     map[string]interface{}{},
+							Ref:         ref(corev1.PodTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+					"volumeClaimTemplates": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(corev1.PersistentVolumeClaim{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"serviceName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "serviceName is the name of the service that governs this StatefulSet. This service must exist before the StatefulSet, and is responsible for the network identity of the set. Pods get DNS/hostnames that follow the pattern: pod-specific-string.serviceName.default.svc.cluster.local where \"pod-specific-string\" is managed by the StatefulSet controller.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"podManagementPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "podManagementPolicy controls how pods are created during initial scale up, when replacing pods on nodes, or when scaling down. The default policy is `OrderedReady`, where pods are created in increasing order (pod-0, then pod-1, etc) and the controller will wait until each pod is ready before continuing. When scaling down, the pods are removed in the opposite order. The alternative policy is `Parallel` which will create pods in parallel to match the desired scale without waiting, and on scale down will delete all pods at once.\n\nPossible enum values:\n - `\"OrderedReady\"` will create pods in strictly increasing order on scale up and strictly decreasing order on scale down, progressing only when the previous pod is ready or terminated. At most one pod will be changed at any time.\n - `\"Parallel\"` will create and delete pods as soon as the stateful set replica count is changed, and will not wait for pods to be ready or complete termination.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"OrderedReady", "Parallel"},
+						},
+					},
+					"updateStrategy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "updateStrategy indicates the StatefulSetUpdateStrategy that will be employed to update Pods in the StatefulSet when a revision is made to Template.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(v1.StatefulSetUpdateStrategy{}.OpenAPIModelName()),
+						},
+					},
+					"revisionHistoryLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "revisionHistoryLimit is the maximum number of revisions that will be maintained in the StatefulSet's revision history. The revision history consists of all revisions not represented by a currently applied StatefulSetSpec version. The default value is 10.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"minReadySeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Minimum number of seconds for which a newly created pod should be ready without any of its container crashing for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"persistentVolumeClaimRetentionPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "persistentVolumeClaimRetentionPolicy describes the lifecycle of persistent volume claims created from volumeClaimTemplates. By default, all persistent volume claims are created as needed and retained until manually deleted. This policy allows the lifecycle to be altered, for example by deleting persistent volume claims when their stateful set is deleted, or when their pod is scaled down.",
+							Ref:         ref(v1.StatefulSetPersistentVolumeClaimRetentionPolicy{}.OpenAPIModelName()),
+						},
+					},
+					"ordinals": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ordinals controls the numbering of replica indices in a StatefulSet. The default ordinals behavior assigns a \"0\" index to the first replica and increments the index by one for each additional replica requested.",
+							Ref:         ref(v1.StatefulSetOrdinals{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"selector", "template"},
+			},
+		},
+		Dependencies: []string{
+			v1.StatefulSetOrdinals{}.OpenAPIModelName(), v1.StatefulSetPersistentVolumeClaimRetentionPolicy{}.OpenAPIModelName(), v1.StatefulSetUpdateStrategy{}.OpenAPIModelName(), corev1.PersistentVolumeClaim{}.OpenAPIModelName(), corev1.PodTemplateSpec{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetStatus represents the current state of a StatefulSet.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"observedGeneration": {
+						SchemaProps: spec.SchemaProps{
+							Description: "observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet's generation, which is updated on mutation by the API Server.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"replicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "replicas is the number of Pods created by the StatefulSet controller.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"readyReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "readyReplicas is the number of pods created for this StatefulSet with a Ready Condition.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"currentReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"updatedReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"currentRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"updateRevision": {
+						SchemaProps: spec.SchemaProps{
+							Description: "updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"collisionCount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"type",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the latest available observations of a statefulset's current state.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(v1.StatefulSetCondition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"availableReplicas": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Total number of available pods (ready for at least minReadySeconds) targeted by this statefulset.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"replicas"},
+			},
+		},
+		Dependencies: []string{
+			v1.StatefulSetCondition{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_apps_v1_StatefulSetUpdateStrategy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.\n\nPossible enum values:\n - `\"OnDelete\"` triggers the legacy behavior. Version tracking and ordered rolling restarts are disabled. Pods are recreated from the StatefulSetSpec when they are manually deleted. When a scale operation is performed with this strategy,specification version indicated by the StatefulSet's currentRevision.\n - `\"RollingUpdate\"` indicates that update will be applied to all Pods in the StatefulSet with respect to the StatefulSet ordering constraints. When a scale operation is performed with this strategy, new Pods will be created from the specification version indicated by the StatefulSet's updateRevision.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"OnDelete", "RollingUpdate"},
+						},
+					},
+					"rollingUpdate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.",
+							Ref:         ref(v1.RollingUpdateStatefulSetStrategy{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			v1.RollingUpdateStatefulSetStrategy{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_CronJob(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CronJob represents the configuration of a single cron job.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.CronJobSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.CronJobStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			batchv1.CronJobSpec{}.OpenAPIModelName(), batchv1.CronJobStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_CronJobList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CronJobList is a collection of cron jobs.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of CronJobs.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.CronJob{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.CronJob{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_CronJobSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CronJobSpec describes how the job execution will look like and when it will actually run.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"schedule": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"timeZone": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The time zone name for the given schedule, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. If not specified, this will default to the time zone of the kube-controller-manager process. The set of valid time zone names and the time zone offset is loaded from the system-wide time zone database by the API server during CronJob validation and the controller manager during execution. If no system-wide time zone database can be found a bundled version of the database is used instead. If the time zone name becomes invalid during the lifetime of a CronJob or due to a change in host configuration, the controller will stop creating new new Jobs and will create a system event with the reason UnknownTimeZone. More information can be found in https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#time-zones",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"startingDeadlineSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"concurrencyPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies how to treat concurrent executions of a Job. Valid values are:\n\n- \"Allow\" (default): allows CronJobs to run concurrently; - \"Forbid\": forbids concurrent runs, skipping next run if previous run hasn't finished yet; - \"Replace\": cancels currently running job and replaces it with a new one\n\nPossible enum values:\n - `\"Allow\"` allows CronJobs to run concurrently.\n - `\"Forbid\"` forbids concurrent runs, skipping next run if previous hasn't finished yet.\n - `\"Replace\"` cancels currently running job and replaces it with a new one.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Allow", "Forbid", "Replace"},
+						},
+					},
+					"suspend": {
+						SchemaProps: spec.SchemaProps{
+							Description: "This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"jobTemplate": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the job that will be created when executing a CronJob.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.JobTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+					"successfulJobsHistoryLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of successful finished jobs to retain. Value must be non-negative integer. Defaults to 3.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"failedJobsHistoryLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of failed finished jobs to retain. Value must be non-negative integer. Defaults to 1.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+				Required: []string{"schedule", "jobTemplate"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.JobTemplateSpec{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_CronJobStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CronJobStatus represents the current state of a cron job.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"active": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "A list of pointers to currently running jobs.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(corev1.ObjectReference{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"lastScheduleTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Information when was the last time the job was successfully scheduled.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"lastSuccessfulTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Information when was the last time the job successfully completed.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			corev1.ObjectReference{}.OpenAPIModelName(), metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_Job(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Job represents the configuration of a single job.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.JobSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.JobStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			batchv1.JobSpec{}.OpenAPIModelName(), batchv1.JobStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_JobCondition(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "JobCondition describes current state of a job.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Type of job condition, Complete or Failed.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Status of the condition, one of True, False, Unknown.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"lastProbeTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Last time the condition was checked.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"lastTransitionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Last time the condition transit from one status to another.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"reason": {
+						SchemaProps: spec.SchemaProps{
+							Description: "(brief) reason for the condition's last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Human readable message indicating details about last transition.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type", "status"},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_JobList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "JobList is a collection of jobs.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of Jobs.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.Job{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.Job{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_JobSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "JobSpec describes how the job execution will look like.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"parallelism": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the maximum desired number of pods the job should run at any given time. The actual number of pods running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"completions": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the desired number of successfully finished pods the job should be run with.  Setting to null means that the success of any pod signals the success of all pods, and allows parallelism to have any positive value.  Setting to 1 means that parallelism is limited to 1 and the success of that pod signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"activeDeadlineSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the duration in seconds relative to the startTime that the job may be continuously active before the system tries to terminate it; value must be positive integer. If a Job is suspended (at creation or through an update), this timer will effectively be stopped and reset when the Job is resumed again.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"podFailurePolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the policy of handling failed pods. In particular, it allows to specify the set of actions and conditions which need to be satisfied to take the associated action. If empty, the default behaviour applies - the counter of failed pods, represented by the jobs's .status.failed field, is incremented and it is checked against the backoffLimit. This field cannot be used in combination with restartPolicy=OnFailure.",
+							Ref:         ref(batchv1.PodFailurePolicy{}.OpenAPIModelName()),
+						},
+					},
+					"successPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "successPolicy specifies the policy when the Job can be declared as succeeded. If empty, the default behavior applies - the Job is declared as succeeded only when the number of succeeded pods equals to the completions. When the field is specified, it must be immutable and works only for the Indexed Jobs. Once the Job meets the SuccessPolicy, the lingering pods are terminated.",
+							Ref:         ref(batchv1.SuccessPolicy{}.OpenAPIModelName()),
+						},
+					},
+					"backoffLimit": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the number of retries before marking this job failed. Defaults to 6, unless backoffLimitPerIndex (only Indexed Job) is specified. When backoffLimitPerIndex is specified, backoffLimit defaults to 2147483647.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"backoffLimitPerIndex": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the limit for the number of retries within an index before marking this index as failed. When enabled the number of failures per index is kept in the pod's batch.kubernetes.io/job-index-failure-count annotation. It can only be set when Job's completionMode=Indexed, and the Pod's restart policy is Never. The field is immutable.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"maxFailedIndexes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the maximal number of failed indexes before marking the Job as failed, when backoffLimitPerIndex is set. Once the number of failed indexes exceeds this number the entire Job is marked as Failed and its execution is terminated. When left as null the job continues execution of all of its indexes and is marked with the `Complete` Job condition. It can only be specified when backoffLimitPerIndex is set. It can be null or up to completions. It is required and must be less than or equal to 10^4 when is completions greater than 10^5.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"selector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "A label query over pods that should match the pod count. Normally, the system sets this field for you. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"manualSelector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "manualSelector controls generation of pod labels and pod selectors. Leave `manualSelector` unset unless you are certain what you are doing. When false or unset, the system pick labels unique to this job and appends those labels to the pod template.  When true, the user is responsible for picking unique labels and specifying the selector.  Failure to pick a unique label may cause this and other jobs to not function correctly.  However, You may see `manualSelector=true` in jobs that were created with the old `extensions/v1beta1` API. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/#specifying-your-own-pod-selector",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"template": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Describes the pod that will be created when executing a job. The only allowed template.spec.restartPolicy values are \"Never\" or \"OnFailure\". More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+							Default:     map[string]interface{}{},
+							Ref:         ref(corev1.PodTemplateSpec{}.OpenAPIModelName()),
+						},
+					},
+					"ttlSecondsAfterFinished": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is unset, the Job won't be automatically deleted. If this field is set to zero, the Job becomes eligible to be deleted immediately after it finishes.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"completionMode": {
+						SchemaProps: spec.SchemaProps{
+							Description: "completionMode specifies how Pod completions are tracked. It can be `NonIndexed` (default) or `Indexed`.\n\n`NonIndexed` means that the Job is considered complete when there have been .spec.completions successfully completed Pods. Each Pod completion is homologous to each other.\n\n`Indexed` means that the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1), available in the annotation batch.kubernetes.io/job-completion-index. The Job is considered complete when there is one successfully completed Pod for each index. When value is `Indexed`, .spec.completions must be specified and `.spec.parallelism` must be less than or equal to 10^5. In addition, The Pod name takes the form `$(job-name)-$(index)-$(random-string)`, the Pod hostname takes the form `$(job-name)-$(index)`.\n\nMore completion modes can be added in the future. If the Job controller observes a mode that it doesn't recognize, which is possible during upgrades due to version skew, the controller skips updates for the Job.\n\nPossible enum values:\n - `\"Indexed\"` is a Job completion mode. In this mode, the Pods of a Job get an associated completion index from 0 to (.spec.completions - 1). The Job is considered complete when a Pod completes for each completion index.\n - `\"NonIndexed\"` is a Job completion mode. In this mode, the Job is considered complete when there have been .spec.completions successfully completed Pods. Pod completions are homologous to each other.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Indexed", "NonIndexed"},
+						},
+					},
+					"suspend": {
+						SchemaProps: spec.SchemaProps{
+							Description: "suspend specifies whether the Job controller should create Pods or not. If a Job is created with suspend set to true, no Pods are created by the Job controller. If a Job is suspended after creation (i.e. the flag goes from false to true), the Job controller will delete all active Pods associated with this Job. Users must design their workload to gracefully handle this. Suspending a Job will reset the StartTime field of the Job, effectively resetting the ActiveDeadlineSeconds timer too. Defaults to false.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"podReplacementPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "podReplacementPolicy specifies when to create replacement Pods. Possible values are: - TerminatingOrFailed means that we recreate pods\n  when they are terminating (has a metadata.deletionTimestamp) or failed.\n- Failed means to wait until a previously created Pod is fully terminated (has phase\n  Failed or Succeeded) before creating a replacement Pod.\n\nWhen using podFailurePolicy, Failed is the the only allowed value. TerminatingOrFailed and Failed are allowed values when podFailurePolicy is not in use.\n\nPossible enum values:\n - `\"Failed\"` means to wait until a previously created Pod is fully terminated (has phase Failed or Succeeded) before creating a replacement Pod.\n - `\"TerminatingOrFailed\"` means that we recreate pods when they are terminating (has a metadata.deletionTimestamp) or failed.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Failed", "TerminatingOrFailed"},
+						},
+					},
+					"managedBy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ManagedBy field indicates the controller that manages a Job. The k8s Job controller reconciles jobs which don't have this field at all or the field value is the reserved string `kubernetes.io/job-controller`, but skips reconciling Jobs with a custom value for this field. The value must be a valid domain-prefixed path (e.g. acme.io/foo) - all characters before the first \"/\" must be a valid subdomain as defined by RFC 1123. All characters trailing the first \"/\" must be valid HTTP Path characters as defined by RFC 3986. The value cannot exceed 63 characters. This field is immutable.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"template"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.PodFailurePolicy{}.OpenAPIModelName(), batchv1.SuccessPolicy{}.OpenAPIModelName(), corev1.PodTemplateSpec{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_JobStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "JobStatus represents the current state of a Job.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type":       "atomic",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "The latest available observations of an object's current state. When a Job fails, one of the conditions will have type \"Failed\" and status true. When a Job is suspended, one of the conditions will have type \"Suspended\" and status true; when the Job is resumed, the status of this condition will become false. When a Job is completed, one of the conditions will have type \"Complete\" and status true.\n\nA job is considered finished when it is in a terminal condition, either \"Complete\" or \"Failed\". A Job cannot have both the \"Complete\" and \"Failed\" conditions. Additionally, it cannot be in the \"Complete\" and \"FailureTarget\" conditions. The \"Complete\", \"Failed\" and \"FailureTarget\" conditions cannot be disabled.\n\nMore info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.JobCondition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"startTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents time when the job controller started processing a job. When a Job is created in the suspended state, this field is not set until the first time it is resumed. This field is reset every time a Job is resumed from suspension. It is represented in RFC3339 form and is in UTC.\n\nOnce set, the field can only be removed when the job is suspended. The field cannot be modified while the job is unsuspended or finished.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"completionTime": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. The completion time is set when the job finishes successfully, and only then. The value cannot be updated or removed. The value indicates the same or later point in time as the startTime field.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"active": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of pending and running pods which are not terminating (without a deletionTimestamp). The value is zero for finished jobs.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"succeeded": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of pods which reached phase Succeeded. The value increases monotonically for a given spec. However, it may decrease in reaction to scale down of elastic indexed jobs.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"failed": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of pods which reached phase Failed. The value increases monotonically.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"terminating": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of pods which are terminating (in phase Pending or Running and have a deletionTimestamp).\n\nThis field is beta-level. The job controller populates the field when the feature gate JobPodReplacementPolicy is enabled (enabled by default).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"completedIndexes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "completedIndexes holds the completed indexes when .spec.completionMode = \"Indexed\" in a text format. The indexes are represented as decimal integers separated by commas. The numbers are listed in increasing order. Three or more consecutive numbers are compressed and represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as \"1,3-5,7\".",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"failedIndexes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "FailedIndexes holds the failed indexes when spec.backoffLimitPerIndex is set. The indexes are represented in the text format analogous as for the `completedIndexes` field, ie. they are kept as decimal integers separated by commas. The numbers are listed in increasing order. Three or more consecutive numbers are compressed and represented by the first and last element of the series, separated by a hyphen. For example, if the failed indexes are 1, 3, 4, 5 and 7, they are represented as \"1,3-5,7\". The set of failed indexes cannot overlap with the set of completed indexes.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"uncountedTerminatedPods": {
+						SchemaProps: spec.SchemaProps{
+							Description: "uncountedTerminatedPods holds the UIDs of Pods that have terminated but the job controller hasn't yet accounted for in the status counters.\n\nThe job controller creates pods with a finalizer. When a pod terminates (succeeded or failed), the controller does three steps to account for it in the job status:\n\n1. Add the pod UID to the arrays in this field. 2. Remove the pod finalizer. 3. Remove the pod UID from the arrays while increasing the corresponding\n    counter.\n\nOld jobs might not be tracked using this field, in which case the field remains null. The structure is empty for finished jobs.",
+							Ref:         ref(batchv1.UncountedTerminatedPods{}.OpenAPIModelName()),
+						},
+					},
+					"ready": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The number of active pods which have a Ready condition and are not terminating (without a deletionTimestamp).",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			batchv1.JobCondition{}.OpenAPIModelName(), batchv1.UncountedTerminatedPods{}.OpenAPIModelName(), metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_JobTemplateSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "JobTemplateSpec describes the data a Job should have when created from a template",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(batchv1.JobSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			batchv1.JobSpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_PodFailurePolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PodFailurePolicy describes how failed pods influence the backoffLimit.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"rules": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "A list of pod failure policy rules. The rules are evaluated in order. Once a rule matches a Pod failure, the remaining of the rules are ignored. When no rule matches the Pod failure, the default handling applies - the counter of pod failures is incremented and it is checked against the backoffLimit. At most 20 elements are allowed.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.PodFailurePolicyRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"rules"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.PodFailurePolicyRule{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_PodFailurePolicyOnExitCodesRequirement(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PodFailurePolicyOnExitCodesRequirement describes the requirement for handling a failed pod based on its container exit codes. In particular, it lookups the .state.terminated.exitCode for each app container and init container status, represented by the .status.containerStatuses and .status.initContainerStatuses fields in the Pod status, respectively. Containers completed with success (exit code 0) are excluded from the requirement check.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"containerName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Restricts the check for exit codes to the container with the specified name. When null, the rule applies to all containers. When specified, it should match one the container or initContainer names in the pod template.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"operator": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the relationship between the container exit code(s) and the specified values. Containers completed with success (exit code 0) are excluded from the requirement check. Possible values are:\n\n- In: the requirement is satisfied if at least one container exit code\n  (might be multiple if there are multiple containers not restricted\n  by the 'containerName' field) is in the set of specified values.\n- NotIn: the requirement is satisfied if at least one container exit code\n  (might be multiple if there are multiple containers not restricted\n  by the 'containerName' field) is not in the set of specified values.\nAdditional values are considered to be added in the future. Clients should react to an unknown operator by assuming the requirement is not satisfied.\n\nPossible enum values:\n - `\"In\"`\n - `\"NotIn\"`",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"In", "NotIn"},
+						},
+					},
+					"values": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "set",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the set of values. Each returned container exit code (might be multiple in case of multiple containers) is checked against this set of values with respect to the operator. The list of values must be ordered and must not contain duplicates. Value '0' cannot be used for the In operator. At least one element is required. At most 255 elements are allowed.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: 0,
+										Type:    []string{"integer"},
+										Format:  "int32",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"operator", "values"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_batch_v1_PodFailurePolicyOnPodConditionsPattern(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PodFailurePolicyOnPodConditionsPattern describes a pattern for matching an actual pod condition type.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"type": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"type"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_batch_v1_PodFailurePolicyRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PodFailurePolicyRule describes how a pod failure is handled when the requirements are met. One of onExitCodes and onPodConditions, but not both, can be used in each rule.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"action": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Specifies the action taken on a pod failure when the requirements are satisfied. Possible values are:\n\n- FailJob: indicates that the pod's job is marked as Failed and all\n  running pods are terminated.\n- FailIndex: indicates that the pod's index is marked as Failed and will\n  not be restarted.\n- Ignore: indicates that the counter towards the .backoffLimit is not\n  incremented and a replacement pod is created.\n- Count: indicates that the pod is handled in the default way - the\n  counter towards the .backoffLimit is incremented.\nAdditional values are considered to be added in the future. Clients should react to an unknown action by skipping the rule.\n\nPossible enum values:\n - `\"Count\"` This is an action which might be taken on a pod failure - the pod failure is handled in the default way - the counter towards .backoffLimit, represented by the job's .status.failed field, is incremented.\n - `\"FailIndex\"` This is an action which might be taken on a pod failure - mark the Job's index as failed to avoid restarts within this index. This action can only be used when backoffLimitPerIndex is set.\n - `\"FailJob\"` This is an action which might be taken on a pod failure - mark the pod's job as Failed and terminate all running pods.\n - `\"Ignore\"` This is an action which might be taken on a pod failure - the counter towards .backoffLimit, represented by the job's .status.failed field, is not incremented and a replacement pod is created.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Count", "FailIndex", "FailJob", "Ignore"},
+						},
+					},
+					"onExitCodes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the requirement on the container exit codes.",
+							Ref:         ref(batchv1.PodFailurePolicyOnExitCodesRequirement{}.OpenAPIModelName()),
+						},
+					},
+					"onPodConditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.PodFailurePolicyOnPodConditionsPattern{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"action"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.PodFailurePolicyOnExitCodesRequirement{}.OpenAPIModelName(), batchv1.PodFailurePolicyOnPodConditionsPattern{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_SuccessPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SuccessPolicy describes when a Job can be declared as succeeded based on the success of some indexes.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"rules": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "rules represents the list of alternative rules for the declaring the Jobs as successful before `.status.succeeded >= .spec.completions`. Once any of the rules are met, the \"SuccessCriteriaMet\" condition is added, and the lingering pods are removed. The terminal state for such a Job has the \"Complete\" condition. Additionally, these rules are evaluated in order; Once the Job meets one of the rules, other rules are ignored. At most 20 elements are allowed.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(batchv1.SuccessPolicyRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"rules"},
+			},
+		},
+		Dependencies: []string{
+			batchv1.SuccessPolicyRule{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_batch_v1_SuccessPolicyRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SuccessPolicyRule describes rule for declaring a Job as succeeded. Each rule must have at least one of the \"succeededIndexes\" or \"succeededCount\" specified.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"succeededIndexes": {
+						SchemaProps: spec.SchemaProps{
+							Description: "succeededIndexes specifies the set of indexes which need to be contained in the actual set of the succeeded indexes for the Job. The list of indexes must be within 0 to \".spec.completions-1\" and must not contain duplicates. At least one element is required. The indexes are represented as intervals separated by commas. The intervals can be a decimal integer or a pair of decimal integers separated by a hyphen. The number are listed in represented by the first and last element of the series, separated by a hyphen. For example, if the completed indexes are 1, 3, 4, 5 and 7, they are represented as \"1,3-5,7\". When this field is null, this field doesn't default to any value and is never evaluated at any time.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"succeededCount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "succeededCount specifies the minimal required size of the actual set of the succeeded indexes for the Job. When succeededCount is used along with succeededIndexes, the check is constrained only to the set of indexes specified by succeededIndexes. For example, given that succeededIndexes is \"1-4\", succeededCount is \"3\", and completed indexes are \"1\", \"3\", and \"5\", the Job isn't declared as succeeded because only \"1\" and \"3\" indexes are considered in that rules. When this field is null, this doesn't default to any value and is never evaluated at any time. When specified it needs to be a positive integer.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_batch_v1_UncountedTerminatedPods(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "UncountedTerminatedPods holds UIDs of Pods that have terminated but haven't been accounted in Job status counters.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"succeeded": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "set",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "succeeded holds UIDs of succeeded Pods.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"failed": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "set",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "failed holds UIDs of failed Pods.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
 			},
 		},
 	}
@@ -37362,7 +37172,7 @@ func schema_k8sio_api_core_v1_ContainerStatus(ref common.ReferenceCallback) comm
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -37441,7 +37251,7 @@ func schema_k8sio_api_core_v1_ContainerStatus(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			corev1.ContainerState{}.OpenAPIModelName(), corev1.ContainerUser{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), corev1.ResourceStatus{}.OpenAPIModelName(), corev1.VolumeMountStatus{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.ContainerState{}.OpenAPIModelName(), corev1.ContainerUser{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), corev1.ResourceStatus{}.OpenAPIModelName(), corev1.VolumeMountStatus{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -37623,14 +37433,14 @@ func schema_k8sio_api_core_v1_EmptyDirVolumeSource(ref common.ReferenceCallback)
 					"sizeLimit": {
 						SchemaProps: spec.SchemaProps{
 							Description: "sizeLimit is the total amount of local storage required for this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir",
-							Ref:         ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+							Ref:         ref(resource.Quantity{}.OpenAPIModelName()),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -39444,7 +39254,7 @@ func schema_k8sio_api_core_v1_HTTPGetAction(ref common.ReferenceCallback) common
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
-							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
 						},
 					},
 					"host": {
@@ -39486,7 +39296,7 @@ func schema_k8sio_api_core_v1_HTTPGetAction(ref common.ReferenceCallback) common
 			},
 		},
 		Dependencies: []string{
-			corev1.HTTPHeader{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+			corev1.HTTPHeader{}.OpenAPIModelName(), intstr.IntOrString{}.OpenAPIModelName()},
 	}
 }
 
@@ -40037,7 +39847,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40051,7 +39861,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40065,7 +39875,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40079,7 +39889,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40093,7 +39903,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40104,7 +39914,7 @@ func schema_k8sio_api_core_v1_LimitRangeItem(ref common.ReferenceCallback) commo
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -40279,7 +40089,7 @@ func schema_k8sio_api_core_v1_List(ref common.ReferenceCallback) common.OpenAPID
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+										Ref: ref(runtime.RawExtension{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -40290,7 +40100,7 @@ func schema_k8sio_api_core_v1_List(ref common.ReferenceCallback) common.OpenAPID
 			},
 		},
 		Dependencies: []string{
-			metav1.ListMeta{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			metav1.ListMeta{}.OpenAPIModelName(), runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -41413,7 +41223,7 @@ func schema_k8sio_api_core_v1_NodeStatus(ref common.ReferenceCallback) common.Op
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -41427,7 +41237,7 @@ func schema_k8sio_api_core_v1_NodeStatus(ref common.ReferenceCallback) common.Op
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -41616,7 +41426,7 @@ func schema_k8sio_api_core_v1_NodeStatus(ref common.ReferenceCallback) common.Op
 			},
 		},
 		Dependencies: []string{
-			corev1.AttachedVolume{}.OpenAPIModelName(), corev1.ContainerImage{}.OpenAPIModelName(), corev1.NodeAddress{}.OpenAPIModelName(), corev1.NodeCondition{}.OpenAPIModelName(), corev1.NodeConfigStatus{}.OpenAPIModelName(), corev1.NodeDaemonEndpoints{}.OpenAPIModelName(), corev1.NodeFeatures{}.OpenAPIModelName(), corev1.NodeRuntimeHandler{}.OpenAPIModelName(), corev1.NodeSystemInfo{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.AttachedVolume{}.OpenAPIModelName(), corev1.ContainerImage{}.OpenAPIModelName(), corev1.NodeAddress{}.OpenAPIModelName(), corev1.NodeCondition{}.OpenAPIModelName(), corev1.NodeConfigStatus{}.OpenAPIModelName(), corev1.NodeDaemonEndpoints{}.OpenAPIModelName(), corev1.NodeFeatures{}.OpenAPIModelName(), corev1.NodeRuntimeHandler{}.OpenAPIModelName(), corev1.NodeSystemInfo{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -42186,7 +41996,7 @@ func schema_k8sio_api_core_v1_PersistentVolumeClaimStatus(ref common.ReferenceCa
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -42224,7 +42034,7 @@ func schema_k8sio_api_core_v1_PersistentVolumeClaimStatus(ref common.ReferenceCa
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -42269,7 +42079,7 @@ func schema_k8sio_api_core_v1_PersistentVolumeClaimStatus(ref common.ReferenceCa
 			},
 		},
 		Dependencies: []string{
-			corev1.ModifyVolumeStatus{}.OpenAPIModelName(), corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.ModifyVolumeStatus{}.OpenAPIModelName(), corev1.PersistentVolumeClaimCondition{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -42545,7 +42355,7 @@ func schema_k8sio_api_core_v1_PersistentVolumeSpec(ref common.ReferenceCallback)
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -42775,7 +42585,7 @@ func schema_k8sio_api_core_v1_PersistentVolumeSpec(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			corev1.AWSElasticBlockStoreVolumeSource{}.OpenAPIModelName(), corev1.AzureDiskVolumeSource{}.OpenAPIModelName(), corev1.AzureFilePersistentVolumeSource{}.OpenAPIModelName(), corev1.CSIPersistentVolumeSource{}.OpenAPIModelName(), corev1.CephFSPersistentVolumeSource{}.OpenAPIModelName(), corev1.CinderPersistentVolumeSource{}.OpenAPIModelName(), corev1.FCVolumeSource{}.OpenAPIModelName(), corev1.FlexPersistentVolumeSource{}.OpenAPIModelName(), corev1.FlockerVolumeSource{}.OpenAPIModelName(), corev1.GCEPersistentDiskVolumeSource{}.OpenAPIModelName(), corev1.GlusterfsPersistentVolumeSource{}.OpenAPIModelName(), corev1.HostPathVolumeSource{}.OpenAPIModelName(), corev1.ISCSIPersistentVolumeSource{}.OpenAPIModelName(), corev1.LocalVolumeSource{}.OpenAPIModelName(), corev1.NFSVolumeSource{}.OpenAPIModelName(), corev1.ObjectReference{}.OpenAPIModelName(), corev1.PhotonPersistentDiskVolumeSource{}.OpenAPIModelName(), corev1.PortworxVolumeSource{}.OpenAPIModelName(), corev1.QuobyteVolumeSource{}.OpenAPIModelName(), corev1.RBDPersistentVolumeSource{}.OpenAPIModelName(), corev1.ScaleIOPersistentVolumeSource{}.OpenAPIModelName(), corev1.StorageOSPersistentVolumeSource{}.OpenAPIModelName(), corev1.VolumeNodeAffinity{}.OpenAPIModelName(), corev1.VsphereVirtualDiskVolumeSource{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.AWSElasticBlockStoreVolumeSource{}.OpenAPIModelName(), corev1.AzureDiskVolumeSource{}.OpenAPIModelName(), corev1.AzureFilePersistentVolumeSource{}.OpenAPIModelName(), corev1.CSIPersistentVolumeSource{}.OpenAPIModelName(), corev1.CephFSPersistentVolumeSource{}.OpenAPIModelName(), corev1.CinderPersistentVolumeSource{}.OpenAPIModelName(), corev1.FCVolumeSource{}.OpenAPIModelName(), corev1.FlexPersistentVolumeSource{}.OpenAPIModelName(), corev1.FlockerVolumeSource{}.OpenAPIModelName(), corev1.GCEPersistentDiskVolumeSource{}.OpenAPIModelName(), corev1.GlusterfsPersistentVolumeSource{}.OpenAPIModelName(), corev1.HostPathVolumeSource{}.OpenAPIModelName(), corev1.ISCSIPersistentVolumeSource{}.OpenAPIModelName(), corev1.LocalVolumeSource{}.OpenAPIModelName(), corev1.NFSVolumeSource{}.OpenAPIModelName(), corev1.ObjectReference{}.OpenAPIModelName(), corev1.PhotonPersistentDiskVolumeSource{}.OpenAPIModelName(), corev1.PortworxVolumeSource{}.OpenAPIModelName(), corev1.QuobyteVolumeSource{}.OpenAPIModelName(), corev1.RBDPersistentVolumeSource{}.OpenAPIModelName(), corev1.ScaleIOPersistentVolumeSource{}.OpenAPIModelName(), corev1.StorageOSPersistentVolumeSource{}.OpenAPIModelName(), corev1.VolumeNodeAffinity{}.OpenAPIModelName(), corev1.VsphereVirtualDiskVolumeSource{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -44441,7 +44251,7 @@ func schema_k8sio_api_core_v1_PodSpec(ref common.ReferenceCallback) common.OpenA
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -44564,7 +44374,7 @@ func schema_k8sio_api_core_v1_PodSpec(ref common.ReferenceCallback) common.OpenA
 			},
 		},
 		Dependencies: []string{
-			corev1.Affinity{}.OpenAPIModelName(), corev1.Container{}.OpenAPIModelName(), corev1.EphemeralContainer{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), corev1.WorkloadReference{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.Affinity{}.OpenAPIModelName(), corev1.Container{}.OpenAPIModelName(), corev1.EphemeralContainer{}.OpenAPIModelName(), corev1.HostAlias{}.OpenAPIModelName(), corev1.LocalObjectReference{}.OpenAPIModelName(), corev1.PodDNSConfig{}.OpenAPIModelName(), corev1.PodOS{}.OpenAPIModelName(), corev1.PodReadinessGate{}.OpenAPIModelName(), corev1.PodResourceClaim{}.OpenAPIModelName(), corev1.PodSchedulingGate{}.OpenAPIModelName(), corev1.PodSecurityContext{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), corev1.Toleration{}.OpenAPIModelName(), corev1.TopologySpreadConstraint{}.OpenAPIModelName(), corev1.Volume{}.OpenAPIModelName(), corev1.WorkloadReference{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -44810,7 +44620,7 @@ func schema_k8sio_api_core_v1_PodStatus(ref common.ReferenceCallback) common.Ope
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -44826,7 +44636,7 @@ func schema_k8sio_api_core_v1_PodStatus(ref common.ReferenceCallback) common.Ope
 			},
 		},
 		Dependencies: []string{
-			corev1.ContainerStatus{}.OpenAPIModelName(), corev1.HostIP{}.OpenAPIModelName(), corev1.PodCondition{}.OpenAPIModelName(), corev1.PodExtendedResourceClaimStatus{}.OpenAPIModelName(), corev1.PodIP{}.OpenAPIModelName(), corev1.PodResourceClaimStatus{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity", metav1.Time{}.OpenAPIModelName()},
+			corev1.ContainerStatus{}.OpenAPIModelName(), corev1.HostIP{}.OpenAPIModelName(), corev1.PodCondition{}.OpenAPIModelName(), corev1.PodExtendedResourceClaimStatus{}.OpenAPIModelName(), corev1.PodIP{}.OpenAPIModelName(), corev1.PodResourceClaimStatus{}.OpenAPIModelName(), corev1.ResourceRequirements{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName(), metav1.Time{}.OpenAPIModelName()},
 	}
 }
 
@@ -45932,7 +45742,7 @@ func schema_k8sio_api_core_v1_ResourceFieldSelector(ref common.ReferenceCallback
 					"divisor": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Specifies the output format of the exposed resources, defaults to \"1\"",
-							Ref:         ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+							Ref:         ref(resource.Quantity{}.OpenAPIModelName()),
 						},
 					},
 				},
@@ -45945,7 +45755,7 @@ func schema_k8sio_api_core_v1_ResourceFieldSelector(ref common.ReferenceCallback
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -46094,7 +45904,7 @@ func schema_k8sio_api_core_v1_ResourceQuotaSpec(ref common.ReferenceCallback) co
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -46131,7 +45941,7 @@ func schema_k8sio_api_core_v1_ResourceQuotaSpec(ref common.ReferenceCallback) co
 			},
 		},
 		Dependencies: []string{
-			corev1.ScopeSelector{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.ScopeSelector{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -46150,7 +45960,7 @@ func schema_k8sio_api_core_v1_ResourceQuotaStatus(ref common.ReferenceCallback) 
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -46164,7 +45974,7 @@ func schema_k8sio_api_core_v1_ResourceQuotaStatus(ref common.ReferenceCallback) 
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -46174,7 +45984,7 @@ func schema_k8sio_api_core_v1_ResourceQuotaStatus(ref common.ReferenceCallback) 
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -46193,7 +46003,7 @@ func schema_k8sio_api_core_v1_ResourceRequirements(ref common.ReferenceCallback)
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -46207,7 +46017,7 @@ func schema_k8sio_api_core_v1_ResourceRequirements(ref common.ReferenceCallback)
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -46239,7 +46049,7 @@ func schema_k8sio_api_core_v1_ResourceRequirements(ref common.ReferenceCallback)
 			},
 		},
 		Dependencies: []string{
-			corev1.ResourceClaim{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			corev1.ResourceClaim{}.OpenAPIModelName(), resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -47425,7 +47235,7 @@ func schema_k8sio_api_core_v1_ServicePort(ref common.ReferenceCallback) common.O
 					"targetPort": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Number or name of the port to access on the pods targeted by the service. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a string, it will be looked up as a named port in the target Pod's container ports. If this is not specified, the value of the 'port' field is used (an identity map). This field is ignored for services with clusterIP=None, and should be omitted or set equal to the 'port' field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service",
-							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
 						},
 					},
 					"nodePort": {
@@ -47440,7 +47250,7 @@ func schema_k8sio_api_core_v1_ServicePort(ref common.ReferenceCallback) common.O
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+			intstr.IntOrString{}.OpenAPIModelName()},
 	}
 }
 
@@ -47949,7 +47759,7 @@ func schema_k8sio_api_core_v1_TCPSocketAction(ref common.ReferenceCallback) comm
 					"port": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
-							Ref:         ref("k8s.io/apimachinery/pkg/util/intstr.IntOrString"),
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
 						},
 					},
 					"host": {
@@ -47964,7 +47774,7 @@ func schema_k8sio_api_core_v1_TCPSocketAction(ref common.ReferenceCallback) comm
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/util/intstr.IntOrString"},
+			intstr.IntOrString{}.OpenAPIModelName()},
 	}
 }
 
@@ -48752,7 +48562,7 @@ func schema_k8sio_api_core_v1_VolumeResourceRequirements(ref common.ReferenceCal
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -48766,7 +48576,7 @@ func schema_k8sio_api_core_v1_VolumeResourceRequirements(ref common.ReferenceCal
 								Allows: true,
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
+										Ref: ref(resource.Quantity{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -48776,7 +48586,7 @@ func schema_k8sio_api_core_v1_VolumeResourceRequirements(ref common.ReferenceCal
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
+			resource.Quantity{}.OpenAPIModelName()},
 	}
 }
 
@@ -49122,6 +48932,3298 @@ func schema_k8sio_api_core_v1_WorkloadReference(ref common.ReferenceCallback) co
 					},
 				},
 				Required: []string{"name", "podGroup"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_HTTPIngressPath(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "HTTPIngressPath associates a path with a backend. Incoming urls matching the path are forwarded to the backend.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"path": {
+						SchemaProps: spec.SchemaProps{
+							Description: "path is matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional \"path\" part of a URL as defined by RFC 3986. Paths must begin with a '/' and must be present when using PathType with value \"Exact\" or \"Prefix\".",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"pathType": {
+						SchemaProps: spec.SchemaProps{
+							Description: "pathType determines the interpretation of the path matching. PathType can be one of the following values: * Exact: Matches the URL path exactly. * Prefix: Matches based on a URL path prefix split by '/'. Matching is\n  done on a path element by element basis. A path element refers is the\n  list of labels in the path split by the '/' separator. A request is a\n  match for path p if every p is an element-wise prefix of p of the\n  request path. Note that if the last element of the path is a substring\n  of the last element in request path, it is not a match (e.g. /foo/bar\n  matches /foo/bar/baz, but does not match /foo/barbaz).\n* ImplementationSpecific: Interpretation of the Path matching is up to\n  the IngressClass. Implementations can treat this as a separate PathType\n  or treat it identically to Prefix or Exact path types.\nImplementations are required to support all path types.\n\nPossible enum values:\n - `\"Exact\"` matches the URL path exactly and with case sensitivity.\n - `\"ImplementationSpecific\"` matching is up to the IngressClass. Implementations can treat this as a separate PathType or treat it identically to Prefix or Exact path types.\n - `\"Prefix\"` matches based on a URL path prefix split by '/'. Matching is case sensitive and done on a path element by element basis. A path element refers to the list of labels in the path split by the '/' separator. A request is a match for path p if every p is an element-wise prefix of p of the request path. Note that if the last element of the path is a substring of the last element in request path, it is not a match (e.g. /foo/bar matches /foo/bar/baz, but does not match /foo/barbaz). If multiple matching paths exist in an Ingress spec, the longest matching path is given priority. Examples: - /foo/bar does not match requests to /foo/barbaz - /foo/bar matches request to /foo/bar and /foo/bar/baz - /foo and /foo/ both match requests to /foo and /foo/. If both paths are present in an Ingress spec, the longest matching path (/foo/) is given priority.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Exact", "ImplementationSpecific", "Prefix"},
+						},
+					},
+					"backend": {
+						SchemaProps: spec.SchemaProps{
+							Description: "backend defines the referenced service endpoint to which the traffic will be forwarded to.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IngressBackend{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"pathType", "backend"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressBackend{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_HTTPIngressRuleValue(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"paths": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "paths is a collection of paths that map requests to backends.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.HTTPIngressPath{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"paths"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.HTTPIngressPath{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IPAddress(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IPAddress represents a single IP of a single IP Family. The object is designed to be used by APIs that operate on IP addresses. The object is used by the Service core API for allocation of IP addresses. An IP address can be represented in different formats, to guarantee the uniqueness of the IP, the name of the object is the IP address in canonical format, four decimal digits separated by dots suppressing leading zeros for IPv4 and the representation defined by RFC 5952 for IPv6. Valid: 192.168.1.5 or 2001:db8::1 or 2001:db8:aaaa:bbbb:cccc:dddd:eeee:1 Invalid: 10.01.2.3 or 2001:db8:0:0:0::1",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec is the desired state of the IPAddress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IPAddressSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IPAddressSpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IPAddressList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IPAddressList contains a list of IPAddress.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of IPAddresses.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IPAddress{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IPAddress{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IPAddressSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IPAddressSpec describe the attributes in an IP Address.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"parentRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.",
+							Ref:         ref(networkingv1.ParentReference{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"parentRef"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.ParentReference{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IPBlock(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IPBlock describes a particular CIDR (Ex. \"192.168.1.0/24\",\"2001:db8::/64\") that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The except entry describes CIDRs that should not be included within this rule.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"cidr": {
+						SchemaProps: spec.SchemaProps{
+							Description: "cidr is a string representing the IPBlock Valid examples are \"192.168.1.0/24\" or \"2001:db8::/64\"",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"except": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "except is a slice of CIDRs that should not be included within an IPBlock Valid examples are \"192.168.1.0/24\" or \"2001:db8::/64\" Except values will be rejected if they are outside the cidr range",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"cidr"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_Ingress(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Ingress is a collection of rules that allow inbound connections to reach the endpoints defined by a backend. An Ingress can be configured to give services externally-reachable urls, load balance traffic, terminate SSL, offer name based virtual hosting etc.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IngressSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IngressStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressSpec{}.OpenAPIModelName(), networkingv1.IngressStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressBackend(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressBackend describes all endpoints for a given service and port.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"service": {
+						SchemaProps: spec.SchemaProps{
+							Description: "service references a service as a backend. This is a mutually exclusive setting with \"Resource\".",
+							Ref:         ref(networkingv1.IngressServiceBackend{}.OpenAPIModelName()),
+						},
+					},
+					"resource": {
+						SchemaProps: spec.SchemaProps{
+							Description: "resource is an ObjectRef to another Kubernetes resource in the namespace of the Ingress object. If resource is specified, a service.Name and service.Port must not be specified. This is a mutually exclusive setting with \"Service\".",
+							Ref:         ref(corev1.TypedLocalObjectReference{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			corev1.TypedLocalObjectReference{}.OpenAPIModelName(), networkingv1.IngressServiceBackend{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressClass(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressClass represents the class of the Ingress, referenced by the Ingress Spec. The `ingressclass.kubernetes.io/is-default-class` annotation can be used to indicate that an IngressClass should be considered default. When a single IngressClass resource has this annotation set to true, new Ingress resources without a class specified will be assigned this default class.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec is the desired state of the IngressClass. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IngressClassSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressClassSpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressClassList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressClassList is a collection of IngressClasses.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of IngressClasses.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IngressClass{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressClass{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressClassParametersReference(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressClassParametersReference identifies an API object. This can be used to specify a cluster or namespace-scoped resource.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"apiGroup": {
+						SchemaProps: spec.SchemaProps{
+							Description: "apiGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "kind is the type of resource being referenced.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "name is the name of resource being referenced.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"scope": {
+						SchemaProps: spec.SchemaProps{
+							Description: "scope represents if this refers to a cluster or namespace scoped resource. This may be set to \"Cluster\" (default) or \"Namespace\".",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"namespace": {
+						SchemaProps: spec.SchemaProps{
+							Description: "namespace is the namespace of the resource being referenced. This field is required when scope is set to \"Namespace\" and must be unset when scope is set to \"Cluster\".",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"kind", "name"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressClassSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressClassSpec provides information about the class of an Ingress.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"controller": {
+						SchemaProps: spec.SchemaProps{
+							Description: "controller refers to the name of the controller that should handle this class. This allows for different \"flavors\" that are controlled by the same controller. For example, you may have different parameters for the same implementing controller. This should be specified as a domain-prefixed path no more than 250 characters in length, e.g. \"acme.io/ingress-controller\". This field is immutable.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"parameters": {
+						SchemaProps: spec.SchemaProps{
+							Description: "parameters is a link to a custom resource containing additional configuration for the controller. This is optional if the controller does not require extra parameters.",
+							Ref:         ref(networkingv1.IngressClassParametersReference{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressClassParametersReference{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressList is a collection of Ingress.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of Ingress.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.Ingress{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.Ingress{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressLoadBalancerIngress(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressLoadBalancerIngress represents the status of a load-balancer ingress point.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ip": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ip is set for load-balancer ingress points that are IP based.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"hostname": {
+						SchemaProps: spec.SchemaProps{
+							Description: "hostname is set for load-balancer ingress points that are DNS based.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"ports": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ports provides information about the ports exposed by this LoadBalancer.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IngressPortStatus{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressPortStatus{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressLoadBalancerStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressLoadBalancerStatus represents the status of a load-balancer.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ingress": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ingress is a list containing ingress points for the load-balancer.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IngressLoadBalancerIngress{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressLoadBalancerIngress{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressPortStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressPortStatus represents the error condition of a service port",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Description: "port is the port number of the ingress port.",
+							Default:     0,
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Description: "protocol is the protocol of the ingress port. The supported values are: \"TCP\", \"UDP\", \"SCTP\"\n\nPossible enum values:\n - `\"SCTP\"` is the SCTP protocol.\n - `\"TCP\"` is the TCP protocol.\n - `\"UDP\"` is the UDP protocol.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"SCTP", "TCP", "UDP"},
+						},
+					},
+					"error": {
+						SchemaProps: spec.SchemaProps{
+							Description: "error is to record the problem with the service port The format of the error shall comply with the following rules: - built-in error values shall be specified in this file and those shall use\n  CamelCase names\n- cloud provider specific error values must have names that comply with the\n  format foo.example.com/CamelCase.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"port", "protocol"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressRule represents the rules mapping the paths under a specified host to the related backend services. Incoming requests are first evaluated for a host match, then routed to the backend associated with the matching IngressRuleValue.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"host": {
+						SchemaProps: spec.SchemaProps{
+							Description: "host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the \"host\" part of the URI as defined in RFC 3986: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to\n   the IP in the Spec of the parent Ingress.\n2. The `:` delimiter is not respected because ports are not allowed.\n\t  Currently the port of an Ingress is implicitly :80 for http and\n\t  :443 for https.\nBoth these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.\n\nhost can be \"precise\" which is a domain name without the terminating dot of a network host (e.g. \"foo.bar.com\") or \"wildcard\", which is a domain name prefixed with a single wildcard label (e.g. \"*.foo.com\"). The wildcard character '*' must appear by itself as the first DNS label and matches only a single label. You cannot have a wildcard label by itself (e.g. Host == \"*\"). Requests will be matched against the Host field in the following way: 1. If host is precise, the request matches this rule if the http host header is equal to Host. 2. If host is a wildcard, then the request matches this rule if the http host header is to equal to the suffix (removing the first label) of the wildcard rule.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"http": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref(networkingv1.HTTPIngressRuleValue{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.HTTPIngressRuleValue{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressRuleValue(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressRuleValue represents a rule to apply against incoming requests. If the rule is satisfied, the request is routed to the specified backend. Currently mixing different types of rules in a single Ingress is disallowed, so exactly one of the following must be set.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"http": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref(networkingv1.HTTPIngressRuleValue{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.HTTPIngressRuleValue{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressServiceBackend(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressServiceBackend references a Kubernetes Service as a Backend.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "name is the referenced service. The service must exist in the same namespace as the Ingress object.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Description: "port of the referenced service. A port name or port number is required for a IngressServiceBackend.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.ServiceBackendPort{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.ServiceBackendPort{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressSpec describes the Ingress the user wishes to exist.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ingressClassName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ingressClassName is the name of an IngressClass cluster resource. Ingress controller implementations use this field to know whether they should be serving this Ingress resource, by a transitive connection (controller -> IngressClass -> Ingress resource). Although the `kubernetes.io/ingress.class` annotation (simple constant name) was never formally defined, it was widely supported by Ingress controllers to create a direct binding between Ingress controller and Ingress resources. Newly created Ingress resources should prefer using the field. However, even though the annotation is officially deprecated, for backwards compatibility reasons, ingress controllers should still honor that annotation if present.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"defaultBackend": {
+						SchemaProps: spec.SchemaProps{
+							Description: "defaultBackend is the backend that should handle requests that don't match any rule. If Rules are not specified, DefaultBackend must be specified. If DefaultBackend is not set, the handling of requests that do not match any of the rules will be up to the Ingress controller.",
+							Ref:         ref(networkingv1.IngressBackend{}.OpenAPIModelName()),
+						},
+					},
+					"tls": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "tls represents the TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IngressTLS{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"rules": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "rules is a list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.IngressRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressBackend{}.OpenAPIModelName(), networkingv1.IngressRule{}.OpenAPIModelName(), networkingv1.IngressTLS{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressStatus describe the current state of the Ingress.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"loadBalancer": {
+						SchemaProps: spec.SchemaProps{
+							Description: "loadBalancer contains the current status of the load-balancer.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.IngressLoadBalancerStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IngressLoadBalancerStatus{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_IngressTLS(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IngressTLS describes the transport layer security associated with an ingress.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"hosts": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "hosts is a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"secretName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "secretName is the name of the secret used to terminate TLS traffic on port 443. Field is left optional to allow TLS routing based on SNI hostname alone. If the SNI host in a listener conflicts with the \"Host\" header field used by an IngressRule, the SNI host is used for termination and value of the \"Host\" header is used for routing.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicy(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicy describes what network traffic is allowed for a set of Pods",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec represents the specification of the desired behavior for this NetworkPolicy.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.NetworkPolicySpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.NetworkPolicySpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicyEgressRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicyEgressRule describes a particular set of traffic that is allowed out of pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and to. This type is beta-level in 1.8",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ports": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ports is a list of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyPort{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"to": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "to is a list of destinations for outgoing traffic of pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all destinations (traffic not restricted by destination). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the to list.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyPeer{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.NetworkPolicyPeer{}.OpenAPIModelName(), networkingv1.NetworkPolicyPort{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicyIngressRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicyIngressRule describes a particular set of traffic that is allowed to the pods matched by a NetworkPolicySpec's podSelector. The traffic must match both ports and from.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"ports": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ports is a list of ports which should be made accessible on the pods selected for this rule. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyPort{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"from": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "from is a list of sources which should be able to access the pods selected for this rule. Items in this list are combined using a logical OR operation. If this field is empty or missing, this rule matches all sources (traffic not restricted by source). If this field is present and contains at least one item, this rule allows traffic only if the traffic matches at least one item in the from list.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyPeer{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.NetworkPolicyPeer{}.OpenAPIModelName(), networkingv1.NetworkPolicyPort{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicyList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicyList is a list of NetworkPolicy objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is a list of schema objects.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicy{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.NetworkPolicy{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicyPeer(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicyPeer describes a peer to allow traffic to/from. Only certain combinations of fields are allowed",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"podSelector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "podSelector is a label selector which selects pods. This field follows standard label selector semantics; if present but empty, it selects all pods.\n\nIf namespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the pods matching podSelector in the policy's own namespace.",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"namespaceSelector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "namespaceSelector selects namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.\n\nIf podSelector is also set, then the NetworkPolicyPeer as a whole selects the pods matching podSelector in the namespaces selected by namespaceSelector. Otherwise it selects all pods in the namespaces selected by namespaceSelector.",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"ipBlock": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ipBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.",
+							Ref:         ref(networkingv1.IPBlock{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.IPBlock{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicyPort(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicyPort describes a port to allow traffic on",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"protocol": {
+						SchemaProps: spec.SchemaProps{
+							Description: "protocol represents the protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.\n\nPossible enum values:\n - `\"SCTP\"` is the SCTP protocol.\n - `\"TCP\"` is the TCP protocol.\n - `\"UDP\"` is the UDP protocol.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"SCTP", "TCP", "UDP"},
+						},
+					},
+					"port": {
+						SchemaProps: spec.SchemaProps{
+							Description: "port represents the port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.",
+							Ref:         ref(intstr.IntOrString{}.OpenAPIModelName()),
+						},
+					},
+					"endPort": {
+						SchemaProps: spec.SchemaProps{
+							Description: "endPort indicates that the range of ports from port to endPort if set, inclusive, should be allowed by the policy. This field cannot be defined if the port field is not defined or if the port field is defined as a named (string) port. The endPort must be equal or greater than port.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			intstr.IntOrString{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_NetworkPolicySpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "NetworkPolicySpec provides the specification of a NetworkPolicy",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"podSelector": {
+						SchemaProps: spec.SchemaProps{
+							Description: "podSelector selects the pods to which this NetworkPolicy object applies. The array of rules is applied to any pods selected by this field. An empty selector matches all pods in the policy's namespace. Multiple network policies can select the same set of pods. In this case, the ingress rules for each are combined additively. This field is optional. If it is not specified, it defaults to an empty selector.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"ingress": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ingress is a list of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default)",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyIngressRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"egress": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "egress is a list of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.NetworkPolicyEgressRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"policyTypes": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "policyTypes is a list of rule types that the NetworkPolicy relates to. Valid options are [\"Ingress\"], [\"Egress\"], or [\"Ingress\", \"Egress\"]. If this field is not specified, it will default based on the existence of ingress or egress rules; policies that contain an egress section are assumed to affect egress, and all policies (whether or not they contain an ingress section) are assumed to affect ingress. If you want to write an egress-only policy, you must explicitly specify policyTypes [ \"Egress\" ]. Likewise, if you want to write a policy that specifies that no egress is allowed, you must specify a policyTypes value that include \"Egress\" (since such a policy would not include an egress section and would otherwise default to just [ \"Ingress\" ]). This field is beta-level in 1.8",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+										Enum:    []interface{}{"Egress", "Ingress"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.NetworkPolicyEgressRule{}.OpenAPIModelName(), networkingv1.NetworkPolicyIngressRule{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ParentReference(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ParentReference describes a reference to a parent object.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"group": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Group is the group of the object being referenced.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"resource": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Resource is the resource of the object being referenced.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"namespace": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Namespace is the namespace of the object being referenced.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name is the name of the object being referenced.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"resource", "name"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ServiceBackendPort(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceBackendPort is the service port being referenced.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "name is the name of the port on the Service. This is a mutually exclusive setting with \"Number\".",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"number": {
+						SchemaProps: spec.SchemaProps{
+							Description: "number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with \"Name\".",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+			VendorExtensible: spec.VendorExtensible{
+				Extensions: spec.Extensions{
+					"x-kubernetes-map-type": "atomic",
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ServiceCIDR(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceCIDR defines a range of IP addresses using CIDR format (e.g. 192.168.0.0/24 or 2001:db2::/64). This range is used to allocate ClusterIPs to Service objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec is the desired state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.ServiceCIDRSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+							Default:     map[string]interface{}{},
+							Ref:         ref(networkingv1.ServiceCIDRStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.ServiceCIDRSpec{}.OpenAPIModelName(), networkingv1.ServiceCIDRStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ServiceCIDRList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceCIDRList contains a list of ServiceCIDR objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of ServiceCIDRs.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(networkingv1.ServiceCIDR{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			networkingv1.ServiceCIDR{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ServiceCIDRSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceCIDRSpec define the CIDRs the user wants to use for allocating ClusterIPs for Services.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"cidrs": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "CIDRs defines the IP blocks in CIDR notation (e.g. \"192.168.0.0/24\" or \"2001:db8::/64\") from which to assign service cluster IPs. Max of two CIDRs is allowed, one of each IP family. This field is immutable.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_networking_v1_ServiceCIDRStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ServiceCIDRStatus describes the current state of the ServiceCIDR.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"conditions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"type",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "type",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "conditions holds an array of metav1.Condition that describe the state of the ServiceCIDR. Current service state",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(metav1.Condition{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			metav1.Condition{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_AggregationRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "AggregationRule describes how to locate ClusterRoles to aggregate into the ClusterRole",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"clusterRoleSelectors": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(metav1.LabelSelector{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			metav1.LabelSelector{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_ClusterRole(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ClusterRole is a cluster level, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding or ClusterRoleBinding.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"rules": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Rules holds all the PolicyRules for this ClusterRole",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.PolicyRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"aggregationRule": {
+						SchemaProps: spec.SchemaProps{
+							Description: "AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
+							Ref:         ref(rbacv1.AggregationRule{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.AggregationRule{}.OpenAPIModelName(), rbacv1.PolicyRule{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_ClusterRoleBinding(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ClusterRoleBinding references a ClusterRole, but not contain it.  It can reference a ClusterRole in the global namespace, and adds who information via Subject.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"subjects": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Subjects holds references to the objects the role applies to.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.Subject{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"roleRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(rbacv1.RoleRef{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"roleRef"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.RoleRef{}.OpenAPIModelName(), rbacv1.Subject{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_ClusterRoleBindingList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ClusterRoleBindingList is a collection of ClusterRoleBindings",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ClusterRoleBindings",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.ClusterRoleBinding{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.ClusterRoleBinding{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_ClusterRoleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "ClusterRoleList is a collection of ClusterRoles",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of ClusterRoles",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.ClusterRole{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.ClusterRole{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_PolicyRule(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "PolicyRule holds information that describes a policy rule, but does not contain information about who the rule applies to or which namespace the rule applies to.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"verbs": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"apiGroups": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed. \"\" represents the core API group and \"*\" represents all API groups.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"resources": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Resources is a list of resources this rule applies to. '*' represents all resources.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"resourceNames": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"nonResourceURLs": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as \"pods\" or \"secrets\") or non-resource URL paths (such as \"/api\"),  but not both.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"verbs"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_Role(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Role is a namespaced, logical grouping of PolicyRules that can be referenced as a unit by a RoleBinding.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"rules": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Rules holds all the PolicyRules for this Role",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.PolicyRule{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.PolicyRule{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_RoleBinding(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RoleBinding references a role, but does not contain it.  It can reference a Role in the same namespace or a ClusterRole in the global namespace. It adds who information via Subjects and namespace information by which namespace it exists in.  RoleBindings in a given namespace only have effect in that namespace.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"subjects": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "Subjects holds references to the objects the role applies to.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.Subject{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"roleRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(rbacv1.RoleRef{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"roleRef"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.RoleRef{}.OpenAPIModelName(), rbacv1.Subject{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_RoleBindingList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RoleBindingList is a collection of RoleBindings",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of RoleBindings",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.RoleBinding{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.RoleBinding{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_RoleList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RoleList is a collection of Roles",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of Roles",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(rbacv1.Role{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			rbacv1.Role{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_RoleRef(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "RoleRef contains information that points to the role being used",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"apiGroup": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIGroup is the group for the resource being referenced",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is the type of resource being referenced",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name is the name of resource being referenced",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"apiGroup", "kind", "name"},
+			},
+			VendorExtensible: spec.VendorExtensible{
+				Extensions: spec.Extensions{
+					"x-kubernetes-map-type": "atomic",
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_rbac_v1_Subject(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind of object being referenced. Values defined by this API group are \"User\", \"Group\", and \"ServiceAccount\". If the Authorizer does not recognized the kind value, the Authorizer should report an error.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiGroup": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIGroup holds the API group of the referenced subject. Defaults to \"\" for ServiceAccount subjects. Defaults to \"rbac.authorization.k8s.io\" for User and Group subjects.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name of the object being referenced.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"namespace": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Namespace of the referenced object.  If the object kind is non-namespace, such as \"User\" or \"Group\", and this value is not empty the Authorizer should report an error.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"kind", "name"},
+			},
+			VendorExtensible: spec.VendorExtensible{
+				Extensions: spec.Extensions{
+					"x-kubernetes-map-type": "atomic",
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSIDriver(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSIDriver captures information about a Container Storage Interface (CSI) volume driver deployed on the cluster. Kubernetes attach detach controller uses this object to determine whether attach is required. Kubelet uses this object to determine whether pod information needs to be passed on mount. CSIDriver objects are non-namespaced.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec represents the specification of the CSI Driver.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(storagev1.CSIDriverSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"spec"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSIDriverSpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSIDriverList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSIDriverList is a collection of CSIDriver objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of CSIDriver",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.CSIDriver{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSIDriver{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSIDriverSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSIDriverSpec is the specification of a CSIDriver.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"attachRequired": {
+						SchemaProps: spec.SchemaProps{
+							Description: "attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.\n\nThis field is immutable.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"podInfoOnMount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "podInfoOnMount indicates this CSI volume driver requires additional pod information (like podName, podUID, etc.) during mount operations, if set to true. If set to false, pod information will not be passed on mount. Default is false.\n\nThe CSI driver specifies podInfoOnMount as part of driver deployment. If true, Kubelet will pass pod information as VolumeContext in the CSI NodePublishVolume() calls. The CSI driver is responsible for parsing and validating the information passed in as VolumeContext.\n\nThe following VolumeContext will be passed if podInfoOnMount is set to true. This list might grow, but the prefix will be used. \"csi.storage.k8s.io/pod.name\": pod.Name \"csi.storage.k8s.io/pod.namespace\": pod.Namespace \"csi.storage.k8s.io/pod.uid\": string(pod.UID) \"csi.storage.k8s.io/ephemeral\": \"true\" if the volume is an ephemeral inline volume\n                                defined by a CSIVolumeSource, otherwise \"false\"\n\n\"csi.storage.k8s.io/ephemeral\" is a new feature in Kubernetes 1.16. It is only required for drivers which support both the \"Persistent\" and \"Ephemeral\" VolumeLifecycleMode. Other drivers can leave pod info disabled and/or ignore this field. As Kubernetes 1.15 doesn't support this field, drivers can only support one mode when deployed on such a cluster and the deployment determines which mode that is, for example via a command line parameter of the driver.\n\nThis field was immutable in Kubernetes < 1.29 and now is mutable.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"volumeLifecycleModes": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "set",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "volumeLifecycleModes defines what kind of volumes this CSI volume driver supports. The default if the list is empty is \"Persistent\", which is the usage defined by the CSI specification and implemented in Kubernetes via the usual PV/PVC mechanism.\n\nThe other mode is \"Ephemeral\". In this mode, volumes are defined inline inside the pod spec with CSIVolumeSource and their lifecycle is tied to the lifecycle of that pod. A driver has to be aware of this because it is only going to get a NodePublishVolume call for such a volume.\n\nFor more information about implementing this mode, see https://kubernetes-csi.github.io/docs/ephemeral-local-volumes.html A driver can support one or more of these modes and more modes may be added in the future.\n\nThis field is beta. This field is immutable.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"storageCapacity": {
+						SchemaProps: spec.SchemaProps{
+							Description: "storageCapacity indicates that the CSI volume driver wants pod scheduling to consider the storage capacity that the driver deployment will report by creating CSIStorageCapacity objects with capacity information, if set to true.\n\nThe check can be enabled immediately when deploying a driver. In that case, provisioning new volumes with late binding will pause until the driver deployment has published some suitable CSIStorageCapacity object.\n\nAlternatively, the driver can be deployed with the field unset or false and it can be flipped later when storage capacity information has been published.\n\nThis field was immutable in Kubernetes <= 1.22 and now is mutable.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"fsGroupPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "fsGroupPolicy defines if the underlying volume supports changing ownership and permission of the volume before being mounted. Refer to the specific FSGroupPolicy values for additional details.\n\nThis field was immutable in Kubernetes < 1.29 and now is mutable.\n\nDefaults to ReadWriteOnceWithFSType, which will examine each volume to determine if Kubernetes should modify ownership and permissions of the volume. With the default policy the defined fsGroup will only be applied if a fstype is defined and the volume's access mode contains ReadWriteOnce.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"tokenRequests": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: \"csi.storage.k8s.io/serviceAccount.tokens\": {\n  \"<audience>\": {\n    \"token\": <token>,\n    \"expirationTimestamp\": <expiration timestamp in RFC3339>,\n  },\n  ...\n}\n\nNote: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.TokenRequest{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+					"requiresRepublish": {
+						SchemaProps: spec.SchemaProps{
+							Description: "requiresRepublish indicates the CSI driver wants `NodePublishVolume` being periodically called to reflect any possible change in the mounted volume. This field defaults to false.\n\nNote: After a successful initial NodePublishVolume call, subsequent calls to NodePublishVolume should only update the contents of the volume. New mount points will not be seen by a running container.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"seLinuxMount": {
+						SchemaProps: spec.SchemaProps{
+							Description: "seLinuxMount specifies if the CSI driver supports \"-o context\" mount option.\n\nWhen \"true\", the CSI driver must ensure that all volumes provided by this CSI driver can be mounted separately with different `-o context` options. This is typical for storage backends that provide volumes as filesystems on block devices or as independent shared volumes. Kubernetes will call NodeStage / NodePublish with \"-o context=xyz\" mount option when mounting a ReadWriteOncePod volume used in Pod that has explicitly set SELinux context. In the future, it may be expanded to other volume AccessModes. In any case, Kubernetes will ensure that the volume is mounted only with a single SELinux context.\n\nWhen \"false\", Kubernetes won't pass any special SELinux mount options to the driver. This is typical for volumes that represent subdirectories of a bigger shared filesystem.\n\nDefault is \"false\".",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"nodeAllocatableUpdatePeriodSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "nodeAllocatableUpdatePeriodSeconds specifies the interval between periodic updates of the CSINode allocatable capacity for this driver. When set, both periodic updates and updates triggered by capacity-related failures are enabled. If not set, no updates occur (neither periodic nor upon detecting capacity-related failures), and the allocatable.count remains static. The minimum allowed value for this field is 10 seconds.\n\nThis is a beta feature and requires the MutableCSINodeAllocatableCount feature gate to be enabled.\n\nThis field is mutable.",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+					"serviceAccountTokenInSecrets": {
+						SchemaProps: spec.SchemaProps{
+							Description: "serviceAccountTokenInSecrets is an opt-in for CSI drivers to indicate that service account tokens should be passed via the Secrets field in NodePublishVolumeRequest instead of the VolumeContext field. The CSI specification provides a dedicated Secrets field for sensitive information like tokens, which is the appropriate mechanism for handling credentials. This addresses security concerns where sensitive tokens were being logged as part of volume context.\n\nWhen \"true\", kubelet will pass the tokens only in the Secrets field with the key \"csi.storage.k8s.io/serviceAccount.tokens\". The CSI driver must be updated to read tokens from the Secrets field instead of VolumeContext.\n\nWhen \"false\" or not set, kubelet will pass the tokens in VolumeContext with the key \"csi.storage.k8s.io/serviceAccount.tokens\" (existing behavior). This maintains backward compatibility with existing CSI drivers.\n\nThis field can only be set when TokenRequests is configured. The API server will reject CSIDriver specs that set this field without TokenRequests.\n\nDefault behavior if unset is to pass tokens in the VolumeContext field.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			storagev1.TokenRequest{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSINode(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSINode holds information about all CSI drivers installed on a node. CSI drivers do not need to create the CSINode object directly. As long as they use the node-driver-registrar sidecar container, the kubelet will automatically populate the CSINode object for the CSI driver as part of kubelet plugin registration. CSINode has the same name as a node. If the object is missing, it means either there are no CSI Drivers available on the node, or the Kubelet version is low enough that it doesn't create this object. CSINode has an OwnerReference that points to the corresponding node object.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. metadata.name must be the Kubernetes node name.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec is the specification of CSINode",
+							Default:     map[string]interface{}{},
+							Ref:         ref(storagev1.CSINodeSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"spec"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSINodeSpec{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSINodeDriver(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Description: "name represents the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"nodeID": {
+						SchemaProps: spec.SchemaProps{
+							Description: "nodeID of the node from the driver point of view. This field enables Kubernetes to communicate with storage systems that do not share the same nomenclature for nodes. For example, Kubernetes may refer to a given node as \"node1\", but the storage system may refer to the same node as \"nodeA\". When Kubernetes issues a command to the storage system to attach a volume to a specific node, it can use this field to refer to the node name using the ID that the storage system will understand, e.g. \"nodeA\" instead of \"node1\". This field is required.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"topologyKeys": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "topologyKeys is the list of keys supported by the driver. When a driver is initialized on a cluster, it provides a set of topology keys that it understands (e.g. \"company.com/zone\", \"company.com/region\"). When a driver is initialized on a node, it provides the same topology keys along with values. Kubelet will expose these topology keys as labels on its own node object. When Kubernetes does topology aware provisioning, it can use this list to determine which labels it should retrieve from the node object and pass back to the driver. It is possible for different nodes to use different topology keys. This can be empty if driver does not support topology.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"allocatable": {
+						SchemaProps: spec.SchemaProps{
+							Description: "allocatable represents the volume resources of a node that are available for scheduling. This field is beta.",
+							Ref:         ref(storagev1.VolumeNodeResources{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"name", "nodeID"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeNodeResources{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSINodeList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSINodeList is a collection of CSINode objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of CSINode",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.CSINode{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSINode{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSINodeSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSINodeSpec holds information about the specification of all CSI drivers installed on a node",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"drivers": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-map-keys": []interface{}{
+									"name",
+								},
+								"x-kubernetes-list-type":       "map",
+								"x-kubernetes-patch-merge-key": "name",
+								"x-kubernetes-patch-strategy":  "merge",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.CSINodeDriver{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"drivers"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSINodeDriver{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSIStorageCapacity(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSIStorageCapacity stores the result of one CSI GetCapacity call. For a given StorageClass, this describes the available capacity in a particular topology segment.  This can be used when considering where to instantiate new PersistentVolumes.\n\nFor example this can express things like: - StorageClass \"standard\" has \"1234 GiB\" available in \"topology.kubernetes.io/zone=us-east1\" - StorageClass \"localssd\" has \"10 GiB\" available in \"kubernetes.io/hostname=knode-abc123\"\n\nThe following three cases all imply that no capacity is available for a certain combination: - no object exists with suitable topology and storage class name - such an object exists, but the capacity is unset - such an object exists, but the capacity is zero\n\nThe producer of these objects can decide which approach is more suitable.\n\nThey are consumed by the kube-scheduler when a CSI driver opts into capacity-aware scheduling with CSIDriverSpec.StorageCapacity. The scheduler compares the MaximumVolumeSize against the requested size of pending volumes to filter out unsuitable nodes. If MaximumVolumeSize is unset, it falls back to a comparison against the less precise Capacity. If that is also unset, the scheduler assumes that capacity is insufficient and tries some other node.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.\n\nObjects are namespaced.\n\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"nodeTopology": {
+						SchemaProps: spec.SchemaProps{
+							Description: "nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.",
+							Ref:         ref(metav1.LabelSelector{}.OpenAPIModelName()),
+						},
+					},
+					"storageClassName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "storageClassName represents the name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"capacity": {
+						SchemaProps: spec.SchemaProps{
+							Description: "capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.\n\nThe semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable.",
+							Ref:         ref(resource.Quantity{}.OpenAPIModelName()),
+						},
+					},
+					"maximumVolumeSize": {
+						SchemaProps: spec.SchemaProps{
+							Description: "maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.\n\nThis is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim.",
+							Ref:         ref(resource.Quantity{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"storageClassName"},
+			},
+		},
+		Dependencies: []string{
+			resource.Quantity{}.OpenAPIModelName(), metav1.LabelSelector{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_CSIStorageCapacityList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "CSIStorageCapacityList is a collection of CSIStorageCapacity objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of CSIStorageCapacity objects.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.CSIStorageCapacity{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.CSIStorageCapacity{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_StorageClass(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.\n\nStorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"provisioner": {
+						SchemaProps: spec.SchemaProps{
+							Description: "provisioner indicates the type of the provisioner.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"parameters": {
+						SchemaProps: spec.SchemaProps{
+							Description: "parameters holds the parameters for the provisioner that should create volumes of this storage class.",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"reclaimPolicy": {
+						SchemaProps: spec.SchemaProps{
+							Description: "reclaimPolicy controls the reclaimPolicy for dynamically provisioned PersistentVolumes of this storage class. Defaults to Delete.\n\nPossible enum values:\n - `\"Delete\"` means the volume will be deleted from Kubernetes on release from its claim. The volume plugin must support Deletion.\n - `\"Recycle\"` means the volume will be recycled back into the pool of unbound persistent volumes on release from its claim. The volume plugin must support Recycling.\n - `\"Retain\"` means the volume will be left in its current phase (Released) for manual reclamation by the administrator. The default policy is Retain.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Delete", "Recycle", "Retain"},
+						},
+					},
+					"mountOptions": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. [\"ro\", \"soft\"]. Not validated - mount of the PVs will simply fail if one is invalid.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"allowVolumeExpansion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "allowVolumeExpansion shows whether the storage class allow volume expand.",
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"volumeBindingMode": {
+						SchemaProps: spec.SchemaProps{
+							Description: "volumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.\n\nPossible enum values:\n - `\"Immediate\"` indicates that PersistentVolumeClaims should be immediately provisioned and bound. This is the default mode.\n - `\"WaitForFirstConsumer\"` indicates that PersistentVolumeClaims should not be provisioned and bound until the first Pod is created that references the PeristentVolumeClaim. The volume provisioning and binding will occur during Pod scheduing.",
+							Type:        []string{"string"},
+							Format:      "",
+							Enum:        []interface{}{"Immediate", "WaitForFirstConsumer"},
+						},
+					},
+					"allowedTopologies": {
+						VendorExtensible: spec.VendorExtensible{
+							Extensions: spec.Extensions{
+								"x-kubernetes-list-type": "atomic",
+							},
+						},
+						SchemaProps: spec.SchemaProps{
+							Description: "allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(corev1.TopologySelectorTerm{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"provisioner"},
+			},
+		},
+		Dependencies: []string{
+			corev1.TopologySelectorTerm{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_StorageClassList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "StorageClassList is a collection of storage classes.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of StorageClasses",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.StorageClass{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.StorageClass{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_TokenRequest(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "TokenRequest contains parameters of a service account token.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"audience": {
+						SchemaProps: spec.SchemaProps{
+							Description: "audience is the intended audience of the token in \"TokenRequestSpec\". It will default to the audiences of kube apiserver.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"expirationSeconds": {
+						SchemaProps: spec.SchemaProps{
+							Description: "expirationSeconds is the duration of validity of the token in \"TokenRequestSpec\". It has the same default value of \"ExpirationSeconds\" in \"TokenRequestSpec\".",
+							Type:        []string{"integer"},
+							Format:      "int64",
+						},
+					},
+				},
+				Required: []string{"audience"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttachment(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttachment captures the intent to attach or detach the specified volume to/from the specified node.\n\nVolumeAttachment objects are non-namespaced.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(storagev1.VolumeAttachmentSpec{}.OpenAPIModelName()),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Description: "status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(storagev1.VolumeAttachmentStatus{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"spec"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeAttachmentSpec{}.OpenAPIModelName(), storagev1.VolumeAttachmentStatus{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttachmentList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttachmentList is a collection of VolumeAttachment objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of VolumeAttachments",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.VolumeAttachment{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeAttachment{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttachmentSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttachmentSource represents a volume that should be attached. Right now only PersistentVolumes can be attached via external attacher, in the future we may allow also inline volumes in pods. Exactly one member can be set.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"persistentVolumeName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "persistentVolumeName represents the name of the persistent volume to attach.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"inlineVolumeSpec": {
+						SchemaProps: spec.SchemaProps{
+							Description: "inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature.",
+							Ref:         ref(corev1.PersistentVolumeSpec{}.OpenAPIModelName()),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			corev1.PersistentVolumeSpec{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttachmentSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttachmentSpec is the specification of a VolumeAttachment request.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"attacher": {
+						SchemaProps: spec.SchemaProps{
+							Description: "attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"source": {
+						SchemaProps: spec.SchemaProps{
+							Description: "source represents the volume that should be attached.",
+							Default:     map[string]interface{}{},
+							Ref:         ref(storagev1.VolumeAttachmentSource{}.OpenAPIModelName()),
+						},
+					},
+					"nodeName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "nodeName represents the node that the volume should be attached to.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"attacher", "source", "nodeName"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeAttachmentSource{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttachmentStatus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttachmentStatus is the status of a VolumeAttachment request.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"attached": {
+						SchemaProps: spec.SchemaProps{
+							Description: "attached indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
+							Default:     false,
+							Type:        []string{"boolean"},
+							Format:      "",
+						},
+					},
+					"attachmentMetadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "attachmentMetadata is populated with any information returned by the attach operation, upon successful attach, that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+					"attachError": {
+						SchemaProps: spec.SchemaProps{
+							Description: "attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
+							Ref:         ref(storagev1.VolumeError{}.OpenAPIModelName()),
+						},
+					},
+					"detachError": {
+						SchemaProps: spec.SchemaProps{
+							Description: "detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.",
+							Ref:         ref(storagev1.VolumeError{}.OpenAPIModelName()),
+						},
+					},
+				},
+				Required: []string{"attached"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeError{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttributesClass(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttributesClass represents a specification of mutable volume attributes defined by the CSI driver. The class can be specified during dynamic provisioning of PersistentVolumeClaims, and changed in the PersistentVolumeClaim spec after provisioning.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
+						},
+					},
+					"driverName": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Name of the CSI driver This field is immutable.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"parameters": {
+						SchemaProps: spec.SchemaProps{
+							Description: "parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.\n\nThis field is required and must contain at least one key/value pair. The keys cannot be empty, and the maximum number of parameters is 512, with a cumulative max size of 256K. If the CSI driver rejects invalid parameters, the target PersistentVolumeClaim will be set to an \"Infeasible\" state in the modifyVolumeStatus field.",
+							Type:        []string{"object"},
+							AdditionalProperties: &spec.SchemaOrBool{
+								Allows: true,
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: "",
+										Type:    []string{"string"},
+										Format:  "",
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"driverName"},
+			},
+		},
+		Dependencies: []string{
+			metav1.ObjectMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeAttributesClassList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeAttributesClassList is a collection of VolumeAttributesClass objects.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "items is the list of VolumeAttributesClass objects.",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref(storagev1.VolumeAttributesClass{}.OpenAPIModelName()),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			storagev1.VolumeAttributesClass{}.OpenAPIModelName(), metav1.ListMeta{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeError(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeError captures an error encountered during a volume operation.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"time": {
+						SchemaProps: spec.SchemaProps{
+							Description: "time represents the time the error was encountered.",
+							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
+						},
+					},
+					"message": {
+						SchemaProps: spec.SchemaProps{
+							Description: "message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"errorCode": {
+						SchemaProps: spec.SchemaProps{
+							Description: "errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations.\n\nThis is an optional, beta field that requires the MutableCSINodeAllocatableCount feature gate being enabled to be set.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			metav1.Time{}.OpenAPIModelName()},
+	}
+}
+
+func schema_k8sio_api_storage_v1_VolumeNodeResources(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "VolumeNodeResources is a set of resource limits for scheduling of volumes.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"count": {
+						SchemaProps: spec.SchemaProps{
+							Description: "count indicates the maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_apimachinery_pkg_api_resource_Quantity(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.EmbedOpenAPIDefinitionIntoV2Extension(common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.\n\nThe serialization format is:\n\n``` <quantity>        ::= <signedNumber><suffix>\n\n\t(Note that <suffix> may be empty, from the \"\" case in <decimalSI>.)\n\n<digit>           ::= 0 | 1 | ... | 9 <digits>          ::= <digit> | <digit><digits> <number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits> <sign>            ::= \"+\" | \"-\" <signedNumber>    ::= <number> | <sign><number> <suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI> <binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei\n\n\t(International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n\n<decimalSI>       ::= m | \"\" | k | M | G | T | P | E\n\n\t(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n\n<decimalExponent> ::= \"e\" <signedNumber> | \"E\" <signedNumber> ```\n\nNo matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:\n\n- No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.\n\nThe sign will be omitted unless the number is negative.\n\nExamples:\n\n- 1.5 will be serialized as \"1500m\" - 1.5Gi will be serialized as \"1536Mi\"\n\nNote that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.",
+				OneOf:       common.GenerateOpenAPIV3OneOfSchema(resource.Quantity{}.OpenAPIV3OneOfTypes()),
+				Format:      resource.Quantity{}.OpenAPISchemaFormat(),
+			},
+		},
+	}, common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.\n\nThe serialization format is:\n\n``` <quantity>        ::= <signedNumber><suffix>\n\n\t(Note that <suffix> may be empty, from the \"\" case in <decimalSI>.)\n\n<digit>           ::= 0 | 1 | ... | 9 <digits>          ::= <digit> | <digit><digits> <number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits> <sign>            ::= \"+\" | \"-\" <signedNumber>    ::= <number> | <sign><number> <suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI> <binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei\n\n\t(International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n\n<decimalSI>       ::= m | \"\" | k | M | G | T | P | E\n\n\t(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n\n<decimalExponent> ::= \"e\" <signedNumber> | \"E\" <signedNumber> ```\n\nNo matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:\n\n- No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.\n\nThe sign will be omitted unless the number is negative.\n\nExamples:\n\n- 1.5 will be serialized as \"1500m\" - 1.5Gi will be serialized as \"1536Mi\"\n\nNote that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.",
+				Type:        resource.Quantity{}.OpenAPISchemaType(),
+				Format:      resource.Quantity{}.OpenAPISchemaFormat(),
+			},
+		},
+	})
+}
+
+func schema_apimachinery_pkg_api_resource_int64Amount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "int64Amount represents a fixed precision numerator and arbitrary scale exponent. It is faster than operations on inf.Dec for values that can be represented as int64.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"value": {
+						SchemaProps: spec.SchemaProps{
+							Default: 0,
+							Type:    []string{"integer"},
+							Format:  "int64",
+						},
+					},
+					"scale": {
+						SchemaProps: spec.SchemaProps{
+							Default: 0,
+							Type:    []string{"integer"},
+							Format:  "int32",
+						},
+					},
+				},
+				Required: []string{"value", "scale"},
 			},
 		},
 	}
@@ -50233,7 +53335,7 @@ func schema_pkg_apis_meta_v1_List(ref common.ReferenceCallback) common.OpenAPIDe
 							Items: &spec.SchemaOrArray{
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+										Ref: ref(runtime.RawExtension{}.OpenAPIModelName()),
 									},
 								},
 							},
@@ -50244,7 +53346,7 @@ func schema_pkg_apis_meta_v1_List(ref common.ReferenceCallback) common.OpenAPIDe
 			},
 		},
 		Dependencies: []string{
-			metav1.ListMeta{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			metav1.ListMeta{}.OpenAPIModelName(), runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -51345,7 +54447,7 @@ func schema_pkg_apis_meta_v1_TableRow(ref common.ReferenceCallback) common.OpenA
 					"object": {
 						SchemaProps: spec.SchemaProps{
 							Description: "This field contains the requested additional information about each object based on the includeObject policy when requesting the Table. If \"None\", this field is empty, if \"Object\" this will be the default serialization of the object for the current API version, and if \"Metadata\" (the default) will contain the object metadata. Check the returned kind and apiVersion of the object before parsing. The media type of the object will always match the enclosing list - if this as a JSON table, these will be JSON encoded objects.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 				},
@@ -51353,7 +54455,7 @@ func schema_pkg_apis_meta_v1_TableRow(ref common.ReferenceCallback) common.OpenA
 			},
 		},
 		Dependencies: []string{
-			metav1.TableRowCondition{}.OpenAPIModelName(), "k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			metav1.TableRowCondition{}.OpenAPIModelName(), runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
@@ -51548,7 +54650,7 @@ func schema_pkg_apis_meta_v1_WatchEvent(ref common.ReferenceCallback) common.Ope
 					"object": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.",
-							Ref:         ref("k8s.io/apimachinery/pkg/runtime.RawExtension"),
+							Ref:         ref(runtime.RawExtension{}.OpenAPIModelName()),
 						},
 					},
 				},
@@ -51556,275 +54658,211 @@ func schema_pkg_apis_meta_v1_WatchEvent(ref common.ReferenceCallback) common.Ope
 			},
 		},
 		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/runtime.RawExtension"},
+			runtime.RawExtension{}.OpenAPIModelName()},
 	}
 }
 
-func schema_pkg_apis_metrics_v1beta1_ContainerMetrics(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_k8sio_apimachinery_pkg_runtime_RawExtension(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "ContainerMetrics sets resource usage metrics of a container.",
+				Description: "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+				Type:        []string{"object"},
+			},
+		},
+	}
+}
+
+func schema_k8sio_apimachinery_pkg_runtime_TypeMeta(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "TypeMeta is shared by all top level objects. The proper way to use it is to inline it in your type, like this:\n\n\ttype MyAwesomeAPIObject struct {\n\t     runtime.TypeMeta    `json:\",inline\"`\n\t     ... // other fields\n\t}\n\nfunc (obj *MyAwesomeAPIObject) SetGroupVersionKind(gvk *metav1.GroupVersionKind) { metav1.UpdateTypeMeta(obj,gvk) }; GroupVersionKind() *GroupVersionKind\n\nTypeMeta is provided here for convenience. You may use it directly from this package or define your own with the same fields.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
-					"name": {
+					"apiVersion": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Container name corresponding to the one from pod.spec.containers.",
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+	}
+}
+
+func schema_k8sio_apimachinery_pkg_runtime_Unknown(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "Unknown allows api objects with unknown types to be passed-through. This can be used to deal with the API objects from a plug-in. Unknown objects still have functioning TypeMeta features-- kind, version, etc. metadata and field mutatation.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+					"ContentEncoding": {
+						SchemaProps: spec.SchemaProps{
+							Description: "ContentEncoding is encoding used to encode 'Raw' data. Unspecified means no encoding.",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"usage": {
+					"ContentType": {
 						SchemaProps: spec.SchemaProps{
-							Description: "The memory usage is the memory working set.",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
-									},
-								},
-							},
+							Description: "ContentType  is serialization method used to serialize 'Raw'. Unspecified means ContentTypeJSON.",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
-				Required: []string{"name", "usage"},
+				Required: []string{"ContentEncoding", "ContentType"},
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity"},
 	}
 }
 
-func schema_pkg_apis_metrics_v1beta1_NodeMetrics(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
+func schema_apimachinery_pkg_util_intstr_IntOrString(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.EmbedOpenAPIDefinitionIntoV2Extension(common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeMetrics sets resource usage metrics of a node.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-							Default:     map[string]interface{}{},
-							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"timestamp": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The following fields define time interval from which metrics were collected from the interval [Timestamp-Window, Timestamp].",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"window": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref(metav1.Duration{}.OpenAPIModelName()),
-						},
-					},
-					"usage": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The memory usage is the memory working set.",
-							Type:        []string{"object"},
-							AdditionalProperties: &spec.SchemaOrBool{
-								Allows: true,
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Ref: ref("k8s.io/apimachinery/pkg/api/resource.Quantity"),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"timestamp", "window", "usage"},
+				Description: "IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.",
+				OneOf:       common.GenerateOpenAPIV3OneOfSchema(intstr.IntOrString{}.OpenAPIV3OneOfTypes()),
+				Format:      intstr.IntOrString{}.OpenAPISchemaFormat(),
 			},
 		},
-		Dependencies: []string{
-			"k8s.io/apimachinery/pkg/api/resource.Quantity", metav1.Duration{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName(), metav1.Time{}.OpenAPIModelName()},
-	}
+	}, common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.",
+				Type:        intstr.IntOrString{}.OpenAPISchemaType(),
+				Format:      intstr.IntOrString{}.OpenAPISchemaFormat(),
+			},
+		},
+	})
 }
 
-func schema_pkg_apis_metrics_v1beta1_NodeMetricsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_k8sio_apimachinery_pkg_version_Info(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "NodeMetricsList is a list of NodeMetrics.",
+				Description: "Info contains versioning information. how we'll want to distribute that information.",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
-					"kind": {
+					"major": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Description: "Major is the major version of the binary version",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"apiVersion": {
+					"minor": {
 						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Description: "Minor is the minor version of the binary version",
+							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
 						},
 					},
-					"metadata": {
+					"emulationMajor": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Default:     map[string]interface{}{},
-							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
+							Description: "EmulationMajor is the major version of the emulation version",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
-					"items": {
+					"emulationMinor": {
 						SchemaProps: spec.SchemaProps{
-							Description: "List of node metrics.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref("k8s.io/metrics/pkg/apis/metrics/v1beta1.NodeMetrics"),
-									},
-								},
-							},
+							Description: "EmulationMinor is the minor version of the emulation version",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"minCompatibilityMajor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "MinCompatibilityMajor is the major version of the minimum compatibility version",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"minCompatibilityMinor": {
+						SchemaProps: spec.SchemaProps{
+							Description: "MinCompatibilityMinor is the minor version of the minimum compatibility version",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"gitVersion": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"gitCommit": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"gitTreeState": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"buildDate": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"goVersion": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"compiler": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+					"platform": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
 						},
 					},
 				},
-				Required: []string{"items"},
+				Required: []string{"major", "minor", "gitVersion", "gitCommit", "gitTreeState", "buildDate", "goVersion", "compiler", "platform"},
 			},
 		},
-		Dependencies: []string{
-			metav1.ListMeta{}.OpenAPIModelName(), "k8s.io/metrics/pkg/apis/metrics/v1beta1.NodeMetrics"},
-	}
-}
-
-func schema_pkg_apis_metrics_v1beta1_PodMetrics(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PodMetrics sets resource usage metrics of a pod.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-							Default:     map[string]interface{}{},
-							Ref:         ref(metav1.ObjectMeta{}.OpenAPIModelName()),
-						},
-					},
-					"timestamp": {
-						SchemaProps: spec.SchemaProps{
-							Description: "The following fields define time interval from which metrics were collected from the interval [Timestamp-Window, Timestamp].",
-							Ref:         ref(metav1.Time{}.OpenAPIModelName()),
-						},
-					},
-					"window": {
-						SchemaProps: spec.SchemaProps{
-							Ref: ref(metav1.Duration{}.OpenAPIModelName()),
-						},
-					},
-					"containers": {
-						VendorExtensible: spec.VendorExtensible{
-							Extensions: spec.Extensions{
-								"x-kubernetes-list-type": "atomic",
-							},
-						},
-						SchemaProps: spec.SchemaProps{
-							Description: "Metrics for all containers are collected within the same time window.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref("k8s.io/metrics/pkg/apis/metrics/v1beta1.ContainerMetrics"),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"timestamp", "window", "containers"},
-			},
-		},
-		Dependencies: []string{
-			metav1.Duration{}.OpenAPIModelName(), metav1.ObjectMeta{}.OpenAPIModelName(), metav1.Time{}.OpenAPIModelName(), "k8s.io/metrics/pkg/apis/metrics/v1beta1.ContainerMetrics"},
-	}
-}
-
-func schema_pkg_apis_metrics_v1beta1_PodMetricsList(ref common.ReferenceCallback) common.OpenAPIDefinition {
-	return common.OpenAPIDefinition{
-		Schema: spec.Schema{
-			SchemaProps: spec.SchemaProps{
-				Description: "PodMetricsList is a list of PodMetrics.",
-				Type:        []string{"object"},
-				Properties: map[string]spec.Schema{
-					"kind": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"apiVersion": {
-						SchemaProps: spec.SchemaProps{
-							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-							Type:        []string{"string"},
-							Format:      "",
-						},
-					},
-					"metadata": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-							Default:     map[string]interface{}{},
-							Ref:         ref(metav1.ListMeta{}.OpenAPIModelName()),
-						},
-					},
-					"items": {
-						SchemaProps: spec.SchemaProps{
-							Description: "List of pod metrics.",
-							Type:        []string{"array"},
-							Items: &spec.SchemaOrArray{
-								Schema: &spec.Schema{
-									SchemaProps: spec.SchemaProps{
-										Default: map[string]interface{}{},
-										Ref:     ref("k8s.io/metrics/pkg/apis/metrics/v1beta1.PodMetrics"),
-									},
-								},
-							},
-						},
-					},
-				},
-				Required: []string{"items"},
-			},
-		},
-		Dependencies: []string{
-			metav1.ListMeta{}.OpenAPIModelName(), "k8s.io/metrics/pkg/apis/metrics/v1beta1.PodMetrics"},
 	}
 }

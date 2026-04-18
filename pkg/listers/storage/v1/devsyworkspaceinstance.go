@@ -20,19 +20,19 @@ type DevsyWorkspaceInstanceLister interface {
 	DevsyWorkspaceInstanceListerExpansion
 }
 
-// devPodWorkspaceInstanceLister implements the DevsyWorkspaceInstanceLister interface.
-type devPodWorkspaceInstanceLister struct {
+// devsyWorkspaceInstanceLister implements the DevsyWorkspaceInstanceLister interface.
+type devsyWorkspaceInstanceLister struct {
 	listers.ResourceIndexer[*storagev1.DevsyWorkspaceInstance]
 }
 
 // NewDevsyWorkspaceInstanceLister returns a new DevsyWorkspaceInstanceLister.
 func NewDevsyWorkspaceInstanceLister(indexer cache.Indexer) DevsyWorkspaceInstanceLister {
-	return &devPodWorkspaceInstanceLister{listers.New[*storagev1.DevsyWorkspaceInstance](indexer, storagev1.Resource("devpodworkspaceinstance"))}
+	return &devsyWorkspaceInstanceLister{listers.New[*storagev1.DevsyWorkspaceInstance](indexer, storagev1.Resource("devsyworkspaceinstance"))}
 }
 
 // DevsyWorkspaceInstances returns an object that can list and get DevsyWorkspaceInstances.
-func (s *devPodWorkspaceInstanceLister) DevsyWorkspaceInstances(namespace string) DevsyWorkspaceInstanceNamespaceLister {
-	return devPodWorkspaceInstanceNamespaceLister{listers.NewNamespaced[*storagev1.DevsyWorkspaceInstance](s.ResourceIndexer, namespace)}
+func (s *devsyWorkspaceInstanceLister) DevsyWorkspaceInstances(namespace string) DevsyWorkspaceInstanceNamespaceLister {
+	return devsyWorkspaceInstanceNamespaceLister{listers.NewNamespaced[*storagev1.DevsyWorkspaceInstance](s.ResourceIndexer, namespace)}
 }
 
 // DevsyWorkspaceInstanceNamespaceLister helps list and get DevsyWorkspaceInstances.
@@ -47,8 +47,8 @@ type DevsyWorkspaceInstanceNamespaceLister interface {
 	DevsyWorkspaceInstanceNamespaceListerExpansion
 }
 
-// devPodWorkspaceInstanceNamespaceLister implements the DevsyWorkspaceInstanceNamespaceLister
+// devsyWorkspaceInstanceNamespaceLister implements the DevsyWorkspaceInstanceNamespaceLister
 // interface.
-type devPodWorkspaceInstanceNamespaceLister struct {
+type devsyWorkspaceInstanceNamespaceLister struct {
 	listers.ResourceIndexer[*storagev1.DevsyWorkspaceInstance]
 }

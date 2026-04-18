@@ -21,8 +21,8 @@ type DevsyWorkspaceInstancesGetter interface {
 
 // DevsyWorkspaceInstanceInterface has methods to work with DevsyWorkspaceInstance resources.
 type DevsyWorkspaceInstanceInterface interface {
-	Create(ctx context.Context, devPodWorkspaceInstance *storagev1.DevsyWorkspaceInstance, opts metav1.CreateOptions) (*storagev1.DevsyWorkspaceInstance, error)
-	Update(ctx context.Context, devPodWorkspaceInstance *storagev1.DevsyWorkspaceInstance, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceInstance, error)
+	Create(ctx context.Context, devsyWorkspaceInstance *storagev1.DevsyWorkspaceInstance, opts metav1.CreateOptions) (*storagev1.DevsyWorkspaceInstance, error)
+	Update(ctx context.Context, devsyWorkspaceInstance *storagev1.DevsyWorkspaceInstance, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceInstance, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*storagev1.DevsyWorkspaceInstance, error)
@@ -32,16 +32,16 @@ type DevsyWorkspaceInstanceInterface interface {
 	DevsyWorkspaceInstanceExpansion
 }
 
-// devPodWorkspaceInstances implements DevsyWorkspaceInstanceInterface
-type devPodWorkspaceInstances struct {
+// devsyWorkspaceInstances implements DevsyWorkspaceInstanceInterface
+type devsyWorkspaceInstances struct {
 	*gentype.ClientWithList[*storagev1.DevsyWorkspaceInstance, *storagev1.DevsyWorkspaceInstanceList]
 }
 
 // newDevsyWorkspaceInstances returns a DevsyWorkspaceInstances
-func newDevsyWorkspaceInstances(c *StorageV1Client, namespace string) *devPodWorkspaceInstances {
-	return &devPodWorkspaceInstances{
+func newDevsyWorkspaceInstances(c *StorageV1Client, namespace string) *devsyWorkspaceInstances {
+	return &devsyWorkspaceInstances{
 		gentype.NewClientWithList[*storagev1.DevsyWorkspaceInstance, *storagev1.DevsyWorkspaceInstanceList](
-			"devpodworkspaceinstances",
+			"devsyworkspaceinstances",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			namespace,

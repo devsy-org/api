@@ -15,9 +15,7 @@ import (
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
 	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstance{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceInstance(obj.(*DevsyWorkspaceInstance)) })
-	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceList{}, func(obj interface{}) {
-		SetObjectDefaults_DevsyWorkspaceInstanceList(obj.(*DevsyWorkspaceInstanceList))
-	})
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceList{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceInstanceList(obj.(*DevsyWorkspaceInstanceList)) })
 	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceInstanceTroubleshoot{}, func(obj interface{}) {
 		SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(obj.(*DevsyWorkspaceInstanceTroubleshoot))
 	})
@@ -25,9 +23,7 @@ func RegisterDefaults(scheme *runtime.Scheme) error {
 		SetObjectDefaults_DevsyWorkspaceInstanceTroubleshootList(obj.(*DevsyWorkspaceInstanceTroubleshootList))
 	})
 	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplate{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceTemplate(obj.(*DevsyWorkspaceTemplate)) })
-	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplateList{}, func(obj interface{}) {
-		SetObjectDefaults_DevsyWorkspaceTemplateList(obj.(*DevsyWorkspaceTemplateList))
-	})
+	scheme.AddTypeDefaultingFunc(&DevsyWorkspaceTemplateList{}, func(obj interface{}) { SetObjectDefaults_DevsyWorkspaceTemplateList(obj.(*DevsyWorkspaceTemplateList)) })
 	scheme.AddTypeDefaultingFunc(&ProjectTemplates{}, func(obj interface{}) { SetObjectDefaults_ProjectTemplates(obj.(*ProjectTemplates)) })
 	scheme.AddTypeDefaultingFunc(&ProjectTemplatesList{}, func(obj interface{}) { SetObjectDefaults_ProjectTemplatesList(obj.(*ProjectTemplatesList)) })
 	return nil
@@ -90,6 +86,17 @@ func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
 							b.Protocol = "TCP"
 						}
 					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
+						}
+					}
 					if a.LivenessProbe != nil {
 						if a.LivenessProbe.ProbeHandler.GRPC != nil {
 							if a.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -121,6 +128,17 @@ func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
 							b.Protocol = "TCP"
+						}
+					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
 						}
 					}
 					if a.LivenessProbe != nil {
@@ -207,6 +225,17 @@ func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
 							b.Protocol = "TCP"
 						}
 					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
+						}
+					}
 					if a.LivenessProbe != nil {
 						if a.LivenessProbe.ProbeHandler.GRPC != nil {
 							if a.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -238,6 +267,17 @@ func SetObjectDefaults_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance) {
 						b := &a.Ports[j]
 						if b.Protocol == "" {
 							b.Protocol = "TCP"
+						}
+					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
 						}
 					}
 					if a.LivenessProbe != nil {
@@ -337,6 +377,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 							b.Protocol = "TCP"
 						}
 					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
+						}
+					}
 					if a.LivenessProbe != nil {
 						if a.LivenessProbe.ProbeHandler.GRPC != nil {
 							if a.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -368,6 +419,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 						b := &a.Ports[j]
 						if b.Protocol == "" {
 							b.Protocol = "TCP"
+						}
+					}
+					for j := range a.Env {
+						b := &a.Env[j]
+						if b.ValueFrom != nil {
+							if b.ValueFrom.FileKeyRef != nil {
+								if b.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
 						}
 					}
 					if a.LivenessProbe != nil {
@@ -454,6 +516,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 								c.Protocol = "TCP"
 							}
 						}
+						for k := range b.Env {
+							c := &b.Env[k]
+							if c.ValueFrom != nil {
+								if c.ValueFrom.FileKeyRef != nil {
+									if c.ValueFrom.FileKeyRef.Optional == nil {
+										var ptrVar1 bool = false
+										c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+									}
+								}
+							}
+						}
 						if b.LivenessProbe != nil {
 							if b.LivenessProbe.ProbeHandler.GRPC != nil {
 								if b.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -485,6 +558,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 							c := &b.Ports[k]
 							if c.Protocol == "" {
 								c.Protocol = "TCP"
+							}
+						}
+						for k := range b.Env {
+							c := &b.Env[k]
+							if c.ValueFrom != nil {
+								if c.ValueFrom.FileKeyRef != nil {
+									if c.ValueFrom.FileKeyRef.Optional == nil {
+										var ptrVar1 bool = false
+										c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+									}
+								}
 							}
 						}
 						if b.LivenessProbe != nil {
@@ -571,6 +655,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 					c.Protocol = "TCP"
 				}
 			}
+			for k := range b.Env {
+				c := &b.Env[k]
+				if c.ValueFrom != nil {
+					if c.ValueFrom.FileKeyRef != nil {
+						if c.ValueFrom.FileKeyRef.Optional == nil {
+							var ptrVar1 bool = false
+							c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+						}
+					}
+				}
+			}
 			if b.LivenessProbe != nil {
 				if b.LivenessProbe.ProbeHandler.GRPC != nil {
 					if b.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -604,6 +699,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 					c.Protocol = "TCP"
 				}
 			}
+			for k := range b.Env {
+				c := &b.Env[k]
+				if c.ValueFrom != nil {
+					if c.ValueFrom.FileKeyRef != nil {
+						if c.ValueFrom.FileKeyRef.Optional == nil {
+							var ptrVar1 bool = false
+							c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+						}
+					}
+				}
+			}
 			if b.LivenessProbe != nil {
 				if b.LivenessProbe.ProbeHandler.GRPC != nil {
 					if b.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -635,6 +741,17 @@ func SetObjectDefaults_DevsyWorkspaceInstanceTroubleshoot(in *DevsyWorkspaceInst
 				c := &b.EphemeralContainerCommon.Ports[k]
 				if c.Protocol == "" {
 					c.Protocol = "TCP"
+				}
+			}
+			for k := range b.EphemeralContainerCommon.Env {
+				c := &b.EphemeralContainerCommon.Env[k]
+				if c.ValueFrom != nil {
+					if c.ValueFrom.FileKeyRef != nil {
+						if c.ValueFrom.FileKeyRef.Optional == nil {
+							var ptrVar1 bool = false
+							c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+						}
+					}
 				}
 			}
 			if b.EphemeralContainerCommon.LivenessProbe != nil {
@@ -728,6 +845,17 @@ func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
 						b.Protocol = "TCP"
 					}
 				}
+				for j := range a.Env {
+					b := &a.Env[j]
+					if b.ValueFrom != nil {
+						if b.ValueFrom.FileKeyRef != nil {
+							if b.ValueFrom.FileKeyRef.Optional == nil {
+								var ptrVar1 bool = false
+								b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+							}
+						}
+					}
+				}
 				if a.LivenessProbe != nil {
 					if a.LivenessProbe.ProbeHandler.GRPC != nil {
 						if a.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -759,6 +887,17 @@ func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
 					b := &a.Ports[j]
 					if b.Protocol == "" {
 						b.Protocol = "TCP"
+					}
+				}
+				for j := range a.Env {
+					b := &a.Env[j]
+					if b.ValueFrom != nil {
+						if b.ValueFrom.FileKeyRef != nil {
+							if b.ValueFrom.FileKeyRef.Optional == nil {
+								var ptrVar1 bool = false
+								b.ValueFrom.FileKeyRef.Optional = &ptrVar1
+							}
+						}
 					}
 				}
 				if a.LivenessProbe != nil {
@@ -845,6 +984,17 @@ func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
 							c.Protocol = "TCP"
 						}
 					}
+					for k := range b.Env {
+						c := &b.Env[k]
+						if c.ValueFrom != nil {
+							if c.ValueFrom.FileKeyRef != nil {
+								if c.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
+						}
+					}
 					if b.LivenessProbe != nil {
 						if b.LivenessProbe.ProbeHandler.GRPC != nil {
 							if b.LivenessProbe.ProbeHandler.GRPC.Service == nil {
@@ -876,6 +1026,17 @@ func SetObjectDefaults_DevsyWorkspaceTemplate(in *DevsyWorkspaceTemplate) {
 						c := &b.Ports[k]
 						if c.Protocol == "" {
 							c.Protocol = "TCP"
+						}
+					}
+					for k := range b.Env {
+						c := &b.Env[k]
+						if c.ValueFrom != nil {
+							if c.ValueFrom.FileKeyRef != nil {
+								if c.ValueFrom.FileKeyRef.Optional == nil {
+									var ptrVar1 bool = false
+									c.ValueFrom.FileKeyRef.Optional = &ptrVar1
+								}
+							}
 						}
 					}
 					if b.LivenessProbe != nil {

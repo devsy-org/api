@@ -11,7 +11,7 @@ import (
 
 	licenseapi "github.com/devsy-org/admin-apis/pkg/licenseapi"
 	clusterv1 "github.com/devsy-org/agentapi/pkg/apis/devsy/cluster/v1"
-	loftstoragev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
+	devsystoragev1 "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
 	auditv1 "github.com/devsy-org/api/pkg/apis/audit/v1"
 	management "github.com/devsy-org/api/pkg/apis/management"
 	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
@@ -970,6 +970,46 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgrade)(nil), (*management.DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(a.(*DevsyUpgrade), b.(*management.DevsyUpgrade), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgrade)(nil), (*DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(a.(*management.DevsyUpgrade), b.(*DevsyUpgrade), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeList)(nil), (*management.DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(a.(*DevsyUpgradeList), b.(*management.DevsyUpgradeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeList)(nil), (*DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(a.(*management.DevsyUpgradeList), b.(*DevsyUpgradeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeSpec)(nil), (*management.DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(a.(*DevsyUpgradeSpec), b.(*management.DevsyUpgradeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeSpec)(nil), (*DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(a.(*management.DevsyUpgradeSpec), b.(*DevsyUpgradeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeStatus)(nil), (*management.DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(a.(*DevsyUpgradeStatus), b.(*management.DevsyUpgradeStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeStatus)(nil), (*DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(a.(*management.DevsyUpgradeStatus), b.(*DevsyUpgradeStatus), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*DevsyWorkspaceInstance)(nil), (*management.DevsyWorkspaceInstance)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_DevsyWorkspaceInstance_To_management_DevsyWorkspaceInstance(a.(*DevsyWorkspaceInstance), b.(*management.DevsyWorkspaceInstance), scope)
 	}); err != nil {
@@ -1647,46 +1687,6 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*management.LicenseTokenStatus)(nil), (*LicenseTokenStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(a.(*management.LicenseTokenStatus), b.(*LicenseTokenStatus), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*DevsyUpgrade)(nil), (*management.DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(a.(*DevsyUpgrade), b.(*management.DevsyUpgrade), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgrade)(nil), (*DevsyUpgrade)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(a.(*management.DevsyUpgrade), b.(*DevsyUpgrade), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeList)(nil), (*management.DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(a.(*DevsyUpgradeList), b.(*management.DevsyUpgradeList), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeList)(nil), (*DevsyUpgradeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(a.(*management.DevsyUpgradeList), b.(*DevsyUpgradeList), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeSpec)(nil), (*management.DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(a.(*DevsyUpgradeSpec), b.(*management.DevsyUpgradeSpec), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeSpec)(nil), (*DevsyUpgradeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(a.(*management.DevsyUpgradeSpec), b.(*DevsyUpgradeSpec), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*DevsyUpgradeStatus)(nil), (*management.DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(a.(*DevsyUpgradeStatus), b.(*management.DevsyUpgradeStatus), scope)
-	}); err != nil {
-		return err
-	}
-	if err := s.AddGeneratedConversionFunc((*management.DevsyUpgradeStatus)(nil), (*DevsyUpgradeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
-		return Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(a.(*management.DevsyUpgradeStatus), b.(*DevsyUpgradeStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -6217,6 +6217,102 @@ func Convert_management_DevsyEnvironmentTemplateStatus_To_v1_DevsyEnvironmentTem
 	return autoConvert_management_DevsyEnvironmentTemplateStatus_To_v1_DevsyEnvironmentTemplateStatus(in, out, s)
 }
 
+func autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade is an autogenerated conversion function.
+func Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in, out, s)
+}
+
+func autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade is an autogenerated conversion function.
+func Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in, out, s)
+}
+
+func autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]management.DevsyUpgrade)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in, out, s)
+}
+
+func autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]DevsyUpgrade)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in, out, s)
+}
+
+func autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
+	out.Namespace = in.Namespace
+	out.Release = in.Release
+	out.Version = in.Version
+	return nil
+}
+
+// Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in, out, s)
+}
+
+func autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
+	out.Namespace = in.Namespace
+	out.Release = in.Release
+	out.Version = in.Version
+	return nil
+}
+
+// Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in, out, s)
+}
+
+func autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus is an autogenerated conversion function.
+func Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
+	return autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in, out, s)
+}
+
+func autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
+	return nil
+}
+
+// Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus is an autogenerated conversion function.
+func Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
+	return autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in, out, s)
+}
+
 func autoConvert_v1_DevsyWorkspaceInstance_To_management_DevsyWorkspaceInstance(in *DevsyWorkspaceInstance, out *management.DevsyWorkspaceInstance, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
 	if err := Convert_v1_DevsyWorkspaceInstanceSpec_To_management_DevsyWorkspaceInstanceSpec(&in.Spec, &out.Spec, s); err != nil {
@@ -7938,102 +8034,6 @@ func autoConvert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(in *mana
 // Convert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus is an autogenerated conversion function.
 func Convert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(in *management.LicenseTokenStatus, out *LicenseTokenStatus, s conversion.Scope) error {
 	return autoConvert_management_LicenseTokenStatus_To_v1_LicenseTokenStatus(in, out, s)
-}
-
-func autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
-	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
-		return err
-	}
-	if err := Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
-		return err
-	}
-	return nil
-}
-
-// Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade is an autogenerated conversion function.
-func Convert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in *DevsyUpgrade, out *management.DevsyUpgrade, s conversion.Scope) error {
-	return autoConvert_v1_DevsyUpgrade_To_management_DevsyUpgrade(in, out, s)
-}
-
-func autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
-	out.ObjectMeta = in.ObjectMeta
-	if err := Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(&in.Spec, &out.Spec, s); err != nil {
-		return err
-	}
-	if err := Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(&in.Status, &out.Status, s); err != nil {
-		return err
-	}
-	return nil
-}
-
-// Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade is an autogenerated conversion function.
-func Convert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in *management.DevsyUpgrade, out *DevsyUpgrade, s conversion.Scope) error {
-	return autoConvert_management_DevsyUpgrade_To_v1_DevsyUpgrade(in, out, s)
-}
-
-func autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
-	out.ListMeta = in.ListMeta
-	out.Items = *(*[]management.DevsyUpgrade)(unsafe.Pointer(&in.Items))
-	return nil
-}
-
-// Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList is an autogenerated conversion function.
-func Convert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in *DevsyUpgradeList, out *management.DevsyUpgradeList, s conversion.Scope) error {
-	return autoConvert_v1_DevsyUpgradeList_To_management_DevsyUpgradeList(in, out, s)
-}
-
-func autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
-	out.ListMeta = in.ListMeta
-	out.Items = *(*[]DevsyUpgrade)(unsafe.Pointer(&in.Items))
-	return nil
-}
-
-// Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList is an autogenerated conversion function.
-func Convert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in *management.DevsyUpgradeList, out *DevsyUpgradeList, s conversion.Scope) error {
-	return autoConvert_management_DevsyUpgradeList_To_v1_DevsyUpgradeList(in, out, s)
-}
-
-func autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
-	out.Namespace = in.Namespace
-	out.Release = in.Release
-	out.Version = in.Version
-	return nil
-}
-
-// Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec is an autogenerated conversion function.
-func Convert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in *DevsyUpgradeSpec, out *management.DevsyUpgradeSpec, s conversion.Scope) error {
-	return autoConvert_v1_DevsyUpgradeSpec_To_management_DevsyUpgradeSpec(in, out, s)
-}
-
-func autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
-	out.Namespace = in.Namespace
-	out.Release = in.Release
-	out.Version = in.Version
-	return nil
-}
-
-// Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec is an autogenerated conversion function.
-func Convert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in *management.DevsyUpgradeSpec, out *DevsyUpgradeSpec, s conversion.Scope) error {
-	return autoConvert_management_DevsyUpgradeSpec_To_v1_DevsyUpgradeSpec(in, out, s)
-}
-
-func autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
-	return nil
-}
-
-// Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus is an autogenerated conversion function.
-func Convert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in *DevsyUpgradeStatus, out *management.DevsyUpgradeStatus, s conversion.Scope) error {
-	return autoConvert_v1_DevsyUpgradeStatus_To_management_DevsyUpgradeStatus(in, out, s)
-}
-
-func autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
-	return nil
-}
-
-// Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus is an autogenerated conversion function.
-func Convert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in *management.DevsyUpgradeStatus, out *DevsyUpgradeStatus, s conversion.Scope) error {
-	return autoConvert_management_DevsyUpgradeStatus_To_v1_DevsyUpgradeStatus(in, out, s)
 }
 
 func autoConvert_v1_MaintenanceWindow_To_management_MaintenanceWindow(in *MaintenanceWindow, out *management.MaintenanceWindow, s conversion.Scope) error {
@@ -9813,7 +9813,7 @@ func Convert_management_ProjectSecretSpec_To_v1_ProjectSecretSpec(in *management
 }
 
 func autoConvert_v1_ProjectSecretStatus_To_management_ProjectSecretStatus(in *ProjectSecretStatus, out *management.ProjectSecretStatus, s conversion.Scope) error {
-	out.Conditions = *(*loftstoragev1.Conditions)(unsafe.Pointer(&in.Conditions))
+	out.Conditions = *(*devsystoragev1.Conditions)(unsafe.Pointer(&in.Conditions))
 	return nil
 }
 
@@ -9823,7 +9823,7 @@ func Convert_v1_ProjectSecretStatus_To_management_ProjectSecretStatus(in *Projec
 }
 
 func autoConvert_management_ProjectSecretStatus_To_v1_ProjectSecretStatus(in *management.ProjectSecretStatus, out *ProjectSecretStatus, s conversion.Scope) error {
-	out.Conditions = *(*loftstoragev1.Conditions)(unsafe.Pointer(&in.Conditions))
+	out.Conditions = *(*devsystoragev1.Conditions)(unsafe.Pointer(&in.Conditions))
 	return nil
 }
 

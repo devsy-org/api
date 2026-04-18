@@ -23,7 +23,7 @@ type DevsyWorkspacePresetInformer interface {
 	Lister() managementv1.DevsyWorkspacePresetLister
 }
 
-type devPodWorkspacePresetInformer struct {
+type devsyWorkspacePresetInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
@@ -40,7 +40,7 @@ func NewDevsyWorkspacePresetInformer(client versioned.Interface, resyncPeriod ti
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredDevsyWorkspacePresetInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
-		&cache.ListWatch{
+		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
@@ -65,21 +65,21 @@ func NewFilteredDevsyWorkspacePresetInformer(client versioned.Interface, resyncP
 				}
 				return client.ManagementV1().DevsyWorkspacePresets().Watch(ctx, options)
 			},
-		},
+		}, client),
 		&apismanagementv1.DevsyWorkspacePreset{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *devPodWorkspacePresetInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+func (f *devsyWorkspacePresetInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
 	return NewFilteredDevsyWorkspacePresetInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *devPodWorkspacePresetInformer) Informer() cache.SharedIndexInformer {
+func (f *devsyWorkspacePresetInformer) Informer() cache.SharedIndexInformer {
 	return f.factory.InformerFor(&apismanagementv1.DevsyWorkspacePreset{}, f.defaultInformer)
 }
 
-func (f *devPodWorkspacePresetInformer) Lister() managementv1.DevsyWorkspacePresetLister {
+func (f *devsyWorkspacePresetInformer) Lister() managementv1.DevsyWorkspacePresetLister {
 	return managementv1.NewDevsyWorkspacePresetLister(f.Informer().GetIndexer())
 }

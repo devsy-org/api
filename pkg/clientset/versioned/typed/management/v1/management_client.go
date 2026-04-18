@@ -23,6 +23,7 @@ type ManagementV1Interface interface {
 	ConvertVirtualClusterConfigsGetter
 	DatabaseConnectorsGetter
 	DevsyEnvironmentTemplatesGetter
+	DevsyUpgradesGetter
 	DevsyWorkspaceInstancesGetter
 	DevsyWorkspacePresetsGetter
 	DevsyWorkspaceTemplatesGetter
@@ -32,7 +33,6 @@ type ManagementV1Interface interface {
 	IngressAuthTokensGetter
 	LicensesGetter
 	LicenseTokensGetter
-	DevsyUpgradesGetter
 	NodeClaimsGetter
 	NodeEnvironmentsGetter
 	NodeProvidersGetter
@@ -109,6 +109,10 @@ func (c *ManagementV1Client) DevsyEnvironmentTemplates() DevsyEnvironmentTemplat
 	return newDevsyEnvironmentTemplates(c)
 }
 
+func (c *ManagementV1Client) DevsyUpgrades() DevsyUpgradeInterface {
+	return newDevsyUpgrades(c)
+}
+
 func (c *ManagementV1Client) DevsyWorkspaceInstances(namespace string) DevsyWorkspaceInstanceInterface {
 	return newDevsyWorkspaceInstances(c, namespace)
 }
@@ -143,10 +147,6 @@ func (c *ManagementV1Client) Licenses() LicenseInterface {
 
 func (c *ManagementV1Client) LicenseTokens() LicenseTokenInterface {
 	return newLicenseTokens(c)
-}
-
-func (c *ManagementV1Client) DevsyUpgrades() DevsyUpgradeInterface {
-	return newDevsyUpgrades(c)
 }
 
 func (c *ManagementV1Client) NodeClaims(namespace string) NodeClaimInterface {

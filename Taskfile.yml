@@ -1,0 +1,56 @@
+version: "3"
+
+vars:
+  GENERATE: go run ./hack/generate.go
+
+tasks:
+  generate:
+    desc: Run all code generators
+    cmds:
+      - "{{.GENERATE}} all"
+
+  generate:install:
+    desc: Install code-generator tools
+    cmds:
+      - "{{.GENERATE}} install"
+
+  generate:register:
+    desc: Generate API registration code (zz_generated.api.register.go)
+    cmds:
+      - "{{.GENERATE}} register"
+
+  generate:deepcopy:
+    desc: Generate DeepCopy methods (zz_generated.deepcopy.go)
+    cmds:
+      - "{{.GENERATE}} deepcopy"
+
+  generate:defaults:
+    desc: Generate Defaulter functions (zz_generated.defaults.go)
+    cmds:
+      - "{{.GENERATE}} defaults"
+
+  generate:conversion:
+    desc: Generate Conversion functions (zz_generated.conversion.go)
+    cmds:
+      - "{{.GENERATE}} conversion"
+
+  generate:openapi:
+    desc: Generate OpenAPI definitions (zz_generated.openapi.go)
+    cmds:
+      - "{{.GENERATE}} openapi"
+
+  generate:clients:
+    desc: Generate clientset, listers, and informers
+    cmds:
+      - "{{.GENERATE}} clients"
+
+  build:
+    desc: Build all packages
+    cmds:
+      - go build ./...
+
+  verify:
+    desc: Run generate and verify no diff
+    cmds:
+      - task: generate
+      - git diff --exit-code -- '*.go'

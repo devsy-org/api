@@ -21,10 +21,10 @@ type DevsyWorkspacePresetsGetter interface {
 
 // DevsyWorkspacePresetInterface has methods to work with DevsyWorkspacePreset resources.
 type DevsyWorkspacePresetInterface interface {
-	Create(ctx context.Context, devPodWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.CreateOptions) (*managementv1.DevsyWorkspacePreset, error)
-	Update(ctx context.Context, devPodWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspacePreset, error)
+	Create(ctx context.Context, devsyWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.CreateOptions) (*managementv1.DevsyWorkspacePreset, error)
+	Update(ctx context.Context, devsyWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspacePreset, error)
 	// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-	UpdateStatus(ctx context.Context, devPodWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspacePreset, error)
+	UpdateStatus(ctx context.Context, devsyWorkspacePreset *managementv1.DevsyWorkspacePreset, opts metav1.UpdateOptions) (*managementv1.DevsyWorkspacePreset, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*managementv1.DevsyWorkspacePreset, error)
@@ -34,16 +34,16 @@ type DevsyWorkspacePresetInterface interface {
 	DevsyWorkspacePresetExpansion
 }
 
-// devPodWorkspacePresets implements DevsyWorkspacePresetInterface
-type devPodWorkspacePresets struct {
+// devsyWorkspacePresets implements DevsyWorkspacePresetInterface
+type devsyWorkspacePresets struct {
 	*gentype.ClientWithList[*managementv1.DevsyWorkspacePreset, *managementv1.DevsyWorkspacePresetList]
 }
 
 // newDevsyWorkspacePresets returns a DevsyWorkspacePresets
-func newDevsyWorkspacePresets(c *ManagementV1Client) *devPodWorkspacePresets {
-	return &devPodWorkspacePresets{
+func newDevsyWorkspacePresets(c *ManagementV1Client) *devsyWorkspacePresets {
+	return &devsyWorkspacePresets{
 		gentype.NewClientWithList[*managementv1.DevsyWorkspacePreset, *managementv1.DevsyWorkspacePresetList](
-			"devpodworkspacepresets",
+			"devsyworkspacepresets",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",

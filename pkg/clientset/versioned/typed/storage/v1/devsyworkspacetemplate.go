@@ -21,10 +21,10 @@ type DevsyWorkspaceTemplatesGetter interface {
 
 // DevsyWorkspaceTemplateInterface has methods to work with DevsyWorkspaceTemplate resources.
 type DevsyWorkspaceTemplateInterface interface {
-	Create(ctx context.Context, devPodWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.CreateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
-	Update(ctx context.Context, devPodWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
+	Create(ctx context.Context, devsyWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.CreateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
+	Update(ctx context.Context, devsyWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
 	// Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-	UpdateStatus(ctx context.Context, devPodWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
+	UpdateStatus(ctx context.Context, devsyWorkspaceTemplate *storagev1.DevsyWorkspaceTemplate, opts metav1.UpdateOptions) (*storagev1.DevsyWorkspaceTemplate, error)
 	Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error
 	DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error
 	Get(ctx context.Context, name string, opts metav1.GetOptions) (*storagev1.DevsyWorkspaceTemplate, error)
@@ -34,16 +34,16 @@ type DevsyWorkspaceTemplateInterface interface {
 	DevsyWorkspaceTemplateExpansion
 }
 
-// devPodWorkspaceTemplates implements DevsyWorkspaceTemplateInterface
-type devPodWorkspaceTemplates struct {
+// devsyWorkspaceTemplates implements DevsyWorkspaceTemplateInterface
+type devsyWorkspaceTemplates struct {
 	*gentype.ClientWithList[*storagev1.DevsyWorkspaceTemplate, *storagev1.DevsyWorkspaceTemplateList]
 }
 
 // newDevsyWorkspaceTemplates returns a DevsyWorkspaceTemplates
-func newDevsyWorkspaceTemplates(c *StorageV1Client) *devPodWorkspaceTemplates {
-	return &devPodWorkspaceTemplates{
+func newDevsyWorkspaceTemplates(c *StorageV1Client) *devsyWorkspaceTemplates {
+	return &devsyWorkspaceTemplates{
 		gentype.NewClientWithList[*storagev1.DevsyWorkspaceTemplate, *storagev1.DevsyWorkspaceTemplateList](
-			"devpodworkspacetemplates",
+			"devsyworkspacetemplates",
 			c.RESTClient(),
 			scheme.ParameterCodec,
 			"",

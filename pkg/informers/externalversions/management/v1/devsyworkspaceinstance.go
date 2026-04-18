@@ -23,7 +23,7 @@ type DevsyWorkspaceInstanceInformer interface {
 	Lister() managementv1.DevsyWorkspaceInstanceLister
 }
 
-type devPodWorkspaceInstanceInformer struct {
+type devsyWorkspaceInstanceInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
@@ -41,7 +41,7 @@ func NewDevsyWorkspaceInstanceInformer(client versioned.Interface, namespace str
 // one. This reduces memory footprint and number of connections to the server.
 func NewFilteredDevsyWorkspaceInstanceInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
-		&cache.ListWatch{
+		cache.ToListWatcherWithWatchListSemantics(&cache.ListWatch{
 			ListFunc: func(options metav1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
@@ -66,21 +66,21 @@ func NewFilteredDevsyWorkspaceInstanceInformer(client versioned.Interface, names
 				}
 				return client.ManagementV1().DevsyWorkspaceInstances(namespace).Watch(ctx, options)
 			},
-		},
+		}, client),
 		&apismanagementv1.DevsyWorkspaceInstance{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *devPodWorkspaceInstanceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+func (f *devsyWorkspaceInstanceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
 	return NewFilteredDevsyWorkspaceInstanceInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *devPodWorkspaceInstanceInformer) Informer() cache.SharedIndexInformer {
+func (f *devsyWorkspaceInstanceInformer) Informer() cache.SharedIndexInformer {
 	return f.factory.InformerFor(&apismanagementv1.DevsyWorkspaceInstance{}, f.defaultInformer)
 }
 
-func (f *devPodWorkspaceInstanceInformer) Lister() managementv1.DevsyWorkspaceInstanceLister {
+func (f *devsyWorkspaceInstanceInformer) Lister() managementv1.DevsyWorkspaceInstanceLister {
 	return managementv1.NewDevsyWorkspaceInstanceLister(f.Informer().GetIndexer())
 }

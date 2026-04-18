@@ -21,12 +21,12 @@ type DevsyEnvironmentTemplateLister interface {
 	DevsyEnvironmentTemplateListerExpansion
 }
 
-// devPodEnvironmentTemplateLister implements the DevsyEnvironmentTemplateLister interface.
-type devPodEnvironmentTemplateLister struct {
+// devsyEnvironmentTemplateLister implements the DevsyEnvironmentTemplateLister interface.
+type devsyEnvironmentTemplateLister struct {
 	listers.ResourceIndexer[*storagev1.DevsyEnvironmentTemplate]
 }
 
 // NewDevsyEnvironmentTemplateLister returns a new DevsyEnvironmentTemplateLister.
 func NewDevsyEnvironmentTemplateLister(indexer cache.Indexer) DevsyEnvironmentTemplateLister {
-	return &devPodEnvironmentTemplateLister{listers.New[*storagev1.DevsyEnvironmentTemplate](indexer, storagev1.Resource("devpodenvironmenttemplate"))}
+	return &devsyEnvironmentTemplateLister{listers.New[*storagev1.DevsyEnvironmentTemplate](indexer, storagev1.Resource("devsyenvironmenttemplate"))}
 }

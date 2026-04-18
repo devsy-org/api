@@ -21,12 +21,12 @@ type DevsyWorkspaceTemplateLister interface {
 	DevsyWorkspaceTemplateListerExpansion
 }
 
-// devPodWorkspaceTemplateLister implements the DevsyWorkspaceTemplateLister interface.
-type devPodWorkspaceTemplateLister struct {
+// devsyWorkspaceTemplateLister implements the DevsyWorkspaceTemplateLister interface.
+type devsyWorkspaceTemplateLister struct {
 	listers.ResourceIndexer[*managementv1.DevsyWorkspaceTemplate]
 }
 
 // NewDevsyWorkspaceTemplateLister returns a new DevsyWorkspaceTemplateLister.
 func NewDevsyWorkspaceTemplateLister(indexer cache.Indexer) DevsyWorkspaceTemplateLister {
-	return &devPodWorkspaceTemplateLister{listers.New[*managementv1.DevsyWorkspaceTemplate](indexer, managementv1.Resource("devpodworkspacetemplate"))}
+	return &devsyWorkspaceTemplateLister{listers.New[*managementv1.DevsyWorkspaceTemplate](indexer, managementv1.Resource("devsyworkspacetemplate"))}
 }

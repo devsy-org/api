@@ -9,11 +9,11 @@ import (
 
 // +genclient
 // +genclient:noStatus
-// +genclient:method=GetKubeConfig,verb=create,subresource=kubeconfig,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig //nolint:lll
-// +genclient:method=GetAccessKey,verb=get,subresource=accesskey,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKey //nolint:lll
-// +genclient:method=GetExternalDatabase,verb=create,subresource=externaldatabase,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase //nolint:lll
-// +genclient:method=GetNodeAccessKey,verb=create,subresource=nodeaccesskey,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey //nolint:lll
-// +genclient:method=GetStandaloneETCDPeers,verb=create,subresource=standalone,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone //nolint:lll
+// +genclient:method=GetKubeConfig,verb=create,subresource=kubeconfig,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterInstanceKubeConfig
+// +genclient:method=GetAccessKey,verb=get,subresource=accesskey,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterAccessKey
+// +genclient:method=GetExternalDatabase,verb=create,subresource=externaldatabase,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterExternalDatabase
+// +genclient:method=GetNodeAccessKey,verb=create,subresource=nodeaccesskey,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterNodeAccessKey
+// +genclient:method=GetStandaloneETCDPeers,verb=create,subresource=standalone,input=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone,result=github.com/devsy-org/api/pkg/apis/management/v1.VirtualClusterStandalone
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // VirtualClusterInstance holds the VirtualClusterInstance information

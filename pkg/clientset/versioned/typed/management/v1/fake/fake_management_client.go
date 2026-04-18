@@ -56,6 +56,10 @@ func (c *FakeManagementV1) DevsyEnvironmentTemplates() v1.DevsyEnvironmentTempla
 	return newFakeDevsyEnvironmentTemplates(c)
 }
 
+func (c *FakeManagementV1) DevsyUpgrades() v1.DevsyUpgradeInterface {
+	return newFakeDevsyUpgrades(c)
+}
+
 func (c *FakeManagementV1) DevsyWorkspaceInstances(namespace string) v1.DevsyWorkspaceInstanceInterface {
 	return newFakeDevsyWorkspaceInstances(c, namespace)
 }
@@ -90,10 +94,6 @@ func (c *FakeManagementV1) Licenses() v1.LicenseInterface {
 
 func (c *FakeManagementV1) LicenseTokens() v1.LicenseTokenInterface {
 	return newFakeLicenseTokens(c)
-}
-
-func (c *FakeManagementV1) DevsyUpgrades() v1.DevsyUpgradeInterface {
-	return newFakeDevsyUpgrades(c)
 }
 
 func (c *FakeManagementV1) NodeClaims(namespace string) v1.NodeClaimInterface {

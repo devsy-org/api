@@ -19,7 +19,7 @@ func newFakeDevsyWorkspaceTemplates(fake *FakeManagementV1) managementv1.DevsyWo
 		gentype.NewFakeClientWithList[*v1.DevsyWorkspaceTemplate, *v1.DevsyWorkspaceTemplateList](
 			fake.Fake,
 			"",
-			v1.SchemeGroupVersion.WithResource("devpodworkspacetemplates"),
+			v1.SchemeGroupVersion.WithResource("devsyworkspacetemplates"),
 			v1.SchemeGroupVersion.WithKind("DevsyWorkspaceTemplate"),
 			func() *v1.DevsyWorkspaceTemplate { return &v1.DevsyWorkspaceTemplate{} },
 			func() *v1.DevsyWorkspaceTemplateList { return &v1.DevsyWorkspaceTemplateList{} },

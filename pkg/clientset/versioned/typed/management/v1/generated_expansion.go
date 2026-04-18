@@ -24,6 +24,8 @@ type DatabaseConnectorExpansion interface{}
 
 type DevsyEnvironmentTemplateExpansion interface{}
 
+type DevsyUpgradeExpansion interface{}
+
 type DevsyWorkspaceInstanceExpansion interface{}
 
 type DevsyWorkspacePresetExpansion interface{}
@@ -41,8 +43,6 @@ type IngressAuthTokenExpansion interface{}
 type LicenseExpansion interface{}
 
 type LicenseTokenExpansion interface{}
-
-type DevsyUpgradeExpansion interface{}
 
 type NodeClaimExpansion interface{}
 
