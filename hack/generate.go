@@ -1,16 +1,14 @@
 // hack/generate.go orchestrates all code generation for the devsy-org/api module.
 //
-// It runs the custom API register generator (with an import-alias deduplication fix)
-// and then shells out to the standard k8s.io/code-generator tools.
-//
 // Usage:
 //
-//	go run ./hack/generate.go [command]
-//
-// Commands: all, register, deepcopy, defaults, conversion, openapi, clients, install
+//	go run ./hack/generate.go              # Run all generators
+//	go run ./hack/generate.go register     # Run only API register generation
+//	go run ./hack/generate.go --help       # Show all commands
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"os/exec"
@@ -20,6 +18,7 @@ import (
 	"strings"
 
 	"github.com/devsy-org/apiserver/pkg/generate"
+	"github.com/urfave/cli/v3"
 	"k8s.io/klog/v2"
 )
 
@@ -80,43 +79,96 @@ func main() {
 	if len(os.Getenv("GOMAXPROCS")) == 0 {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 	}
-
-	cmd := "all"
-	if len(os.Args) > 1 {
-		cmd = os.Args[1]
-	}
-
 	os.Chdir(repoRoot())
 
-	switch cmd {
-	case "register":
-		runRegister()
-	case "deepcopy":
-		runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
-	case "defaults":
-		runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
-	case "conversion":
-		runConversion()
-	case "openapi":
-		runOpenAPI()
-	case "clients":
-		runClients()
-	case "install":
-		installTools()
-	case "all":
-		installTools()
-		runRegister()
-		runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
-		runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
-		runConversion()
-		runOpenAPI()
-		runClients()
-	default:
-		fmt.Fprintf(os.Stderr, "Usage: go run ./hack/generate.go {all|install|register|deepcopy|defaults|conversion|openapi|clients}\n")
-		os.Exit(1)
+	app := &cli.Command{
+		Name:  "generate",
+		Usage: "Code generation for devsy-org/api",
+		Action: func(ctx context.Context, cmd *cli.Command) error {
+			return runAll()
+		},
+		Commands: []*cli.Command{
+			{
+				Name:  "all",
+				Usage: "Run all generators (default)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					return runAll()
+				},
+			},
+			{
+				Name:  "install",
+				Usage: "Install code-generator tool binaries",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					installTools()
+					return nil
+				},
+			},
+			{
+				Name:  "register",
+				Usage: "Generate API registration (zz_generated.api.register.go)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runRegister()
+					return nil
+				},
+			},
+			{
+				Name:  "deepcopy",
+				Usage: "Generate DeepCopy methods (zz_generated.deepcopy.go)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
+					return nil
+				},
+			},
+			{
+				Name:  "defaults",
+				Usage: "Generate Defaulter functions (zz_generated.defaults.go)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
+					return nil
+				},
+			},
+			{
+				Name:  "conversion",
+				Usage: "Generate Conversion functions (zz_generated.conversion.go)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runConversion()
+					return nil
+				},
+			},
+			{
+				Name:  "openapi",
+				Usage: "Generate OpenAPI definitions (zz_generated.openapi.go)",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runOpenAPI()
+					return nil
+				},
+			},
+			{
+				Name:  "clients",
+				Usage: "Generate clientset, listers, and informers",
+				Action: func(ctx context.Context, cmd *cli.Command) error {
+					runClients()
+					return nil
+				},
+			},
+		},
 	}
 
+	if err := app.Run(context.Background(), os.Args); err != nil {
+		klog.Fatalf("Error: %v", err)
+	}
+}
+
+func runAll() error {
+	installTools()
+	runRegister()
+	runGenerator("deepcopy-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.deepcopy.go")
+	runGenerator("defaulter-gen", "--go-header-file", boilerplate, "--output-file", "zz_generated.defaults.go")
+	runConversion()
+	runOpenAPI()
+	runClients()
 	fmt.Println("==> Done.")
+	return nil
 }
 
 // installTools installs the k8s.io/code-generator binaries.
@@ -158,14 +210,12 @@ func runRegister() {
 		klog.Fatalf("register generation failed: %v", err)
 	}
 
-	// Post-process: fix NewRESTFunc signature in packages that use managerfactory.
 	patchRegisterFiles()
 }
 
 // patchRegisterFiles fixes the NewRESTFunc signature and adds the managerfactory
 // import to generated register files in packages that declare a Factory variable.
 func patchRegisterFiles() {
-	// Only management and virtualcluster have inject.go with Factory.
 	targets := []string{
 		filepath.Join("pkg", "apis", "management", "zz_generated.api.register.go"),
 		filepath.Join("pkg", "apis", "virtualcluster", "zz_generated.api.register.go"),
@@ -181,19 +231,17 @@ func patchRegisterFiles() {
 		}
 		content := string(data)
 
-		// 1. Fix NewRESTFunc signature: func() rest.Storage → func(managerfactory.SharedManagerFactory) rest.Storage
+		// 1. Fix NewRESTFunc signature.
 		content = strings.Replace(content,
 			"type NewRESTFunc func() rest.Storage",
 			"type NewRESTFunc func(factory managerfactory.SharedManagerFactory) rest.Storage",
 			1)
 
-		// 2. Fix top-level REST closures that are missing the Factory arg.
-		//    The template generates `return NewFooRESTFunc()` for top-level resources
-		//    but `return NewFooRESTFunc(Factory)` for subresources. Both should pass Factory.
+		// 2. Fix top-level REST closures missing the Factory arg.
 		restFuncCallRe := regexp.MustCompile(`return (New\w+RESTFunc)\(\)`)
 		content = restFuncCallRe.ReplaceAllString(content, "return ${1}(Factory)")
 
-		// 3. Add managerfactory import if not already present in the import block.
+		// 3. Add managerfactory import if not already present.
 		if !strings.Contains(content, mfImport) {
 			content = strings.Replace(content,
 				"import (",
@@ -212,7 +260,6 @@ func patchRegisterFiles() {
 		}
 		fmtCmd := exec.Command(goimportsBin, "-w", path)
 		if out, err := fmtCmd.CombinedOutput(); err != nil {
-			// Fall back to gofmt if goimports isn't installed.
 			fmtCmd = exec.Command("gofmt", "-w", path)
 			if out2, err2 := fmtCmd.CombinedOutput(); err2 != nil {
 				klog.Warningf("gofmt %s: %s %v", path, string(append(out, out2...)), err2)
@@ -222,13 +269,9 @@ func patchRegisterFiles() {
 }
 
 // fixImportAliases walks every struct field in the API group and rewrites
-// any duplicate import aliases so they are unique. It matches the aliasing
-// style already used in hand-written source files (e.g. agentstoragev1).
+// any duplicate import aliases so they are unique.
 func fixImportAliases(apigroup *generate.APIGroup) {
-	// Build a map: alias → first package path seen with that alias.
 	seen := map[string]string{}
-
-	// importLine parses `alias "pkg/path"` into (alias, pkgPath).
 	importRe := regexp.MustCompile(`^(\w+)\s+"(.+)"$`)
 
 	for _, s := range apigroup.Structs {
@@ -244,8 +287,6 @@ func fixImportAliases(apigroup *generate.APIGroup) {
 			alias, pkgPath := m[1], m[2]
 
 			if first, exists := seen[alias]; exists && first != pkgPath {
-				// Collision: two different packages share the same alias.
-				// Derive a unique alias from more of the package path.
 				newAlias := disambiguateAlias(pkgPath, alias)
 				f.UnversionedImport = fmt.Sprintf(`%s "%s"`, newAlias, pkgPath)
 				f.UnversionedType = strings.Replace(f.UnversionedType, alias+".", newAlias+".", 1)
@@ -260,35 +301,26 @@ func fixImportAliases(apigroup *generate.APIGroup) {
 // disambiguateAlias creates a unique import alias by incorporating the module
 // name from the package path. For "github.com/devsy-org/agentapi/pkg/apis/devsy/storage/v1"
 // with base alias "storagev1", this produces "agentstoragev1".
-//
-// The algorithm extracts the repo/module name (third path segment, e.g. "agentapi"),
-// strips common suffixes like "api"/"apis", sanitizes it for use as a Go identifier,
-// and prepends it to the base alias.
 func disambiguateAlias(pkgPath, baseAlias string) string {
 	parts := strings.Split(pkgPath, "/")
 
-	// Extract the module name: for "github.com/devsy-org/agentapi/..." it's "agentapi".
 	moduleName := ""
 	if len(parts) >= 3 {
 		moduleName = parts[2]
 	}
 
-	// Clean the module name into a usable prefix:
-	// "agentapi" → "agent", "admin-apis" → "admin"
 	prefix := moduleName
 	prefix = strings.ReplaceAll(prefix, "-", "")
 	prefix = strings.TrimSuffix(prefix, "apis")
 	prefix = strings.TrimSuffix(prefix, "api")
 
 	if prefix == "" || prefix == baseAlias {
-		// Fallback: use the full module name, sanitized.
 		prefix = strings.ReplaceAll(moduleName, "-", "")
 	}
 
 	return prefix + baseAlias
 }
 
-// runGenerator runs a code-generator tool with the standard API packages as positional args.
 func runGenerator(tool string, baseArgs ...string) {
 	fmt.Printf("==> Generating %s...\n", tool)
 	args := append(baseArgs, apiPackages...)
