@@ -3,9 +3,9 @@ module github.com/devsy-org/api
 go 1.25.0
 
 require (
-	github.com/devsy-org/admin-apis v1.2.0
-	github.com/devsy-org/agentapi v1.0.0
-	github.com/devsy-org/apiserver v1.2.0
+	github.com/devsy-org/admin-apis v1.0.0
+	github.com/devsy-org/agentapi v1.0.1
+	github.com/devsy-org/apiserver v1.0.0
 	github.com/ghodss/yaml v1.0.0
 	google.golang.org/grpc v1.78.0
 	google.golang.org/protobuf v1.36.11
