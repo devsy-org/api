@@ -8,10 +8,10 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=ListAccess,verb=get,subresource=memberaccess,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccess
-// +genclient:method=ListMembers,verb=get,subresource=members,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembers
-// +genclient:method=GetAgentConfig,verb=get,subresource=agentconfig,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfig
-// +genclient:method=GetAccessKey,verb=get,subresource=accesskey,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKey
+// +genclient:method=ListAccess,verb=get,subresource=memberaccess,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterMemberAccess //nolint:lll
+// +genclient:method=ListMembers,verb=get,subresource=members,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterMembers //nolint:lll
+// +genclient:method=GetAgentConfig,verb=get,subresource=agentconfig,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterAgentConfig //nolint:lll
+// +genclient:method=GetAccessKey,verb=get,subresource=accesskey,result=github.com/devsy-org/api/pkg/apis/management/v1.ClusterAccessKey //nolint:lll
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // Cluster holds the cluster information

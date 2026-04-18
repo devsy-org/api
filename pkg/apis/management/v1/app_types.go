@@ -7,7 +7,7 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials
+// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials //nolint:lll
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // App holds the information

@@ -17,11 +17,12 @@ var (
 
 func loadProductVar() {
 	productEnv := os.Getenv("PRODUCT")
-	if productEnv == string(licenseapi.DevsyPro) {
+	switch {
+	case productEnv == string(licenseapi.DevsyPro):
 		productName = string(licenseapi.DevsyPro)
-	} else if productEnv == string(licenseapi.DevsyOrg) {
+	case productEnv == string(licenseapi.DevsyOrg):
 		productName = string(licenseapi.DevsyOrg)
-	} else if productEnv != "" {
+	case productEnv != "":
 		klog.TODO().
 			Error(fmt.Errorf("unrecognized product %s", productEnv), "error parsing product", "product", productEnv)
 	}
@@ -32,7 +33,7 @@ func Name() licenseapi.ProductName {
 	return licenseapi.ProductName(productName)
 }
 
-// DisplayName returns the display name of the product
+// DisplayName returns the display name of the product.
 func DisplayName() string {
 	switch Name() {
 	case licenseapi.DevsyPro:

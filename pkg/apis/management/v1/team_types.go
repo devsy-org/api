@@ -7,8 +7,8 @@ import (
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.TeamClusters
-// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeys
+// +genclient:method=ListClusters,verb=get,subresource=clusters,result=github.com/devsy-org/api/pkg/apis/management/v1.TeamClusters //nolint:lll
+// +genclient:method=ListAccessKeys,verb=get,subresource=accesskeys,result=github.com/devsy-org/api/pkg/apis/management/v1.TeamAccessKeys //nolint:lll
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // Team holds the team information
