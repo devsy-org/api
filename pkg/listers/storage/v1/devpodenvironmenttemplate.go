@@ -3,7 +3,7 @@
 package v1
 
 import (
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	listers "k8s.io/client-go/listers"
 	cache "k8s.io/client-go/tools/cache"

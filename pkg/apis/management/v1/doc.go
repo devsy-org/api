@@ -4,7 +4,7 @@
 
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=package,register
-// +k8s:conversion-gen=github.com/skevetter/api/pkg/apis/management
+// +k8s:conversion-gen=github.com/devsy-org/api/pkg/apis/management
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=management.devsy.sh
-package v1 // import "github.com/skevetter/api/pkg/apis/management/v1"
+package v1 // import "github.com/devsy-org/api/pkg/apis/management/v1"

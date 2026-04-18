@@ -3,8 +3,8 @@
 package v1
 
 import (
-	"github.com/skevetter/api/pkg/apis/virtualcluster"
-	"github.com/skevetter/apiserver/pkg/builders"
+	"github.com/devsy-org/api/pkg/apis/virtualcluster"
+	"github.com/devsy-org/apiserver/pkg/builders"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"

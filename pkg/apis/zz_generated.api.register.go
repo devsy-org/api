@@ -3,13 +3,13 @@
 package apis
 
 import (
-	"github.com/skevetter/api/pkg/apis/management"
-	_ "github.com/skevetter/api/pkg/apis/management/install" // Install the management group
-	managementv1 "github.com/skevetter/api/pkg/apis/management/v1"
-	"github.com/skevetter/api/pkg/apis/virtualcluster"
-	_ "github.com/skevetter/api/pkg/apis/virtualcluster/install" // Install the virtualcluster group
-	virtualclusterv1 "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
-	"github.com/skevetter/apiserver/pkg/builders"
+	"github.com/devsy-org/api/pkg/apis/management"
+	_ "github.com/devsy-org/api/pkg/apis/management/install" // Install the management group
+	managementv1 "github.com/devsy-org/api/pkg/apis/management/v1"
+	"github.com/devsy-org/api/pkg/apis/virtualcluster"
+	_ "github.com/devsy-org/api/pkg/apis/virtualcluster/install" // Install the virtualcluster group
+	virtualclusterv1 "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
+	"github.com/devsy-org/apiserver/pkg/builders"
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
@@ -33,7 +33,7 @@ func GetAllApiBuilders() []*builders.APIGroupBuilder {
 func GetManagementAPIBuilder() *builders.APIGroupBuilder {
 	return builders.NewApiGroupBuilder(
 		"management.devsy.sh",
-		"github.com/skevetter/api/pkg/apis/management").
+		"github.com/devsy-org/api/pkg/apis/management").
 		WithUnVersionedApi(management.ApiVersion).
 		WithVersionedApis(
 			managementv1.ApiVersion,
@@ -83,7 +83,7 @@ func GetManagementAPIBuilder() *builders.APIGroupBuilder {
 func GetVirtualclusterAPIBuilder() *builders.APIGroupBuilder {
 	return builders.NewApiGroupBuilder(
 		"virtualcluster.devsy.sh",
-		"github.com/skevetter/api/pkg/apis/virtualcluster").
+		"github.com/devsy-org/api/pkg/apis/virtualcluster").
 		WithUnVersionedApi(virtualcluster.ApiVersion).
 		WithVersionedApis(
 			virtualclusterv1.ApiVersion,

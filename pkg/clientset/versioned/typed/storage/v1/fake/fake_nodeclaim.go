@@ -3,8 +3,8 @@
 package fake
 
 import (
-	v1 "github.com/skevetter/api/pkg/apis/storage/v1"
-	storagev1 "github.com/skevetter/api/pkg/clientset/versioned/typed/storage/v1"
+	v1 "github.com/devsy-org/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/storage/v1"
 	gentype "k8s.io/client-go/gentype"
 )
 

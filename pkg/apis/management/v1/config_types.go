@@ -1,9 +1,9 @@
 package v1
 
 import (
-	auditv1 "github.com/skevetter/api/pkg/apis/audit/v1"
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
-	uiv1 "github.com/skevetter/api/pkg/apis/ui/v1"
+	auditv1 "github.com/devsy-org/api/pkg/apis/audit/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
+	uiv1 "github.com/devsy-org/api/pkg/apis/ui/v1"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

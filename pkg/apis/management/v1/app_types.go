@@ -1,13 +1,13 @@
 package v1
 
 import (
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/skevetter/api/pkg/apis/management/v1.AppCredentials
+// +genclient:method=GetCredentials,verb=get,subresource=credentials,result=github.com/devsy-org/api/pkg/apis/management/v1.AppCredentials
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // App holds the information

@@ -6,4 +6,4 @@
 // +k8s:deepcopy-gen=package,register
 // +k8s:defaulter-gen=TypeMeta
 // +groupName=ui.devsy.sh
-package v1 // import "github.com/skevetter/api/pkg/apis/ui/v1"
+package v1 // import "github.com/devsy-org/api/pkg/apis/ui/v1"

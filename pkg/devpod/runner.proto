@@ -1,7 +1,7 @@
 // protoc -I . runner.proto  --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative
 syntax = "proto3";
 
-option go_package = "github.com/loft-sh/api/v4/pkg/devpod";
+option go_package = "github.com/devsy-org/api/pkg/devpod";
 
 package devpod;
 

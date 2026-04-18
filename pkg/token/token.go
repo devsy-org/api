@@ -1,7 +1,7 @@
 package token
 
 import (
-	storagev1 "github.com/skevetter/api/pkg/apis/storage/v1"
+	storagev1 "github.com/devsy-org/api/pkg/apis/storage/v1"
 	"k8s.io/apiserver/pkg/authentication/user"
 )
 

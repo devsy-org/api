@@ -1,13 +1,13 @@
 package v1
 
 import (
-	"github.com/skevetter/admin-apis/pkg/licenseapi"
+	"github.com/devsy-org/admin-apis/pkg/licenseapi"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // +genclient
 // +genclient:nonNamespaced
-// +genclient:method=LicenseRequest,verb=create,subresource=request,input=github.com/skevetter/api/pkg/apis/management/v1.LicenseRequest,result=github.com/skevetter/api/pkg/apis/management/v1.LicenseRequest
+// +genclient:method=LicenseRequest,verb=create,subresource=request,input=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest,result=github.com/devsy-org/api/pkg/apis/management/v1.LicenseRequest
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // License holds the license information

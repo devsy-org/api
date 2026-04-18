@@ -3,8 +3,8 @@ package kube
 import (
 	"fmt"
 
-	agentdevsyclient "github.com/skevetter/agentapi/pkg/clientset/versioned"
-	devsyclient "github.com/skevetter/api/pkg/clientset/versioned"
+	agentdevsyclient "github.com/devsy-org/agentapi/pkg/clientset/versioned"
+	devsyclient "github.com/devsy-org/api/pkg/clientset/versioned"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 )

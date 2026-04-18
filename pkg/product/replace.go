@@ -4,24 +4,15 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/skevetter/admin-apis/pkg/licenseapi"
+	"github.com/devsy-org/admin-apis/pkg/licenseapi"
 )
 
 // Replace replaces the product name in the given usage string
 // based on the current product.Product().
 //
 // It replaces "devsy" with the specific product name:
-//   - "devpod pro" for product.DevPodPro
 //   - "devsy platform" for product.DevsyPro
-//   - No replacement for product.Devsy
-//
-// This handles case insensitive replaces like "devsy" -> "devpod pro".
-//
-// It also handles case sensitive replaces:
-//   - "Devsy" -> "DevPod.Pro" for product.DevPodPro
-//   - "Devsy" -> "vCluster Platform" for product.DevsyPro
-//
-// This allows customizing command usage text for different products.
+//   - No replacement for product.DevsyOrg
 //
 // Parameters:
 //   - content: The string to update
@@ -30,19 +21,13 @@ import (
 //   - The updated string with product name replaced if needed.
 func Replace(content string) string {
 	switch Name() {
-	case licenseapi.DevPodPro:
-		content = strings.Replace(content, "devsy.sh", "devpod.pro", -1)
-		content = strings.Replace(content, "devsy.host", "devpod.host", -1)
-
-		content = strings.Replace(content, "devsy", "devpod pro", -1)
-		content = strings.Replace(content, "Devsy", "DevPod.Pro", -1)
 	case licenseapi.DevsyPro:
 		content = strings.Replace(content, "devsy.sh", "devsy.pro", -1)
 		content = strings.Replace(content, "devsy.host", "devsy.host", -1)
 
 		content = strings.Replace(content, "devsy", "devsy platform", -1)
 		content = strings.Replace(content, "Devsy", "vCluster Platform", -1)
-	case licenseapi.Devsy:
+	case licenseapi.DevsyOrg:
 	}
 
 	return content
@@ -54,15 +39,8 @@ func Replace(content string) string {
 //
 // The product name replacements are:
 //
-//   - "devpod pro" for product.DevPodPro
 //   - "devsy platform" for product.DevsyPro
-//   - No replacement for product.Devsy
-//
-// This handles case insensitive replaces like "devsy" -> "devpod pro".
-//
-// It also handles case sensitive replaces:
-//   - "Devsy" -> "DevPod.Pro" for product.DevPodPro
-//   - "Devsy" -> "vCluster Platform" for product.DevsyPro
+//   - No replacement for product.DevsyOrg
 //
 // Parameters:
 //   - use: The usage string
@@ -73,14 +51,12 @@ func Replace(content string) string {
 func ReplaceWithHeader(use, content string) string {
 	maxChar := 56
 
-	productName := licenseapi.Devsy
+	productName := licenseapi.DevsyOrg
 
 	switch Name() {
-	case licenseapi.DevPodPro:
-		productName = "devpod pro"
 	case licenseapi.DevsyPro:
 		productName = "devsy platform"
-	case licenseapi.Devsy:
+	case licenseapi.DevsyOrg:
 	}
 
 	paddingSize := (maxChar - 2 - len(productName) - len(use)) / 2

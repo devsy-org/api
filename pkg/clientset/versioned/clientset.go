@@ -6,9 +6,9 @@ import (
 	fmt "fmt"
 	http "net/http"
 
-	managementv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/management/v1"
-	storagev1 "github.com/skevetter/api/pkg/clientset/versioned/typed/storage/v1"
-	virtualclusterv1 "github.com/skevetter/api/pkg/clientset/versioned/typed/virtualcluster/v1"
+	managementv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/management/v1"
+	storagev1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/storage/v1"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/clientset/versioned/typed/virtualcluster/v1"
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

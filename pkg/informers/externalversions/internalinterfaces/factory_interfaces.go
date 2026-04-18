@@ -5,7 +5,7 @@ package internalinterfaces
 import (
 	time "time"
 
-	versioned "github.com/skevetter/api/pkg/clientset/versioned"
+	versioned "github.com/devsy-org/api/pkg/clientset/versioned"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	cache "k8s.io/client-go/tools/cache"

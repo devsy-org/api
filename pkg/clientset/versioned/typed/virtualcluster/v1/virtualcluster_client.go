@@ -5,8 +5,8 @@ package v1
 import (
 	http "net/http"
 
-	virtualclusterv1 "github.com/skevetter/api/pkg/apis/virtualcluster/v1"
-	scheme "github.com/skevetter/api/pkg/clientset/versioned/scheme"
+	virtualclusterv1 "github.com/devsy-org/api/pkg/apis/virtualcluster/v1"
+	scheme "github.com/devsy-org/api/pkg/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
