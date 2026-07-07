@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.8](https://github.com/devsy-org/api/compare/v1.0.7...v1.0.8) (2026-07-07)
+
+
+### Bug Fixes
+
+* **deps:** update k8s.io/kube-openapi digest to cdb1db5 ([#29](https://github.com/devsy-org/api/issues/29)) ([c1d3eea](https://github.com/devsy-org/api/commit/c1d3eeaf117c36fe36fe77df9d7640a612c04a5b))
+
 ## [1.0.7](https://github.com/devsy-org/api/compare/v1.0.6...v1.0.7) (2026-07-02)
 
 
