@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/devsy-org/api/compare/v1.0.8...v1.0.9) (2026-07-16)
+
+
+### Bug Fixes
+
+* **deps:** update module google.golang.org/grpc to v1.82.1 ([#31](https://github.com/devsy-org/api/issues/31)) ([8172dae](https://github.com/devsy-org/api/commit/8172dae4a6918b9ea2877d758ea487e761a2b33d))
+
 ## [1.0.8](https://github.com/devsy-org/api/compare/v1.0.7...v1.0.8) (2026-07-07)
 
 
