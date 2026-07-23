@@ -13,7 +13,7 @@ require (
 	k8s.io/api v0.36.3
 	k8s.io/apimachinery v0.36.3
 	k8s.io/apiserver v0.36.3
-	k8s.io/client-go v0.36.3
+	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/code-generator v0.36.3
 	k8s.io/klog/v2 v2.140.0
 	k8s.io/kube-openapi v0.0.0-20260721132016-d427ff9ee9ad
