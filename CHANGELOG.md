@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.14](https://github.com/devsy-org/api/compare/v1.0.13...v1.0.14) (2026-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update module k8s.io/client-go to v11 ([#42](https://github.com/devsy-org/api/issues/42)) ([31726e7](https://github.com/devsy-org/api/commit/31726e718b5a82ca1acd6bcb389da81c44ca50e7))
+
 ## [1.0.13](https://github.com/devsy-org/api/compare/v1.0.12...v1.0.13) (2026-07-23)
 
 
