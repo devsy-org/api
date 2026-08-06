@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.16](https://github.com/devsy-org/api/compare/v1.0.15...v1.0.16) (2026-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update google.golang.org/protobuf digest to 644d026 ([#47](https://github.com/devsy-org/api/issues/47)) ([a7c1e1f](https://github.com/devsy-org/api/commit/a7c1e1fc0aac32bdee15c02e4d79604c90c0090e))
+
 ## [1.0.15](https://github.com/devsy-org/api/compare/v1.0.14...v1.0.15) (2026-08-01)
 
 
