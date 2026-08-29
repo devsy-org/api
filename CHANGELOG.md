@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.20](https://github.com/devsy-org/api/compare/v1.0.19...v1.0.20) (2026-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update k8s.io/kube-openapi digest to be32def ([#56](https://github.com/devsy-org/api/issues/56)) ([ae086c8](https://github.com/devsy-org/api/commit/ae086c8d585d165b3c48bd92fe387cb98bb010ee))
+
 ## [1.0.19](https://github.com/devsy-org/api/compare/v1.0.18...v1.0.19) (2026-08-20)
 
 
