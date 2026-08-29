@@ -11,7 +11,7 @@ require (
 	google.golang.org/grpc v1.83.2
 	google.golang.org/protobuf 644d0267c26e
 	k8s.io/api v0.37.0
-	k8s.io/apimachinery v0.36.4
+	k8s.io/apimachinery v0.37.0
 	k8s.io/apiserver v0.37.0
 	k8s.io/client-go v11.0.0+incompatible
 	k8s.io/code-generator v0.37.0
