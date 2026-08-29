@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.23](https://github.com/devsy-org/api/compare/v1.0.22...v1.0.23) (2026-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update module k8s.io/api to v0.37.0 ([#62](https://github.com/devsy-org/api/issues/62)) ([20a46a1](https://github.com/devsy-org/api/commit/20a46a16b5e8fc035a3408982085e41458e621c5))
+
 ## [1.0.22](https://github.com/devsy-org/api/compare/v1.0.21...v1.0.22) (2026-08-29)
 
 
