@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.26](https://github.com/devsy-org/api/compare/v1.0.25...v1.0.26) (2026-09-03)
+
+
+### Bug Fixes
+
+* **deps:** update module sigs.k8s.io/controller-runtime to v0.25.0 ([#68](https://github.com/devsy-org/api/issues/68)) ([7e2476e](https://github.com/devsy-org/api/commit/7e2476e1e11cfa4f98039c354ec00ae700f7ff08))
+
 ## [1.0.25](https://github.com/devsy-org/api/compare/v1.0.24...v1.0.25) (2026-09-02)
 
 
