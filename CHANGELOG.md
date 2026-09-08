@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.28](https://github.com/devsy-org/api/compare/v1.0.27...v1.0.28) (2026-09-08)
+
+
+### Bug Fixes
+
+* **deps:** update k8s.io/kube-openapi digest to c4db2bd ([#72](https://github.com/devsy-org/api/issues/72)) ([965fd25](https://github.com/devsy-org/api/commit/965fd251b10ebac785ee04e41e8ea922c02dc69a))
+
 ## [1.0.27](https://github.com/devsy-org/api/compare/v1.0.26...v1.0.27) (2026-09-06)
 
 
