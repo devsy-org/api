@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.31](https://github.com/devsy-org/api/compare/v1.0.30...v1.0.31) (2026-09-14)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/urfave/cli/v3 to v3.12.0 ([#78](https://github.com/devsy-org/api/issues/78)) ([a5ed1bc](https://github.com/devsy-org/api/commit/a5ed1bc54c24087e5c13bbd2192b87f03eb16f99))
+
 ## [1.0.30](https://github.com/devsy-org/api/compare/v1.0.29...v1.0.30) (2026-09-14)
 
 
