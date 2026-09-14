@@ -7,7 +7,7 @@ require (
 	github.com/devsy-org/agentapi v1.0.1
 	github.com/devsy-org/apiserver v1.5.3
 	github.com/ghodss/yaml v1.0.0
-	github.com/urfave/cli/v3 v3.11.0
+	github.com/urfave/cli/v3 v3.12.0
 	google.golang.org/grpc v1.83.2
 	google.golang.org/protobuf 644d0267c26e
 	k8s.io/api v0.37.0
