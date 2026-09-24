@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.34](https://github.com/devsy-org/api/compare/v1.0.33...v1.0.34) (2026-09-24)
+
+
+### Bug Fixes
+
+* **deps:** update module k8s.io/metrics to v0.37.1 ([#84](https://github.com/devsy-org/api/issues/84)) ([d52eb76](https://github.com/devsy-org/api/commit/d52eb7603d63186cde81909ad1c7fcf5082c6a91))
+
 ## [1.0.33](https://github.com/devsy-org/api/compare/v1.0.32...v1.0.33) (2026-09-20)
 
 
