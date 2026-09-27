@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.36](https://github.com/devsy-org/api/compare/v1.0.35...v1.0.36) (2026-09-27)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/devsy-org/apiserver to v1.5.4 ([#88](https://github.com/devsy-org/api/issues/88)) ([c9aed6d](https://github.com/devsy-org/api/commit/c9aed6d920ed7d29f2fa97951d5d73b42832ab06))
+
 ## [1.0.35](https://github.com/devsy-org/api/compare/v1.0.34...v1.0.35) (2026-09-24)
 
 
