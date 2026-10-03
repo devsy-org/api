@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.37](https://github.com/devsy-org/api/compare/v1.0.36...v1.0.37) (2026-10-03)
+
+
+### Bug Fixes
+
+* **deps:** update k8s.io/kube-openapi digest to 97fa351 ([#90](https://github.com/devsy-org/api/issues/90)) ([b141fae](https://github.com/devsy-org/api/commit/b141faecf6d5ba35554b76ffc762c81f257ad07e))
+
 ## [1.0.36](https://github.com/devsy-org/api/compare/v1.0.35...v1.0.36) (2026-09-27)
 
 
