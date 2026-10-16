@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.43](https://github.com/devsy-org/api/compare/v1.0.42...v1.0.43) (2026-10-16)
+
+
+### Bug Fixes
+
+* **deps:** update module sigs.k8s.io/controller-tools to v0.23.0 ([#103](https://github.com/devsy-org/api/issues/103)) ([2e93bab](https://github.com/devsy-org/api/commit/2e93bab6fa0f9535512aeea68f1234cc068d12bc))
+
 ## [1.0.42](https://github.com/devsy-org/api/compare/v1.0.41...v1.0.42) (2026-10-16)
 
 
