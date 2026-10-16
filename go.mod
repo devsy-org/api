@@ -19,7 +19,7 @@ require (
 	k8s.io/kube-openapi v0.0.0-20261014044854-ca3452a79603
 	k8s.io/metrics v0.37.1
 	sigs.k8s.io/controller-runtime v0.25.2
-	sigs.k8s.io/controller-tools v0.22.0
+	sigs.k8s.io/controller-tools v0.23.0
 )
 
 require (
