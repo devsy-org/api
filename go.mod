@@ -8,7 +8,7 @@ require (
 	github.com/devsy-org/apiserver v1.5.7
 	github.com/ghodss/yaml v1.0.0
 	github.com/urfave/cli/v3 v3.14.0
-	google.golang.org/grpc v1.84.0
+	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf 644d0267c26e
 	k8s.io/api v0.37.1
 	k8s.io/apimachinery v0.37.1
