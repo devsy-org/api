@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.47](https://github.com/devsy-org/api/compare/v1.0.46...v1.0.47) (2026-10-28)
+
+
+### Bug Fixes
+
+* **deps:** update kubernetes monorepo to v0.37.2 ([#113](https://github.com/devsy-org/api/issues/113)) ([f8695a6](https://github.com/devsy-org/api/commit/f8695a6b40e61eea07f719a10ed9e444ae4c2cc8))
+
 ## [1.0.46](https://github.com/devsy-org/api/compare/v1.0.45...v1.0.46) (2026-10-27)
 
 
