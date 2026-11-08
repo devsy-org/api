@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.49](https://github.com/devsy-org/api/compare/v1.0.48...v1.0.49) (2026-11-08)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/devsy-org/agentapi to v2 ([#117](https://github.com/devsy-org/api/issues/117)) ([45a6abc](https://github.com/devsy-org/api/commit/45a6abcfe795cbc8c082804804061a813aca8ac1))
+
 ## [1.0.48](https://github.com/devsy-org/api/compare/v1.0.47...v1.0.48) (2026-11-05)
 
 
