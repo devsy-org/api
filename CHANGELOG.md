@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.50](https://github.com/devsy-org/api/compare/v1.0.49...v1.0.50) (2026-11-10)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/devsy-org/admin-apis to v1.2.0 ([#119](https://github.com/devsy-org/api/issues/119)) ([760bbe1](https://github.com/devsy-org/api/commit/760bbe1c7188d54f274c6a03d31c9913838688dc))
+
 ## [1.0.49](https://github.com/devsy-org/api/compare/v1.0.48...v1.0.49) (2026-11-08)
 
 
