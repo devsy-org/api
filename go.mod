@@ -3,7 +3,7 @@ module github.com/devsy-org/api
 go 1.26.0
 
 require (
-	github.com/devsy-org/admin-apis v1.0.0
+	github.com/devsy-org/admin-apis v1.2.0
 	github.com/devsy-org/agentapi/v2 v2.0.0
 	github.com/devsy-org/apiserver v1.5.7
 	github.com/ghodss/yaml v1.0.0
