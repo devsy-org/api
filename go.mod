@@ -10,14 +10,14 @@ require (
 	github.com/urfave/cli/v3 v3.14.0
 	google.golang.org/grpc v1.85.0
 	google.golang.org/protobuf 644d0267c26e
-	k8s.io/api v0.37.2
-	k8s.io/apimachinery v0.37.2
-	k8s.io/apiserver v0.37.2
+	k8s.io/api v0.37.3
+	k8s.io/apimachinery v0.37.3
+	k8s.io/apiserver v0.37.3
 	k8s.io/client-go v11.0.0+incompatible
-	k8s.io/code-generator v0.37.2
+	k8s.io/code-generator v0.37.3
 	k8s.io/klog/v2 v2.140.0
 	k8s.io/kube-openapi v0.0.0-20261124193638-7c5f465a2be7
-	k8s.io/metrics v0.37.2
+	k8s.io/metrics v0.37.3
 	sigs.k8s.io/controller-runtime v0.25.3
 	sigs.k8s.io/controller-tools v0.23.0
 )
